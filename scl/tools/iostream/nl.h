@@ -5,7 +5,7 @@
 namespace scl{
 	namespace tools{
 		namespace iostream{
-			std::ostream& nl(std::ostream& os){
+			inline std::ostream& nl(std::ostream& os){
 				return os << '\n';
 			}
 		}

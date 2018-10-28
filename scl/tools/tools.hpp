@@ -5,4 +5,5 @@ namespace scl{
 }
 
 #include <scl/tools/make/make.hpp>
+#include <scl/tools/meta/meta.hpp>
 #include <scl/tools/iostream/iostream.hpp>
