@@ -17,7 +17,7 @@ namespace scl{
 					inline std::function<decltype(std::cout)&(const T&)> log(realConst(char*) prefix, realConst(char*) suffix){
 						decltype(std::cout)* cout = &std::cout;
 						return [=](const T& value) -> decltype(std::cout)&{
-							return (*cout) << prefix << value << suffix << '\n';
+							return (*cout) << prefix << value << suffix << nl;
 						};
 					}
 
@@ -25,7 +25,7 @@ namespace scl{
 					inline std::function<decltype(std::cerr)&(const T&)> error(realConst(char*) prefix, realConst(char*) suffix){
 						decltype(std::cerr)* cerr = &std::cerr;
 						return [=](const T& value) -> decltype(std::cerr)&{
-							return (*cerr) << prefix << value << suffix <<  '\n';
+							return (*cerr) << prefix << value << suffix <<  nl;
 						};
 					}
 				}
