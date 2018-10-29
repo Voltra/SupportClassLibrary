@@ -7,7 +7,7 @@ namespace scl{
 		namespace meta{
 			template <class Base, class Derived>
 			inline constexpr bool is_base_of(){
-				return std::is_base_of<Lhs, Rhs>::value;
+				return std::is_base_of<Base, Derived>::value;
 			}
 		}
 	}

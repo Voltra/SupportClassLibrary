@@ -13,9 +13,18 @@ namespace std{
 #include <scl/scl.hpp>
 using namespace scl::tools;
 using namespace scl::tools::iostream;
+using namespace scl::concepts;
+
+template <class T>
+T answerToLife(){
+	require(Same<T, int>{});
+	return 42;
+}
 
 int main(){
-	auto ptr = make::unique<int>(42);
+	auto ptr = make::unique<int>(
+		answerToLife<int>()
+	);
 	auto log = scl::cli::wrap::log<int>("$> ", " <$");
 	log(*ptr);
 	std::cout << "addr: " << ptr << nl;
