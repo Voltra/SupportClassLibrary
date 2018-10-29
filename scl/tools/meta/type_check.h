@@ -14,6 +14,24 @@ inline constexpr bool fn(){\
 	return std::fn<T, U>::value;\
 }
 
+#define SCL_TYPECHECK_WITH_VARGS(fn)\
+template <class T, class... Args>\
+inline constexpr bool fn(){\
+	return std::fn<T, Args...>::value;\
+}
+
+#define SCL_TYPECHECK_FN(fn)\
+template <class F, class... Args>\
+inline constexpr bool fn(){\
+	return std::fn<F, Args...>::value;\
+}
+
+#define SCL_TYPECHECK_FN_R(fn)\
+template <class R, class F, class... Args>\
+inline constexpr bool fn(){\
+	return std::fn<R, F, Args...>::value;\
+}
+
 namespace scl{
 	namespace tools{
 		namespace meta{
@@ -64,9 +82,9 @@ namespace scl{
 			SCL_TYPECHECK(has_unique_object_representations)
 #endif
 
-			SCL_TYPECHECK(is_constructible)
-			SCL_TYPECHECK(is_trivially_constructible)
-			SCL_TYPECHECK(is_nothrow_constructible)
+			SCL_TYPECHECK_WITH_VARGS(is_constructible)
+			SCL_TYPECHECK_WITH_VARGS(is_trivially_constructible)
+			SCL_TYPECHECK_WITH_VARGS(is_nothrow_constructible)
 
 			SCL_TYPECHECK(is_default_constructible)
 			SCL_TYPECHECK(is_trivially_default_constructible)
@@ -98,6 +116,11 @@ namespace scl{
 			SCL_TYPECHECK(is_nothrow_swappable)
 			SCL_TYPECHECK_COMPOUND(is_swappable_with)
 			SCL_TYPECHECK_COMPOUND(is_nothrow_swappable_with)
+
+			SCL_TYPECHECK_FN(is_invocable)
+			SCL_TYPECHECK_FN(is_nothrow_invocable)
+			SCL_TYPECHECK_FN(is_invocable_r)
+			SCL_TYPECHECK_FN_R(is_nothrow_invocable_r)
 #endif
 		}
 	}
@@ -105,3 +128,6 @@ namespace scl{
 
 #undef SCL_TYPECHECK
 #undef SCL_TYPECHECK_COMPOUND
+#undef SCL_TYPECHECK_WITH_VARGS
+#undef SCL_TYPECHECK_FN
+#undef SCL_TYPECHECK_FN_R

@@ -8,7 +8,7 @@ The SCL is a set of tools providing classes and utility functions that aim to ea
 Here is the namespace hierarchy:
 
 * scl - The englobing namespace
-  * [concepts](#scl-concepts) - A concept-like library based around `static_assert`
+  * [concepts](#scl-concepts) - A concept-like library based around `static_assert` (mostly implemented as defined in [cppreference](https://en.cppreference.com/w/cpp/header/concepts))
   * [tools](#scl-tools) - General purpose utility functions
     * [make](#scl-tools-make) - Create objects/pointers through factories
     * [iostream](#scl-tools-iostream) - IOstream manipulators and utils

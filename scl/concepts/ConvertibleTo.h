@@ -8,7 +8,7 @@ namespace scl{
 		struct ConvertibleTo{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_convertible<From, To>(), "Requirements for concept Same are not met.");
+				static_assert(meta::is_convertible<From, To>(), "Requirements for concept ConvertibleTo are not met.");
 				return true;
 			}
 		};

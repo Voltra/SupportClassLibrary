@@ -8,7 +8,7 @@ namespace scl{
 		struct Same{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_same<Lhs, Rhs>(), "Requirements for concept Same are not met.");
+				static_assert(meta::is_same<Lhs, Rhs>(), "Lhs and Rhs are different types.");
 				return true;
 			}
 		};

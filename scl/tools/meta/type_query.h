@@ -33,6 +33,14 @@ namespace scl{
 
 			template <class T>
 			using underlying_type_t = typename std::underlying_type<T>::type;
+
+#ifdef SCL_CPP17
+			template <class F, class... Args>
+			using invoke_result_t = typename std::invoke_result<F, Args...>::type;
+#else
+			template <class Signature>
+			using result_of_t = typename std::result_of<Signature>::type;
+#endif
 		}
 	}
 }

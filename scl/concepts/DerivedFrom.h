@@ -8,7 +8,7 @@ namespace scl{
 		struct DerivedFrom{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_base_of<Base, Derived>(), "Requirements for concept Same are not met.");
+				static_assert(meta::is_base_of<Base, Derived>(), "Derived is not derived from Base");
 				return true;
 			}
 		};
