@@ -12,6 +12,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Boolean concept, a type is boolean if it defines all boolean operations
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Boolean{
 			constexpr operator bool() const{

@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Intergal concept, a type T is integral if meta:is_integral<T>() is true
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Integral{
 			constexpr operator bool() const{

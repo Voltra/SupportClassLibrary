@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * CopyAssignable concept, a type T is copy assignable if meta::is_copy_assignable<T>() is true
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct CopyAssignable{
 			constexpr operator bool() const{

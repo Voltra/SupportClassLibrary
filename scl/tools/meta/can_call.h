@@ -17,6 +17,13 @@ namespace scl{
 				return std::false_type{};
 			}
 
+			/**
+			 * Determines whether or not the given function can be called with the given argument types
+			 * @tparam Func being the type of the function (auto deduction)
+			 * @tparam Args being the arguments' types
+			 * @param f being the desired function
+			 * @return TRUE if it can be called using these arguments, FALSE otherwise
+			 */
 			template <class Func, class... Args>
 			inline constexpr bool can_call(Func f){
 				return is_same<

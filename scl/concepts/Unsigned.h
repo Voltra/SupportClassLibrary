@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Unsigned concept, a type T is unsigned if meta::is_unsigned<T>() is true
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Unsigned{
 			constexpr operator bool() const{

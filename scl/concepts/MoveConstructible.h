@@ -6,6 +6,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * MoveConstructible concept, a type T is move constructible if meta::is_move_constructible<T>() is true
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct MoveConstructible{
 			constexpr operator bool() const{

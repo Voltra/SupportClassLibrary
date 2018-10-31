@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * LessThanComparable concept, a type T is less than comparable if it defines an operator< with itself
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct LessThanComparable{
 			constexpr operator bool() const{

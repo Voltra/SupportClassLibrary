@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * MoveAssignable concept, a type T is move assignable if meta::is_move_assignable<T>() is true
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct MoveAssignable{
 			constexpr operator bool() const{

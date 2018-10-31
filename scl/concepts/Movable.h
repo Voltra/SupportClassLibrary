@@ -6,6 +6,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Movable concept, a type is movable if it is both move constructible and move assignable
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Movable{
 			constexpr operator bool() const{

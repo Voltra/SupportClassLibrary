@@ -2,6 +2,10 @@
 
 namespace scl{
 	namespace tools{
+		/**
+		 * @namespace scl::tools::make
+		 * Group of factory functions
+		 */
 		namespace make{}
 	}
 }

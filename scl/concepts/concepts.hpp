@@ -1,6 +1,10 @@
 #pragma once
 
 namespace scl{
+	/**
+	 * @namespace scl::concepts
+	 * A lightweight concept-like library for C++11
+	 */
 	namespace concepts{}
 }
 
@@ -29,6 +33,9 @@ namespace scl{
 
 #include <scl/concepts/Movable.h>
 #include <scl/concepts/Copyable.h>
+
+#include <scl/concepts/NonMovable.h>
+#include <scl/concepts/NonCopyable.h>
 
 #include <scl/concepts/EqualityComparable.h>
 #include <scl/concepts/EqualityComparableWith.h>

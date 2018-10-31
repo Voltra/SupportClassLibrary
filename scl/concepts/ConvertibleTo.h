@@ -4,6 +4,11 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Conversion concept, a type From is convertible to another type To if meta::is_convertible<From, To>() is true
+		 * @tparam From being the source type
+		 * @tparam To being the destination type
+		 */
 		template <class From, class To>
 		struct ConvertibleTo{
 			constexpr operator bool() const{

@@ -1,6 +1,10 @@
 #pragma once
 
 namespace scl{
+	/**
+	 * @namespace scl::tools
+	 * General purpose tooling
+	 */
 	namespace tools{}
 }
 

@@ -6,6 +6,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * CopyConstructible concept, a type T is copy constructible if meta::is_copy_constructible<T>() is true
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct CopyConstructible{
 			constexpr operator bool() const{

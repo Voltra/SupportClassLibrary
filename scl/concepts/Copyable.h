@@ -6,6 +6,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Copyable concept, a type is copyable if it is both copy constructible and copy assignable
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Copyable{
 			constexpr operator bool() const{

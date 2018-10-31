@@ -4,6 +4,11 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * DerivedFrom concept, a type Derived is derived from another type Base if Derived is a derives from Base
+		 * @tparam Derived being the supposed derived type
+		 * @tparam Base being the supposed base type
+		 */
 		template <class Derived, class Base>
 		struct DerivedFrom{
 			constexpr operator bool() const{

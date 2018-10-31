@@ -6,6 +6,12 @@
 
 namespace scl{
 	namespace concepts{
+		/***
+		 * Relation concept, a type R is a relation between T and U if it defines the 4 combinations
+		 * @tparam R being the relation type
+		 * @tparam T being the first argument type
+		 * @tparam U being the last argument type
+		 */
 		template <class R, class T, class U>
 		struct Relation{
 			constexpr operator bool() const{

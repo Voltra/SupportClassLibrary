@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Signed concept, a type T is signed if meta::is_signed<T>() is true
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Signed{
 			constexpr operator bool() const{

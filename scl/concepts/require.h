@@ -28,6 +28,11 @@ namespace scl{
 		constexpr bool require(ConceptType c){
 			static_assert(is_concept<ConceptType>(), "Cannot require a non Concept type");
 			static_assert(c, "");
+			/*
+			 Concepts are designed as (usually) default constructible
+			 with a defined operator bool() that asserts the different requirements
+			 for the concept
+			 */
 			return true;
 		}
 #endif

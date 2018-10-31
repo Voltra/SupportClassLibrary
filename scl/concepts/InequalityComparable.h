@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * InequalityComparable concept, a type T is equality comparable if it defines an operator!= with itself
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct InequalityComparable{
 			constexpr operator bool() const{

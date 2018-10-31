@@ -6,6 +6,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * DefaultConstructible concept, a type T is default constructible if it defines a default constructor
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct DefaultConstructible{
 			constexpr operator bool() const{

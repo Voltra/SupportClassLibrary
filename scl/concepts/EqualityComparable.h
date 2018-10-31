@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * EqualityComparable concept, a type T is equality comparable if it defines an operator== with itself
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct EqualityComparable{
 			constexpr operator bool() const{

@@ -6,6 +6,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Regular concept, a type is Regular if it is SemiRegular and EqualityCOmparable
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Regular{
 			constexpr operator bool() const{

@@ -32,6 +32,9 @@ namespace scl{
 
 			SCL_TYPEMOD(decay)
 
+			template <class T>
+			using remove_cv_ref_t = remove_cv_t<remove_reference_t<T>>;
+
 #ifdef SCL_ENABLE_DEPRECATED_TYPEMODS
 			SCL_TYPEMOD(result_of)
 #endif

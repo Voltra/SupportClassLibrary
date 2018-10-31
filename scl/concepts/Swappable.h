@@ -5,6 +5,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Swappable concept, a type is swappable if it defines swapping mecanisms
+		 * @tparam T being the type to check against
+		 */
 		template <class T>
 		struct Swappable{
 			constexpr operator bool() const{

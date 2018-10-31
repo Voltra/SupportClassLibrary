@@ -4,6 +4,10 @@
 
 namespace scl{
 	namespace concepts{
+		/**
+		 * Destructible concept, a type T is destructible if it defines a destructor that must not throw
+		 * @tparam T the type to check against
+		 */
 		template <class T>
 		struct Destructible{
 			constexpr operator bool() const{
