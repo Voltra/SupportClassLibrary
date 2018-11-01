@@ -240,7 +240,7 @@ namespace scl{
 				Either<Lhs, NewRhs> mapRightTo(Mapper mapper) const{
 					if(this->hasRight()){
 						const Rhs& right = this->getRight();
-						return Either<Lhs, NewRhs>::template Right<NewRhs>(mapper(right));
+						return Either<Lhs, NewRhs>::/*template*/ Right/*<NewRhs>*/(mapper(right));
 					}
 
 					return Either<Lhs, NewRhs>::Left(this->getLeft());
@@ -260,11 +260,11 @@ namespace scl{
 				Either<NewLhs, NewRhs> mapTo(MapperLeft mapLeft, MapperRight mapRight) const{
 					if(this->hasLeft()){
 						const Lhs& left = this->getLeft();
-						return Either<NewLhs, NewRhs>::template Left<NewLhs>(mapLeft(left));
+						return Either<NewLhs, NewRhs>::/*template*/ Left/*<NewLhs>*/(mapLeft(left));
 					}else{
 						//this->hasRight()
 						const Rhs& right = this->getRight();
-						return Either<NewLhs, NewRhs>::template Right<NewRhs>(mapRight(right));
+						return Either<NewLhs, NewRhs>::/*template*/ Right/*<NewRhs>*/(mapRight(right));
 					}
 				}
 
