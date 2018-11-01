@@ -1,6 +1,8 @@
 #pragma once
 
-#include <scl/concepts/require.h>
+//#include <scl/concepts/require.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/MoveAssignable.h>
 #include <scl/concepts/MoveConstructible.h>
 
@@ -13,9 +15,10 @@ namespace scl{
 		template <class T>
 		struct Movable{
 			constexpr operator bool() const{
-				require(MoveConstructible<T>{});
-				require(MoveAssignable<T>{});
-				return true;
+				return META::constexpr_assert<
+					MoveConstructible<T>{}
+					&& MoveAssignable<T>{}
+				>();
 			}
 		};
 	}

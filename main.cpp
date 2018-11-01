@@ -42,7 +42,11 @@ void defines(){
 }
 
 int main(){
-	std::cout << none << nl;
+	std::cout << "None: " << none << nl;
+	std::cout << "Optional<float>: " << make::optional<int>(3).mapTo<float>([](const int& i){ return 0.14f + i; }).orElse(42.f) << nl;
+	auto any = make::any<stringLiteral>("coucou");
+	std::cout << "Any<stringLiteral>: " << any.as<stringLiteral>() << nl;
+	std::cout << "Either<int, stringLiteral>.left: " << Either<int, stringLiteral>::Left(42).getLeft() << nl;
 	auto ptr = make::unique<int>(answerToLife<int>());
 	auto log = scl::cli::wrap::log<int>("$> ", " <$");
 	log(*ptr);

@@ -1,7 +1,9 @@
 #pragma once
 
 #ifdef SCL_CPP17
-#include <scl/concepts/require.h>
+//#include <scl/concepts/require.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/Predicate.h>
 
 namespace scl{
@@ -16,11 +18,12 @@ namespace scl{
 		struct Relation{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				require(Predicate<R, T, T>{});
-				require(Predicate<R, T, U>{});
-				require(Predicate<R, U, T>{});
-				require(Predicate<R, U, U>{});
-				return true;
+				return META::constexpr_assert<
+					Predicate<R, T, T>{}
+					&& Predicate<R, T, U>{}
+					&& Predicate<R, U, T>{}
+					&& Predicate<R, U, U>{}
+				>();
 			}
 		};
 	}

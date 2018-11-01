@@ -2,7 +2,9 @@
 
 #include <scl/tools/meta/type_check.h>
 #include <scl/tools/meta/type_mod.h>
-#include <scl/concepts/require.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/macros.h>
+//#include <scl/concepts/require.h>
 #include <scl/concepts/Movable.h>
 #include <scl/concepts/ConvertibleTo.h>
 #include <scl/concepts/EqualityComparable.h>
@@ -20,32 +22,26 @@ namespace scl{
 		struct Boolean{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				require(Movable<meta::remove_cv_t<T>>{});
+				static_assert(
+					Movable<meta::remove_cv_t<T>>{}
+					&& ConvertibleTo<meta::remove_reference_t<T>, bool>{}
+					&& ConvertibleTo<decltype(!std::declval<T>()), bool>{}
+					&& ConvertibleTo<decltype(std::declval<T>() && true), bool>{}
+					&& ConvertibleTo<decltype(std::declval<T>() || true), bool>{}
+					&& ConvertibleTo<decltype(std::declval<T>() && std::declval<T>()), bool>{}
+					&& ConvertibleTo<decltype(std::declval<T>() || std::declval<T>()), bool>{}
+					&& ConvertibleTo<decltype(true && std::declval<T>()), bool>{}
+					&& ConvertibleTo<decltype(true || std::declval<T>()), bool>{}
+					&& EqualityComparable<T>{}
+					&& EqualityComparableWith<T, bool>{}
+					&& EqualityComparableWith<bool, T>{}
+					&& InequalityComparable<T>{}
+					&& InequalityComparableWith<T, bool>{}
+					&& InequalityComparableWith<bool, T>{}
+					&& meta::is_nothrow_destructible<T>(),
+					"T is not destructible"
+				);
 
-				using noref = meta::remove_reference_t<T>;
-				require(ConvertibleTo<noref, bool>{});
-
-				require(ConvertibleTo<decltype(!std::declval<T>()), bool>{});
-				require(ConvertibleTo<decltype(std::declval<T>() && true), bool>{});
-				require(ConvertibleTo<decltype(std::declval<T>() || true), bool>{});
-
-
-				require(ConvertibleTo<decltype(std::declval<T>() && std::declval<T>()), bool>{});
-				require(ConvertibleTo<decltype(std::declval<T>() || std::declval<T>()), bool>{});
-
-
-				require(ConvertibleTo<decltype(true && std::declval<T>()), bool>{});
-				require(ConvertibleTo<decltype(true || std::declval<T>()), bool>{});
-
-				require(EqualityComparable<T>{});
-				require(EqualityComparableWith<T, bool>{});
-				require(EqualityComparableWith<bool, T>{});
-
-				require(InequalityComparable<T>{});
-				require(InequalityComparableWith<T, bool>{});
-				require(InequalityComparableWith<bool, T>{});
-
-				static_assert(meta::is_nothrow_destructible<T>(), "T is not destructible");
 				return true;
 			}
 		};

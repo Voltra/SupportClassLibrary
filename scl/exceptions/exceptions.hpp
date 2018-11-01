@@ -17,3 +17,4 @@ namespace scl{
 #include <scl/exceptions/InvalidCast.h>
 #include <scl/exceptions/InvalidAnyCast.h>
 #include <scl/exceptions/EmptyOptionalAccess.h>
+#include <scl/exceptions/InvalidEitherAccess.h>

@@ -11,3 +11,4 @@ namespace scl{
 #include <scl/utils/toString.h>
 #include <scl/utils/Any.h>
 #include <scl/utils/Optional.h>
+#include <scl/utils/Either.h>

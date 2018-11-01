@@ -1,6 +1,8 @@
 #pragma once
 
-#include <scl/concepts/require.h>
+//#include <scl/concepts/require.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/CopyAssignable.h>
 #include <scl/concepts/CopyConstructible.h>
 
@@ -13,9 +15,7 @@ namespace scl{
 		template <class T>
 		struct Copyable{
 			constexpr operator bool() const{
-				require(CopyConstructible<T>{});
-				require(CopyAssignable<T>{});
-				return true;
+				return META::constexpr_assert<CopyConstructible<T>{} && CopyAssignable<T>{}>();
 			}
 		};
 	}

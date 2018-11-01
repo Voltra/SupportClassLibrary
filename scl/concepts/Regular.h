@@ -1,6 +1,8 @@
 #pragma once
 
-#include <scl/concepts/require.h>
+//#include <scl/concepts/require.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/SemiRegular.h>
 #include <scl/concepts/EqualityComparable.h>
 
@@ -13,9 +15,10 @@ namespace scl{
 		template <class T>
 		struct Regular{
 			constexpr operator bool() const{
-				require(SemiRegular<T>{});
-				require(EqualityComparable<T>{});
-				return true;
+				return META::constexpr_assert<
+				    SemiRegular<T>{}
+					&& EqualityComparable<T>{}
+				>();
 			}
 		};
 	}

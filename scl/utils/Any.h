@@ -4,7 +4,7 @@
 #include <memory>
 #include <scl/exceptions/InvalidAnyCast.h>
 #include <scl/concepts/NonCopyable.h>
-#include <scl/concepts/NonMovable.h>
+#include <scl/concepts/Movable.h>
 
 namespace scl{
 	namespace utils{
@@ -64,11 +64,12 @@ namespace scl{
 				Any(T&& value) : impl{new __any__impl<T>(std::forward<T>(value))}, ti{&typeid(T)} {
 				}
 
+				Any(Any&&) = default;
+				Any& operator=(Any&&) = default;
+
 				Any() = delete;
 				Any(const Any&) = delete;
-				Any(Any&&) = delete;
 				Any& operator=(const Any&) = delete;
-				Any& operator=(Any&&) = delete;
 
 				/**
 				 * Assign a new value to this Any
@@ -112,6 +113,6 @@ namespace scl{
 }
 
 assert_concept(
-	scl::concepts::NonMovable<scl::utils::Any>{} && scl::concepts::NonCopyable<scl::utils::Any>{},
-	"scl::utils::Any should be non copyable and non movable."
+	scl::concepts::Movable<scl::utils::Any>{} && scl::concepts::NonCopyable<scl::utils::Any>{},
+	"scl::utils::Any should be non copyable and movable."
 );

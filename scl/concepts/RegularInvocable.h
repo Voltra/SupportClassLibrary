@@ -1,7 +1,9 @@
 #pragma once
 
 #ifdef SCL_CPP17
-#include <scl/concepts/require.h>
+//#include <scl/concepts/require.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/Invocable.h>
 
 namespace scl{
@@ -15,8 +17,7 @@ namespace scl{
 		template <class F, class... Args>
 		struct RegularInvocable{
 			constexpr operator bool() const{
-				require(Invocable<F, Args...>{});
-				return true;
+				return META::constexpr_assert<Invocable<F, Args...>{}>();
 			}
 		};
 	}

@@ -1,6 +1,8 @@
 #pragma once
 
-#include <scl/concepts/require.h>
+//#include <scl/concepts/require.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/Integral.h>
 #include <scl/concepts/Unsigned.h>
 
@@ -13,9 +15,7 @@ namespace scl{
 		template <class T>
 		struct UnsignedIntegral{
 			constexpr operator bool() const{
-				require(Integral<T>{});
-				require(Unsigned<T>{});
-				return true;
+				return META::constexpr_assert<Integral<T>{} && Unsigned<T>{}>();
 			}
 		};
 	}

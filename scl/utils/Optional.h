@@ -3,13 +3,22 @@
 #include <scl/exceptions/EmptyOptionalAccess.h>
 #include <scl/utils/toString.h>
 #include <scl/macros.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/is_same.h>
 
 namespace scl{
 	namespace utils{
 		/**
 		 * An empty class serving as the type of an empty Optional<T>
 		 */
-		struct None final{};
+		struct None final{
+			bool operator==(None) const{ return true; }
+			bool operator!=(None) const{ return false; }
+			bool operator<(None) const{ return false; }
+			bool operator<=(None) const{ return true; }
+			bool operator>(None) const{ return false; }
+			bool operator>=(None) const{ return true; }
+		};
 
 		/**
 		 * @var none being a constant global variable of type None
@@ -188,6 +197,12 @@ namespace scl{
 				}
 
 				/**
+				 * Alias for Optional::map
+				 */
+				template <class U, class F>
+				Optional<U> mapTo(F mapper) const{ return this->map<U>(mapper); }
+
+				/**
 				 * Filters the value accoding to the given predicate
 				 * @tparam F being the type of predicate (auto deduction)
 				 * @param predicate being the predicate used to determine whether or not it should keep the value
@@ -202,6 +217,82 @@ namespace scl{
 						return none;
 					}
 				}
+
+			public:
+				bool operator==(None) const{ return !this->hasValue(); }
+				friend bool operator==(None, const Optional& o){ return o == none; }
+
+				bool operator<(None) const{ return false; }
+				friend bool operator<(None, const Optional&){ return true; }
+
+				bool operator<=(None) const{ return (*this) == none; }
+				friend bool operator<=(None, const Optional&){ return true; }
+
+				bool operator>(None) const{ return true; }
+				friend bool operator>(None, const Optional&){ return false; }
+
+				bool operator>=(None) const{ return true; }
+				friend bool operator>=(None, const Optional& o){ return o <= none; }
+
+#define SCL_TPL template <class U, class = META::enable_if_t<!META::is_same<U, None>() && !META::is_same<U, Optional<T>>()>>
+				SCL_TPL
+				bool operator==(const U& t) const{ return this->hasValue() && this->value() == t; }
+				SCL_TPL
+				bool operator!=(const U& t) const{ return !((*this) == t); }
+				SCL_TPL
+				bool operator<(const U& t) const{ return !this->hasValue() || this->value() < t; }
+				SCL_TPL
+				bool operator<=(const U& t) const{ return (*this) == t || (*this) < t;  }
+				SCL_TPL
+				bool operator>(const U& t) const{ return !((*this) <= t); }
+				SCL_TPL
+				bool operator>=(const U& t) const{ return !((*this) < t); }
+
+				SCL_TPL
+				friend bool operator==(const U& t, const Optional& o){ return o == t; }
+				SCL_TPL
+				friend bool operator!=(const U& t, const Optional& o){ return o != t; }
+				SCL_TPL
+				friend bool operator<(const U& t, const Optional& o){ return !(o >= t); }
+				SCL_TPL
+				friend bool operator<=(const U& t, const Optional& o){ return !(o > t); }
+				SCL_TPL
+				friend bool operator>(const U& t, const Optional& o){ return !(o <= t); }
+				SCL_TPL
+				friend bool operator >=(const U& t, const Optional& o){ return !(o < t); }
+#undef SCL_TPL
+
+#define SCL_TPL template<class U, class = META::enable_if_t<!META::is_same<U,T>()>>
+				SCL_TPL
+				bool operator==(const Optional<U>& o) const{
+					if(!this->hasValue())
+						return !o.hasValue();
+
+					return o.hasValue() && this->value() == o.value();
+				}
+
+				SCL_TPL
+				bool operator!=(const Optional<U>& o) const{
+					return !((*this) == o);
+				}
+
+				SCL_TPL
+				bool operator<(const Optional<U>& o) const{
+					if(!this->hasValue())
+						return o.hasValue();
+
+					return o.hasValue() && this->value() < o.value();
+				}
+
+				SCL_TPL
+				bool operator<=(const Optional<U>& o) const{ return (*this) == o || (*this) < o; }
+
+				SCL_TPL
+				bool operator>(const Optional<U>& o) const{ return o < (*this); }
+
+				SCL_TPL
+				bool operator>=(const Optional<U>& o) const{ return o <= (*this); }
+#undef SCL_TPL
 		};
 	}
 }

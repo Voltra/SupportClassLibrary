@@ -13,8 +13,8 @@ namespace scl{
 			constexpr operator bool() const{
 				using namespace scl::tools;
 				static_assert(meta::is_convertible<
-						decltype(std::declval<T>() < std::declval<T>()),
-						bool
+					decltype(std::declval<T>() < std::declval<T>()),
+					bool
 				>(), "operator< is not/poorly defined for T");
 				return true;
 			}

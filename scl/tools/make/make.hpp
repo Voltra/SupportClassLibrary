@@ -16,3 +16,5 @@ namespace scl{
 #include <scl/tools/make/shared.h>
 #include <scl/tools/make/atomic.h>
 #include <scl/tools/make/promise.h>
+#include <scl/tools/make/optional.h>
+#include <scl/tools/make/any.h>
