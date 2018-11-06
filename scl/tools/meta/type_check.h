@@ -1,6 +1,10 @@
 #pragma once
 
 #include <type_traits>
+#ifndef SCL_CPP17
+	#include <scl/tools/meta/can_call.h>
+	#include <scl/tools/meta/exists.h>
+#endif
 
 #define SCL_TYPECHECK(fn) \
 template <class T>\
@@ -121,6 +125,12 @@ namespace scl{
 			SCL_TYPECHECK_FN(is_nothrow_invocable)
 			SCL_TYPECHECK_FN(is_invocable_r)
 			SCL_TYPECHECK_FN_R(is_nothrow_invocable_r)
+#else
+			template <class F, class... Args>
+			inline constexpr bool is_invocable(){
+//				return can_call<F, Args...>(std::declval<F>());
+				return exists<decltype(std::declval<F>()(std::declval<Args>()...))>();
+			}
 #endif
 		}
 	}

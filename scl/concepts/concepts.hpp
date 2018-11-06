@@ -48,19 +48,22 @@ namespace scl{
 #include <scl/concepts/Regular.h>
 #include <scl/concepts/Boolean.h>
 
-
-#include <scl/concepts/AssignableWith.h>
-#include <scl/concepts/Iterator.h>
-#include <scl/concepts/ValueSwappable.h>
-#include <scl/concepts/NullablePointer.h>
-
 #include <scl/concepts/Swappable.h>
 #include <scl/concepts/SwappableWith.h>
-#ifdef SCL_CPP17
-//#include <scl/concepts/Swappable.h>
-//#include <scl/concepts/SwappableWith.h>
 #include <scl/concepts/Invocable.h>
 #include <scl/concepts/RegularInvocable.h>
 #include <scl/concepts/Predicate.h>
 #include <scl/concepts/Relation.h>
+
+//Named requirements (that are not yet concepts in C++20)
+#include <scl/concepts/AssignableWith.h>
+#include <scl/concepts/Iterator.h>
+#include <scl/concepts/ValueSwappable.h>
+#include <scl/concepts/NullablePointer.h>
+#include <scl/concepts/FunctionObject.h>
+#include <scl/concepts/Hash.h>
+#include <scl/concepts/CharTraits.h>
+#include <scl/concepts/BinaryPredicate.h>
+
+#ifdef SCL_CPP17
 #endif

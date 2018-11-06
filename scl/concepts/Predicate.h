@@ -1,11 +1,12 @@
 #pragma once
 
-#ifdef SCL_CPP17
+//#ifdef SCL_CPP17
 //#include <scl/concepts/require.h>
 #include <scl/macros.h>
 #include <scl/tools/meta/constexpr_assert.h>
 #include <scl/concepts/RegularInvocable.h>
 #include <scl/concepts/Boolean.h>
+#include <scl/tools/meta/type_query.h>
 
 namespace scl{
 	namespace concepts{
@@ -20,10 +21,14 @@ namespace scl{
 				using namespace scl::tools;
 				return META::constexpr_assert<
 					RegularInvocable<F, Args...>{}
+#ifdef SCL_CPP17
 					&& Boolean<meta::invoke_result_t<F, Args...>>{}
+#else
+					&& Boolean<meta::result_of_t<F(Args...)>>{}
+#endif
 				>();
 			}
 		};
 	}
 }
-#endif
+//#endif

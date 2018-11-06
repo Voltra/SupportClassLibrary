@@ -27,7 +27,7 @@ namespace scl{
 			template <class Func, class... Args>
 			inline constexpr bool can_call(Func f){
 				return is_same<
-				    decltype(__can_call_impl(f, true)),
+				    decltype(__can_call_impl<Func, Args...>(f, true)),
 				    std::true_type
 				>();
 			}
