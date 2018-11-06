@@ -43,7 +43,8 @@ void ostreamStringChecks(){
 }
 
 int main(){
-	require(Iterator<int*>{});
+//	require(Iterator<int*>{});
+	require(SwappableWith<int, int>{});
 	std::cout << "None: " << none << nl;
 	std::cout << "Optional<float>: " << make::optional<int>(3).mapTo<float>([](const int& i){ return 0.14f + i; }).orElse(42.f) << nl;
 	auto any = make::any<stringLiteral>("coucou");

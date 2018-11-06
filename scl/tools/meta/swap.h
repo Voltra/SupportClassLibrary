@@ -8,8 +8,8 @@
 	#include <scl/tools/meta/is_same.h>
 	#include <scl/tools/meta/type_mod.h>
 
-	#define SCL_t std::declval<T>()
-	#define SCL_u std::declval<U>()
+	#define SCL_t std::declval<T&>()
+	#define SCL_u std::declval<U&>()
 
 	namespace scl{
 		namespace tools{
@@ -18,10 +18,10 @@
 				struct __is_swappable_with : std::false_type{};
 
 				template <class T, class U>
-				struct __is_swappable_with<T, U, enable_if_t<
-						exists<decltype(std::swap(SCL_t, SCL_u))>()
-						&& exists<decltype(std::swap(SCL_u, SCL_t))>()
-				>> : std::true_type{};
+				struct __is_swappable_with<T, U, void_t<enable_if_t<
+					exists<decltype(std::swap(SCL_t, SCL_u))>()
+					&& exists<decltype(std::swap(SCL_u, SCL_t))>()
+				>>> : std::true_type{};
 
 				template <class T, class U>
 				constexpr bool is_swappable_with(){

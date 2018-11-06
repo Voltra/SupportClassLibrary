@@ -52,10 +52,13 @@ namespace scl{
 #include <scl/concepts/AssignableWith.h>
 #include <scl/concepts/Iterator.h>
 #include <scl/concepts/ValueSwappable.h>
+#include <scl/concepts/NullablePointer.h>
 
-#ifdef SCL_CPP17
 #include <scl/concepts/Swappable.h>
 #include <scl/concepts/SwappableWith.h>
+#ifdef SCL_CPP17
+//#include <scl/concepts/Swappable.h>
+//#include <scl/concepts/SwappableWith.h>
 #include <scl/concepts/Invocable.h>
 #include <scl/concepts/RegularInvocable.h>
 #include <scl/concepts/Predicate.h>
