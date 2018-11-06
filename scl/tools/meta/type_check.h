@@ -126,6 +126,10 @@ namespace scl{
 	}
 }
 
+#ifndef SCL_CPP17
+	#include <scl/tools/meta/swap.h>
+#endif
+
 #undef SCL_TYPECHECK
 #undef SCL_TYPECHECK_COMPOUND
 #undef SCL_TYPECHECK_WITH_VARGS

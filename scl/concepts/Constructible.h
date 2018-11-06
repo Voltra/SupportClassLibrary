@@ -18,7 +18,10 @@ namespace scl{
 			constexpr operator bool() const{
 				using namespace scl::tools;
 				static_require(Destructible<T>{});
-				static_assert(meta::is_constructible<T, Args...>(), "T is not constructible w/ Args...");
+				static_assert(
+					meta::is_constructible<T, Args...>(),
+					"Constructible<T, Args...>: T is not constructible w/ Args..."
+				);
 				return true;
 			}
 		};

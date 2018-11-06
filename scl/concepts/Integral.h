@@ -12,7 +12,7 @@ namespace scl{
 		struct Integral{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_integral<T>(), "T is not an integral type");
+				static_assert(meta::is_integral<T>(), "Integral<T>: T is not an integral type");
 				return true;
 			}
 		};

@@ -12,7 +12,7 @@ namespace scl{
 		struct Signed{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_signed<T>(), "T is not a signed type");
+				static_assert(meta::is_signed<T>(), "Signed<T>: T is not a signed type");
 				return true;
 			}
 		};

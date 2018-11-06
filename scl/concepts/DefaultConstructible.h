@@ -16,7 +16,7 @@ namespace scl{
 			constexpr operator bool() const{
 				using namespace scl::tools;
 				static_require(Destructible<T>{});
-				static_assert(meta::is_default_constructible<T>(), "T is not default constructible");
+				static_assert(meta::is_default_constructible<T>(), "DefaultConstructible<T>: T is not default constructible");
 				return true;
 			}
 		};

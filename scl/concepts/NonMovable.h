@@ -12,8 +12,8 @@ namespace scl{
 		struct NonMovable{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(!meta::is_move_constructible<T>(), "T is move constructible");
-				static_assert(!meta::is_move_assignable<T>(), "T is move assignable");
+				static_assert(!meta::is_move_constructible<T>(), "NonMovable<T>: T is move constructible");
+				static_assert(!meta::is_move_assignable<T>(), "NonMovable<T>: T is move assignable");
 				return true;
 			}
 		};

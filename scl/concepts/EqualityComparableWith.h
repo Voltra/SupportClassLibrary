@@ -16,7 +16,7 @@ namespace scl{
 				static_assert(meta::is_convertible<
 					decltype(std::declval<T>() == std::declval<U>()),
 					bool
-				>(), "There is no operator== that compares a T and a U.");
+				>(), "EqualityComparableWith<T, U>: There is no operator== that compares a T and a U.");
 				return true;
 			}
 		};

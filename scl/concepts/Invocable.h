@@ -14,7 +14,7 @@ namespace scl{
 		struct Invocable{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_invocable<F, Args...>(), "Cannot invoke F w/ Args...");
+				static_assert(meta::is_invocable<F, Args...>(), "Invocable<F, Args...>: Cannot invoke F w/ Args...");
 				return true;
 			}
 		};

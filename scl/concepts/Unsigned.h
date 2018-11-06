@@ -12,7 +12,7 @@ namespace scl{
 		struct Unsigned{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_unsigned<T>(), "T is not a unsigned type");
+				static_assert(meta::is_unsigned<T>(), "Unsigned<T>: T is not a unsigned type");
 				return true;
 			}
 		};

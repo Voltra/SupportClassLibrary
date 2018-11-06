@@ -12,7 +12,7 @@ namespace scl{
 		struct MoveAssignable{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_move_assignable<T>(), "T is not move assignable");
+				static_assert(meta::is_move_assignable<T>(), "MoveAssignable<T>: T is not move assignable");
 				return true;
 			}
 		};

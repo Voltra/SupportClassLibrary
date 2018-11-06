@@ -46,8 +46,12 @@ namespace scl{
 
 #include <scl/concepts/SemiRegular.h>
 #include <scl/concepts/Regular.h>
-
 #include <scl/concepts/Boolean.h>
+
+
+#include <scl/concepts/AssignableWith.h>
+#include <scl/concepts/Iterator.h>
+#include <scl/concepts/ValueSwappable.h>
 
 #ifdef SCL_CPP17
 #include <scl/concepts/Swappable.h>

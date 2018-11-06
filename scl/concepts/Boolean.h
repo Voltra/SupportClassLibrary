@@ -11,6 +11,7 @@
 #include <scl/concepts/EqualityComparableWith.h>
 #include <scl/concepts/InequalityComparable.h>
 #include <scl/concepts/InequalityComparableWith.h>
+#include <scl/concepts/Destructible.h>
 
 namespace scl{
 	namespace concepts{
@@ -22,7 +23,7 @@ namespace scl{
 		struct Boolean{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(
+				return meta::constexpr_assert<
 					Movable<meta::remove_cv_t<T>>{}
 					&& ConvertibleTo<meta::remove_reference_t<T>, bool>{}
 					&& ConvertibleTo<decltype(!std::declval<T>()), bool>{}
@@ -38,11 +39,8 @@ namespace scl{
 					&& InequalityComparable<T>{}
 					&& InequalityComparableWith<T, bool>{}
 					&& InequalityComparableWith<bool, T>{}
-					&& meta::is_nothrow_destructible<T>(),
-					"T is not destructible"
-				);
-
-				return true;
+					&& Destructible<T>{}
+				>();
 			}
 		};
 	}

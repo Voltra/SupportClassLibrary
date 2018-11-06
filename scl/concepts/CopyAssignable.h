@@ -12,7 +12,7 @@ namespace scl{
 		struct CopyAssignable{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_copy_assignable<T>(), "T is not copy assignable");
+				static_assert(meta::is_copy_assignable<T>(), "CopyAssignable<T>: T is not copy assignable");
 				return true;
 			}
 		};

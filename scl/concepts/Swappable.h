@@ -1,7 +1,7 @@
 #pragma once
 
-#ifdef SCL_CPP17
-#include <scl/tools/meta/type_query.h>
+//#ifdef SCL_CPP17
+#include <scl/tools/meta/type_check.h>
 
 namespace scl{
 	namespace concepts{
@@ -13,10 +13,10 @@ namespace scl{
 		struct Swappable{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_swappable<T>(), "T does not implement swapping mecanisms.");
+				static_assert(meta::is_swappable<T>(), "Swappable<T>: T does not implement swapping mechanisms.");
 				return true;
 			}
 		};
 	}
 }
-#endif
+//#endif

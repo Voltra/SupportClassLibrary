@@ -12,8 +12,8 @@ namespace scl{
 		struct NonCopyable{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(!meta::is_copy_constructible<T>(), "T is copy constructible");
-				static_assert(!meta::is_copy_assignable<T>(), "T is copy assignable");
+				static_assert(!meta::is_copy_constructible<T>(), "NonCopyable<T>: T is copy constructible");
+				static_assert(!meta::is_copy_assignable<T>(), "NonCopyable<T>: T is copy assignable");
 				return true;
 			}
 		};

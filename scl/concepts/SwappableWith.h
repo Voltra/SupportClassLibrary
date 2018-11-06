@@ -14,7 +14,7 @@ namespace scl{
 		struct SwappableWith{
 			constexpr operator bool() const{
 				using namespace scl::tools;
-				static_assert(meta::is_swappable_with<T, U>(), "Cannot swap a T and a U.");
+				static_assert(meta::is_swappable_with<T, U>(), "SwappableWith<T, U>: Cannot swap a T and a U.");
 				return true;
 			}
 		};

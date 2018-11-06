@@ -20,6 +20,7 @@ namespace scl{
 #include <scl/tools/meta/fn_cast.h>
 #include <scl/tools/meta/can_call.h>
 #include <scl/tools/meta/type_check.h>
+#include <scl/tools/meta/swap.h>
 #include <scl/tools/meta/type_mod.h>
 #include <scl/tools/meta/type_query.h>
 #include <scl/tools/meta/defines_scl_to_string.h>

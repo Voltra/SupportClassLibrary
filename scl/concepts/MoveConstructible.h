@@ -16,7 +16,7 @@ namespace scl{
 			constexpr operator bool() const{
 				using namespace scl::tools;
 				static_require(Destructible<T>{});
-				static_assert(meta::is_move_constructible<T>(), "T is not move constructible");
+				static_assert(meta::is_move_constructible<T>(), "MoveConstructible<T>: T is not move constructible");
 				return true;
 			}
 		};

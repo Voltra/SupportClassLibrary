@@ -1,6 +1,7 @@
 #include <sstream>
 #include <string>
 #include <memory>
+#include <vector>
 #include "main.h"
 
 #include <scl/scl.hpp>
@@ -30,7 +31,7 @@ namespace scl{
 }
 
 template <class T>
-void defines(){
+void ostreamStringChecks(){
 	std::boolalpha(std::cout);
 	std::cout << "Defines ostream << : " << meta::defines_ostream_operator<T>() << nl;
 	std::cout << "Defines scl::utils::ToString : " <<  meta::defines_scl_to_string<T>() << nl;
@@ -42,6 +43,7 @@ void defines(){
 }
 
 int main(){
+	require(Iterator<int*>{});
 	std::cout << "None: " << none << nl;
 	std::cout << "Optional<float>: " << make::optional<int>(3).mapTo<float>([](const int& i){ return 0.14f + i; }).orElse(42.f) << nl;
 	auto any = make::any<stringLiteral>("coucou");
