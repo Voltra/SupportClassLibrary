@@ -6,7 +6,7 @@
 namespace scl{
 	namespace exceptions{
 		/**
-		 * Exception class used when attempting to access the value of an empty optional
+		 * Exception class used when attempting to access the value of an empty scl::utils::Optional
 		 */
 		class EmptyOptionalAccess : public Exception{
 			public:

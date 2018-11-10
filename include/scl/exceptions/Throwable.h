@@ -13,6 +13,10 @@ namespace scl{
 		 * Base class of all throwable objects
 		 */
 		struct Throwable : public virtual std::exception{
+			/**
+			 * Retrieve the reason
+			 * @return the reason as a const char* const
+			 */
 			virtual realConst(char*) reason() const{
 				return std::exception::what();
 			}

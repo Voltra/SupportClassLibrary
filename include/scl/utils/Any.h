@@ -12,8 +12,8 @@ namespace scl{
 			using type = void;
 
 			virtual void polymorphism() const = 0;
-			/*template <class U>
-			U as() const{}*/
+			//template <class U>
+			//U as() const{}
 		};
 
 		template <class T>
@@ -45,12 +45,14 @@ namespace scl{
 		class Any{
 			protected:
 				/**
-				 * @var impl being a PIMPL
+				 * @var impl
+				 * A PIMPL
 				 */
 				std::unique_ptr<__any_base> impl;
 
 				/**
-				 * @var ti being the type_info of the current value type
+				 * @var ti
+				 * The type_info of the current value type
 				 */
 				const std::type_info* ti;
 

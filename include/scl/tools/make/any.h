@@ -7,7 +7,7 @@ namespace scl{
 	namespace tools{
 		namespace make{
 			/**
-			 * Creates an any from the given type and arguments
+			 * Creates an scl::tools::Any from the given type and arguments
 			 * @tparam T being the stored value type
 			 * @tparam Args being the arguments' types
 			 * @param args being the arguments to pass to the value type's constructor

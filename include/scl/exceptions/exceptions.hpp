@@ -2,7 +2,7 @@
 
 namespace scl{
 	/**
-	 * @namespace scl:exceptions
+	 * @namespace scl::exceptions
 	 * The namespace englobing all exception types
 	 */
 	namespace exceptions{}

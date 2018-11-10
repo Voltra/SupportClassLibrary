@@ -4,7 +4,7 @@ namespace scl{
 	namespace tools{
 		namespace iostream{
 			/**
-			 * @namespace scl::tools::iostreamlog
+			 * @namespace scl::tools::iostream::log
 			 * Logging utilities
 			 */
 			namespace log{}

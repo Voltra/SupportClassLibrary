@@ -7,7 +7,7 @@ namespace scl{
 	namespace tools{
 		namespace make{
 			/**
-			 * Creates an optional with a constructed value
+			 * Creates an scl::utils::Optional with a constructed value
 			 * @tparam T being the optional's value type
 			 * @tparam Args being the arguments' types
 			 * @param args being the arguments passed to the constructor of the value type

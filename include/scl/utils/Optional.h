@@ -21,12 +21,13 @@ namespace scl{
 		};
 
 		/**
-		 * @var none being a constant global variable of type None
+		 * @var none
+		 * A constant global variable of type None
 		 */
 		const None none = None{};
 
 		/**
-		 * @class ToString<Non>
+		 * @class ToString<None>
 		 * A specialization of ToString for None type
 		 */
 		template <>
@@ -60,7 +61,8 @@ namespace scl{
 				};
 
 				/**
-				 * @var payload being an instance of Optional<T>::payload_t
+				 * @var payload
+				 * An instance of Optional<T>::payload_t
 				 */
 				payload_t payload{};
 

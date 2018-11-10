@@ -15,7 +15,7 @@ namespace scl{
 		class Either{
 			protected:
 				/**
-				 * @union payoad_t
+				 * @union payload_t
 				 * Stores the active alternative
 				 */
 				union payload_t{

@@ -6,7 +6,7 @@
 namespace scl{
 	namespace exceptions{
 		/**
-		 * Exception class used when attempting to access the wrong type stored in an Either
+		 * Exception class used when attempting to access the wrong type stored in an scl::utils::Either
 		 */
 		class InvalidEitherAccess : public Exception{
 			public:

@@ -11,7 +11,7 @@ namespace scl{
 	namespace utils{
 		/**
 		 * Class used to convert a type to a std::string
-		 * @tparam T
+		 * @tparam T being the type of objects to convert to string
 		 * @warning must define the call operator
 		 * @example std::string operator()(const int& i){ return std::to_string(i); }
 		 */
@@ -20,6 +20,7 @@ namespace scl{
 
 		/**
 		 * Specialization for types convertible to string
+		 * @tparam T being the type of objects to convert to string
 		 */
 		template <class T>
 		struct ToString<T, scl::tools::meta::enable_if_t<

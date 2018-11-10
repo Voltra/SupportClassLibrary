@@ -6,7 +6,7 @@
 namespace scl{
 	namespace exceptions{
 		/**
-		 * Exception class used when attempting to cast an any to the wrong type
+		 * Exception class used when attempting to cast an Any to the wrong type
 		 */
 		class InvalidAnyCast : public InvalidCast{
 			public:
