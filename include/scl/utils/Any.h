@@ -2,9 +2,13 @@
 
 #include <utility>
 #include <memory>
+#include <scl/macros.h>
+#include <scl/tools/meta/type_check.h>
+#include <scl/tools/meta/type_mod.h>
+#include <scl/tools/meta/enable_if.h>
 #include <scl/exceptions/InvalidAnyCast.h>
-#include <scl/concepts/NonCopyable.h>
-#include <scl/concepts/Movable.h>
+//#include <scl/concepts/NonCopyable.h>
+//#include <scl/concepts/Movable.h>
 
 namespace scl{
 	namespace utils{
@@ -26,7 +30,16 @@ namespace scl{
 
 				void polymorphism() const final{}
 
-				__any__impl(T&& value) : value{std::forward<T>(value)} {
+				template <class = META::enable_if_t<
+					META::is_move_constructible<T>()
+				>>
+				__any__impl(T&& value) : value{std::move(value)} {
+				}
+
+				template <class = META::enable_if_t<
+					META::is_copy_constructible<T>()
+				>>
+				__any__impl(const T& value) : value{value} {
 				}
 
 				template <class U>
@@ -58,12 +71,12 @@ namespace scl{
 
 			public:
 				/**
-				 * Construct an Any with a value
+				 * Move a value into an Any
 				 * @tparam T being the given value type
 				 * @param value being the value to construct from
 				 */
 				template <class T>
-				Any(T&& value) : impl{new __any__impl<T>(std::forward<T>(value))}, ti{&typeid(T)} {
+				Any(T&& value) : impl{new __any__impl<META::decay_t<T>>(std::forward<T>(value))}, ti{&typeid(T)} {
 				}
 
 				Any(Any&&) = default;
