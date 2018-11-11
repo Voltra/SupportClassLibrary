@@ -16,6 +16,7 @@ namespace scl{
 #include <scl/tools/meta/conditional.h>
 #include <scl/tools/meta/is_convertible.h>
 #include <scl/tools/meta/is_same.h>
+#include <scl/tools/meta/is_instance.h>
 #include <scl/tools/meta/fn_type.h>
 #include <scl/tools/meta/fn_cast.h>
 #include <scl/tools/meta/can_call.h>

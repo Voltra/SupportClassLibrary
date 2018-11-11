@@ -71,7 +71,6 @@ TEST(OptionalTests, CanCompareWithConvertibleValueType){
 	Optional<int> o = value;
 
 	ASSERT_FALSE(gt < o);
-	std::cout << "\nlt: " << lt << ", o: " << o.value() << '\n';
 	ASSERT_FALSE(lt > o);
 	ASSERT_TRUE(eq == o);
 	ASSERT_FALSE(lt >= o);
@@ -91,4 +90,43 @@ TEST(OptionalTests, CanCompareWithOptionalOfConvertibleValueType){
 	ASSERT_FALSE(gt <= o);
 	ASSERT_FALSE(lt > o);
 	ASSERT_FALSE(lt >= o);
+}
+
+TEST(OptionalTests, ComparingWithNoneMakesSureItIsLessThanOrEqual){
+	Optional<int> notEmpty = 42;
+	Optional<int> empty = none;
+
+	ASSERT_TRUE(none < notEmpty);
+	ASSERT_TRUE(none <= notEmpty);
+	ASSERT_FALSE(none > notEmpty);
+	ASSERT_FALSE(none >= notEmpty);
+	ASSERT_FALSE(none == notEmpty);
+
+	ASSERT_TRUE(none == empty);
+	ASSERT_TRUE(none <= empty);
+	ASSERT_TRUE(none >= empty);
+	ASSERT_FALSE(none != empty);
+}
+
+TEST(OptionalTests, ComparingNoneWithNoneMakesSense){
+	None nil{};
+
+	ASSERT_TRUE(none == nil);
+	ASSERT_FALSE(none != nil);
+	ASSERT_FALSE(none < nil);
+	ASSERT_FALSE(none > nil);
+	ASSERT_TRUE(none >= nil);
+	ASSERT_TRUE(none <= nil);
+}
+
+TEST(OptionalTests, GetBackDefaultWhenEmpty){
+	Optional<int> o = none;
+	int defaultValue = 42;
+	ASSERT_EQ(o.orElse(defaultValue), defaultValue);
+}
+
+TEST(OptionalTests, ThrowsGivenExceptionOnEmpty){
+	Optional<int> o = none;
+	Exception e{"Exception/20"};
+	ASSERT_THROW(o.orThrow(e), decltype(e));
 }

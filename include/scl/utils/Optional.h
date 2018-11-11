@@ -4,9 +4,11 @@
 #include <scl/exceptions/EmptyOptionalAccess.h>
 #include <scl/tools/meta/enable_if.h>
 #include <scl/tools/meta/is_same.h>
+#include <scl/tools/meta/is_instance.h>
 #include <scl/tools/meta/exists.h>
 #include <scl/tools/meta/type_check.h>
 #include <scl/utils/toString.h>
+#include <iostream>
 
 namespace scl{
 	namespace utils{
@@ -176,11 +178,11 @@ namespace scl{
 				 * @param defaultValue being the value to return if there's no values
 				 * @return a copy of the stored value
 				 */
-				T orElse(T&& defaultValue) const{
+				T orElse(const T& defaultValue) const{
 					try{
 						return this->get();
 					}catch(exceptions::EmptyOptionalAccess&){
-						return std::forward<T>(defaultValue);
+						return defaultValue;
 					}
 				}
 
@@ -254,7 +256,14 @@ namespace scl{
 				bool operator>=(None) const{ return true; }
 				friend bool operator>=(None, const Optional& o){ return o <= none; }
 
-#define SCL_TPL template <class U, class = META::enable_if_t<!META::is_same<U, None>() && !META::is_same<U, Optional<T>>() && !META::exists<typename U::opt_tag>()>>
+				bool operator!=(None) const{ return !((*this) == none); }
+				friend bool operator!=(None, const Optional& o){ return o != none; }
+
+#define SCL_TPL template <class U, class = META::enable_if_t<\
+	!META::is_same<U, None>()\
+	&& !META::is_same<U, Optional>()\
+	&& !META::is_instance<scl::utils::Optional, U>()\
+>>
 				SCL_TPL
 				bool operator==(const U& t) const{ return this->hasValue() && this->value() == t; }
 				SCL_TPL
@@ -292,9 +301,7 @@ namespace scl{
 				}
 
 				SCL_TPL
-				bool operator!=(const Optional<U>& o) const{
-					return !((*this) == o);
-				}
+				bool operator!=(const Optional<U>& o) const{ return !((*this) == o); }
 
 				SCL_TPL
 				bool operator<(const Optional<U>& o) const{
