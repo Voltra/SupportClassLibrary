@@ -9,39 +9,39 @@ using namespace scl::concepts;
 using namespace scl::utils;
 using namespace scl::exceptions;
 
-TEST(AnyTests, concepts_met){
+TEST(AnyTests, ConceptsRequirementsMet){
 	ASSERT_TRUE(Movable<Any>{});
 	ASSERT_TRUE(NonCopyable<Any>{});
 }
 
 
-TEST(AnyTests, casting_to_unrelated_type_throws) {
+TEST(AnyTests, CastingToUnrelatedTypeThrows) {
 	Any any = static_cast<int>(42);
 	ASSERT_THROW(any.as<std::string>(), InvalidAnyCast);
 }
 
-TEST(AnyTests, cannot_cast_to_unrelated_type){
+TEST(AnyTests, CannotCastToUnrelatedType){
 	Any any = static_cast<int>(42);
 	ASSERT_FALSE(any.canCastTo<std::string>());
 }
 
 
-TEST(AnyTests, casting_to_related_type_throws) {
+TEST(AnyTests, CastingToRelatedTypeThrows) {
 	Any any = static_cast<int>(42);
 	ASSERT_THROW(any.as<float>(), InvalidAnyCast);
 }
 
-TEST(AnyTests, cannot_cast_to_related_type){
+TEST(AnyTests, CannotCastToRelatedType){
 	Any any = static_cast<int>(42);
 	ASSERT_FALSE(any.canCastTo<float>());
 }
 
-TEST(AnyTests, can_cast_to_stored_type){
+TEST(AnyTests, CanCastToStoredType){
 	Any any = static_cast<int>(42);
 	ASSERT_TRUE(any.canCastTo<int>());
 }
 
-TEST(AnyTests, casting_to_stored_type_gives_correct_value){
+TEST(AnyTests, CastingToStoredTypeGivesCorrectValue){
 	int value = 42;
 	Any any{value};
 	ASSERT_EQ(any.as<int>(), value);

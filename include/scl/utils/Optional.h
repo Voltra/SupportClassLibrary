@@ -1,10 +1,12 @@
 #pragma once
 
-#include "../exceptions/EmptyOptionalAccess.h"
-#include "toString.h"
-#include "../macros.h"
-#include "../tools/meta/enable_if.h"
-#include "../tools/meta/is_same.h"
+#include <scl/macros.h>
+#include <scl/exceptions/EmptyOptionalAccess.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/is_same.h>
+#include <scl/tools/meta/exists.h>
+#include <scl/tools/meta/type_check.h>
+#include <scl/utils/toString.h>
 
 namespace scl{
 	namespace utils{
@@ -67,6 +69,8 @@ namespace scl{
 				payload_t payload{};
 
 			public:
+				using opt_tag = void;
+
 				/**
 				 * Default constructor, no value and empty payload
 				 */
@@ -79,11 +83,25 @@ namespace scl{
 				Optional(None) : Optional(){}
 
 				/**
-				 * Creates a non empty optional with the given value
-				 * @param value being the value to assign
+				 * Creates a non empty optional with the given value (move)
+				 * @param value being the value to assign from
 				 */
+				 template <class = META::enable_if_t<
+				 	META::is_move_assignable<META::decay_t<T>>()
+				 >>
 				Optional(T&& value) : valueFlag{true} {
-					this->payload.value = std::forward<T>(value);
+					this->payload.value = std::move(value);
+				}
+
+				/**
+				 * Creates a non empty optional with the given value (copy)
+				 * @param value being the value to assign from
+				 */
+				 template <class = META::enable_if_t<
+					 META::is_copy_assignable<META::decay_t<T>>()
+				 >>
+				Optional(const T& value) : valueFlag{true} {
+					this->payload.value = value;
 				}
 
 				/**
@@ -214,7 +232,7 @@ namespace scl{
 				Optional<T> filter(F predicate) const{
 					try {
 						const T& _ = this->get();
-						return predicate(_) ? _ : none;
+						return predicate(_) ? Optional<T>{_} : Optional<T>{};
 					}catch(exceptions::EmptyOptionalAccess&){
 						return none;
 					}
@@ -236,7 +254,7 @@ namespace scl{
 				bool operator>=(None) const{ return true; }
 				friend bool operator>=(None, const Optional& o){ return o <= none; }
 
-#define SCL_TPL template <class U, class = META::enable_if_t<!META::is_same<U, None>() && !META::is_same<U, Optional<T>>()>>
+#define SCL_TPL template <class U, class = META::enable_if_t<!META::is_same<U, None>() && !META::is_same<U, Optional<T>>() && !META::exists<typename U::opt_tag>()>>
 				SCL_TPL
 				bool operator==(const U& t) const{ return this->hasValue() && this->value() == t; }
 				SCL_TPL
@@ -244,7 +262,7 @@ namespace scl{
 				SCL_TPL
 				bool operator<(const U& t) const{ return !this->hasValue() || this->value() < t; }
 				SCL_TPL
-				bool operator<=(const U& t) const{ return (*this) == t || (*this) < t;  }
+				bool operator<=(const U& t) const{ return (*this) == t || (*this) < t; }
 				SCL_TPL
 				bool operator>(const U& t) const{ return !((*this) <= t); }
 				SCL_TPL
@@ -255,16 +273,16 @@ namespace scl{
 				SCL_TPL
 				friend bool operator!=(const U& t, const Optional& o){ return o != t; }
 				SCL_TPL
-				friend bool operator<(const U& t, const Optional& o){ return !(o >= t); }
+				friend bool operator<(const U& t, const Optional& o){ return o > t; }
 				SCL_TPL
-				friend bool operator<=(const U& t, const Optional& o){ return !(o > t); }
+				friend bool operator<=(const U& t, const Optional& o){ return o >= t; }
 				SCL_TPL
-				friend bool operator>(const U& t, const Optional& o){ return !(o <= t); }
+				friend bool operator>(const U& t, const Optional& o){ return o < t; }
 				SCL_TPL
-				friend bool operator >=(const U& t, const Optional& o){ return !(o < t); }
+				friend bool operator>=(const U& t, const Optional& o){ return o <= t; }
 #undef SCL_TPL
 
-#define SCL_TPL template<class U, class = META::enable_if_t<!META::is_same<U,T>()>>
+#define SCL_TPL template<class U/*, class = META::enable_if_t<!META::is_same<U,T>()>*/>
 				SCL_TPL
 				bool operator==(const Optional<U>& o) const{
 					if(!this->hasValue())

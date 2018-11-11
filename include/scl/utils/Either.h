@@ -1,8 +1,8 @@
 #pragma once
 
 #include <utility>
-#include "../macros.h"
-#include "../exceptions/InvalidEitherAccess.h"
+#include <scl/macros.h>
+#include <scl/exceptions/InvalidEitherAccess.h>
 
 namespace scl{
 	namespace utils{
