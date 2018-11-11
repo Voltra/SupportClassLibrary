@@ -3,6 +3,8 @@
 #include <utility>
 #include <scl/macros.h>
 #include <scl/exceptions/InvalidEitherAccess.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/type_check.h>
 
 namespace scl{
 	namespace utils{
@@ -15,12 +17,22 @@ namespace scl{
 		class Either{
 			protected:
 				/**
+				 * @struct empty_tag
+				 * Provides a trivial member for the scl::utils::Either::payload_t union
+				 */
+				struct empty_tag{};
+
+				/**
 				 * @union payload_t
 				 * Stores the active alternative
 				 */
 				union payload_t{
+					empty_tag empty = {};
 					Lhs left;
 					Rhs right;
+
+					payload_t(){ new(&empty)empty_tag(); }
+					~payload_t(){}
 				};
 
 				/**
@@ -45,7 +57,7 @@ namespace scl{
 				 * @var payload
 				 * Stores the actual alternative payload
 				 */
-				payload_t payload;
+				payload_t payload{};
 
 
 			protected:
@@ -53,14 +65,20 @@ namespace scl{
 				 * Construct the LHS alternative (rvalue)
 				 * @param lhs being the LHS value to construct from
 				 */
+				 template <class = META::enable_if_t<
+					 META::is_move_assignable<Lhs>()
+				 >>
 				Either(lhs_tag, Lhs&& lhs) : lhs{true} {
-					this->payload.left = std::forward<Lhs>(lhs);
+					this->payload.left = std::move(lhs);
 				}
 
 				/**
 				 * Construct the LHS alternative (lvalue)
 				 * @param lhs being the LHS value to construct from
 				 */
+				 template <class = META::enable_if_t<
+					 META::is_copy_assignable<Lhs>()
+				 >>
 				Either(lhs_tag, const Lhs& lhs) : lhs{true} {
 					this->payload.left = lhs;
 				}
@@ -69,14 +87,20 @@ namespace scl{
 				 * Construct the RHS alternative (rvalue)
 				 * @param rhs being the RHS value to construct from
 				 */
+				template <class = META::enable_if_t<
+					META::is_move_assignable<Rhs>()
+				>>
 				Either(rhs_tag, Rhs&& rhs) : lhs{false} {
-					this->payload.right = std::forward<Rhs>(rhs);
+					this->payload.right = std::move(rhs);
 				}
 
 				/**
 				 * Construct the RHS alternative (lvalue)
 				 * @param rhs being the RHS value to construct from
 				 */
+				template <class = META::enable_if_t<
+					META::is_copy_assignable<Rhs>()
+				>>
 				Either(rhs_tag, const Rhs& rhs) : lhs{false} {
 					this->payload.right = rhs;
 				}
@@ -94,27 +118,77 @@ namespace scl{
 				static void rightVoidVisitor(const Rhs& rhs){}
 
 			public:
-				Either() = delete;
-				Either(const Either&) = delete;
-				Either& operator=(const Either&) = delete;
+				using left_type = Lhs;
+				using right_type = Rhs;
 
-				Either(Either&&) = default;
-				Either& operator=(Either&&) = default;
+				Either() = delete;
+
+				template <class = META::enable_if_t<
+					META::is_copy_assignable<left_type>()
+					&& META::is_copy_assignable<right_type>()
+				>>
+				Either(const Either& other) : lhs{other.lhs} {
+					if(other.lhs)
+						this->payload.left = other.getLeft();
+					else
+						this->payload.right = other.getRight();
+				}
+
+				template <class = META::enable_if_t<
+					META::is_copy_assignable<left_type>()
+					&& META::is_copy_assignable<right_type>()
+				>>
+				Either& operator=(const Either& other){
+					this->lhs = other.lhs;
+					if(lhs)
+						this->payload.left = other.getLeft();
+					else
+						this->payload.right = other.getRight();
+
+					return *this;
+				}
+
+				template <class = META::enable_if_t<
+					META::is_move_assignable<left_type>()
+					&& META::is_move_assignable<right_type>()
+				>>
+				Either(Either&& other) : lhs{other.lhs} {
+					if(other.lhs)
+						this->payload.left = std::move(other.payload.left);
+					else
+						this->payload.right = std::move(other.payload.right);
+				}
+
+				template <class = META::enable_if_t<
+					META::is_move_assignable<left_type>()
+					&& META::is_move_assignable<right_type>()
+				>>
+				Either& operator=(Either&& other) noexcept{
+					this->lhs = other.lhs;
+					if(lhs)
+						this->payload.left = std::move(other.payload.left);
+					else
+						this->payload.right = std::move(other.payload.right);
+
+					return *this;
+				};
 
 				/**
 				 * Construct the LHS
 				 * @param lhs being the value to construct from
 				 * @return a Either<Lhs, Rhs> where the Lhs is the active alternative
 				 */
-				static Either left(const Lhs& lhs){
-					return Either{lhs_tag{}, lhs};
+				 template <class L>
+				static Either left(L&& lhs){
+					return Either{lhs_tag{}, std::forward<L>(lhs)};
 				}
 
 				/**
 				 * Alias for Either::left
 				 */
-				static Either Left(const Lhs& lhs){
-					return left(lhs);
+				 template <class L>
+				static Either Left(L&& lhs){
+					return left(std::forward<L>(lhs));
 				}
 
 				/**
@@ -122,15 +196,17 @@ namespace scl{
 				 * @param rhs being the value to construct from
 				 * @return a Either<Lhs, Rhs> where the Rhs is the active alternative
 				 */
-				static Either right(const Rhs& rhs){
-					return Either{rhs_tag{}, rhs};
+				 template <class R>
+				static Either right(R&& rhs){
+					return Either{rhs_tag{}, std::forward<R>(rhs)};
 				}
 
 				/**
 				 * Alias for Either::right
 				 */
-				static Either Right(const Rhs& rhs){
-					return right(rhs);
+				 template <class R>
+				static Either Right(R&& rhs){
+					return right(std::forward<R>(rhs));
 				}
 
 				/**
