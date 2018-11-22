@@ -2,8 +2,8 @@
 
 #include <type_traits>
 #ifndef SCL_CPP17
-	#include "can_call.h"
-	#include "exists.h"
+	#include <scl/tools/meta/can_call.h>
+	#include <scl/tools/meta/exists.h>
 #endif
 
 #define SCL_TYPECHECK(fn) \
@@ -115,6 +115,36 @@ namespace scl{
 			SCL_TYPECHECK(is_nothrow_destructible)
 			SCL_TYPECHECK(has_virtual_destructor)
 
+			/**
+			 * Determines whether or not a type defines copy semantics
+			 * @tparam T being the type to check against
+			 * @return TRUE if it defines copy semantics, FALSE otherwise
+			 */
+			template <class T>
+			inline constexpr bool is_copyable(){
+				return is_copy_assignable<T>() && is_copy_constructible<T>();
+			}
+
+			/**
+			 * Determines whether or not a type defines move semantics
+			 * @tparam T being the type to check against
+			 * @return TRUE if it defines move semantics, FALSE otherwise
+			 */
+			template <class T>
+			inline constexpr bool is_movable(){
+				return is_move_assignable<T>() && is_move_constructible<T>();
+			}
+
+			/**
+			 * Determines whether or not a type defines trivial move semantics
+			 * @tparam T being the type to check against
+			 * @return TRUE if it does, FALSE otherwise
+			 */
+			template <class T>
+			inline constexpr bool is_trivially_movable(){
+				return is_trivially_move_assignable<T>() && is_trivially_move_constructible<T>();
+			}
+
 #ifdef SCL_CPP17
 			SCL_TYPECHECK(is_swappable)
 			SCL_TYPECHECK(is_nothrow_swappable)
@@ -137,7 +167,7 @@ namespace scl{
 }
 
 #ifndef SCL_CPP17
-	#include "swap.h"
+	#include <scl/tools/meta/swap.h>
 #endif
 
 #undef SCL_TYPECHECK

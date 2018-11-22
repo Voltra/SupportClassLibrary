@@ -3,6 +3,7 @@
 #include <scl/macros.h>
 #include <scl/exceptions/EmptyOptionalAccess.h>
 #include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/void_t.h>
 #include <scl/tools/meta/is_same.h>
 #include <scl/tools/meta/is_instance.h>
 #include <scl/tools/meta/exists.h>
@@ -46,6 +47,8 @@ namespace scl{
 		/**
 		 * A class that allows the use of optional types (might be there)
 		 * @tparam T being the value type that is optional
+		 * @warning Optional defines move and/or copy semantics only if the
+		 * underlying type does as well (must be trivial)
 		 */
 		template <class T>
 		class Optional{
@@ -88,9 +91,9 @@ namespace scl{
 				 * Creates a non empty optional with the given value (move)
 				 * @param value being the value to assign from
 				 */
-				 template <class = META::enable_if_t<
-				 	META::is_move_assignable<META::decay_t<T>>()
-				 >>
+				 template <class = META::void_t<META::enable_if_t<
+				 	META::is_movable<META::decay_t<T>>()
+				 >>>
 				Optional(T&& value) : valueFlag{true} {
 					this->payload.value = std::move(value);
 				}
@@ -99,9 +102,9 @@ namespace scl{
 				 * Creates a non empty optional with the given value (copy)
 				 * @param value being the value to assign from
 				 */
-				 template <class = META::enable_if_t<
-					 META::is_copy_assignable<META::decay_t<T>>()
-				 >>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_copyable<META::decay_t<T>>()
+				>>>
 				Optional(const T& value) : valueFlag{true} {
 					this->payload.value = value;
 				}
@@ -109,24 +112,54 @@ namespace scl{
 				/**
 				 * Copy constructor
 				 */
-				Optional(const Optional&) = default;
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_copyable<META::decay_t<T>>()
+				>>>
+				Optional(const Optional& o) : valueFlag{o.valueFlag} {
+					if(o.hasValue())
+						this->payload.value = o.payload.value;
+				};
 
 				/**
 				 * Move constructor
 				 */
-				Optional(Optional&&) = default;
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_movable<META::decay_t<T>>()
+				>>>
+				Optional(Optional&& o) : valueFlag{o.valueFlag} {
+					if(o.hasValue())
+						this->payload.value = std::move(o.payload.value);
+				};
 
 				/**
 				 * Copy assignment operator
 				 * @return a reference to this Optional<T>
 				 */
-				Optional& operator=(const Optional&) = default;
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_copyable<META::decay_t<T>>()
+				>>>
+				Optional& operator=(const Optional& o){
+					this->valueFlag = o.valueFlag;
+					if(o.valueFlag)
+						this->payload.value = o.payload.value;
+
+					return *this;
+				};
 
 				/**
 				 * Move assignment operator
 				 * @return a reference to this Optional<T>
 				 */
-				Optional& operator=(Optional&&) = default;
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_movable<META::decay_t<T>>()
+				>>>
+				Optional& operator=(Optional&& o) noexcept{
+					this->valueFlag = o.valueFlag;
+					if(o.valueFlag)
+						this->payload.value = std::move(o.payload.value);
+
+					return *this;
+				};
 
 				/**
 				 * Determines whether or not this Optional<T> is empty

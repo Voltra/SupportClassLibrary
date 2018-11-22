@@ -1,15 +1,15 @@
 #pragma once
 
-#include "../macros.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "../tools/meta/exists.h"
-#include "../tools/meta/is_convertible.h"
-#include "AssignableWith.h"
-#include "Constructible.h"
-#include "DefaultConstructible.h"
-#include "InequalityComparable.h"
-#include "EqualityComparableWith.h"
-#include "InequalityComparableWith.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/tools/meta/exists.h>
+#include <scl/tools/meta/is_convertible.h>
+#include <scl/concepts/AssignableWith.h>
+#include <scl/concepts/Constructible.h>
+#include <scl/concepts/DefaultConstructible.h>
+#include <scl/concepts/InequalityComparable.h>
+#include <scl/concepts/EqualityComparableWith.h>
+#include <scl/concepts/InequalityComparableWith.h>
 
 namespace scl{
 	namespace concepts{

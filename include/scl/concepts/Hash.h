@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../macros.h"
-#include "FunctionObject.h"
-#include "CopyConstructible.h"
-#include "Destructible.h"
-#include "../tools/meta/is_same.h"
+#include <scl/macros.h>
+#include <scl/concepts/FunctionObject.h>
+#include <scl/concepts/CopyConstructible.h>
+#include <scl/concepts/Destructible.h>
+#include <scl/tools/meta/is_same.h>
 
 namespace scl{
 	namespace concepts{

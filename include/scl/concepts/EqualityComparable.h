@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../tools/meta/is_convertible.h"
+#include <scl/tools/meta/is_convertible.h>
 
 namespace scl{
 	namespace concepts{

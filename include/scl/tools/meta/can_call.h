@@ -1,7 +1,7 @@
 #pragma once
 
 #include <type_traits>
-#include "is_same.h"
+#include <scl/tools/meta/is_same.h>
 
 namespace scl{
 	namespace tools{

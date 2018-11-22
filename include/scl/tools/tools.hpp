@@ -8,6 +8,6 @@ namespace scl{
 	namespace tools{}
 }
 
-#include "make/make.hpp"
-#include "meta/meta.hpp"
-#include "iostream/iostream.hpp"
+#include <scl/tools/make/make.hpp>
+#include <scl/tools/meta/meta.hpp>
+#include <scl/tools/iostream/iostream.hpp>

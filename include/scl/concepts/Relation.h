@@ -2,9 +2,9 @@
 
 //#ifdef SCL_CPP17
 //#include <scl/concepts/require.h>
-#include "../macros.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "Predicate.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/concepts/Predicate.h>
 
 namespace scl{
 	namespace concepts{

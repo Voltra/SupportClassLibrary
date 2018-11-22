@@ -2,11 +2,11 @@
 
 //#ifdef SCL_CPP17
 //#include <scl/concepts/require.h>
-#include "../macros.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "RegularInvocable.h"
-#include "Boolean.h"
-#include "../tools/meta/type_query.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/concepts/RegularInvocable.h>
+#include <scl/concepts/Boolean.h>
+#include <scl/tools/meta/type_query.h>
 
 namespace scl{
 	namespace concepts{

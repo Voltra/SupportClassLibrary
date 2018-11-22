@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../tools/meta/is_same.h"
+#include <scl/tools/meta/is_same.h>
 
 namespace scl{
 	namespace concepts{

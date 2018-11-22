@@ -1,17 +1,17 @@
 #pragma once
 
-#include "../tools/meta/type_check.h"
-#include "../tools/meta/type_mod.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "../macros.h"
+#include <scl/tools/meta/type_check.h>
+#include <scl/tools/meta/type_mod.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/macros.h>
 //#include <scl/concepts/require.h>
-#include "Movable.h"
-#include "ConvertibleTo.h"
-#include "EqualityComparable.h"
-#include "EqualityComparableWith.h"
-#include "InequalityComparable.h"
-#include "InequalityComparableWith.h"
-#include "Destructible.h"
+#include <scl/concepts/Movable.h>
+#include <scl/concepts/ConvertibleTo.h>
+#include <scl/concepts/EqualityComparable.h>
+#include <scl/concepts/EqualityComparableWith.h>
+#include <scl/concepts/InequalityComparable.h>
+#include <scl/concepts/InequalityComparableWith.h>
+#include <scl/concepts/Destructible.h>
 
 namespace scl{
 	namespace concepts{

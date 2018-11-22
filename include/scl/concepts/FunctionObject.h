@@ -1,9 +1,9 @@
 #pragma once
 
-#include "../macros.h"
-#include "require.h"
-#include "Invocable.h"
-#include "../tools/meta/type_check.h"
+#include <scl/macros.h>
+#include <scl/concepts/require.h>
+#include <scl/concepts/Invocable.h>
+#include <scl/tools/meta/type_check.h>
 
 namespace scl{
 	namespace concepts{

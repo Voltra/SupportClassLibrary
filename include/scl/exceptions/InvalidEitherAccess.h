@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Exception.h"
-#include "../macros.h"
+#include <scl/exceptions/Exception.h>
+#include <scl/macros.h>
 
 namespace scl{
 	namespace exceptions{

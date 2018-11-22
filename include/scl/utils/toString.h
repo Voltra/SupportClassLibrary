@@ -1,11 +1,12 @@
 #pragma once
 
 #include <string>
-#include "../macros.h"
-#include "../tools/meta/enable_if.h"
-#include "../tools/meta/exists.h"
-#include "../tools/meta/type_mod.h"
-#include "../tools/meta/is_convertible.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/void_t.h>
+#include <scl/tools/meta/exists.h>
+#include <scl/tools/meta/type_mod.h>
+#include <scl/tools/meta/is_convertible.h>
 
 namespace scl{
 	namespace utils{
@@ -23,11 +24,11 @@ namespace scl{
 		 * @tparam T being the type of objects to convert to string
 		 */
 		template <class T>
-		struct ToString<T, scl::tools::meta::enable_if_t<
+		struct ToString<T, META::void_t<META::enable_if_t<
 			META::is_convertible<T, char>()
 			|| META::is_convertible<T, char*>()
 			|| META::is_convertible<T, std::string>()
-		>>{
+		>>>{
 			std::string operator()(const T& t) const{
 				return std::string{t};
 			}

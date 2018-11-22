@@ -8,7 +8,7 @@ namespace scl{
 	namespace utils{}
 }
 
-#include "toString.h"
-#include "Any.h"
-#include "Optional.h"
-#include "Either.h"
+#include <scl/utils/toString.h>
+#include <scl/utils/Any.h>
+#include <scl/utils/Optional.h>
+#include <scl/utils/Either.h>

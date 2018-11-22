@@ -1,7 +1,7 @@
 #pragma once
 
 //#ifdef SCL_CPP17
-#include "../tools/meta/type_check.h"
+#include <scl/tools/meta/type_check.h>
 
 namespace scl{
 	namespace concepts{

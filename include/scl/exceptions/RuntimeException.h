@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Throwable.h"
-#include "../macros.h"
+#include <scl/exceptions/Throwable.h>
+#include <scl/macros.h>
 #include <stdexcept>
 #include <utility>
 

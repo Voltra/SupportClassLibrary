@@ -1,6 +1,6 @@
 #pragma once
 
-#include "is_concept.h"
+#include <scl/concepts/is_concept.h>
 
 namespace scl{
 	namespace concepts{

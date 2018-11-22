@@ -1,10 +1,10 @@
 #pragma once
 
 //#include <scl/concepts/require.h>
-#include "../macros.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "SemiRegular.h"
-#include "EqualityComparable.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/concepts/SemiRegular.h>
+#include <scl/concepts/EqualityComparable.h>
 
 namespace scl{
 	namespace concepts{

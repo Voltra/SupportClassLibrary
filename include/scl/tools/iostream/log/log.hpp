@@ -12,9 +12,9 @@ namespace scl{
 	}
 }
 
-#include "basic.h"
-#include "prefixed.h"
-#include "surrounded.h"
+#include <scl/tools/iostream/log/basic.h>
+#include <scl/tools/iostream/log/prefixed.h>
+#include <scl/tools/iostream/log/surrounded.h>
 
 namespace scl{
 	namespace tools{

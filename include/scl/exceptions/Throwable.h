@@ -2,10 +2,10 @@
 
 #include <exception>
 #include <string>
-#include "../macros.h"
-#include "../utils/toString.h"
-#include "../tools/meta/enable_if.h"
-#include "../tools/meta/is_base_of.h"
+#include <scl/macros.h>
+#include <scl/utils/toString.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/is_base_of.h>
 
 namespace scl{
 	namespace exceptions{

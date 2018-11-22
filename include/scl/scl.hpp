@@ -6,8 +6,8 @@
  */
 namespace scl{}
 
-#include "macros.h"
-#include "tools/tools.hpp"
-#include "concepts/concepts.hpp"
-#include "exceptions/exceptions.hpp"
-#include "utils/utils.hpp"
+#include <scl/macros.h>
+#include <scl/tools/tools.hpp>
+#include <scl/concepts/concepts.hpp>
+#include <scl/exceptions/exceptions.hpp>
+#include <scl/utils/utils.hpp>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../tools/meta/type_check.h"
+#include <scl/tools/meta/type_check.h>
 
 namespace scl{
 	namespace concepts{

@@ -1,8 +1,8 @@
 #pragma once
 
 #include <type_traits>
-#include "../tools/meta/enable_if.h"
-#include "../tools/meta/is_convertible.h"
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/is_convertible.h>
 
 #define SCL_META scl::tools::meta
 namespace scl{

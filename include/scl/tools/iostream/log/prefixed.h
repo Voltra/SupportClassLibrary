@@ -3,8 +3,8 @@
 #include <string>
 #include <iostream>
 #include <functional>
-#include "../nl.h"
-#include "../../../macros.h"
+#include <scl/tools/iostream/nl.h>
+#include <scl/macros.h>
 
 namespace scl{
 	namespace tools{

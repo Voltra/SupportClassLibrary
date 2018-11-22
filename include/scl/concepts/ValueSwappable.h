@@ -1,8 +1,8 @@
 #pragma once
 
-#include "require.h"
-#include "Iterator.h"
-#include "Swappable.h"
+#include <scl/concepts/require.h>
+#include <scl/concepts/Iterator.h>
+#include <scl/concepts/Swappable.h>
 #include <iterator>
 
 #define SCL_TRAIT(type) typename std::iterator_traits<T>::type

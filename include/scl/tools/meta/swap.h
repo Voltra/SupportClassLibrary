@@ -3,10 +3,10 @@
 #ifndef SCL_CPP17
 	#include <type_traits>
 	#include <utility>
-	#include "enable_if.h"
-	#include "exists.h"
-	#include "is_same.h"
-	#include "type_mod.h"
+	#include <scl/tools/meta/enable_if.h>
+	#include <scl/tools/meta/exists.h>
+	#include <scl/tools/meta/is_same.h>
+	#include <scl/tools/meta/type_mod.h>
 
 	#define SCL_t std::declval<T&>()
 	#define SCL_u std::declval<U&>()

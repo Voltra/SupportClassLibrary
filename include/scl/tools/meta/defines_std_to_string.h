@@ -2,10 +2,10 @@
 
 #include <type_traits>
 #include <string>
-#include "exists.h"
-#include "enable_if.h"
-#include "void_t.h"
-#include "type_mod.h"
+#include <scl/tools/meta/exists.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/void_t.h>
+#include <scl/tools/meta/type_mod.h>
 
 namespace scl{
 	namespace tools{

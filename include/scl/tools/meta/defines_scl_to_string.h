@@ -1,8 +1,8 @@
 #pragma once
 
-#include "void_t.h"
-#include "type_mod.h"
-#include "../../utils/toString.h"
+#include <scl/tools/meta/void_t.h>
+#include <scl/tools/meta/type_mod.h>
+#include <scl/utils/toString.h>
 
 namespace scl{
 	namespace tools{

@@ -5,6 +5,7 @@
 #include <scl/exceptions/InvalidEitherAccess.h>
 #include <scl/tools/meta/enable_if.h>
 #include <scl/tools/meta/type_check.h>
+#include <scl/tools/meta/void_t.h>
 
 namespace scl{
 	namespace utils{
@@ -12,9 +13,15 @@ namespace scl{
 		 * Alternative type that stores one or the other
 		 * @tparam Lhs being the left value type
 		 * @tparam Rhs being the right value type
+		 * @warning Either defines move and/or copy semantics only if both
+		 * the underlying types do so (must be trivial)
 		 */
 		template <class Lhs, class Rhs>
 		class Either{
+			public:
+				using left_type = Lhs;
+				using right_type = Rhs;
+
 			protected:
 				/**
 				 * @struct empty_tag
@@ -28,8 +35,8 @@ namespace scl{
 				 */
 				union payload_t{
 					empty_tag empty = {};
-					Lhs left;
-					Rhs right;
+					left_type left; //TODO: find a way to define copy constructor w/ types that have non trivial destructors
+					right_type right;
 
 					payload_t(){ new(&empty)empty_tag(); }
 					~payload_t(){}
@@ -57,7 +64,7 @@ namespace scl{
 				 * @var payload
 				 * Stores the actual alternative payload
 				 */
-				payload_t payload{};
+				payload_t payload = {};
 
 
 			protected:
@@ -65,9 +72,9 @@ namespace scl{
 				 * Construct the LHS alternative (rvalue)
 				 * @param lhs being the LHS value to construct from
 				 */
-				 template <class = META::enable_if_t<
-					 META::is_move_assignable<Lhs>()
-				 >>
+				 template <class = META::void_t<META::enable_if_t<
+					 META::is_trivially_movable<Lhs>()
+				 >>>
 				Either(lhs_tag, Lhs&& lhs) : lhs{true} {
 					this->payload.left = std::move(lhs);
 				}
@@ -76,9 +83,9 @@ namespace scl{
 				 * Construct the LHS alternative (lvalue)
 				 * @param lhs being the LHS value to construct from
 				 */
-				 template <class = META::enable_if_t<
-					 META::is_copy_assignable<Lhs>()
-				 >>
+				 template <class = META::void_t<META::enable_if_t<
+					 META::is_trivially_copyable<Lhs>()
+				 >>>
 				Either(lhs_tag, const Lhs& lhs) : lhs{true} {
 					this->payload.left = lhs;
 				}
@@ -87,9 +94,9 @@ namespace scl{
 				 * Construct the RHS alternative (rvalue)
 				 * @param rhs being the RHS value to construct from
 				 */
-				template <class = META::enable_if_t<
-					META::is_move_assignable<Rhs>()
-				>>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_movable<Rhs>()
+				>>>
 				Either(rhs_tag, Rhs&& rhs) : lhs{false} {
 					this->payload.right = std::move(rhs);
 				}
@@ -98,9 +105,9 @@ namespace scl{
 				 * Construct the RHS alternative (lvalue)
 				 * @param rhs being the RHS value to construct from
 				 */
-				template <class = META::enable_if_t<
-					META::is_copy_assignable<Rhs>()
-				>>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_copyable<Rhs>()
+				>>>
 				Either(rhs_tag, const Rhs& rhs) : lhs{false} {
 					this->payload.right = rhs;
 				}
@@ -118,15 +125,12 @@ namespace scl{
 				static void rightVoidVisitor(const Rhs& rhs){}
 
 			public:
-				using left_type = Lhs;
-				using right_type = Rhs;
-
 				Either() = delete;
 
-				template <class = META::enable_if_t<
-					META::is_copy_assignable<left_type>()
-					&& META::is_copy_assignable<right_type>()
-				>>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_copyable<Lhs>()
+					&& META::is_trivially_copyable<Rhs>()
+				>>>
 				Either(const Either& other) : lhs{other.lhs} {
 					if(other.lhs)
 						this->payload.left = other.getLeft();
@@ -134,10 +138,10 @@ namespace scl{
 						this->payload.right = other.getRight();
 				}
 
-				template <class = META::enable_if_t<
-					META::is_copy_assignable<left_type>()
-					&& META::is_copy_assignable<right_type>()
-				>>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_copyable<Lhs>()
+					&& META::is_trivially_copyable<Rhs>()
+				>>>
 				Either& operator=(const Either& other){
 					this->lhs = other.lhs;
 					if(lhs)
@@ -148,10 +152,10 @@ namespace scl{
 					return *this;
 				}
 
-				template <class = META::enable_if_t<
-					META::is_move_assignable<left_type>()
-					&& META::is_move_assignable<right_type>()
-				>>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_trivially_movable<Lhs>()
+					&& META::is_trivially_movable<Rhs>()
+				>>>
 				Either(Either&& other) : lhs{other.lhs} {
 					if(other.lhs)
 						this->payload.left = std::move(other.payload.left);
@@ -159,10 +163,10 @@ namespace scl{
 						this->payload.right = std::move(other.payload.right);
 				}
 
-				template <class = META::enable_if_t<
-					META::is_move_assignable<left_type>()
-					&& META::is_move_assignable<right_type>()
-				>>
+				template <class = META::void_t<META::enable_if_t<
+					META::is_move_assignable<Lhs>()
+					&& META::is_move_assignable<Rhs>()
+				>>>
 				Either& operator=(Either&& other) noexcept{
 					this->lhs = other.lhs;
 					if(lhs)

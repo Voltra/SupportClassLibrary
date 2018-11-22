@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../macros.h"
-#include "../tools/meta/exists.h"
-#include "../tools/meta/is_same.h"
-#include "SemiRegular.h"
-#include "Invocable.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/exists.h>
+#include <scl/tools/meta/is_same.h>
+#include <scl/concepts/SemiRegular.h>
+#include <scl/concepts/Invocable.h>
 
 #define SCL_ASSERT_TYPE(type) static_asssert(META::exists<T::type>(), "CharTraits<T, CharT>: T::type should exist")
 #define SCL_TYPE(type) typename T::type

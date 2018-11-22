@@ -1,10 +1,10 @@
 #pragma once
 
 //#include <scl/concepts/require.h>
-#include "../macros.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "MoveAssignable.h"
-#include "MoveConstructible.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/concepts/MoveAssignable.h>
+#include <scl/concepts/MoveConstructible.h>
 
 namespace scl{
 	namespace concepts{

@@ -3,11 +3,12 @@
 #ifdef SCL_USE_IOSTREAM_EXTEND
 #include <string>
 #include <utility>
-#include "../../macros.h"
-#include "../meta/enable_if.h"
-#include "../meta/defines_std_to_string.h"
-#include "../meta/defines_scl_to_string.h"
-#include "../../utils/toString.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/enable_if.h>
+#include <scl/tools/meta/void_t.h>
+#include <scl/tools/meta/defines_std_to_string.h>
+#include <scl/tools/meta/defines_scl_to_string.h>
+#include <scl/utils/toString.h>
 
 namespace std{
 	/**
@@ -16,10 +17,10 @@ namespace std{
 	 * @param obj being the object to convert to a string
 	 * @return the string representation of obj according to scl::utils::toString(obj)
 	 */
-	template <class T, class = scl::tools::meta::enable_if_t<
-		!scl::tools::meta::defines_std_to_string<T>()
-		&& scl::tools::meta::defines_scl_to_string<T>()
-	>>
+	template <class T, class = META::void_t<META::enable_if_t<
+		!META::defines_std_to_string<T>()
+		&& META::defines_scl_to_string<T>()
+	>>>
 	std::string to_string(T&& obj){
 		return scl::utils::toString(std::forward<T>(obj));
 	}

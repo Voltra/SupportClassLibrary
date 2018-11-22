@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../macros.h"
-#include "require.h"
-#include "Copyable.h"
-#include "Destructible.h"
-#include "Swappable.h"
-#include "../tools/meta/type_mod.h"
-#include "../tools/meta/constexpr_assert.h"
-#include "../tools/meta/exists.h"
-#include "../tools/meta/is_convertible.h"
+#include <scl/macros.h>
+#include <scl/concepts/require.h>
+#include <scl/concepts/Copyable.h>
+#include <scl/concepts/Destructible.h>
+#include <scl/concepts/Swappable.h>
+#include <scl/tools/meta/type_mod.h>
+#include <scl/tools/meta/constexpr_assert.h>
+#include <scl/tools/meta/exists.h>
+#include <scl/tools/meta/is_convertible.h>
 #include <iterator>
 
 namespace scl{

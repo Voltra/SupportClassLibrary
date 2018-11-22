@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <utility>
-#include "../nl.h"
+#include <scl/tools/iostream/nl.h>
 
 namespace scl{
 	namespace tools{

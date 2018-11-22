@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../tools/meta/is_base_of.h"
+#include <scl/tools/meta/is_base_of.h>
 
 namespace scl{
 	namespace concepts{

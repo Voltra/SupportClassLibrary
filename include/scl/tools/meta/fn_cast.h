@@ -1,8 +1,8 @@
 #pragma once
 
 #include <type_traits>
-#include "is_same.h"
-#include "fn_type.h"
+#include <scl/tools/meta/is_same.h>
+#include <scl/tools/meta/fn_type.h>
 
 namespace scl{
 	namespace tools{

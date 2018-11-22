@@ -8,13 +8,13 @@ namespace scl{
 	namespace exceptions{}
 }
 
-#include "Throwable.h"
-#include "Exception.h"
-#include "RuntimeException.h"
+#include <scl/exceptions/Throwable.h>
+#include <scl/exceptions/Exception.h>
+#include <scl/exceptions/RuntimeException.h>
 
-#include "InvalidArgument.h"
-#include "OutOfBound.h"
-#include "InvalidCast.h"
-#include "InvalidAnyCast.h"
-#include "EmptyOptionalAccess.h"
-#include "InvalidEitherAccess.h"
+#include <scl/exceptions/InvalidArgument.h>
+#include <scl/exceptions/OutOfBound.h>
+#include <scl/exceptions/InvalidCast.h>
+#include <scl/exceptions/InvalidAnyCast.h>
+#include <scl/exceptions/EmptyOptionalAccess.h>
+#include <scl/exceptions/InvalidEitherAccess.h>

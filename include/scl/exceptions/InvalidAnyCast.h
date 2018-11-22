@@ -1,7 +1,7 @@
 #pragma once
 
-#include "InvalidCast.h"
-#include "../macros.h"
+#include <scl/exceptions/InvalidCast.h>
+#include <scl/macros.h>
 
 namespace scl{
 	namespace exceptions{

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../macros.h"
-#include "../tools/meta/exists.h"
+#include <scl/macros.h>
+#include <scl/tools/meta/exists.h>
 
 namespace scl{
 	namespace concepts{

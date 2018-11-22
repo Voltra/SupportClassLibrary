@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../macros.h"
-#include "Predicate.h"
-#include "Iterator.h"
+#include <scl/macros.h>
+#include <scl/concepts/Predicate.h>
+#include <scl/concepts/Iterator.h>
 
 namespace scl{
 	namespace concepts{
