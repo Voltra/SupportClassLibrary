@@ -28,3 +28,4 @@ namespace scl{
 #include <scl/tools/meta/defines_std_to_string.h>
 #include <scl/tools/meta/defines_ostream_operator.h>
 #include <scl/tools/meta/constexpr_assert.h>
+#include <scl/tools/meta/real_const.h>

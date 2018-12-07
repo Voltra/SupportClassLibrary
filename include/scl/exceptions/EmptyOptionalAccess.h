@@ -14,6 +14,11 @@ namespace scl{
 				realConst(char*) type() const noexcept override{
 					return "scl::exceptions::EmptyOptionalAccess";
 				}
+
+				/**
+				 * Constructor that uses a default error message
+				 */
+				EmptyOptionalAccess() : EmptyOptionalAccess("Tried to access the value of an empty Optional"){}
 		};
 	}
 }

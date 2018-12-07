@@ -13,30 +13,37 @@ using namespace scl::utils;
 using namespace scl::exceptions;
 using scl::tools::iostream::nl;
 
-Either<int, const char*> makeLeft(){
-	return Either<int, const char*>::Left(42);
+//TODO: Rendre Either compatible w/ type non trivialement copiables
+
+Either<int, std::string> makeLeft(){
+	return Either<int, std::string>::Left(42);
 }
 
-Either<int, const char*> makeRight(){
-	return Either<int, const char*>::Right("str(42)");
+Either<int, std::string> makeRight(){
+	return Either<int, std::string>::Right("str(42)");
 }
 
 TEST(EitherTests, ConceptsRequirementsMet){
 	auto either = makeLeft();
-	auto e = either;
 	using et = decltype(either);
 
 	ASSERT_TRUE(
 		Bool{
-			META::is_trivially_movable<et::left_type>()
-			&& META::is_trivially_movable<et::right_type>()
-		}.implies(META::is_movable<et>())
+			META::is_movable<et::left_type>()
+			&& META::is_movable<et::right_type>()
+		}.equiv(META::is_movable<et>())
 	);
 
 	ASSERT_TRUE(
 		Bool{
-			META::is_trivially_copyable<et::left_type>()
-			&& META::is_trivially_copyable<et::right_type>()
-		}.implies(META::is_copyable<et>())
+			META::is_copyable<et::left_type>()
+			&& META::is_copyable<et::right_type>()
+		}.equiv(META::is_copyable<et>())
 	);
+}
+
+TEST(EitherTests, ConstructingLeftMakesLeftAvailableAndRightNonAvailable){
+	auto either = makeLeft();
+	ASSERT_TRUE(either.hasLeft());
+	ASSERT_FALSE(either.hasRight());
 }

@@ -13,11 +13,11 @@ using namespace scl::utils;
 
 TEST(OptionalTests, ConceptsRequirementsMet){
 	ASSERT_TRUE(DefaultConstructible<Optional<int>>{});
-	ASSERT_TRUE(Movable<Optional<int>>{});
-	ASSERT_TRUE(Copyable<Optional<int>>{});
+	/*ASSERT_TRUE(Movable<Optional<int>>{});
+	ASSERT_TRUE(Copyable<Optional<int>>{});*/
 
-	ASSERT_TRUE(Bool{META::is_trivially_copyable<int>()}.implies(META::is_copyable<Optional<int>>()));
-	ASSERT_TRUE(Bool{META::is_trivially_movable<int>()}.implies(META::is_movable<Optional<int>>()));
+	ASSERT_TRUE(Bool{META::is_copyable<int>()}.equiv(META::is_copyable<Optional<int>>()));
+	ASSERT_TRUE(Bool{META::is_movable<int>()}.equiv(META::is_movable<Optional<int>>()));
 }
 
 TEST(OptionalTests, CanConstructFromNone){
@@ -26,6 +26,13 @@ TEST(OptionalTests, CanConstructFromNone){
 
 TEST(OptionalTests, CanAssignFromNone){
 	Optional<int> o = none;
+}
+
+TEST(OptionalTests, CanUseNonTriviallyCopyableType){
+	Optional<std::string> o = "42";
+	Optional<std::string> p = o;
+	//TODO: Fix bug that gives wrong value on copy
+	ASSERT_EQ(o.get(), p.get());
 }
 
 TEST(OptionalTests, EmptyDoesNotHaveValue){

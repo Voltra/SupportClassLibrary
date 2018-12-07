@@ -8,8 +8,11 @@
 #include <scl/tools/meta/is_instance.h>
 #include <scl/tools/meta/exists.h>
 #include <scl/tools/meta/type_check.h>
+#include <scl/tools/meta/type_query.h>
 #include <scl/utils/toString.h>
 #include <iostream>
+
+//TODO: Make Optional compatible w/ non trivially copyable types
 
 namespace scl{
 	namespace utils{
@@ -48,7 +51,7 @@ namespace scl{
 		 * A class that allows the use of optional types (might be there)
 		 * @tparam T being the value type that is optional
 		 * @warning Optional defines move and/or copy semantics only if the
-		 * underlying type does as well (must be trivial)
+		 * underlying type does as well
 		 */
 		template <class T>
 		class Optional{
@@ -59,23 +62,13 @@ namespace scl{
 				bool valueFlag = false;
 
 				/**
-				 * @union payload_t
-				 * Sum type used to describe the Optional<T> (None + T)
-				 */
-				union payload_t{
-					None none = {};
-					T value;
-				};
-
-				/**
 				 * @var payload
-				 * An instance of Optional<T>::payload_t
+				 * A scl::tools::meta::aligned_storage_t of the correct size and alignment
+				 * to maintain an instance of the object
 				 */
-				payload_t payload{};
+				META::aligned_storage_t<sizeof(T), alignof(T)> payload = {};
 
 			public:
-				using opt_tag = void;
-
 				/**
 				 * Default constructor, no value and empty payload
 				 */
@@ -92,10 +85,11 @@ namespace scl{
 				 * @param value being the value to assign from
 				 */
 				 template <class = META::void_t<META::enable_if_t<
-				 	META::is_movable<META::decay_t<T>>()
+				 	META::is_movable<T>()
 				 >>>
 				Optional(T&& value) : valueFlag{true} {
-					this->payload.value = std::move(value);
+//					this->payload.value = std::move(value);
+					new(&payload)T{value};
 				}
 
 				/**
@@ -103,32 +97,64 @@ namespace scl{
 				 * @param value being the value to assign from
 				 */
 				template <class = META::void_t<META::enable_if_t<
-					META::is_copyable<META::decay_t<T>>()
+					META::is_copyable<T>()
 				>>>
 				Optional(const T& value) : valueFlag{true} {
-					this->payload.value = value;
+//					this->payload.value = value;
+					new(&payload)T{value};
+				}
+
+				/**
+				 * Implicit conversion copy constructor
+				 * @tparam U being the type to implicitly convert from
+				 * @param value being the value to construct from
+				 */
+				template <class U, class = META::enable_if_t<
+					!META::is_same<T, U>()
+					&& !META::is_same<T, None>()
+				>>
+				Optional(const U& value) : valueFlag{true} {
+//					this->payload.value = value;
+					new(&payload)T{value};
+				}
+
+				/**
+				 * Implicit conversion move constructor
+				 * @tparam U being the type to implicitly convert from
+				 * @param value being the value to construct from
+				 */
+				template <class U, class = META::enable_if_t<
+					!META::is_same<T, META::decay_t<U>>()
+					&& !META::is_same<None, META::decay_t<U>>()
+					&& !META::is_same<Optional, META::decay_t<U>>()
+				>>
+				Optional(U&& value) : valueFlag{true} {
+//					this->payload.value = std::move(value);
+					new(&payload)T{value};
 				}
 
 				/**
 				 * Copy constructor
 				 */
 				template <class = META::void_t<META::enable_if_t<
-					META::is_trivially_copyable<META::decay_t<T>>()
+					META::is_copyable<T>()
 				>>>
 				Optional(const Optional& o) : valueFlag{o.valueFlag} {
 					if(o.hasValue())
-						this->payload.value = o.payload.value;
+//						this->payload.value = o.payload.value;
+						new(&payload)T{o.get()};
 				};
 
 				/**
 				 * Move constructor
 				 */
 				template <class = META::void_t<META::enable_if_t<
-					META::is_trivially_movable<META::decay_t<T>>()
+					META::is_movable<META::decay_t<T>>()
 				>>>
 				Optional(Optional&& o) : valueFlag{o.valueFlag} {
 					if(o.hasValue())
-						this->payload.value = std::move(o.payload.value);
+//						this->payload.value = std::move(o.payload.value);
+						this->payload = std::move(o.payload);
 				};
 
 				/**
@@ -136,12 +162,13 @@ namespace scl{
 				 * @return a reference to this Optional<T>
 				 */
 				template <class = META::void_t<META::enable_if_t<
-					META::is_trivially_copyable<META::decay_t<T>>()
+					META::is_copyable<T>()
 				>>>
 				Optional& operator=(const Optional& o){
 					this->valueFlag = o.valueFlag;
 					if(o.valueFlag)
-						this->payload.value = o.payload.value;
+//						this->payload.value = o.payload.value;
+						new(&payload)T{o.get()};
 
 					return *this;
 				};
@@ -151,12 +178,13 @@ namespace scl{
 				 * @return a reference to this Optional<T>
 				 */
 				template <class = META::void_t<META::enable_if_t<
-					META::is_trivially_movable<META::decay_t<T>>()
+					META::is_movable<T>()
 				>>>
 				Optional& operator=(Optional&& o) noexcept{
 					this->valueFlag = o.valueFlag;
 					if(o.valueFlag)
-						this->payload.value = std::move(o.payload.value);
+//						this->payload.value = std::move(o.payload.value);
+						this->payload = std::move(o.payload);
 
 					return *this;
 				};
@@ -174,9 +202,22 @@ namespace scl{
 				 */
 				const T& get() const{
 					if(!this->hasValue())
-						throw exceptions::EmptyOptionalAccess{"Tried to access the value of an empty Optional"};
+						throw exceptions::EmptyOptionalAccess{};
 
-					return this->payload.value;
+					return *reinterpret_cast<const T*>(&payload);
+				}
+
+				/**
+				 * Mutable accessor for the value stored
+				 * @return a reference to the value stored
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				T& get(){
+					if(!this->hasValue())
+						throw exceptions::EmptyOptionalAccess{};
+
+					//reinterpret_cast is allowed here since we allocated for a T
+					return *reinterpret_cast<T*>(&payload);
 				}
 
 				/**
@@ -185,6 +226,37 @@ namespace scl{
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
 				const T& value() const{ return this->get(); }
+
+				/**
+				 * A semantic alias for Optional<T>::get
+				 * @return a const& to the value stored
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				T& value(){ return this->get(); }
+
+				/**
+				 * Automatic conversion operator
+				 * @return a copy of the underlying value
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				 template <class = META::enable_if_t<
+					 META::is_copyable<T>()
+				 >>
+				operator T() const{ return this->get(); }
+
+				/**
+				 * Get an immutable pointer to the contained value
+				 * @return a realConst(T*) to the value
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				realConst(T*) ptr() const{ return &(this->get()); }
+
+				/**
+				 * Get a mutable pointer to the contained value
+				 * @return a T* to the value
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				T* ptr(){ return &(this->get()); }
 
 				/**
 				 * Automatic bool conversion
@@ -200,11 +272,25 @@ namespace scl{
 				const T& operator*() const{ return this->get(); }
 
 				/**
+				 * Mutable access to the value
+				 * @return a reference to the value stored
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				T& operator*(){ return this->get(); }
+
+				/**
 				 * Get an immutable pointer to the stored value
 				 * @return a realConst T* to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				realConst(T*) operator->() const{ return &(this->get()); }
+				realConst(T*) operator->() const{ return this->ptr(); }
+
+				/**
+				 * Get a mutable pointer to the stored value
+				 * @return a T* to the value stored
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				T* operator->(){ return this->ptr(); }
 
 				/**
 				 * Retrieves the value if there's one or return the default value provided
