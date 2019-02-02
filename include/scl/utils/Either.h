@@ -42,12 +42,38 @@ namespace scl{
 					payload_t() = default;
 					~payload_t() = default;
 
-					template <class = META::enable_if_t<is_movable()>>
-					payload_t(payload_t&& p) : left{std::move(p.left)}, right{std::move(p.right)} {
+					template <class = META::enable_if_t<
+						Either::is_movable()
+					>>
+					explicit payload_t(payload_t&& p) : left{std::move(p.left)}, right{std::move(p.right)} {
 					}
 
-					template <class = META::enable_if_t<is_copyable()>>
-					payload_t(const payload_t& p) : left{p.left}, right{p.right} {
+					template <class = META::enable_if_t<
+						Either::is_copyable()
+					>>
+					explicit payload_t(const payload_t& p) : left{p.left}, right{p.right} {
+					}
+
+					template <class = META::void_t<
+						META::enable_if_t<
+							Either::is_copyable()
+						>
+					>>
+					payload_t& operator=(const payload_t& p){
+						this->left = p.left;
+						this->right = p.right;
+						return *this;
+					};
+
+					template <class = META::void_t<
+						META::enable_if_t<
+							Either::is_movable()
+						>
+					>>
+					payload_t& operator=(payload_t&& p){
+						this->left = std::move(p.left);
+						this->right = std::move(p.right);
+						return *this;
 					}
 				};
 
@@ -67,7 +93,7 @@ namespace scl{
 				 * @var lhs
 				 * Determines whether or ot the LHS member is the current alternative
 				 */
-				bool lhs;
+				bool lhs = false;
 
 				/**
 				 * @var payload
@@ -81,20 +107,22 @@ namespace scl{
 				 * Construct the LHS alternative (rvalue)
 				 * @param lhs being the LHS value to construct from
 				 */
-				 template <class = META::enable_if_t<is_movable()>>
+				 template <class = META::enable_if_t<
+					 META::is_movable<Lhs>()
+				 >>
 				Either(lhs_tag, Lhs&& lhs) : lhs{true} {
-					this->payload.left = std::move(lhs);
+					this->payload.left = Optional<Lhs>(std::move(lhs));
 				}
 
 				/**
 				 * Construct the LHS alternative (lvalue)
 				 * @param lhs being the LHS value to construct from
 				 */
-				 template <class = META::void_t<META::enable_if_t<
+				 template <class = META::enable_if_t<
 					 META::is_copyable<Lhs>()
-				 >>>
+				 >>
 				Either(lhs_tag, const Lhs& lhs) : lhs{true} {
-					this->payload.left = lhs;
+					this->payload.left = Optional<Lhs>(lhs);
 				}
 
 				/**
@@ -105,7 +133,7 @@ namespace scl{
 					META::is_movable<Rhs>()
 				>>>
 				Either(rhs_tag, Rhs&& rhs) : lhs{false} {
-					this->payload.right = std::move(rhs);
+					this->payload.right = Optional<Rhs>(std::move(rhs));
 				}
 
 				/**
@@ -116,7 +144,7 @@ namespace scl{
 					META::is_copyable<Rhs>()
 				>>>
 				Either(rhs_tag, const Rhs& rhs) : lhs{false} {
-					this->payload.right = rhs;
+					this->payload.right = Optional<Rhs>(rhs);
 				}
 
 				/**
@@ -134,7 +162,9 @@ namespace scl{
 			public:
 				Either() = delete;
 
-				template <class = META::enable_if_t<is_copyable()>>
+				template <class = META::void_t<
+					META::enable_if_t<is_copyable()>
+				>>
 				Either(const Either& other) : payload{}, lhs{other.lhs} {
 					if(lhs)
 						this->payload.left = other.getLeft();
@@ -142,7 +172,9 @@ namespace scl{
 						this->payload.right = other.getRight();
 				}
 
-				template <class = META::enable_if_t<is_copyable()>>
+				template <class = META::void_t<
+					META::enable_if_t<is_copyable()>
+				>>
 				Either& operator=(const Either& other){
 					this->lhs = other.lhs;
 					if(lhs)
@@ -153,7 +185,9 @@ namespace scl{
 					return *this;
 				}
 
-				template <class = META::enable_if_t<is_movable()>>
+				template <class = META::void_t<
+					META::enable_if_t<is_movable()>
+				>>
 				Either(Either&& other) noexcept :  payload{}, lhs{other.lhs} {
 					if(lhs)
 						this->payload.left = std::move(other.payload.left);
@@ -161,7 +195,9 @@ namespace scl{
 						this->payload.right = std::move(other.payload.right);
 				}
 
-				template <class = META::enable_if_t<is_movable()>>
+				template <class = META::void_t<
+					META::enable_if_t<is_movable()>
+				>>
 				Either& operator=(Either&& other) noexcept{
 					this->lhs = other.lhs;
 					if(lhs)
@@ -179,7 +215,7 @@ namespace scl{
 				 */
 				 template <class L>
 				static Either left(L&& lhs){
-					return Either{lhs_tag{}, std::forward<L>(lhs)};
+					return Either(lhs_tag{}, std::forward<L>(lhs));
 				}
 
 				/**
@@ -191,13 +227,35 @@ namespace scl{
 				}
 
 				/**
+				 * Constructs a Lhs in place
+				 * @tparam Args being the types of the arguments for the constructor
+				 * @param args being the arguments for the constructor
+				 * @return a Either<Lhs, Rhs> where Lhs is the active alternative
+				 */
+				template <class... Args>
+				static Either emplaceLeft(Args&&... args){
+					return left(Lhs{std::forward<Args>(args)...});
+				}
+
+				/**
+				 * Constructs a Rhs in place
+				 * @tparam Args being the types of the arguments for the constructor
+				 * @param args being the arguments for the constructor
+				 * @return a Either<Lhs, Rhs> where Rhs is the active alternative
+				 */
+				template <class... Args>
+				static Either emplaceRight(Args&&... args){
+					return right(Rhs{std::forward<Args>(args)...});
+				}
+
+				/**
 				 * Construct the RHS
 				 * @param rhs being the value to construct from
 				 * @return a Either<Lhs, Rhs> where the Rhs is the active alternative
 				 */
 				 template <class R>
 				static Either right(R&& rhs){
-					return Either{rhs_tag{}, std::forward<R>(rhs)};
+					return Either(rhs_tag{}, std::forward<R>(rhs));
 				}
 
 				/**
@@ -315,7 +373,7 @@ namespace scl{
 				Either<Lhs, NewRhs> mapRightTo(Mapper mapper) const{
 					if(this->hasRight()){
 						const Rhs& right = this->getRight();
-						return Either<Lhs, NewRhs>::/*template*/ Right/*<NewRhs>*/(mapper(right));
+						return Either<Lhs, NewRhs>::Right(mapper(right));
 					}
 
 					return Either<Lhs, NewRhs>::Left(this->getLeft());
@@ -335,11 +393,11 @@ namespace scl{
 				Either<NewLhs, NewRhs> mapTo(MapperLeft mapLeft, MapperRight mapRight) const{
 					if(this->hasLeft()){
 						const Lhs& left = this->getLeft();
-						return Either<NewLhs, NewRhs>::/*template*/ Left/*<NewLhs>*/(mapLeft(left));
+						return Either<NewLhs, NewRhs>::Left(mapLeft(left));
 					}else{
 						//this->hasRight()
 						const Rhs& right = this->getRight();
-						return Either<NewLhs, NewRhs>::/*template*/ Right/*<NewRhs>*/(mapRight(right));
+						return Either<NewLhs, NewRhs>::Right(mapRight(right));
 					}
 				}
 

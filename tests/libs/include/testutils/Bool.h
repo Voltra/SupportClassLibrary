@@ -20,5 +20,5 @@ class Bool{
 		Bool implies(B b) const{ return Bool{!(*this) || b}; }
 
 		template <class B>
-		Bool equiv(B b) const{ return Bool{this->implies(b) && Bool{b}.implies(*this)}; }
+		Bool equiv(B b) const{ return Bool{b == bool(*this)}; }
 };
