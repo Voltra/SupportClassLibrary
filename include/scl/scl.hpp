@@ -11,3 +11,4 @@ namespace scl{}
 #include <scl/concepts/concepts.hpp>
 #include <scl/exceptions/exceptions.hpp>
 #include <scl/utils/utils.hpp>
+#include <scl/stream/stream.hpp>

@@ -137,7 +137,7 @@ namespace scl{
 				this->valueFlag = o.valueFlag;
 				if(o.hasValue())
 //						this->payload.value = o.payload.value;
-					new(&this->payload)T{o.get()};
+					new(&(this->payload))T{o.get()};
 			};
 
 			/**
@@ -148,7 +148,7 @@ namespace scl{
 				this->valueFlag = o.valueFlag;
 				if(o.valueFlag)
 //						this->payload.value = o.payload.value;
-					new(&this->payload)T{o.get()};
+					new(&(this->payload))T{o.get()};
 
 				return *this;
 			};
@@ -195,7 +195,7 @@ namespace scl{
 			base_movable_optional(T&& value){
 				this->valueFlag = true;
 //					this->payload.value = std::move(value);
-				new(&this->payload)T{std::move(value)};
+				new(&(this->payload))T{std::move(value)};
 			}
 
 			base_movable_optional() : base_optional<T>(){}

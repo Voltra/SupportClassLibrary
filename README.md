@@ -7,24 +7,29 @@ The SCL is a set of tools providing classes and utility functions that aim to ea
 
 Here is the namespace hierarchy:
 
-* scl - The englobing namespace
-  * [concepts](#scl-concepts) - A concept-like library based around `static_assert` (mostly implemented as defined in [cppreference](https://en.cppreference.com/w/cpp/header/concepts))
-  * [tools](#scl-tools) - General purpose utility functions
-    * [make](#scl-tools-make) - Create objects/pointers through factories
-    * [iostream](#scl-tools-iostream) - IOstream manipulators and utils
-      * [log](#scl-tools-iostream-log) - Logging utils
-        * [prefixed](#scl-tools-iostream-log-prefixed) - Log w/ a prefix
-        * [surrounded](#scl-tools-iostream-log-surrounded) - Log w/ a prefix & a suffix
-        * [wrap](#scl-tools-iostream-log-surrounded) - An alias for [scl::tools::iostream::log::surrounded](#scl-tools-iostream-log-surrounded)
+* [scl](./include/scl/scl.hpp) - The englobing namespace
+  * [concepts](./include/scl/concepts/concepts.hpp) - A concept-like library based around `static_assert` (mostly implemented as defined in [cppreference](https://en.cppreference.com/w/cpp/header/concepts))
+  * [tools](./include/scl/tools/tools.hpp) - General purpose utility functions
+    * [make](./include/scl/tools/make/make.hpp) - Create objects/pointers through factories
+    * [iostream](./include/scl/tools/iostream/iostream.hpp) - IOstream manipulators and utils
+      * [log](./include/scl/tool/iostream/log/log.hpp) - Logging utils
+        * [prefixed](./include/scl/tool/iostream/log/prefixed.h) - Log w/ a prefix
+        * [surrounded](./include/scl/tool/iostream/log/surrounded.h) - Log w/ a prefix & a suffix
+        * [wrap](./include/scl/tool/iostream/log/log.hpp) - An alias for [scl::tools::iostream::log::surrounded](./include/scl/tool/iostream/log/surrounded.h)
     * [meta](#scl-tools-meta) - Template Meta Programming utils (such as `void_t`, `enable_if_t` and `constexpr` functions like `is_same` or even handy stuff like `constexpr_assert`)
-    * [console](#scl-tools-iostream-log) - An alias for [scl::tools::iostream::log](#scl-tools-iostream-log)
-    * [cli](#scl-tools-iostream-log) - An alias for [scl::console](#scl-tools-iostream-log)
-  * [exceptions](#scl-exceptions) - Exception types used in the library
-  * [utils](#scl-utils) - Utility classes (and rare functions), eg. `Any` or `Opiontal` or even`toString`
+    * [console](./include/scl/tool/iostream/log/log.hpp) - An alias for [scl::tools::iostream::log](./include/scl/tool/iostream/log/log.hpp)
+    * [cli](./include/scl/tool/iostream/log/log.hpp) - An alias for [scl::console](./include/scl/tool/iostream/log/log.hpp)
+  * [exceptions](./include/scl/exceptions/exceptions.hpp) - Exception types used in the library
+  * [utils](./include/scl/utils/utils.hpp) - Utility classes (and rare functions), eg. `Any` or `Opiontal` or even`toString`
+  * [stream](./include/scl/stream/stream.hpp) - The stream API exposing stream creators, operations and terminators
+    * [details](./include/scl/stream/details/details.hpp) - Implementation details for streams (including the base iterator types)
+    * [creators](./include/scl/stream/creators/creators.hpp) - Grouping stream creation functions
+    * [operators](./include/scl/stream/operators/operators.hpp) - Grouping intermediate stream operation functions
+    * [terminators](./include/scl/stream/terminators/terminators.hpp) - Grouping end of stream operation functions 
 
 
 
-Here are some macros and their meaning:
+Here are some [macros](./include/scl/macros.h) and their meaning:
 
 * Code base maros
   * `realConst(type)` - Gives a `const` version of the given type (equivalent to `const type const`, useful for pointer)

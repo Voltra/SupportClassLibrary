@@ -20,14 +20,18 @@
  * @param obj the object to output on the output stream
  * @return a reference to the output stream
  */
-template <class T, class = META::void_t<META::enable_if_t<
-	!(
-		META::is_convertible<T, char>()
-		|| META::is_convertible<T, char*>()
-		|| META::is_convertible<T, std::string>()
-		|| META::defines_ostream_operator<T>()
-	) && scl::tools::meta::defines_scl_to_string<T>()
->>>
+template <
+	class T,
+	class T_ = META::decay_t<T>,
+	class = META::void_t<META::enable_if_t<
+		!(
+			META::is_convertible<T_, char>()
+			|| META::is_convertible<T_, char*>()
+			|| META::is_convertible<T_, std::string>()
+			|| META::defines_ostream_operator<T_>()
+		) && scl::tools::meta::defines_scl_to_string<T>()
+	>>
+>
 std::ostream& operator<<(std::ostream& os, T&& obj){
-	return os << scl::utils::toString<META::decay_t<T>>(std::forward<T>(obj));
+	return os << scl::utils::toString<T_>(std::forward<T>(obj));
 }

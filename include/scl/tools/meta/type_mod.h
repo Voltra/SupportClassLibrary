@@ -35,6 +35,11 @@ namespace scl{
 			template <class T>
 			using remove_cv_ref_t = remove_cv_t<remove_reference_t<T>>;
 
+			template <class T>
+			struct NoOp{ using type = T; };
+			template <class T>
+			using no_op_t = typename NoOp<T>::type;
+
 #ifdef SCL_ENABLE_DEPRECATED_TYPEMODS
 			SCL_TYPEMOD(result_of)
 #endif
