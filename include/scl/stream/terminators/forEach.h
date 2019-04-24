@@ -25,7 +25,7 @@ namespace scl{
 					result_type process(){
 						while(this->hasNext()){
 							auto value = this->next().value();
-							value.doIfLeft(consumer);
+							value.doIfPresent(consumer);
 						}
 
 						return;

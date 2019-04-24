@@ -62,7 +62,7 @@ namespace scl{
 				&& std::numeric_limits<T>::has_infinity
 			>>
 			Stream<T> infiniteRange(T from = 0, T step = 1){
-				return range<double>(from, std::numeric_limits<T>::infinity(), step);
+				return range<T>(from, std::numeric_limits<T>::infinity(), step);
 			}
 		}
 	}

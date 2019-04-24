@@ -381,11 +381,19 @@ namespace scl{
 				 * @return a copy of the stored value
 				 */
 				T orElse(const T& defaultValue) const{
-					try{
-						return this->get();
-					}catch(exceptions::EmptyOptionalAccess&){
-						return defaultValue;
-					}
+					return this->hasValue() ? this->get() : defaultValue;
+				}
+
+				/**
+				 * Calls a function if the value is present
+				 * @tparam F being the function's type
+				 * @param f being the function to call
+				 * @return a reference to this Optional
+				 */
+				template <class F>
+				void doIfPresent(F&& f) const{
+					if(this->hasValue())
+						f(this->get());
 				}
 
 				/**
@@ -396,11 +404,10 @@ namespace scl{
 				 */
 				template <class E>
 				const T& orThrow(const E& e) const{
-					try{
+					if(this->hasValue())
 						return this->get();
-					}catch(exceptions::EmptyOptionalAccess&){
-						throw e;
-					}
+
+					throw e;
 				}
 
 				/**
@@ -412,12 +419,12 @@ namespace scl{
 				 */
 				template <class U, class F>
 				Optional<U> map(F mapper) const{
-					try{
+					if(this->hasValue()){
 						const T& _ = this->get();
 						return mapper(_);
-					}catch(exceptions::EmptyOptionalAccess&){
-						return none;
 					}
+
+					return none;
 				}
 
 				/**
@@ -434,12 +441,12 @@ namespace scl{
 				 */
 				template <class F>
 				Optional<T> filter(F predicate) const{
-					try {
+					if(this->hasValue()){
 						const T& _ = this->get();
 						return predicate(_) ? Optional<T>{_} : Optional<T>{};
-					}catch(exceptions::EmptyOptionalAccess&){
-						return none;
 					}
+
+					return none;
 				}
 
 			public:

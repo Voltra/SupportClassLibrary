@@ -26,8 +26,8 @@ namespace scl {
 
 								while(this->hasNext()){
 									auto alt = this->next().value();
-									if(alt.hasLeft())
-										ret.insert(alt.getLeft());
+									if(alt.hasValue())
+										ret.insert(*alt);
 								}
 
 								return ret;

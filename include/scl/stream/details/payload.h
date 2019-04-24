@@ -2,6 +2,7 @@
 
 #include <scl/stream/details/invalid_value.h>
 #include <scl/utils/Either.h>
+#include <scl/utils/Optional.h>
 #include <functional>
 
 namespace scl{
@@ -15,7 +16,7 @@ namespace scl{
 			class StreamIteratorPayload{
 				public:
 					using value_type = T;
-					using alternative = scl::utils::Either<T, InvalidValue>;
+					using alternative = scl::utils::Optional<T>;//scl::utils::Either<T, InvalidValue>;
 					using producer = std::function<alternative(void)>;
 
 					/**
@@ -38,7 +39,7 @@ namespace scl{
 					 * @return TRUE if it does, FALSE otherwise
 					 */
 					bool isInvalid() const{
-						return gen().hasRight();
+						return !gen().hasValue();
 					}
 
 					/**
@@ -47,7 +48,8 @@ namespace scl{
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withValue(const T& value){
-						return StreamIteratorPayload{[&]{ return alternative::Left(value); }};
+//						return StreamIteratorPayload{[&]{ return alternative::Left(value); }};
+						return StreamIteratorPayload{[&]{ return alternative{value}; }};
 					}
 
 					/**
@@ -55,7 +57,8 @@ namespace scl{
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withoutValue(){
-						return StreamIteratorPayload{[]{ return alternative::Right(InvalidValue{}); }};
+//						return StreamIteratorPayload{[]{ return alternative::Right(InvalidValue{}); }};
+						return StreamIteratorPayload{[]{ return scl::utils::none; }};
 					}
 
 				protected:

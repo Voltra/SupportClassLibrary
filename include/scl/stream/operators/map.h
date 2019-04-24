@@ -27,7 +27,7 @@ namespace scl{
 
 					payload_type next() override{
 						auto alt = this->parent().next().value();
-						return payload_type{[=]{ return alt.template mapLeftTo<value_type>(this->mapper); }};
+						return payload_type{[=]{ return alt.template mapTo<value_type>(this->mapper); }};
 					}
 
 				protected:
