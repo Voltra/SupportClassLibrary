@@ -11,6 +11,7 @@ using namespace scl::tools::iostream;
 using namespace scl::concepts;
 using namespace scl::exceptions;
 using namespace scl::utils;
+using namespace scl::utils::placeholder;
 
 using namespace scl::stream;
 using namespace scl::stream::creators;
@@ -121,5 +122,13 @@ int main(){
 
 	rangeTo(10)
 	| map_<int>([](const int& i){ return i+2; })
+	| forEach(logt<int>);
+
+	int a;
+	std::tie(_, a) = std::make_tuple(69, 42);
+	std::cout << "OwO _ is working " << a << '\n';
+
+	rangeTo(5)
+	| filter_<int>([](const int& i){ return i%2; })
 	| forEach(logt<int>);
 }

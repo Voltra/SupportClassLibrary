@@ -16,7 +16,7 @@ namespace scl{
 			class StreamIteratorPayload{
 				public:
 					using value_type = T;
-					using alternative = scl::utils::Optional<T>;//scl::utils::Either<T, InvalidValue>;
+					using alternative = scl::utils::Optional<value_type>;
 					using producer = std::function<alternative(void)>;
 
 					/**
@@ -43,12 +43,19 @@ namespace scl{
 					}
 
 					/**
+					 * Determine whether or not the underlying sum type stores a value
+					 * @return TRUE if it does, FALSE otherwise
+					 */
+					bool isValid() const{
+						return !this->isInvalid();
+					}
+
+					/**
 					 * Create a payload with a value set
 					 * @param value being the value of the payload
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withValue(const T& value){
-//						return StreamIteratorPayload{[&]{ return alternative::Left(value); }};
 						return StreamIteratorPayload{[&]{ return alternative{value}; }};
 					}
 
@@ -57,7 +64,6 @@ namespace scl{
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withoutValue(){
-//						return StreamIteratorPayload{[]{ return alternative::Right(InvalidValue{}); }};
 						return StreamIteratorPayload{[]{ return scl::utils::none; }};
 					}
 

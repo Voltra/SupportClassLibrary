@@ -11,3 +11,4 @@ namespace scl{
 }
 
 #include <scl/stream/operators/map.h>
+#include <scl/stream/operators/filter.h>
