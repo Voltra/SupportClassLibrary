@@ -15,6 +15,9 @@
 #include <scl/tools/iostream/nl.h>
 #include <scl/tools/meta/conditional.h>
 
+#include <scl/concepts/require.h>
+#include <scl/concepts/Movable.h>
+
 using scl::tools::iostream::nl;
 
 //TODO: Fix copy/move problems
@@ -53,11 +56,13 @@ namespace scl{
 		};
 
 		/**
-		 * Base class for optionals
-		 * @tparam T being the optional'd type
+		 * A class that allows the use of optional types (might be there)
+		 * @tparam T being the value type that is optional
+		 * @warning Optional defines move and/or copy semantics only if the
+		 * underlying type does as well
 		 */
 		template <class T>
-		class base_optional{
+		class Optional{
 			protected:
 				/**
 				 * @var valueFlag
@@ -73,7 +78,30 @@ namespace scl{
 				META::aligned_storage_t<sizeof(T), alignof(T)> payload = {};
 
 			public:
-				base_optional() : valueFlag{false}, payload{} {
+				using value_type = META::remove_cv_ref_t<T>;
+				static constexpr bool is_movable = META::is_movable<value_type>();
+				static constexpr bool is_copyable =  META::is_copyable<value_type>();
+
+			public:
+				template <class... Args>
+				static Optional inplace(Args&&... args){
+					Optional ret = none;
+					value_type value{std::forward<Args>(args)...};
+					ret = std::move(value);
+					return std::move(ret);
+				}
+
+				static Optional ref(const value_type& ref){
+					Optional ret = none;
+					new(&(ret.payload)) value_type{ref};
+					ret.valueFlag = true;
+					return std::move(ret);
+				}
+
+				/**
+				 * Default construct (no value)
+				 */
+				Optional() : valueFlag{false}, payload{} {
 				}
 
 				/**
@@ -87,11 +115,11 @@ namespace scl{
 				 * @return a const& to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				const T& get() const{
+				const value_type& get() const{
 					if(!this->hasValue())
 						throw exceptions::EmptyOptionalAccess{};
 
-					return *reinterpret_cast<const T*>(&payload);
+					return *reinterpret_cast<const value_type*>(&payload);
 				}
 
 				/**
@@ -99,194 +127,131 @@ namespace scl{
 				 * @return a reference to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				T& get(){
+				value_type& get(){
 					if(!this->hasValue())
 						throw exceptions::EmptyOptionalAccess{};
 
 					//reinterpret_cast is allowed here since we allocated for a T
-					return *reinterpret_cast<T*>(&payload);
+					return *reinterpret_cast<value_type*>(&payload);
 				}
-		};
 
-		/**
-		 * Base class for optionals that accept copyable types
-		 * @tparam T
-		 */
-		template <class T>
-		struct base_copyable_optional : public virtual base_optional<T>{
-			using base_optional<T>::base_optional;
-			using base_optional<T>::get;
-			using base_optional<T>::hasValue;
-
-			/**
-			 * Creates a non empty optional with the given value (copy)
-			 * @param value being the value to assign from
-			 */
-			base_copyable_optional(const T& value){
-				this->valueFlag = true;
-//					this->payload.value = value;
-				new(&this->payload)T{value};
-			}
-
-			base_copyable_optional() : base_optional<T>(){}
-
-			/**
-			 * Copy constructor
-			 */
-			base_copyable_optional(const base_copyable_optional& o){
-				this->valueFlag = o.valueFlag;
-				if(o.hasValue())
-//						this->payload.value = o.payload.value;
-					new(&(this->payload))T{o.get()};
-			};
-
-			/**
-			 * Copy assignment operator
-			 * @return a reference to this Optional<T>
-			 */
-			base_copyable_optional& operator=(const base_copyable_optional& o){
-				this->valueFlag = o.valueFlag;
-				if(o.valueFlag)
-//						this->payload.value = o.payload.value;
-					new(&(this->payload))T{o.get()};
-
-				return *this;
-			};
-
-			/**
-			 * Automatic conversion operator
-			 * @return a copy of the underlying value
-			 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-			 */
-			explicit operator T() const{ return this->get(); }
-		};
-
-		/**
-		 * Base class for optionals that accept non copyable types
-		 * @tparam T
-		 */
-		template <class T>
-		struct base_noncopyable_optional : public virtual base_optional<T>{
-			using base_optional<T>::base_optional;
-			using base_optional<T>::get;
-			using base_optional<T>::hasValue;
-
-			base_noncopyable_optional() : base_optional<T>(){}
-
-			base_noncopyable_optional(const base_noncopyable_optional&) = delete;
-			base_noncopyable_optional& operator=(const base_noncopyable_optional&) = delete;
-			operator T() const = delete;
-		};
-
-		/**
-		 * Base class for optionals that accept movable types
-		 * @tparam T
-		 */
-		template <class T>
-		struct base_movable_optional : public virtual base_optional<T>{
-			using base_optional<T>::base_optional;
-			using base_optional<T>::get;
-			using base_optional<T>::hasValue;
-
-			/**
-			 * Creates a non empty optional with the given value (move)
-			 * @param value being the value to assign from
-			 */
-			base_movable_optional(T&& value){
-				this->valueFlag = true;
-//					this->payload.value = std::move(value);
-				new(&(this->payload))T{std::move(value)};
-			}
-
-			base_movable_optional() : base_optional<T>(){}
-
-			/**
-			 * Move constructor
-			 */
-			base_movable_optional(base_movable_optional&& o){
-				this->valueFlag = o.valueFlag;
-				if(o.hasValue())
-//						this->payload.value = std::move(o.payload.value);
-					this->payload = std::move(o.payload);
-			};
-
-			/**
-			 * Move assignment operator
-			 * @return a reference to this Optional<T>
-			 */
-			base_movable_optional& operator=(base_movable_optional&& o) noexcept{
-				this->valueFlag = o.valueFlag;
-				if(o.valueFlag)
-//						this->payload.value = std::move(o.payload.value);
-					this->payload = std::move(o.payload);
-
-				return *this;
-			};
-		};
-
-		/**
-		 * Base class for optionals that accept non movable types
-		 * @tparam T
-		 */
-		template <class T>
-		struct base_nonmovable_optional : public virtual base_optional<T>{
-			using base_optional<T>::base_optional;
-			using base_optional<T>::get;
-			using base_optional<T>::hasValue;
-
-			base_nonmovable_optional() : base_optional<T>(){}
-
-			base_nonmovable_optional(base_nonmovable_optional&&) = delete;
-			base_nonmovable_optional& operator=(base_nonmovable_optional&&) = delete;
-		};
-
-		template <class T>
-		using copy_optional_base = META::conditional_t<META::is_copyable<T>(), base_copyable_optional<T>, base_noncopyable_optional<T>>;
-
-		template <class T>
-		using move_optional_base = META::conditional_t<META::is_movable<T>(), base_movable_optional<T>, base_nonmovable_optional<T>>;
-
-		/**
-		 * A class that allows the use of optional types (might be there)
-		 * @tparam T being the value type that is optional
-		 * @warning Optional defines move and/or copy semantics only if the
-		 * underlying type does as well
-		 */
-		template <class T>
-		class Optional : public copy_optional_base<T>/*, public move_optional_base<T>*/{
-			public:
-				/*using move_optional_base<T>::move_optional_base;
-				using move_optional_base<T>::operator=;*/
-				using copy_optional_base<T>::copy_optional_base;
-				using copy_optional_base<T>::operator=;
-
-				using copy_optional_base<T>::get;
-				using copy_optional_base<T>::hasValue;
-
-			protected:
-//				static constexpr bool is_movable = META::is_same<move_optional_base<T>, base_movable_optional<T>>();
-//					return META::is_movable<T>();
-
-				static constexpr bool is_copyable =  META::is_same<copy_optional_base<T>, base_copyable_optional<T>>();
-//					return META::is_copyable<T>();
-
-			public:
 				/**
-				 * Default constructor, no value and empty payload
+				 * Creates a non empty optional with the given value (copy)
+				 * @param value being the value to assign from
 				 */
-				Optional() : /*move_optional_base<T>(),*/ copy_optional_base<T>(){
+				Optional(const value_type& value) : valueFlag{true} {
+					static_require(is_copyable);
+					new(&this->payload)value_type{value};
 				}
 
+				/**
+				 * Assign a value to this optional
+				 * @param value being the value taken by the optional
+				 * @return a reference to this Optional
+				 */
+				Optional& operator=(const value_type& value){
+					static_require(is_copyable);
+					this->valueFlag = true;
+					new(&this->payload)value_type{value};
+
+					return *this;
+				}
+
+				/**
+				 * Copy constructor
+				 * @param o being the Optional to copy from
+				 */
+				Optional(const Optional& o) : valueFlag{o.valueFlag} {
+					static_require(is_copyable);
+					if(o.hasValue())
+						new(&(this->payload))value_type{o.get()};
+				};
+
+				/**
+				 * Copy assignment operator
+				 * @param rhs being the Optional to assign from
+				 * @return a reference to this Optional<T>
+				 */
+				Optional& operator=(const Optional& rhs){
+					static_require(is_copyable);
+					this->valueFlag = rhs.hasValue();
+					if(this->valueFlag)
+						new(&(this->payload))value_type{rhs.get()};
+
+					return *this;
+				};
+
+				/**
+				 * Automatic conversion operator
+				 * @return a const reference to the underlying value
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				operator const value_type&() const{ return this->get(); }
+
+				/**
+				 * Automatic conversion operator
+				 * @return a mutable reference to the underlying value
+				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
+				 */
+				operator value_type&(){ return this->get(); }
+
+				/**
+				 * Move constructor
+				 * @param rhs being the Optional to construct from
+				 *
+				 * @warning moved-from Optional are in empty state
+				 * (i.e. equivalent to one constructed from none)
+				 */
+				Optional(Optional&& rhs) : valueFlag{rhs.valueFlag} {
+					static_require(is_movable);
+					if(rhs.hasValue())
+						this->payload = std::move(rhs.payload);
+
+					rhs = std::move(None{}); //set to none on move
+				};
+
+				/**
+				 * Move assignment operator
+				 * @param rhs being the Optional to assign from
+				 * @return a reference to this Optional<T>
+				 *
+				 * @warning moved-from Optional are in empty state
+				 * (i.e. equivalent to one constructed from none)
+				 */
+				Optional& operator=(Optional&& rhs) noexcept{
+					static_require(is_movable);
+					this->valueFlag = rhs.valueFlag;
+					if(rhs.hasValue())
+						this->payload = std::move(rhs.payload);
+
+					rhs = std::move(None{}); //set to none on move
+					return *this;
+				};
+
+
+			public:
 				/**
 				 * Instantiate an optional via an instance of None
+				 * @param _ being an instance of None
 				 */
-				Optional(None) : Optional(){
+				Optional(None _) : Optional(){
+				}
+
+				/**
+				 * Assign from None
+				 * @param _ being an instance of None
+				 * @return a reference to this Optional
+				 */
+				Optional& operator=(None _){
+					this->valueFlag = false;
+					this->payload = {};
+					return *this;
 				}
 
 #define TPL template <class U, class = META::enable_if_t<\
 	!META::is_same<META::decay_t<U>, META::decay_t<T>>()\
 	&& !META::is_same<META::decay_t<U>, None>()\
-	&& !META::is_same<META::decay_t<U>, Optional<T>>()\
+	&& !META::is_same<META::decay_t<U>, Optional>()\
 >>
 				/**
 				 * Implicit conversion copy constructor
@@ -294,10 +259,21 @@ namespace scl{
 				 * @param value being the value to construct from
 				 */
 				TPL
-				Optional(const U& value){
+				Optional(const U& value) : valueFlag{true} {
+					new(&this->payload)value_type{value};
+				}
+
+				/**
+				 * Implicit conversion copy assignment
+				 * @tparam U being the type to implicitly convert from
+				 * @param value being the value to assign from
+				 * @return a reference to this Optional
+				 */
+				TPL
+				Optional& operator=(const U& value){
 					this->valueFlag = true;
-//					this->payload.value = value;
-					new(&this->payload)T{value};
+					new(&this->payload)value_type{value};
+					return *this;
 				}
 
 				/**
@@ -306,11 +282,24 @@ namespace scl{
 				 * @param value being the value to construct from
 				 */
 				TPL
-				Optional(U&& value){
-					this->valueFlag = true;
-//					this->payload.value = std::move(value);
-					new(&this->payload)T{value};
+				Optional(U&& value) : valueFlag{true} {
+					new(&this->payload)value_type{value};
 				}
+
+				/**
+				 * Implicit conversion move assignment
+				 * @tparam U being the type to implicitly convert from
+				 * @param value being the value to assign from
+				 * @return a reference to this Optional
+				 */
+				TPL
+				Optional& operator=(U&& value){
+					this->valueFlag = true;
+					new(&this->payload)value_type{value};
+
+					return *this;
+				}
+
 #undef TPL
 
 				/**
@@ -318,28 +307,28 @@ namespace scl{
 				 * @return a const& to the stored value
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				const T& value() const{ return this->get(); }
+				const value_type& value() const{ return this->get(); }
 
 				/**
 				 * A semantic alias for Optional<T>::get
 				 * @return a const& to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				T& value(){ return this->get(); }
+				value_type& value(){ return this->get(); }
 
 				/**
 				 * Get an immutable pointer to the contained value
 				 * @return a realConst(T*) to the value
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				realConst(T*) ptr() const{ return &(this->get()); }
+				realConst(value_type*) ptr() const{ return &(this->get()); }
 
 				/**
 				 * Get a mutable pointer to the contained value
 				 * @return a T* to the value
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				T* ptr(){ return &(this->get()); }
+				value_type* ptr(){ return &(this->get()); }
 
 				/**
 				 * Automatic bool conversion
@@ -352,35 +341,35 @@ namespace scl{
 				 * @return a const& to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				const T& operator*() const{ return this->get(); }
+				const value_type& operator*() const{ return this->get(); }
 
 				/**
 				 * Mutable access to the value
 				 * @return a reference to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				T& operator*(){ return this->get(); }
+				value_type& operator*(){ return this->get(); }
 
 				/**
 				 * Get an immutable pointer to the stored value
 				 * @return a realConst T* to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				realConst(T*) operator->() const{ return this->ptr(); }
+				realConst(value_type*) operator->() const{ return this->ptr(); }
 
 				/**
 				 * Get a mutable pointer to the stored value
 				 * @return a T* to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
-				T* operator->(){ return this->ptr(); }
+				value_type* operator->(){ return this->ptr(); }
 
 				/**
 				 * Retrieves the value if there's one or return the default value provided
 				 * @param defaultValue being the value to return if there's no values
-				 * @return a copy of the stored value
+				 * @return a const reference to the stored value
 				 */
-				T orElse(const T& defaultValue) const{
+				const value_type& orElse(const value_type& defaultValue) const{
 					return this->hasValue() ? this->get() : defaultValue;
 				}
 
@@ -388,12 +377,32 @@ namespace scl{
 				 * Calls a function if the value is present
 				 * @tparam F being the function's type
 				 * @param f being the function to call
-				 * @return a reference to this Optional
 				 */
 				template <class F>
 				void doIfPresent(F&& f) const{
 					if(this->hasValue())
 						f(this->get());
+				}
+
+				template <class F>
+				void ifSome(F&& f) const{
+					return this->doIfPresent(std::forward<F>(f));
+				}
+
+				/**
+				 * Calls a function if there is no value
+				 * @tparam F being the function's type
+				 * @param f being the function to call
+				 */
+				template <class F>
+				void doIfEmpty(F&& f) const{
+					if(!this->hasValue())
+						f();
+				}
+
+				template <class F>
+				void ifNone(F&& f) const{
+					return this->doIfEmpty(std::forward<F>(f));
 				}
 
 				/**
@@ -403,7 +412,7 @@ namespace scl{
 				 * @return a const& to the value
 				 */
 				template <class E>
-				const T& orThrow(const E& e) const{
+				const value_type& orThrow(const E& e) const{
 					if(this->hasValue())
 						return this->get();
 
@@ -418,9 +427,9 @@ namespace scl{
 				 * @return an Optional<U>
 				 */
 				template <class U, class F>
-				Optional<U> map(F mapper) const{
+				Optional<U> map(F&& mapper) const{
 					if(this->hasValue()){
-						const T& _ = this->get();
+						const value_type& _ = this->get();
 						return mapper(_);
 					}
 
@@ -431,7 +440,7 @@ namespace scl{
 				 * Alias for Optional::map
 				 */
 				template <class U, class F>
-				Optional<U> mapTo(F mapper) const{ return this->map<U>(mapper); }
+				Optional<U> mapTo(F&& mapper) const{ return this->map<U>(mapper); }
 
 				/**
 				 * Filters the value accoding to the given predicate
@@ -442,7 +451,7 @@ namespace scl{
 				template <class F>
 				Optional<T> filter(F predicate) const{
 					if(this->hasValue()){
-						const T& _ = this->get();
+						const value_type& _ = this->get();
 						return predicate(_) ? Optional<T>{_} : Optional<T>{};
 					}
 

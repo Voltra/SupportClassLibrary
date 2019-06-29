@@ -18,14 +18,14 @@ namespace scl{
 							using result_type = typename iterator_type::result_type;
 							using parent_iterator_type = typename iterator_type::parent_iterator_type;
 
-							VectorPacker(parent_iterator_type& p) : iterator_type{p} {
+							explicit VectorPacker(parent_iterator_type& p) : iterator_type{p} {
 							}
 
 							result_type process() {
 								result_type ret = {};
 
 								while (this->hasNext()) {
-									auto alt = this->next().value();
+									const auto& alt = this->next().value();
 									if (alt.hasValue())
 										ret.push_back(*alt);
 								}

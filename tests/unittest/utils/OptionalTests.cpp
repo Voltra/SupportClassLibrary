@@ -43,6 +43,8 @@ TEST(OptionalTests, CanConstructFromNone){
 
 TEST(OptionalTests, CanAssignFromNone){
 	Optional<int> o = none;
+	Optional<int> op;
+	op = none;
 }
 
 TEST(OptionalTests, CanUseNonTriviallyCopyableType){
@@ -67,7 +69,8 @@ TEST(OptionalTests, MovedFromHasCorrectSemantics){
 	Optional<std::string> no = none;
 	auto a = std::move(no);
 
-	ASSERT_EQ(a.hasValue(), no.hasValue());
+	//ASSERT_EQ(a.hasValue(), no.hasValue());
+	ASSERT_FALSE(no.hasValue());
 }
 
 TEST(OptionalTests, EmptyDoesNotHaveValue){

@@ -33,40 +33,53 @@ namespace scl{
 			 * Huge thanks to
 			 * https://stackoverflow.com/A/27826081/7316365
 			 */
-			template <class>
+			template <class, class>
 			struct fn;
 
-			/*template <class F>
-			struct fn : public fn<decltype(&F::operator())>{
-			};*/
-
 			template <class R, class... Args>
-			struct fn<R(*)(Args...)> /*: public std::function<R(Args...)>*/{
+			struct fn<R(*)(Args...), void> /*: public std::function<R(Args...)>*/{
 				using fn_type = std::function<R(Args...)>;
 			};
 
 			template <class Class, class R, class... Args>
-			struct fn<R(Class::*)(Args...)> /*: public std::function<R(const Class&, Args...)>*/{
+			struct fn<R(Class::* const)(Args...), void> /*: public std::function<R(const Class&, Args...)>*/{
 				using fn_type = std::function<R(const Class&, Args...)>;
 			};
 
+			template <class Class, class R, class... Args>
+			struct fn<R(Class::* const)(Args...), std::nullptr_t>{
+				using fn_type = std::function<R(Args...)>;
+			};
 
-			template <class F, class = enable_if_t<
-				exists<decltype(&F::operator())>()
-			>>
-			typename META::fn<F>::fn_type as_fn(F f){
-				return (typename META::fn<F>::fn_type){f};
-			}
+			template <class F>
+			struct fn<F, /*META::enable_if_t<
+				META::exists<*/decltype(&F::operator())/*>()
+			>*/> : public fn<decltype(&F::operator()), std::nullptr_t>{
+				using fn_type = typename fn<decltype(&F::operator()), std::nullptr_t>::fn_type;
+			};
+
+			template <class F>
+			using fn_t = fn<F, void>;
+
+			template <class F>
+			using std_fn_type = typename fn_t<F>::fn_type;
 
 			template <class R, class... Args>
-			typename META::fn<R(*)(Args...)>::fn_type as_fn(R(*f)(Args...)){
-				return (typename META::fn<R(*)(Args...)>::fn_type){f};
+			std_fn_type<R(*)(Args...)> as_fn(R(*f)(Args...)){
+				return (std_fn_type<R(*)(Args...)>){f};
 			}
 
 			template <class Class, class R, class... Args>
-			typename META::fn<R(Class::*)(Args...)>::fn_type as_fn(R(Class::* f)(Args...) const){
+			std_fn_type<R(Class::* const)(Args...)> as_fn(R(Class::* const f)(Args...) const){
 //				return (typename META::fn<R(Class::*)(Args...)>::fn_type){f};
 				return std::mem_fn(f);
+			}
+
+			template <class F, class = enable_if_t<
+			   exists<decltype(&F::operator())>()
+			>>
+			typename fn<F, std::nullptr_t>::fn_type as_fn(F f){
+				return (typename fn<F, std::nullptr_t>::fn_type){f};
 			}
 		}
 	}

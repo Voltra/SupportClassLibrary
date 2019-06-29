@@ -21,7 +21,7 @@ namespace scl{
 				 * Construct a stream a raw pointer to an iterator
 				 * @param iterator being a pointer to an iterator
 				 */
-				Stream(iterator_type* iterator) : iterator{iterator}{
+				explicit Stream(iterator_type* iterator) : iterator{iterator}{
 				}
 
 				/**

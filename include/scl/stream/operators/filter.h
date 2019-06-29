@@ -20,14 +20,16 @@ namespace scl{
 
 					using predicate_type = std::function<bool(const value_type&)>;
 
-					FilterOperator(parent_iterator_type& p, predicate_type pred) : iterator_type{p}, pred{pred} {}
+					FilterOperator(parent_iterator_type& p, predicate_type pred) : iterator_type{p}, pred{pred} {
+					}
 
 					payload_type next() override{
 						while(this->parent().hasNext()){
-							auto alt = this->parent().next().value();
+							const auto& alt = this->parent().next().value();
 							if(alt.hasValue()){
-								if(this->pred(*alt))
-									return payload_type::withValue(*alt);
+								const auto& value = *alt;
+								if(this->pred(value))
+									return payload_type::withValue(value);
 							}
 						}
 

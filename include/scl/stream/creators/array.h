@@ -39,7 +39,7 @@ namespace scl{
 						 * Construct from a std::array
 						 * @param arr being the array to construct from
 						 */
-						FromArrayIterator(std::array<T, N> arr) : arr{std::move(arr)}{
+						explicit FromArrayIterator(std::array<T, N> arr) : arr{std::move(arr)}{
 						}
 
 						bool hasNext() const override{ return this->index < N; }

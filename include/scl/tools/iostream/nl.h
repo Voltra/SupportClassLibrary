@@ -10,7 +10,8 @@ namespace scl{
 			 * @param os being the ostream to output the lf character to
 			 * @return a reference to the ostream
 			 */
-			inline std::ostream& nl(std::ostream& os){
+			 template <class Char, class Traits>
+			inline std::basic_ostream<Char, Traits>& nl(std::basic_ostream<Char, Traits>& os){
 				return os << '\n';
 			}
 		}

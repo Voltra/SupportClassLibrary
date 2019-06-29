@@ -68,17 +68,24 @@ void logs(const std::string& s){
 struct Person{
 	std::string name;
 
+	Person(const Person&) = default;
+	Person(Person&&) = default;
+	Person& operator=(const Person&) = default;
+	Person& operator=(Person&&) = default;
+
 	template <class T>
-	Person(T&& name) : name{std::forward<T>(name)}{
+	explicit Person(T&& name) : name{std::forward<T>(name)}{
 	}
 
 	std::string getName() const{ return this->name; }
 };
 
-int main(){
+void testsConcepts(){
 	require(Iterator<int*>{});
 	require(SwappableWith<int, int>{});
+}
 
+void testsMake(){
 	std::cout << "None: " << none << nl;
 	std::cout << "Optional<float>: " << make::optional<int>(3).mapTo<float>(threeToPi).orElse(42.f) << nl;
 
@@ -87,48 +94,75 @@ int main(){
 
 	std::cout << "Either<int, stringLiteral>.left: " << Either<int, stringLiteral>::Left(42).getLeft() << nl;
 	std::cout << nl;
+}
 
+void testsMakeUnique(){
 	auto ptr = make::unique<int>(answerToLife<int>());
 	auto log = scl::cli::wrap::log<int>("$> ", " <$");
 	log(*ptr);
 	std::cout << "addr: " << ptr << nl;
 	std::cout << nl;
+}
 
+void testsStreamObj(){
 	std::vector<Person> p = {
 		Person{"jean"},
 		Person{"michel"},
-		Person{"denis"}
+		Person{"denis"},
+		Person{"michel"}
 	};
 
 	auto res = streamFrom(p)
-	| map(&Person::getName)
-	| map_<std::string>([](const std::string& s){ return s + " 42"; })
-	| pack::toVector();
+			   | uniqueBy(&Person::getName)
+			   | map(&Person::getName)
+			   | map_<std::string>([](const std::string& s){ return s + " 42"; })
+			   | pack::toVector();
 	std::for_each(std::begin(res), std::end(res), logs);
 	std::cout << nl;
+}
 
+void testsVectorMapForEach(){
 	std::array<int, 4> v = {1,2,3,4};
 	streamFrom(v)
 	| map_<int, float>([](const int& i) -> float{ return i+1.14f; })
 	| forEach(logt<float>);
 	std::cout << nl;
+}
 
-	std::array<int, 2> arr = {1, 1};
-	auto res2 = streamFrom(arr)
-	| map_<int>([](const int& i){ return i+1; })
-	| pack::toSet();
-	std::for_each(std::begin(res2), std::end(res2), logt<int>);
-	std::cout << nl;
-
+void testsStreamRange(){
 	rangeTo(10)
 	| map_<int>([](const int& i){ return i+2; })
 	| forEach(logt<int>);
 
-	int a;
-	std::tie(_, a) = std::make_tuple(69, 42);
-	std::cout << "OwO _ is working " << a << '\n';
-
 	rangeTo(5)
 	| filter_<int>([](const int& i){ return i%2; })
 	| forEach(logt<int>);
+}
+
+void testsStreamPackSet(){
+	std::array<int, 2> arr = {1, 1};
+	auto res2 = streamFrom(arr)
+				| map_<int>([](const int& i){ return i+1; })
+				| pack::toSet();
+	std::for_each(std::begin(res2), std::end(res2), logt<int>);
+	std::cout << nl;
+}
+
+void testsStream(){
+	testsStreamObj();
+	testsVectorMapForEach();
+	testsStreamRange();
+}
+
+void randomTests(){
+	int a;
+	std::tie(_, a) = std::make_tuple(69, 42);
+	std::cout << "OwO _ is working " << a << nl;
+
+	std::cout << InvalidAnyCast{"OwO cool exceptions"} << nl;
+}
+
+int main(){
+	//TODO: Fix references bug (undef ref / empty optional access)
+	testsStream();
 }

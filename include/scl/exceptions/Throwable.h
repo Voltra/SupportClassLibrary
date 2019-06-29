@@ -33,9 +33,11 @@ namespace scl{
 		/**
 		 * Specialization of ToString for Throwable types
 		 */
-		template <>
-		struct ToString<exceptions::Throwable>{
-			std::string operator()(const exceptions::Throwable& t) const{
+		template <class T>
+		struct ToString<T, META::enable_if_t<
+			META::is_base_of<scl::exceptions::Throwable, T>()
+		>>{
+			std::string operator()(const T& t) const{
 				return std::string{t.type()} + " : " + t.reason();
 			}
 		};

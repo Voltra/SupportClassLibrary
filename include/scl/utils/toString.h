@@ -26,7 +26,7 @@ namespace scl{
 		template <class T>
 		struct ToString<T, META::void_t<META::enable_if_t<
 			META::is_convertible<T, char>()
-			|| META::is_convertible<T, char*>()
+			|| META::is_convertible<T, const char*>()
 			|| META::is_convertible<T, std::string>()
 		>>>{
 			std::string operator()(const T& t) const{
@@ -42,7 +42,7 @@ namespace scl{
 		template <class T>
 		std::string toString(const T& obj){
 			static_assert(
-				META::exists<ToString<T>>(),
+				META::exists<ToString<META::decay_t<T>>>(),
 				"ToString<T> has not been defined"
 			);
 			return ToString<META::decay_t<T>>{}(obj);

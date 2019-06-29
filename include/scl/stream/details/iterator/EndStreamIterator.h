@@ -23,7 +23,7 @@ namespace scl{
 						}
 
 						bool hasNext() const override{ return this->parent_.hasNext(); }
-						payload_type next() override{ return this->parent_.next(); }
+						payload_type next() override{ return std::move(this->parent_.next()); }
 
 					protected:
 						parent_iterator_type& parent_;

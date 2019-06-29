@@ -14,6 +14,16 @@ namespace scl{
 			 */
 			template <class T>
 			class StreamIteratorPayload{
+				protected:
+					void ensureGenerated() const{
+						if(!generated){
+							this->alt = std::move(gen());
+							generated = true;
+						}
+
+
+					}
+
 				public:
 					using value_type = T;
 					using alternative = scl::utils::Optional<value_type>;
@@ -23,15 +33,16 @@ namespace scl{
 					 * Construct a payload with its producer function
 					 * @param prod being the producer function to use
 					 */
-					explicit StreamIteratorPayload(producer prod) : gen{prod}{
+					explicit StreamIteratorPayload(producer prod) : gen{prod}, alt{}{
 					}
 
 					/**
 					 * Retrieve the underlying sum type
 					 * @return an Either containing a value on its left or an invalid tag on its right
 					 */
-					alternative value() const{
-						return gen();
+					const alternative& value(){
+						ensureGenerated();
+						return alt;
 					}
 
 					/**
@@ -39,7 +50,8 @@ namespace scl{
 					 * @return TRUE if it does, FALSE otherwise
 					 */
 					bool isInvalid() const{
-						return !gen().hasValue();
+						ensureGenerated();
+						return !alt.hasValue();
 					}
 
 					/**
@@ -56,7 +68,7 @@ namespace scl{
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withValue(const T& value){
-						return StreamIteratorPayload{[&]{ return alternative{value}; }};
+						return StreamIteratorPayload{[&]{ return alternative::ref(value); }};
 					}
 
 					/**
@@ -69,6 +81,8 @@ namespace scl{
 
 				protected:
 					producer gen;
+					mutable alternative alt;
+					mutable bool generated = false;
 			};
 		}
 	}

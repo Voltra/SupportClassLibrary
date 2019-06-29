@@ -5,6 +5,8 @@
 #include <limits>
 #include <scl/stream/details/iterator/BaseStreamIterator.h>
 #include <scl/tools/make/make.hpp>
+#include <scl/concepts/require.h>
+#include <scl/concepts/Copyable.h>
 
 namespace scl{
 	namespace stream{
@@ -12,6 +14,8 @@ namespace scl{
 			namespace details{
 				template <class T>
 				class RangeCreator : public scl::stream::details::iterator::BaseStreamIterator<T>{
+						static_require(concepts::Copyable<T>{});
+
 					public:
 						using iterator_type = scl::stream::details::iterator::BaseStreamIterator<T>;
 						using value_type = typename iterator_type::value_type;
