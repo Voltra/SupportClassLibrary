@@ -32,7 +32,7 @@ DOXYFILE_ENCODING      = UTF-8
 # title of most generated pages and in a few other places.
 # The default value is: My Project.
 
-PROJECT_NAME           = "Standard Class Library"
+PROJECT_NAME           = "Support Class Library"
 
 # The PROJECT_NUMBER tag can be used to enter a project or revision number. This
 # could be handy for archiving the generated documentation or if some version
@@ -2214,7 +2214,7 @@ HIDE_UNDOC_RELATIONS   = YES
 # set to NO
 # The default value is: NO.
 
-HAVE_DOT               = NO
+HAVE_DOT               = YES
 
 # The DOT_NUM_THREADS specifies the number of dot invocations doxygen is allowed
 # to run in parallel. When set to 0 doxygen will base this on the number of
@@ -2310,7 +2310,7 @@ TEMPLATE_RELATIONS     = NO
 # The default value is: YES.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-INCLUDE_GRAPH          = YES
+INCLUDE_GRAPH          = NO
 
 # If the INCLUDED_BY_GRAPH, ENABLE_PREPROCESSING and SEARCH_INCLUDES tags are
 # set to YES then doxygen will generate a graph for each documented file showing
@@ -2319,7 +2319,7 @@ INCLUDE_GRAPH          = YES
 # The default value is: YES.
 # This tag requires that the tag HAVE_DOT is set to YES.
 
-INCLUDED_BY_GRAPH      = YES
+INCLUDED_BY_GRAPH      = NO
 
 # If the CALL_GRAPH tag is set to YES then doxygen will generate a call
 # dependency graph for every global function or class method.

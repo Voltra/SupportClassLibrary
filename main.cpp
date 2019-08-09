@@ -115,7 +115,7 @@ void testsStreamObj(){
 	auto res = streamFrom(p)
 			   | uniqueBy(&Person::getName)
 			   | map(&Person::getName)
-			   | map_<std::string>([](const std::string& s){ return s + " 42"; })
+			   | map(+[](const std::string& s){ return s + " 42"; })
 			   | pack::toVector();
 	std::for_each(std::begin(res), std::end(res), logs);
 	std::cout << nl;
@@ -124,25 +124,25 @@ void testsStreamObj(){
 void testsVectorMapForEach(){
 	std::array<int, 4> v = {1,2,3,4};
 	streamFrom(v)
-	| map_<int, float>([](const int& i) -> float{ return i+1.14f; })
+	| map(+[](const int& i) -> float{ return i+1.14f; })
 	| forEach(logt<float>);
 	std::cout << nl;
 }
 
 void testsStreamRange(){
 	rangeTo(10)
-	| map_<int>([](const int& i){ return i+2; })
+	| map(+[](const int& i){ return i+2; })
 	| forEach(logt<int>);
 
 	rangeTo(5)
-	| filter_<int>([](const int& i){ return i%2; })
+	| filter(+[](const int& i){ return i%2; })
 	| forEach(logt<int>);
 }
 
 void testsStreamPackSet(){
 	std::array<int, 2> arr = {1, 1};
 	auto res2 = streamFrom(arr)
-				| map_<int>([](const int& i){ return i+1; })
+				| map(+[](const int& i){ return i+1; })
 				| pack::toSet();
 	std::for_each(std::begin(res2), std::end(res2), logt<int>);
 	std::cout << nl;

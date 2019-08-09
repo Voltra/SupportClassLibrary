@@ -7,6 +7,11 @@ namespace scl{
 	namespace stream{
 		namespace details{
 			namespace iterator{
+				/**
+				 * A class for iterators used in end operations
+				 * @tparam T being the type of data manipulated
+				 * @tparam Ret being the type of the processed data
+				 */
 				template <class Ret, class T>
 				class EndStreamIterator : public virtual StreamIterator<T>{
 					public:

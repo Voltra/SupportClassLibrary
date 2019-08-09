@@ -75,11 +75,9 @@ namespace scl{
 				return std::mem_fn(f);
 			}
 
-			template <class F, class = enable_if_t<
-			   exists<decltype(&F::operator())>()
-			>>
-			typename fn<F, std::nullptr_t>::fn_type as_fn(F f){
-				return (typename fn<F, std::nullptr_t>::fn_type){f};
+			template <class F>
+			typename fn<F, void>::fn_type as_fn(F f){
+				return (typename fn<F, void>::fn_type){f};
 			}
 		}
 	}

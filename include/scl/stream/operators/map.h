@@ -49,8 +49,8 @@ namespace scl{
 				class T = META::decay_t<META::arg_t<Fn, 0>>,
 				class U = META::decay_t<META::return_t<Fn>>
 			>
-			details::map_toolbox<T, U> map(F mapper){
-				return {META::as_fn(mapper)};
+			details::map_toolbox<T, U> map(F&& mapper){
+				return {META::as_fn(std::forward<F>(mapper))};
 			}
 
 			template<class T, class U = T>

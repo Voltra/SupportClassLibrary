@@ -1,4 +1,4 @@
-# Standard Class Library
+# Support Class Library
 The SCL is a set of tools providing classes and utility functions that aim to ease the development of your applications.
 
 
