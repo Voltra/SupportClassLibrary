@@ -6,6 +6,7 @@ var searchData=
   ['creators',['creators',['../namespacescl_1_1stream_1_1creators.html',1,'scl::stream']]],
   ['details',['details',['../namespacescl_1_1stream_1_1creators_1_1details.html',1,'scl::stream::creators::details'],['../namespacescl_1_1stream_1_1details.html',1,'scl::stream::details'],['../namespacescl_1_1stream_1_1terminators_1_1details.html',1,'scl::stream::terminators::details']]],
   ['exceptions',['exceptions',['../namespacescl_1_1exceptions.html',1,'scl']]],
+  ['support_20class_20library',['Support Class Library',['../index.html',1,'']]],
   ['iostream',['iostream',['../namespacescl_1_1tools_1_1iostream.html',1,'scl::tools']]],
   ['iterator',['iterator',['../namespacescl_1_1stream_1_1details_1_1iterator.html',1,'scl::stream::details']]],
   ['log',['log',['../namespacescl_1_1tools_1_1iostream_1_1log.html',1,'scl::tools::iostream']]],

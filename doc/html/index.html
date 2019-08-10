@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Support Class Library: Main Page</title>
+<title>Support Class Library: Support Class Library</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,10 +60,65 @@ $(function() {
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Support Class Library Documentation</div>  </div>
+<div class="title">Support Class Library </div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>The SCL is a set of tools providing classes and utility functions that aim to ease the development of your applications.</p>
+<p>You can have a loook at the documentation <a href="https://voltra.github.io/SupportClassLibrary/doc/html/">here</a>.</p>
+<h2>Organisation</h2>
+<p>Here is the namespace hierarchy:</p>
+<ul>
+<li><a href="./include/scl/scl.hpp">scl</a> - The englobing namespace<ul>
+<li><a href="./include/scl/concepts/concepts.hpp">concepts</a> - A concept-like library based around <code>static_assert</code> (mostly implemented as defined in <a href="https://en.cppreference.com/w/cpp/header/concepts">cppreference</a>)</li>
+<li><a href="./include/scl/tools/tools.hpp">tools</a> - General purpose utility functions<ul>
+<li><a href="./include/scl/tools/make/make.hpp">make</a> - Create objects/pointers through factories</li>
+<li><a href="./include/scl/tools/iostream/iostream.hpp">iostream</a> - IOstream manipulators and utils<ul>
+<li><a href="./include/scl/tool/iostream/log/log.hpp">log</a> - Logging utils<ul>
+<li><a href="./include/scl/tool/iostream/log/prefixed.h">prefixed</a> - Log w/ a prefix</li>
+<li><a href="./include/scl/tool/iostream/log/surrounded.h">surrounded</a> - Log w/ a prefix &amp; a suffix</li>
+<li><a href="./include/scl/tool/iostream/log/log.hpp">wrap</a> - An alias for <a href="./include/scl/tool/iostream/log/surrounded.h">scl::tools::iostream::log::surrounded</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#scl-tools-meta">meta</a> - Template Meta Programming utils (such as <code>void_t</code>, <code>enable_if_t</code> and <code>constexpr</code> functions like <code>is_same</code> or even handy stuff like <code>constexpr_assert</code>)</li>
+<li><a href="./include/scl/tool/iostream/log/log.hpp">console</a> - An alias for <a href="./include/scl/tool/iostream/log/log.hpp">scl::tools::iostream::log</a></li>
+<li><a href="./include/scl/tool/iostream/log/log.hpp">cli</a> - An alias for <a href="./include/scl/tool/iostream/log/log.hpp">scl::console</a></li>
+</ul>
+</li>
+<li><a href="./include/scl/exceptions/exceptions.hpp">exceptions</a> - Exception types used in the library</li>
+<li><a href="./include/scl/utils/utils.hpp">utils</a> - Utility classes (and rare functions), eg. <code>Any</code> or <code>Opiontal</code> or even<code>toString</code></li>
+<li><a href="./include/scl/stream/stream.hpp">stream</a> - The stream API exposing stream creators, operations and terminators<ul>
+<li><a href="./include/scl/stream/details/details.hpp">details</a> - Implementation details for streams (including the base iterator types)</li>
+<li><a href="./include/scl/stream/creators/creators.hpp">creators</a> - Grouping stream creation functions</li>
+<li><a href="./include/scl/stream/operators/operators.hpp">operators</a> - Grouping intermediate stream operation functions</li>
+<li><a href="./include/scl/stream/terminators/terminators.hpp">terminators</a> - Grouping end of stream operation functions</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here are some <a href="./include/scl/macros.h">macros</a> and their meaning:</p>
+<ul>
+<li>Code base maros<ul>
+<li><code>realConst(type)</code> - Gives a <code>const</code> version of the given type (equivalent to <code>const type const</code>, useful for pointer)</li>
+<li><code>stringLiteral</code> - The actual string literal type (so you don't have to learn it by heart)</li>
+<li><code>assert_concept</code> - Compile time assertions of concepts outside of a block of code (must be simple concepts, not aggregates (e.g. <code>Copyable</code> vs <code>Invocable</code>))</li>
+<li><code>static_require</code> - Require concepts without giving an additional error message</li>
+<li><code>META</code> - The fully qualified namespace path to the <code>meta</code> namespace (actually is <code><a class="el" href="namespacescl_1_1tools_1_1meta.html" title="A namespae englobing all the TMP tools. ">scl::tools::meta</a></code>)</li>
+</ul>
+</li>
+<li>Flags<ul>
+<li><code>SCL_CPP14</code> - Define this flag to use the C++14 add-ons (e.g. <code>is_final_t</code>)</li>
+<li><code>SCL_CPP17</code> - Define this flag to use the C++17 add-ons (e.g. <code>is_swappable_t</code>)</li>
+<li><code>SCL_CONCEPTS_REQUIRE_IS_VOID</code> - Define this flag to replace <code>constexpr bool require()</code> with <code>constexpr void require()</code></li>
+<li><code>SCL_USE_IOSTREAM_EXTEND</code> - Define this flag if you wish to use the general purpose <code>operator&lt;&lt;</code> for <code>ostream</code> that uses <code>std::to_string</code> and <code><a class="el" href="namespacescl_1_1utils.html#a824d140ab80fbe71c2913b0e4657eaeb" title="Free function that allows string conversion. ">scl::utils::toString</a></code> for conversions</li>
+<li><code>SCL_ENABLE_DEPRECATED_TYPEMODS</code> - Define this flag if you wish to define the deprecated typemods (e.g. <code>result_of_t</code>)</li>
+<li><code>SCL_ENABLE_DEPRECATED_TYPECHECKS</code> - Define this flag if you wish to define the deprecated typechecks (e.g. <code>is_pod_t</code>) </li>
+</ul>
+</li>
+</ul>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

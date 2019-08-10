@@ -3,7 +3,7 @@ The SCL is a set of tools providing classes and utility functions that aim to ea
 
 
 
-You can have a loook at the documentation [here](https://www.github.com/Voltra/SupportClassLibrary/pages).
+You can have a loook at the documentation [here](https://voltra.github.io/SupportClassLibrary/doc/html/).
 
 
 
