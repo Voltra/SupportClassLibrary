@@ -1,0 +1,5 @@
+<map id="scl::stream::operators::MapOperator&lt; T, U &gt;" name="scl::stream::operators::MapOperator&lt; T, U &gt;">
+<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\l\&lt; U, T \&gt;" alt="" coords="28,184,205,240"/>
+<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="scl::stream::details\l::iterator::BaseStreamIterator\&lt; U \&gt;" alt="" coords="5,95,228,136"/>
+<area shape="rect" id="node4" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="scl::stream::details\l::iterator::StreamIterator\&lt; U \&gt;" alt="" coords="20,5,213,47"/>
+</map>

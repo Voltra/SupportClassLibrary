@@ -12,6 +12,10 @@ namespace scl{
 	namespace stream{
 		namespace creators{
 			namespace details{
+				/**
+				 * Creator for a numeric range
+				 * @tparam T being the numeric type used for the range
+				 */
 				template <class T>
 				class RangeCreator : public scl::stream::details::iterator::BaseStreamIterator<T>{
 						static_require(concepts::Copyable<T>{});
@@ -22,9 +26,21 @@ namespace scl{
 						using payload_type = typename iterator_type::payload_type;
 
 					protected:
+						/**
+						 * @var from being the starting point
+						 * @var to being the final point
+						 * @var step being the individual increment
+						 * @var cur being the current tate
+						 */
 						T from, to, step, cur;
 
 					public:
+						/**
+						 * Construct from initial, last and increment
+						 * @param from being the initial value
+						 * @param last being the last value
+						 * @param step being the increment value
+						 */
 						RangeCreator(T from, T to, T step) : from{from}, to{to}, step{step}, cur{from} {
 						}
 
@@ -43,6 +59,14 @@ namespace scl{
 				};
 			}
 
+			/**
+			 * Create an scl::stream::Stream for a specified range
+			 * @tparam T being the type of the elements of the range
+			 * @param from being the initial value
+			 * @param to being the last value
+			 * @param step being the increment
+			 * @return a stream that generates the range's values
+			 */
 			template <class T = int, class = META::enable_if_t<META::is_arithmetic<T>()>>
 			Stream<T> range(T from, T to, T step = 1){
 				namespace make = scl::tools::make;
@@ -51,16 +75,38 @@ namespace scl{
 				};
 			}
 
+			/**
+			 * Range from 0 to the specified value
+			 * @tparam T being the type of the elements of the range
+			 * @param to being the last value
+			 * @param step being the increment
+			 * @return a stream that generates the range's values
+			 */
 			template <class T = int, class = META::enable_if_t<META::is_arithmetic<T>()>>
 			Stream<T> rangeTo(T to, T step = 1){
 				return range<T>(0, to, step);
 			}
 
+			/**
+			 * Generate a range from the given value to 0
+			 * @tparam T being the type of the elements of the range
+			 * @param from being the initial value
+			 * @param step being the increment
+			 * @return a stream that generates the range's values
+			 */
 			template <class T = int, class = META::enable_if_t<META::is_arithmetic<T>()>>
 			Stream<T> rangeFrom(T from, T step = -1){
 				return range<T>(from, 0, step);
 			}
 
+			/**
+			 * Generate a range from the given value to +inf
+			 * @tparam T being the type of the elements of the range
+			 * @param from being the initial value
+			 * @param to being the last value
+			 * @param step being the increment
+			 * @return a stream that generates the range's values
+			 */
 			template <class T = double, class = META::enable_if_t<
 				META::is_arithmetic<T>()
 				&& std::numeric_limits<T>::has_infinity

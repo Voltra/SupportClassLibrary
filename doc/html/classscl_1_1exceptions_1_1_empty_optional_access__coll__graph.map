@@ -1,0 +1,4 @@
+<map id="scl::exceptions::EmptyOptionalAccess" name="scl::exceptions::EmptyOptionalAccess">
+<area shape="rect" id="node2" href="$classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. " alt="" coords="19,155,195,181"/>
+<area shape="rect" id="node3" href="$structscl_1_1exceptions_1_1_throwable.html" title="Base class of all throwable objects. " alt="" coords="19,80,195,107"/>
+</map>

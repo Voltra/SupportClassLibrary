@@ -10,10 +10,10 @@ namespace scl{
 		namespace creators{
 			namespace details{
 				/**
-			 * Creator for std::array
-			 * @tparam T being the type of data
-			 * @tparam N being the amount of data
-			 */
+				 * Creator for std::array
+				 * @tparam T being the type of data
+				 * @tparam N being the amount of data
+				 */
 				template <class T, size_t N>
 				class FromArrayIterator : public scl::stream::details::iterator::BaseStreamIterator<T>{
 					public:

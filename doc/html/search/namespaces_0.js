@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['cli',['cli',['../namespacescl_1_1cli.html',1,'scl']]],
+  ['concepts',['concepts',['../namespacescl_1_1concepts.html',1,'scl']]],
+  ['console',['console',['../namespacescl_1_1console.html',1,'scl']]],
+  ['creators',['creators',['../namespacescl_1_1stream_1_1creators.html',1,'scl::stream']]],
+  ['details',['details',['../namespacescl_1_1stream_1_1creators_1_1details.html',1,'scl::stream::creators::details'],['../namespacescl_1_1stream_1_1details.html',1,'scl::stream::details'],['../namespacescl_1_1stream_1_1terminators_1_1details.html',1,'scl::stream::terminators::details']]],
+  ['exceptions',['exceptions',['../namespacescl_1_1exceptions.html',1,'scl']]],
+  ['iostream',['iostream',['../namespacescl_1_1tools_1_1iostream.html',1,'scl::tools']]],
+  ['iterator',['iterator',['../namespacescl_1_1stream_1_1details_1_1iterator.html',1,'scl::stream::details']]],
+  ['log',['log',['../namespacescl_1_1tools_1_1iostream_1_1log.html',1,'scl::tools::iostream']]],
+  ['make',['make',['../namespacescl_1_1tools_1_1make.html',1,'scl::tools']]],
+  ['meta',['meta',['../namespacescl_1_1tools_1_1meta.html',1,'scl::tools']]],
+  ['operators',['operators',['../namespacescl_1_1stream_1_1operators.html',1,'scl::stream']]],
+  ['pack',['pack',['../namespacescl_1_1stream_1_1terminators_1_1pack.html',1,'scl::stream::terminators']]],
+  ['placeholder',['placeholder',['../namespacescl_1_1utils_1_1placeholder.html',1,'scl::utils']]],
+  ['prefixed',['prefixed',['../namespacescl_1_1tools_1_1iostream_1_1log_1_1prefixed.html',1,'scl::tools::iostream::log']]],
+  ['scl',['scl',['../namespacescl.html',1,'']]],
+  ['stream',['stream',['../namespacescl_1_1stream.html',1,'scl']]],
+  ['surrounded',['surrounded',['../namespacescl_1_1tools_1_1iostream_1_1log_1_1surrounded.html',1,'scl::tools::iostream::log']]],
+  ['terminators',['terminators',['../namespacescl_1_1stream_1_1terminators.html',1,'scl::stream']]],
+  ['tools',['tools',['../namespacescl_1_1tools.html',1,'scl']]],
+  ['utils',['utils',['../namespacescl_1_1utils.html',1,'scl']]],
+  ['wrap',['wrap',['../namespacescl_1_1tools_1_1iostream_1_1log_1_1wrap.html',1,'scl::tools::iostream::log']]]
+];

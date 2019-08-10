@@ -20,8 +20,6 @@ namespace scl{
 							this->alt = std::move(gen());
 							generated = true;
 						}
-
-
 					}
 
 				public:
@@ -80,8 +78,22 @@ namespace scl{
 					}
 
 				protected:
+					/**
+					 * @var gen
+					 * The producer function that gives an optional result
+					 */
 					producer gen;
+
+					/**
+					 * @var alt
+					 * The optional result (as a cache)
+					 */
 					mutable alternative alt;
+
+					/**
+					 * @var generated
+					 * Computation cache flag
+					 */
 					mutable bool generated = false;
 			};
 		}

@@ -1,0 +1,10 @@
+<map id="scl::exceptions::Throwable" name="scl::exceptions::Throwable">
+<area shape="rect" id="node3" href="$classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. " alt="" coords="381,137,557,163"/>
+<area shape="rect" id="node10" href="$classscl_1_1exceptions_1_1_runtime_exception.html" title="Base class for exceptions that could never be checked at compile&#45;time. " alt="" coords="386,188,553,229"/>
+<area shape="rect" id="node4" href="$classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. " alt="" coords="605,5,809,47"/>
+<area shape="rect" id="node5" href="$classscl_1_1exceptions_1_1_invalid_argument.html" title="Exception class used when passing an argument that does not respect the preconditions. " alt="" coords="631,71,784,112"/>
+<area shape="rect" id="node6" href="$classscl_1_1exceptions_1_1_invalid_cast.html" title="Exception class used when a conversion is impossible. " alt="" coords="617,137,797,163"/>
+<area shape="rect" id="node8" href="$classscl_1_1exceptions_1_1_invalid_either_access.html" title="Exception class used when attempting to access the wrong type stored in an scl::utils::Either. " alt="" coords="631,188,784,229"/>
+<area shape="rect" id="node9" href="$classscl_1_1exceptions_1_1_out_of_bound.html" title="Exception class used when attempting to access elements out of bounds (eg. " alt="" coords="613,254,802,281"/>
+<area shape="rect" id="node7" href="$classscl_1_1exceptions_1_1_invalid_any_cast.html" title="Exception class used when attempting to cast an Any to the wrong type. " alt="" coords="857,129,1011,171"/>
+</map>

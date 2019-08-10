@@ -1,0 +1,16 @@
+<map id="scl::stream::details::iterator::StreamIterator&lt; T &gt;" name="scl::stream::details::iterator::StreamIterator&lt; T &gt;">
+<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="EndStreamIterator\&lt;\l std::set\&lt; T \&gt;, T \&gt;" alt="" coords="287,5,422,47"/>
+<area shape="rect" id="node4" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="EndStreamIterator\&lt;\l std::vector\&lt; T \&gt;, T \&gt;" alt="" coords="283,71,427,112"/>
+<area shape="rect" id="node6" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="EndStreamIterator\&lt;\l void, T \&gt;" alt="" coords="287,136,422,177"/>
+<area shape="rect" id="node8" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="A class for iterators that start a stream chain. " alt="" coords="244,228,465,269"/>
+<area shape="rect" id="node15" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="A class for iterators used in end operations. " alt="" coords="247,293,462,335"/>
+<area shape="rect" id="node3" href="$classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_set_packer.html" title="scl::stream::terminators\l::pack::details::SetPacker\&lt; T \&gt;" alt="" coords="523,5,727,47"/>
+<area shape="rect" id="node5" href="$classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html" title="scl::stream::terminators\l::pack::details::VectorPacker\&lt; T \&gt;" alt="" coords="513,71,736,112"/>
+<area shape="rect" id="node7" href="$classscl_1_1stream_1_1terminators_1_1_for_each_terminator.html" title="scl::stream::terminators\l::ForEachTerminator\&lt; T \&gt;" alt="" coords="539,136,710,177"/>
+<area shape="rect" id="node9" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="OpStreamIterator\&lt; T \&gt;" alt="" coords="549,202,701,229"/>
+<area shape="rect" id="node12" href="$classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html" title="Creator for std::array. " alt="" coords="521,253,729,295"/>
+<area shape="rect" id="node13" href="$classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html" title="Creator for a numeric range. " alt="" coords="531,319,718,360"/>
+<area shape="rect" id="node14" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="Iterator powering an intermediate operation. " alt="" coords="521,384,729,425"/>
+<area shape="rect" id="node10" href="$classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html" title="scl::stream::operators\l::details::UniqueByOperator\l\&lt; T, U \&gt;" alt="" coords="784,151,967,207"/>
+<area shape="rect" id="node11" href="$classscl_1_1stream_1_1operators_1_1_filter_operator.html" title="scl::stream::operators\l::FilterOperator\&lt; T \&gt;" alt="" coords="801,232,950,273"/>
+</map>
