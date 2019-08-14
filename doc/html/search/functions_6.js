@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['hasleft',['hasLeft',['../classscl_1_1utils_1_1_either.html#ab51ed3d5d7e0a2d792dca3a8685e2f78',1,'scl::utils::Either']]],
-  ['hasnext',['hasNext',['../classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html#ac2fb4255bbf236f6bdfc2d52514b8f0b',1,'scl::stream::creators::details::FromArrayIterator::hasNext()'],['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html#a961f5995413427394cb4e88107a0b456',1,'scl::stream::creators::details::RangeCreator::hasNext()'],['../classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html#a9dd92e5e845c9918671aed889e885212',1,'scl::stream::creators::details::FromStlIterator::hasNext()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a9bd2a44530f7d90615eab4ff88cf78af',1,'scl::stream::details::iterator::EndStreamIterator::hasNext()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#a79eaa7c9a5bbcc64949b74a7076bb310',1,'scl::stream::details::iterator::OpStreamIterator::hasNext()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#ae3fd9524e519360b60d1da794818f3e3',1,'scl::stream::details::iterator::StreamIterator::hasNext()']]],
-  ['hasright',['hasRight',['../classscl_1_1utils_1_1_either.html#a767c41f64e59b2ccce7d5955e20f4404',1,'scl::utils::Either']]],
-  ['hasvalue',['hasValue',['../classscl_1_1utils_1_1_optional.html#a5915d82ff353ef8ebb4d3ae3ae9a8ef6',1,'scl::utils::Optional']]]
+  ['get',['get',['../classscl_1_1utils_1_1_optional.html#a9e5a56aae89adf8933e21c65b211ece2',1,'scl::utils::Optional::get() const'],['../classscl_1_1utils_1_1_optional.html#a1f62d19f7f239988e2f2d0801bd6c961',1,'scl::utils::Optional::get()']]],
+  ['getleft',['getLeft',['../classscl_1_1utils_1_1_either.html#a23b2bb410c2680a7c22d463f3bdce307',1,'scl::utils::Either']]],
+  ['getright',['getRight',['../classscl_1_1utils_1_1_either.html#a08fe3fb9c2cd97767a22f7c5093054ef',1,'scl::utils::Either']]]
 ];

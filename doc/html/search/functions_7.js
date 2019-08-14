@@ -1,15 +1,7 @@
 var searchData=
 [
-  ['infiniterange',['infiniteRange',['../namespacescl_1_1stream_1_1creators.html#a5d9acf32a922b6662c620c50c0158497',1,'scl::stream::creators']]],
-  ['is_5fbase_5fof',['is_base_of',['../namespacescl_1_1tools_1_1meta.html#a92a177852fe95f322266420e143829a6',1,'scl::tools::meta']]],
-  ['is_5fconcept',['is_concept',['../namespacescl_1_1concepts.html#ad4648f0bded717fe938407724fd6f702',1,'scl::concepts']]],
-  ['is_5fconvertible',['is_convertible',['../namespacescl_1_1tools_1_1meta.html#ad00459e04b41eab90de7a4280293c03f',1,'scl::tools::meta']]],
-  ['is_5fcopyable',['is_copyable',['../namespacescl_1_1tools_1_1meta.html#a6efb6d3bec90eda4f614a2d405a2a15f',1,'scl::tools::meta']]],
-  ['is_5finstance',['is_instance',['../namespacescl_1_1tools_1_1meta.html#ac63ee15663a6f40c269e7be6d0df5392',1,'scl::tools::meta']]],
-  ['is_5fmovable',['is_movable',['../namespacescl_1_1tools_1_1meta.html#aa9eac95fcc8abd7696ea21f88fcc0cc8',1,'scl::tools::meta']]],
-  ['is_5fsame',['is_same',['../namespacescl_1_1tools_1_1meta.html#aec4ebd2fde8aa8caa3b244335b6dbcd0',1,'scl::tools::meta']]],
-  ['is_5ftrivially_5fmovable',['is_trivially_movable',['../namespacescl_1_1tools_1_1meta.html#adc78ff2ff09a688772759d2bb27322ea',1,'scl::tools::meta']]],
-  ['isinvalid',['isInvalid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a76f23b8299d9455556ad4e1623c25de9',1,'scl::stream::details::StreamIteratorPayload']]],
-  ['isvalid',['isValid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#ad43ad1fc2452e1964ee1442e0698168d',1,'scl::stream::details::StreamIteratorPayload']]],
-  ['it',['it',['../classscl_1_1stream_1_1_stream.html#a3da4fc6b7c26ffb5883234dd7513e553',1,'scl::stream::Stream']]]
+  ['hasleft',['hasLeft',['../classscl_1_1utils_1_1_either.html#ab51ed3d5d7e0a2d792dca3a8685e2f78',1,'scl::utils::Either']]],
+  ['hasnext',['hasNext',['../classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html#ac2fb4255bbf236f6bdfc2d52514b8f0b',1,'scl::stream::creators::details::FromArrayIterator::hasNext()'],['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html#a961f5995413427394cb4e88107a0b456',1,'scl::stream::creators::details::RangeCreator::hasNext()'],['../classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html#a9dd92e5e845c9918671aed889e885212',1,'scl::stream::creators::details::FromStlIterator::hasNext()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a9bd2a44530f7d90615eab4ff88cf78af',1,'scl::stream::details::iterator::EndStreamIterator::hasNext()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#a79eaa7c9a5bbcc64949b74a7076bb310',1,'scl::stream::details::iterator::OpStreamIterator::hasNext()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#ae3fd9524e519360b60d1da794818f3e3',1,'scl::stream::details::iterator::StreamIterator::hasNext()']]],
+  ['hasright',['hasRight',['../classscl_1_1utils_1_1_either.html#a767c41f64e59b2ccce7d5955e20f4404',1,'scl::utils::Either']]],
+  ['hasvalue',['hasValue',['../classscl_1_1utils_1_1_optional.html#a5915d82ff353ef8ebb4d3ae3ae9a8ef6',1,'scl::utils::Optional']]]
 ];

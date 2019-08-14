@@ -3,9 +3,9 @@ var indexSectionsWithContent =
   0: "_abcdefghilmnoprstuvw",
   1: "_abcdefhilmnoprstuv",
   2: "s",
-  3: "acdefghilmnoprstuvw",
+  3: "abcdefghilmnoprstuvw",
   4: "agilnptv",
-  5: "cefimprv",
+  5: "acdefimprv",
   6: "ds"
 };
 

@@ -7,6 +7,7 @@ var searchData=
   ['real_5fconst',['real_const',['../structscl_1_1tools_1_1meta_1_1real__const.html',1,'scl::tools::meta']]],
   ['real_5fconst_3c_20t_20_2a_2c_20void_20_3e',['real_const&lt; T *, void &gt;',['../structscl_1_1tools_1_1meta_1_1real__const_3_01_t_01_5_00_01void_01_4.html',1,'scl::tools::meta']]],
   ['reason',['reason',['../classscl_1_1exceptions_1_1_exception.html#ac0e6737c519a544b4eda254c08b64210',1,'scl::exceptions::Exception::reason()'],['../classscl_1_1exceptions_1_1_runtime_exception.html#a2ed7af0d1333d04996d80c0d59c1807b',1,'scl::exceptions::RuntimeException::reason()'],['../structscl_1_1exceptions_1_1_throwable.html#a4c5b52ab284079d4a89f3d8643573495',1,'scl::exceptions::Throwable::reason()']]],
+  ['reference',['reference',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a1894fd1ae4f24593f0ea3c3370ac0fc6',1,'scl::stream::details::iterator::StlAdapter']]],
   ['regular',['Regular',['../structscl_1_1concepts_1_1_regular.html',1,'scl::concepts']]],
   ['regularinvocable',['RegularInvocable',['../structscl_1_1concepts_1_1_regular_invocable.html',1,'scl::concepts']]],
   ['relation',['Relation',['../structscl_1_1concepts_1_1_relation.html',1,'scl::concepts']]],

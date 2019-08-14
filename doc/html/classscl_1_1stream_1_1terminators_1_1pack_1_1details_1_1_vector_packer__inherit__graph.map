@@ -1,4 +1,4 @@
-<map id="scl::stream::terminators::pack::details::VectorPacker&lt; T &gt;" name="scl::stream::terminators::pack::details::VectorPacker&lt; T &gt;">
-<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="scl::stream::details\l::iterator::EndStreamIterator\l\&lt; std::vector\&lt; T \&gt;, T \&gt;" alt="" coords="25,95,208,151"/>
-<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="21,5,212,47"/>
+<map id="scl::stream::terminators::pack::details::VectorPacker&lt; T, Allocator &gt;" name="scl::stream::terminators::pack::details::VectorPacker&lt; T, Allocator &gt;">
+<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="scl::stream::details\l::iterator::EndStreamIterator\l\&lt; std::vector\&lt; T, Allocator \&gt;, T \&gt;" alt="" coords="244,5,455,61"/>
+<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="5,13,196,54"/>
 </map>

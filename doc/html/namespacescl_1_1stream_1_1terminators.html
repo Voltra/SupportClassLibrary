@@ -107,14 +107,120 @@ template&lt;class T &gt; </td></tr>
 template&lt;class T &gt; </td></tr>
 <tr class="memitem:ac9481c1e2de9e9bd2be2f23e6ebce5be"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_set_packer.html">pack::details::SetPacker</a>&lt; T &gt;::result_type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator|</b> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__set__toolbox.html">pack::details::to_set_toolbox</a> &amp;_)</td></tr>
 <tr class="separator:ac9481c1e2de9e9bd2be2f23e6ebce5be"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab20ecc1ab6188b7048c036134fbcd4a1"><td class="memTemplParams" colspan="2"><a id="ab20ecc1ab6188b7048c036134fbcd4a1"></a>
-template&lt;class T &gt; </td></tr>
-<tr class="memitem:ab20ecc1ab6188b7048c036134fbcd4a1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html">pack::details::VectorPacker</a>&lt; T &gt;::result_type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator|</b> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__vector__toolbox.html">pack::details::to_vector_toolbox</a> &amp;_)</td></tr>
+<tr class="memitem:af7c30907d24faa7a9d4078194dce3568"><td class="memTemplParams" colspan="2"><a id="af7c30907d24faa7a9d4078194dce3568"></a>
+template&lt;class T , class Compare , class Allocator &gt; </td></tr>
+<tr class="memitem:af7c30907d24faa7a9d4078194dce3568"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_set_packer.html">pack::details::SetPacker</a>&lt; T &gt;::result_type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator|</b> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__set__toolbox__alloc.html">pack::details::to_set_toolbox_alloc</a>&lt; Compare, Allocator &gt; &amp;_)</td></tr>
+<tr class="separator:af7c30907d24faa7a9d4078194dce3568"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab20ecc1ab6188b7048c036134fbcd4a1"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:ab20ecc1ab6188b7048c036134fbcd4a1"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html">pack::details::VectorPacker</a>&lt; T &gt;::result_type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1terminators.html#ab20ecc1ab6188b7048c036134fbcd4a1">operator|</a> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__vector__toolbox.html">pack::details::to_vector_toolbox</a> &amp;_)</td></tr>
+<tr class="memdesc:ab20ecc1ab6188b7048c036134fbcd4a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pipe operator for packing into a vector.  <a href="#ab20ecc1ab6188b7048c036134fbcd4a1">More...</a><br /></td></tr>
 <tr class="separator:ab20ecc1ab6188b7048c036134fbcd4a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c1ef728e48f5ef99eae0112b447bac4"><td class="memTemplParams" colspan="2">template&lt;class T , class Allocator &gt; </td></tr>
+<tr class="memitem:a0c1ef728e48f5ef99eae0112b447bac4"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html">pack::details::VectorPacker</a>&lt; T, Allocator &gt;::result_type&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1terminators.html#a0c1ef728e48f5ef99eae0112b447bac4">operator|</a> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__vector__toolbox__alloc.html">pack::details::to_vector_toolbox_alloc</a>&lt; Allocator &gt; &amp;_)</td></tr>
+<tr class="memdesc:a0c1ef728e48f5ef99eae0112b447bac4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pipe operator or packing into a vector using a specific allocator.  <a href="#a0c1ef728e48f5ef99eae0112b447bac4">More...</a><br /></td></tr>
+<tr class="separator:a0c1ef728e48f5ef99eae0112b447bac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Namespace for stream terminal/final operations. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ab20ecc1ab6188b7048c036134fbcd4a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab20ecc1ab6188b7048c036134fbcd4a1">&#9670;&nbsp;</a></span>operator|() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html">pack::details::VectorPacker</a>&lt;T&gt;::result_type scl::stream::terminators::operator| </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__vector__toolbox.html">pack::details::to_vector_toolbox</a> &amp;&#160;</td>
+          <td class="paramname"><em>_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pipe operator for packing into a vector. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the value type of the stream </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>being the stream to pack </td></tr>
+    <tr><td class="paramname">_</td><td>being the packer type tag </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the elements from the stream </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="to_vector_8h_source.html#l00083">83</a> of file <a class="el" href="to_vector_8h_source.html">toVector.h</a>.</p>
+
+</div>
+</div>
+<a id="a0c1ef728e48f5ef99eae0112b447bac4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c1ef728e48f5ef99eae0112b447bac4">&#9670;&nbsp;</a></span>operator|() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class Allocator &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html">pack::details::VectorPacker</a>&lt;T, Allocator&gt;::result_type scl::stream::terminators::operator| </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>lhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="structscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1to__vector__toolbox__alloc.html">pack::details::to_vector_toolbox_alloc</a>&lt; Allocator &gt; &amp;&#160;</td>
+          <td class="paramname"><em>_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Pipe operator or packing into a vector using a specific allocator. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the value type of the stream </td></tr>
+    <tr><td class="paramname">Allocator</td><td>being the type of allocator to use </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lhs</td><td>being the stream to pack </td></tr>
+    <tr><td class="paramname">_</td><td>being the packer type tag </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a vector containing the elements from the stream </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="to_vector_8h_source.html#l00097">97</a> of file <a class="el" href="to_vector_8h_source.html">toVector.h</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

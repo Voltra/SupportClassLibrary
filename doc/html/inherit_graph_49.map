@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html" title="A class representing a stream iterator&#39;s payload. " alt="" coords="5,5,196,47"/>
+<area shape="rect" id="node1" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="scl::stream::details\l::iterator::StreamIterator\&lt; U \&gt;" alt="" coords="5,13,199,54"/>
+<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="scl::stream::details\l::iterator::BaseStreamIterator\&lt; U \&gt;" alt="" coords="247,13,469,54"/>
+<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\l\&lt; U, T \&gt;" alt="" coords="517,5,695,61"/>
+<area shape="rect" id="node4" href="$classscl_1_1stream_1_1operators_1_1_map_operator.html" title="scl::stream::operators\l::MapOperator\&lt; T, U \&gt;" alt="" coords="743,13,896,54"/>
 </map>

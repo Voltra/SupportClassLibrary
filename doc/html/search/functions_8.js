@@ -1,8 +1,15 @@
 var searchData=
 [
-  ['left',['left',['../classscl_1_1utils_1_1_either.html#a7be53dd97ba40916e017c90785b3c1f8',1,'scl::utils::Either::left(L &amp;&amp;lhs)'],['../classscl_1_1utils_1_1_either.html#ad2106e80e2cd760c47fe9bc7f842a28f',1,'scl::utils::Either::Left(L &amp;&amp;lhs)']]],
-  ['leftor',['leftOr',['../classscl_1_1utils_1_1_either.html#a5a00a3e2fd71c7e4a309aa59ac92f91d',1,'scl::utils::Either']]],
-  ['leftvoidvisitor',['leftVoidVisitor',['../classscl_1_1utils_1_1_either.html#ab001542770e06920b2ce17c11543d9d6',1,'scl::utils::Either']]],
-  ['leftwhenright',['leftWhenRight',['../classscl_1_1exceptions_1_1_invalid_either_access.html#a05db9b881564f32a6c97208c81aad6c9',1,'scl::exceptions::InvalidEitherAccess']]],
-  ['log',['log',['../namespacescl_1_1tools_1_1iostream_1_1log.html#a46161c73b6fdfa03ae31c25217ce9f26',1,'scl::tools::iostream::log::log()'],['../namespacescl_1_1tools_1_1iostream_1_1log_1_1prefixed.html#a7b471dd61b6ea169e936947473b21b35',1,'scl::tools::iostream::log::prefixed::log()'],['../namespacescl_1_1tools_1_1iostream_1_1log_1_1surrounded.html#aa90fe2b6993faea3e84185e84a5af1d0',1,'scl::tools::iostream::log::surrounded::log()']]]
+  ['infiniterange',['infiniteRange',['../namespacescl_1_1stream_1_1creators.html#a5d9acf32a922b6662c620c50c0158497',1,'scl::stream::creators']]],
+  ['is_5fbase_5fof',['is_base_of',['../namespacescl_1_1tools_1_1meta.html#a92a177852fe95f322266420e143829a6',1,'scl::tools::meta']]],
+  ['is_5fconcept',['is_concept',['../namespacescl_1_1concepts.html#ad4648f0bded717fe938407724fd6f702',1,'scl::concepts']]],
+  ['is_5fconvertible',['is_convertible',['../namespacescl_1_1tools_1_1meta.html#ad00459e04b41eab90de7a4280293c03f',1,'scl::tools::meta']]],
+  ['is_5fcopyable',['is_copyable',['../namespacescl_1_1tools_1_1meta.html#a6efb6d3bec90eda4f614a2d405a2a15f',1,'scl::tools::meta']]],
+  ['is_5finstance',['is_instance',['../namespacescl_1_1tools_1_1meta.html#ac63ee15663a6f40c269e7be6d0df5392',1,'scl::tools::meta']]],
+  ['is_5fmovable',['is_movable',['../namespacescl_1_1tools_1_1meta.html#aa9eac95fcc8abd7696ea21f88fcc0cc8',1,'scl::tools::meta']]],
+  ['is_5fsame',['is_same',['../namespacescl_1_1tools_1_1meta.html#aec4ebd2fde8aa8caa3b244335b6dbcd0',1,'scl::tools::meta']]],
+  ['is_5ftrivially_5fmovable',['is_trivially_movable',['../namespacescl_1_1tools_1_1meta.html#adc78ff2ff09a688772759d2bb27322ea',1,'scl::tools::meta']]],
+  ['isinvalid',['isInvalid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a76f23b8299d9455556ad4e1623c25de9',1,'scl::stream::details::StreamIteratorPayload']]],
+  ['isvalid',['isValid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#ad43ad1fc2452e1964ee1442e0698168d',1,'scl::stream::details::StreamIteratorPayload']]],
+  ['it',['it',['../classscl_1_1stream_1_1_stream.html#a3da4fc6b7c26ffb5883234dd7513e553',1,'scl::stream::Stream']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['fn_5ftype',['fn_type',['../namespacescl_1_1tools_1_1meta.html#a964327170ed6871c5ffec45a7a8b94f7',1,'scl::tools::meta']]]
+  ['difference_5ftype',['difference_type',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a7b4f387212bf1381e64ff1754163ef76',1,'scl::stream::details::iterator::StlAdapter']]]
 ];

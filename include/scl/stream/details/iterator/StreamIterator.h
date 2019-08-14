@@ -2,12 +2,14 @@
 
 #include <scl/stream/details/payload.h>
 #include <scl/macros.h>
-#include <scl/stream/details/iterator/StlAdapter.h>
 
 namespace scl{
 	namespace stream{
 		namespace details{
 			namespace iterator{
+				template <class>
+				class StlAdapter;
+
 				/**
 				 * Abstract base class for stream iterators defining the required behavior
 				 * @tparam T being the type manipulated throughout the stream

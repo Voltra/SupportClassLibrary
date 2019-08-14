@@ -12,8 +12,8 @@ namespace scl{
 	}
 }
 
-#include <scl/stream/details/iterator/StlAdapter.h>
 #include <scl/stream/details/iterator/StreamIterator.h>
+#include <scl/stream/details/iterator/StlAdapter.h>
 #include <scl/stream/details/iterator/EndStreamIterator.h>
 #include <scl/stream/details/iterator/BaseStreamIterator.h>
 #include <scl/stream/details/iterator/OpStreamIterator.h>

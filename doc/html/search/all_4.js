@@ -7,6 +7,7 @@ var searchData=
   ['deprecated_20list',['Deprecated List',['../deprecated.html',1,'']]],
   ['derivedfrom',['DerivedFrom',['../structscl_1_1concepts_1_1_derived_from.html',1,'scl::concepts']]],
   ['destructible',['Destructible',['../structscl_1_1concepts_1_1_destructible.html',1,'scl::concepts']]],
+  ['difference_5ftype',['difference_type',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a7b4f387212bf1381e64ff1754163ef76',1,'scl::stream::details::iterator::StlAdapter']]],
   ['doifempty',['doIfEmpty',['../classscl_1_1utils_1_1_optional.html#a2bb5732dc1585766225f81a3a17f8bee',1,'scl::utils::Optional']]],
   ['doifleft',['doIfLeft',['../classscl_1_1utils_1_1_either.html#a883500a272f5c4b16c28e9ee4b1d4bbe',1,'scl::utils::Either']]],
   ['doifpresent',['doIfPresent',['../classscl_1_1utils_1_1_optional.html#a4a4f9082b8d082d1249aea2783d821b5',1,'scl::utils::Optional']]],

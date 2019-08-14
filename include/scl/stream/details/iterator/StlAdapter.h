@@ -1,6 +1,6 @@
 #pragma once
 #include <iterator>
-#include "StreamIterator.h"
+#include <scl/stream/details/iterator/StreamIterator.h>
 
 namespace scl{
 	namespace stream{

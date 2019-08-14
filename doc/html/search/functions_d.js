@@ -1,14 +1,8 @@
 var searchData=
 [
-  ['range',['range',['../namespacescl_1_1stream_1_1creators.html#abf20df5b9af434d1071f654326114847',1,'scl::stream::creators']]],
-  ['rangecreator',['RangeCreator',['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html#a432d5bcce09d88c3da84cca96107d184',1,'scl::stream::creators::details::RangeCreator']]],
-  ['rangefrom',['rangeFrom',['../namespacescl_1_1stream_1_1creators.html#a62d9c015bba89c34ad44c01a7bd4a206',1,'scl::stream::creators']]],
-  ['rangeto',['rangeTo',['../namespacescl_1_1stream_1_1creators.html#adb1c17233149c841279dda17f8772692',1,'scl::stream::creators']]],
-  ['reason',['reason',['../classscl_1_1exceptions_1_1_exception.html#ac0e6737c519a544b4eda254c08b64210',1,'scl::exceptions::Exception::reason()'],['../classscl_1_1exceptions_1_1_runtime_exception.html#a2ed7af0d1333d04996d80c0d59c1807b',1,'scl::exceptions::RuntimeException::reason()'],['../structscl_1_1exceptions_1_1_throwable.html#a4c5b52ab284079d4a89f3d8643573495',1,'scl::exceptions::Throwable::reason()']]],
-  ['require',['require',['../namespacescl_1_1concepts.html#afb5e44daaa911284f0f20c70e9f9ec0a',1,'scl::concepts']]],
-  ['right',['right',['../classscl_1_1utils_1_1_either.html#a878c45108c8d1247112e0c3320dc317a',1,'scl::utils::Either::right(R &amp;&amp;rhs)'],['../classscl_1_1utils_1_1_either.html#a186826a20ae59114e261dca7c8586cb7',1,'scl::utils::Either::Right(R &amp;&amp;rhs)']]],
-  ['rightor',['rightOr',['../classscl_1_1utils_1_1_either.html#a67d2920dd2ecdcf9c22ebf0fdb68fcdc',1,'scl::utils::Either']]],
-  ['rightvoidvisitor',['rightVoidVisitor',['../classscl_1_1utils_1_1_either.html#afd9eba423211974b35b8df25592cecf7',1,'scl::utils::Either']]],
-  ['rightwhenleft',['rightWhenLeft',['../classscl_1_1exceptions_1_1_invalid_either_access.html#a74fa3b565e5e1868d3973448a75c13db',1,'scl::exceptions::InvalidEitherAccess']]],
-  ['runtimeexception',['RuntimeException',['../classscl_1_1exceptions_1_1_runtime_exception.html#ae8e0ff40973531b366a9f68f85be8f1f',1,'scl::exceptions::RuntimeException']]]
+  ['parent',['parent',['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a192f316ec4d95f786f43e72aa5abd588',1,'scl::stream::details::iterator::EndStreamIterator::parent()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#a55bfa7ace7a1c05ec92df9152b630173',1,'scl::stream::details::iterator::OpStreamIterator::parent()']]],
+  ['placeholder',['Placeholder',['../structscl_1_1utils_1_1_placeholder.html#aedab31308f8432c77e0398c929660d26',1,'scl::utils::Placeholder']]],
+  ['process',['process',['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a5251fc785e21dcafa5b2ac82f7742ca1',1,'scl::stream::details::iterator::EndStreamIterator::process()'],['../classscl_1_1stream_1_1terminators_1_1_for_each_terminator.html#a99a7e8433a72b51ca3a9f2297178f89d',1,'scl::stream::terminators::ForEachTerminator::process()'],['../classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_set_packer.html#add4a3c998e1853b85a79cfebb34d374d',1,'scl::stream::terminators::pack::details::SetPacker::process()'],['../classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html#a1c28209b1682a98b8ea1f1771be4e329',1,'scl::stream::terminators::pack::details::VectorPacker::process()']]],
+  ['promise',['promise',['../namespacescl_1_1tools_1_1make.html#ad847acc80bfc1716b11ac6b557d72355',1,'scl::tools::make']]],
+  ['ptr',['ptr',['../classscl_1_1utils_1_1_optional.html#adaa5cecfff2dff929e3bc45c931cebb7',1,'scl::utils::Optional::ptr() const'],['../classscl_1_1utils_1_1_optional.html#a4c7da34c0e145f8979a8a8dd6747bf17',1,'scl::utils::Optional::ptr()'],['../namespacescl_1_1tools_1_1make.html#a664d8444b6128f8916c8e1852fbdecc5',1,'scl::tools::make::ptr()']]]
 ];
