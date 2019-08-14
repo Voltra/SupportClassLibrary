@@ -2,6 +2,7 @@
 
 #include <scl/stream/details/payload.h>
 #include <scl/macros.h>
+#include <scl/stream/details/iterator/StlAdapter.h>
 
 namespace scl{
 	namespace stream{
@@ -39,6 +40,22 @@ namespace scl{
 						 * @return the payload
 						 */
 						virtual payload_type next() = 0;
+
+						/**
+						 * Retrieve a stl-like iterator for this stream iterator
+						 * @return an iterator for the current state of this stream iterator
+						 */
+						StlAdapter<T> begin(){
+							return {this};
+						}
+
+						/**
+						 * Retrieve a stl-like iterator for the end of this stream iterator
+						 * @return an iterator for the invalid/end state of this stream iterator
+						 */
+						StlAdapter<T> end(){
+							return {};
+						}
 				};
 			}
 		}
