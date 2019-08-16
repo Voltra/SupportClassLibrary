@@ -22,6 +22,7 @@ var searchData=
   ['shared',['shared',['../namespacescl_1_1tools_1_1make.html#a493f31efda83addb7dcb61f90c5dc471',1,'scl::tools::make']]],
   ['signed',['Signed',['../structscl_1_1concepts_1_1_signed.html',1,'scl::concepts']]],
   ['signedintegral',['SignedIntegral',['../structscl_1_1concepts_1_1_signed_integral.html',1,'scl::concepts']]],
+  ['some',['some',['../namespacescl_1_1tools_1_1make.html#a38dcb92f7f9037623dfaffb10c5d0b1b',1,'scl::tools::make']]],
   ['step',['step',['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html#ac68af1d3c62042791430fd40105d14ac',1,'scl::stream::creators::details::RangeCreator']]],
   ['stladapter',['StlAdapter',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html',1,'scl::stream::details::iterator::StlAdapter&lt; T &gt;'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a39a937457fcf28e99955b14582be9bdb',1,'scl::stream::details::iterator::StlAdapter::StlAdapter(iterator_type *sit=nullptr)'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a0dacd503642976389a600c8f452e6272',1,'scl::stream::details::iterator::StlAdapter::StlAdapter(iterator_type *sit, payload_type payload)']]],
   ['stream',['Stream',['../classscl_1_1stream_1_1_stream.html',1,'scl::stream::Stream&lt; T &gt;'],['../namespacescl_1_1stream.html',1,'scl::stream'],['../classscl_1_1stream_1_1_stream.html#aa7ccb9b38bf57c6f148669d42fc5e729',1,'scl::stream::Stream::Stream()']]],
