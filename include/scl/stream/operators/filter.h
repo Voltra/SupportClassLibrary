@@ -10,6 +10,10 @@
 namespace scl{
 	namespace stream{
 		namespace operators{
+			/**
+			 * Filter operation
+			 * @tparam T being the type of values to filter
+			 */
 			template <class T>
 			class FilterOperator : public scl::stream::details::iterator::OpStreamIterator<T>{
 				public:
@@ -18,8 +22,17 @@ namespace scl{
 					using payload_type = typename iterator_type::payload_type;
 					using parent_iterator_type = typename iterator_type::parent_iterator_type;
 
+					/**
+					 * @typedef predicate_type
+					 * The function type used to determine whether to keep the value or not
+					 */
 					using predicate_type = std::function<bool(const value_type&)>;
 
+					/**
+					 * Construct a filter operation from a parent iterator and a predicate
+					 * @param p being this iterator's parent
+					 * @param pred being the predicate to fulfill
+					 */
 					FilterOperator(parent_iterator_type& p, predicate_type pred) : iterator_type{p}, pred{pred} {
 					}
 
@@ -40,13 +53,33 @@ namespace scl{
 			};
 
 			namespace details{
+				/**
+				 * Tag type for filter operations
+				 * @tparam T being the value type
+				 */
 				template <class T>
 				struct filter_toolbox{
+					/**
+					 * @typedef pred_t
+					 * The predicate type
+					 */
 					using pred_t = typename FilterOperator<T>::predicate_type;
+
+					/**
+					 * @var pred being the predicate
+					 */
 					pred_t pred;
 				};
 			}
 
+			/**
+			 * Filter a stream
+			 * @tparam F being the type of the callable (deduced)
+			 * @tparam Fn being the function wrapper type (computed)
+			 * @tparam T being the value type (computed)
+			 * @param predicate being the predicate to use
+			 * @return a filter toolbox tag for pipe operator
+			 */
 			template <
 				class F,
 				class Fn = decltype(META::as_fn(std::declval<F>())),
@@ -56,11 +89,24 @@ namespace scl{
 				return {META::as_fn(predicate)};
 			}
 
+			/**
+			 * Filter a stream by explicitly giving the type arguments
+			 * @tparam T being the value type
+			 * @param pred being the predicate to use for filtering
+			 * @return a filter toolbox tag for pipe operator
+			 */
 			template <class T>
 			details::filter_toolbox<T> filter_(typename details::filter_toolbox<T>::pred_t pred){
 				return {pred};
 			}
 
+			/**
+			 * Pipe operator overload for filter operations
+			 * @tparam T being the value type
+			 * @param lhs being the stream to filter
+			 * @param rhs being the filter toolbox tag
+			 * @return The filtered stream
+			 */
 			template <class T>
 			Stream<T> operator|(const Stream<T>& lhs, const details::filter_toolbox<T>& rhs){
 				using namespace scl::tools;

@@ -4,7 +4,7 @@ namespace scl{
 	namespace stream{
 		/**
 		 * @namespace scl::stream::terminators
-		 * Namespace for stream terminal/final operations
+		 * Namespace for stream terminal/final operations (eager)
 		 */
 		namespace terminators{
 			/**

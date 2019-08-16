@@ -9,9 +9,17 @@ namespace scl{
 	namespace stream{
 		namespace creators{
 			namespace details{
+				/**
+				 * @typedef iterator_value_type
+				 * A type alias for the value type from the iterator traits
+				 */
 				template <class It>
 				using iterator_value_type = typename std::iterator_traits<It>::value_type;
 
+				/**
+				 * Creator for an iterator-based range
+				 * @tparam It being the type of the iterators
+				 */
 				template <class It>
 				class FromStlIterator : public scl::stream::details::iterator::BaseStreamIterator<iterator_value_type<It>>{
 					public:
@@ -20,9 +28,18 @@ namespace scl{
 						using payload_type = typename iterator_type::payload_type;
 
 					protected:
+						/**
+						 * @var begin being the iterator to the first element
+						 * @var end being the iterator to the point after the last element
+						 */
 						It begin, end;
 
 					public:
+						/**
+						 * Construct the iterator from STL-like iterators
+						 * @param begin being the beginning of the range
+						 * @param end being the end of the range
+						 */
 						FromStlIterator(It begin, It end) : begin{begin}, end{end} {
 						}
 
@@ -41,6 +58,13 @@ namespace scl{
 				};
 			}
 
+			/**
+			 * Create a stream from a pair of iterators
+			 * @tparam It being the type of iterators
+			 * @param begin being the begin iterator
+			 * @param end being the end iterator
+			 * @return a stream that emits the range's values
+			 */
 			template <class It>
 			Stream<typename details::FromStlIterator<It>::value_type> streamFrom(It begin, It end){
 				using namespace scl::tools;

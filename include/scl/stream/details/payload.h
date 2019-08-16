@@ -15,6 +15,9 @@ namespace scl{
 			template <class T>
 			class StreamIteratorPayload{
 				protected:
+					/**
+					 * Ensure that the payload has been generated before use
+					 */
 					void ensureGenerated() const{
 						if(!generated){
 							this->alt = std::move(gen());
@@ -23,8 +26,19 @@ namespace scl{
 					}
 
 				public:
+					/**
+					 * The type of value stored
+					 */
 					using value_type = T;
+
+					/**
+					 * The type that is available to the user
+					 */
 					using alternative = scl::utils::Optional<value_type>;
+
+					/**
+					 * The type of function that produces the alternative
+					 */
 					using producer = std::function<alternative(void)>;
 
 					/**

@@ -6,7 +6,7 @@ namespace scl{
 	namespace stream{
 		/**
 		 * @namespace scl::stream::creators
-		 * Namespace for functions and utilities that create streams
+		 * Namespace for functions and utilities that create streams (lazy)
 		 */
 		namespace creators{
 			/**

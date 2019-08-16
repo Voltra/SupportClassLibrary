@@ -7,7 +7,13 @@ namespace scl{
 			 * @namespace scl::stream::terminators::pack
 			 * A namespace for packing operations (getting a result as a container)
 			 */
-			namespace pack{}
+			namespace pack{
+				/**
+				 * @namespace scl::stream::terminators::pack::details
+				 * Implementation details for packing operations
+				 */
+				namespace details{}
+			}
 		}
 	}
 }

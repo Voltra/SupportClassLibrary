@@ -9,6 +9,11 @@
 namespace scl{
 	namespace stream{
 		namespace operators{
+			/**
+			 * Mapping operation
+			 * @tparam T being the type to map from
+			 * @tparam U being the type to map to
+			 */
 			template <class T, class U>
 			class MapOperator : public scl::stream::details::iterator::OpStreamIterator<U, T>{
 				public:
@@ -20,8 +25,17 @@ namespace scl{
 					using parent_value_type = typename parent_iterator_type::value_type;
 					using parent_payload_type = typename parent_iterator_type::payload_type;
 
+					/**
+					 * @typedef mapper_type
+					 * Function type that maps the parent value type to the current value type
+					 */
 					using mapper_type = std::function<value_type(const parent_value_type&)>;
 
+					/**
+					 * Construct the operator from the parent iterator and a mapper function
+					 * @param p being the parent iterator
+					 * @param mapper being the mapper function
+					 */
 					MapOperator(parent_iterator_type& p, mapper_type mapper) : iterator_type{p}, mapper{mapper} {
 					}
 
@@ -31,18 +45,43 @@ namespace scl{
 					}
 
 				protected:
+					/**
+					 * @var mapper being the function used to map values from the parent iterator
+					 */
 					mapper_type mapper;
 			};
 
 			namespace details{
+				/**
+				 * Tag type that allows operation piping for map operations
+				 * @tparam T being the type to map from
+				 * @tparam U being the type to map to
+				 */
 				template <class T, class U>
 				struct map_toolbox{
+					/**
+					 * @typedef mapper_t
+					 * The mapper funtion type
+					 */
 					using mapper_t = typename MapOperator<T, U>::mapper_type;
+
+					/**
+					 * @var mapper being the mapper function
+					 */
 					mapper_t mapper;
 				};
 			}
 
 
+			/**
+			 * Map a stream
+			 * @tparam F being the type of the callable (deduced)
+			 * @tparam Fn being the function wrapper type (computed)
+			 * @tparam T being the type to map from (computed)
+			 * @tparam U being the type to map to (computed)
+			 * @param mapper being the callable used to map values
+			 * @return a toolbox tag for pipe operators
+			 */
 			template <
 				class F,
 				class Fn = decltype(META::as_fn(std::declval<F>())),
@@ -53,11 +92,24 @@ namespace scl{
 				return {META::as_fn(std::forward<F>(mapper))};
 			}
 
+			/**
+			 * Map a stream by explicitly providing the type arguments
+			 * @tparam T being the type to map from
+			 * @tparam U being the type to map to
+			 * @param mapper being the mapper function
+			 * @return the toolbox tag for pipe operators
+			 */
 			template<class T, class U = T>
 			details::map_toolbox<T, U> map_(typename details::map_toolbox<T, U>::mapper_t mapper){
 				return {mapper};
 			}
 
+			/**
+			 * Pipe operator overload for map toolbox tags
+			 * @tparam T being the type to map from
+			 * @tparam U being the type to map to
+			 * @return The mapped stream
+			 */
 			template <class T, class U>
 			Stream<U> operator|(const Stream<T>& lhs, const details::map_toolbox<T, U>& rhs){
 				using namespace scl::tools;

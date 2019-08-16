@@ -36,7 +36,7 @@ namespace scl {
 							 */
 							using allocator_type = Allocator;
 
-							SetPacker(parent_iterator_type& p) : iterator_type{p} {
+							explicit SetPacker(parent_iterator_type& p) : iterator_type{p} {
 							}
 
 							result_type process(){
@@ -52,24 +52,58 @@ namespace scl {
 							}
 					};
 
+					/**
+					 * Tag type to pack into a std::set w/ default template parameters
+					 */
 					struct to_set_toolbox{};
 
+					/**
+					 * Tag type to pack into a std::set w/ control over template parameters
+					 * @tparam Compare being the type of the comparator used to order the set
+					 * @tparam Allocator being the type of allocator used to allocate memory
+					 */
 					template <class Compare, class Allocator>
 					struct to_set_toolbox_alloc{};
 				}
 
+				/**
+				 * Terminator for packing into a set
+				 * @return a toolbox tag for pipe operator
+				 */
 				details::to_set_toolbox toSet(){ return {}; }
 
+				/**
+				 * Terminator for packing into a set w/ a specific comparator and allocator
+				 * @tparam Compare being the comparator type
+				 * @tparam Allocator being the allocator type
+				 * @return a toolbox tag for pipe operator
+				 */
 				template <class Compare, class Allocator>
 				details::to_set_toolbox_alloc<Compare, Allocator> toSet(){ return {}; }
 			}
 
+			/**
+			 * Pipe operator for packing into a set
+			 * @tparam T being the value type of the stream
+			 * @param lhs being the stream to pack
+			 * @param _ being the packer type tag
+			 * @return a set containing the elements from the stream
+			 */
 			template <class T>
 			typename pack::details::SetPacker<T>::result_type operator|(const Stream<T>& lhs, const pack::details::to_set_toolbox& _){
 				auto packer = pack::details::SetPacker<T>{lhs.it()};
 				return packer.process();
 			}
 
+			/**
+			 * Pipe operator or packing into a set using a specific allocator and comparator
+			 * @tparam T being the value type of the stream
+			 * @tparam Compare being the comparator type
+			 * @tparam Allocator being the type of allocator to use
+			 * @param lhs being the stream to pack
+			 * @param _ being the packer type tag
+			 * @return a vector containing the elements from the stream
+			 */
 			template <class T, class Compare, class Allocator>
 			typename pack::details::SetPacker<T>::result_type operator|(const Stream<T>& lhs, const pack::details::to_set_toolbox_alloc<Compare, Allocator>& _){
 				auto packer = pack::details::SetPacker<T>{lhs.it()};

@@ -2,6 +2,7 @@
 
 #include <scl/stream/details/iterator/StreamIterator.h>
 #include <scl/stream/details/iterator/BaseStreamIterator.h>
+#include <scl/stream/details/iterator/StlAdapter.h>
 
 namespace scl{
 	namespace stream{
@@ -67,6 +68,20 @@ namespace scl{
 						 * @see scl::stream::details::iterator::StreamIterator::next
 						 */
 						payload_type next() override{ return std::move(this->parent_.next()); }
+
+						/**
+						 * @see scl::stream::details::iterator::StreamIterator::begin
+						 */
+						StlAdapter<T> begin() override{
+							return this->parent_.begin();
+						}
+
+						/**
+						 * @see scl::stream::details::iterator::StreamIterator::end
+						 */
+						StlAdapter<T> end() override{
+							return this->parent_.end();
+						}
 
 					protected:
 						/**
