@@ -13,8 +13,22 @@ namespace scl{
 		class Stream{
 				static_assert(!META::is_void<T>(), "Cannot make a Stream<void>");
 			public:
+				/**
+				 * @typedef iterator_type
+				 * The type of iterator used by this stream
+				 */
 				using iterator_type = /*scl::stream::*/details::iterator::BaseStreamIterator<T>;
+
+				/**
+				 * @typedef it_t
+				 * The type of pointer to the iterator used by this stream
+				 */
 				using it_t = std::shared_ptr<iterator_type>;
+
+				/**
+				 * @typedefe value_type
+				 * The value type used by this stream
+				 */
 				using value_type = typename iterator_type::value_type;
 
 				/**

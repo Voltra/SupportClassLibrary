@@ -13,7 +13,7 @@ namespace scl{
 		class RuntimeException : public Throwable, public std::runtime_error{
 			protected:
 				/**
-				 * @var reason
+				 * @var _reason
 				 * The error message that comes with this Exception
 				 */
 				realConst(char*) _reason = "";

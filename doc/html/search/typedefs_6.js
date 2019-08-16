@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['memfn_5ftype',['memfn_type',['../namespacescl_1_1tools_1_1meta.html#ac6c33bef173251a08aa2b2d44a8d7194',1,'scl::tools::meta']]]
+  ['key_5ftype',['key_type',['../classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a93d329e24af171cbdccac1948b386654',1,'scl::stream::operators::details::UniqueByOperator']]]
 ];

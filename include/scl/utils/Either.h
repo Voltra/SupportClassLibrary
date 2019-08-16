@@ -21,7 +21,16 @@ namespace scl{
 		template <class Lhs, class Rhs>
 		class Either{
 			public:
+				/**
+				 * @typedef left_type
+				 * The type of the left alternative
+				 */
 				using left_type = Lhs;
+
+				/**
+				 * @typedef right_type
+				 * The type of the right alternative
+				 */
 				using right_type = Rhs;
 
 			protected:
@@ -35,8 +44,20 @@ namespace scl{
 					&& META::is_movable<Rhs>();
 				}
 
+				/**
+				 * Payload type that encapsulates both alternatives
+				 */
 				struct payload_t final{
+					/**
+					 * @var left
+					 * The holder of the left alternative
+					 */
 					Optional<Lhs> left = {};
+
+					/**
+					 * @var right
+					 * The holder of the right alternative
+					 */
 					Optional<Rhs> right = {};
 
 					payload_t() = default;

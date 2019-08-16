@@ -46,7 +46,8 @@ namespace scl{
 
 				protected:
 					/**
-					 * @var mapper being the function used to map values from the parent iterator
+					 * @var mapper
+					 * the function used to map values from the parent iterator
 					 */
 					mapper_type mapper;
 			};
@@ -66,7 +67,8 @@ namespace scl{
 					using mapper_t = typename MapOperator<T, U>::mapper_type;
 
 					/**
-					 * @var mapper being the mapper function
+					 * @var mapper
+					 * the mapper function
 					 */
 					mapper_t mapper;
 				};

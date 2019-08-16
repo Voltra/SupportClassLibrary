@@ -14,9 +14,17 @@ namespace scl{
 			 */
 			template <class T, class = void>
 			struct real_const{
+				/**
+				 * @typedef type
+				 * The const version of the argument type
+				 */
 				using type = const decay_t<remove_cv_ref_t<T>>;
 			};
 
+			/**
+			 * Specialization for pointers
+			 * @tparam T being the value type
+			 */
 			template <class T>
 			struct real_const<T*, void>{
 				using type = realConst(T*);

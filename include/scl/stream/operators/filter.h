@@ -49,6 +49,10 @@ namespace scl{
 						return payload_type::withoutValue();
 					}
 				protected:
+					/**
+					 * @var pred
+					 * The predicate
+					 */
 					predicate_type pred;
 			};
 
@@ -66,7 +70,8 @@ namespace scl{
 					using pred_t = typename FilterOperator<T>::predicate_type;
 
 					/**
-					 * @var pred being the predicate
+					 * @var pred
+					 * the predicate
 					 */
 					pred_t pred;
 				};

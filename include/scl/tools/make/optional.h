@@ -16,6 +16,7 @@ namespace scl{
 			template <class T, class... Args>
 			scl::utils::Optional<T> optional(Args&&... args){
 				return T{std::forward<Args>(args)...};
+//				return scl::utils::Optional<T>::inplace(std::forward<Args>(args)...);
 			}
 
 			/**
@@ -26,6 +27,22 @@ namespace scl{
 			template <class T>
 			scl::utils::Optional<T> emptyOptional(){
 				return scl::utils::none;
+			}
+
+			/**
+			 * Alias for scl::tools::make::optional
+			 */
+			template <class T, class... Args>
+			scl::utils::Optional<T> some(Args&&... args){
+				return optional<T>(std::forward<Args>(args)...);
+			}
+
+			/**
+			 * Alias for scl::tools::make::emptyOptional
+			 */
+			template <class T>
+			scl::utils::Optional<T> none(){
+				return emptyOptional<T>();
 			}
 		}
 	}

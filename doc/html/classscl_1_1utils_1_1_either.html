@@ -86,7 +86,7 @@ Collaboration diagram for scl::utils::Either&lt; Lhs, Rhs &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classscl_1_1utils_1_1_either__coll__graph.png" border="0" usemap="#scl_1_1utils_1_1_either_3_01_lhs_00_01_rhs_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="scl_1_1utils_1_1_either_3_01_lhs_00_01_rhs_01_4_coll__map" id="scl_1_1utils_1_1_either_3_01_lhs_00_01_rhs_01_4_coll__map">
-<area shape="rect" id="node2" href="structscl_1_1utils_1_1_either_1_1payload__t.html" title="scl::utils::Either\l\&lt; Lhs, Rhs \&gt;::payload_t" alt="" coords="62,109,225,151"/>
+<area shape="rect" id="node2" href="structscl_1_1utils_1_1_either_1_1payload__t.html" title="Payload type that encapsulates both alternatives. " alt="" coords="62,109,225,151"/>
 <area shape="rect" id="node3" href="classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Rhs \&gt;" alt="" coords="5,5,132,47"/>
 <area shape="rect" id="node4" href="classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Lhs \&gt;" alt="" coords="156,5,283,47"/>
 </map>
@@ -98,6 +98,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag used to construct the LHS member (in case both are convertible types)  <a href="structscl_1_1utils_1_1_either_1_1lhs__tag.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1utils_1_1_either_1_1payload__t.html">payload_t</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Payload type that encapsulates both alternatives.  <a href="structscl_1_1utils_1_1_either_1_1payload__t.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1utils_1_1_either_1_1rhs__tag.html">rhs_tag</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag used to construct the RHS member (in case both are convertible types)  <a href="structscl_1_1utils_1_1_either_1_1rhs__tag.html#details">More...</a><br /></td></tr>
@@ -105,12 +106,14 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a8fe8a5c3fa3171493e8cb750b2ce7b71"><td class="memItemLeft" align="right" valign="top"><a id="a8fe8a5c3fa3171493e8cb750b2ce7b71"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>left_type</b> = Lhs</td></tr>
-<tr class="separator:a8fe8a5c3fa3171493e8cb750b2ce7b71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab4b60b6246294e060c9c349f3b0ea3cd"><td class="memItemLeft" align="right" valign="top"><a id="ab4b60b6246294e060c9c349f3b0ea3cd"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>right_type</b> = Rhs</td></tr>
-<tr class="separator:ab4b60b6246294e060c9c349f3b0ea3cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbe9327342fb22d8a1180d9dda514aee"><td class="memItemLeft" align="right" valign="top"><a id="afbe9327342fb22d8a1180d9dda514aee"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#afbe9327342fb22d8a1180d9dda514aee">left_type</a> = Lhs</td></tr>
+<tr class="memdesc:afbe9327342fb22d8a1180d9dda514aee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the left alternative. <br /></td></tr>
+<tr class="separator:afbe9327342fb22d8a1180d9dda514aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73771e01c505b798afa3e7b185429e49"><td class="memItemLeft" align="right" valign="top"><a id="a73771e01c505b798afa3e7b185429e49"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#a73771e01c505b798afa3e7b185429e49">right_type</a> = Rhs</td></tr>
+<tr class="memdesc:a73771e01c505b798afa3e7b185429e49"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the right alternative. <br /></td></tr>
+<tr class="separator:a73771e01c505b798afa3e7b185429e49"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -309,7 +312,7 @@ template&lt;class  = META::enable_if_t&lt;					 META::is_movable&lt;Lhs&gt;()			
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00113">113</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00134">134</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -359,7 +362,7 @@ template&lt;class  = META::enable_if_t&lt;					 META::is_copyable&lt;Lhs&gt;()		
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00124">124</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00145">145</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -409,7 +412,7 @@ template&lt;class  = META::void_t&lt;META::enable_if_t&lt;					META::is_movable&
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00135">135</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00156">156</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -459,7 +462,7 @@ template&lt;class  = META::void_t&lt;META::enable_if_t&lt;					META::is_copyable
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00146">146</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00167">167</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +510,7 @@ template&lt;class LeftVisitor &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_either.html" title="Alternative type that stores one or the other. ">Either</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00333">333</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00354">354</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -554,7 +557,7 @@ template&lt;class RightVisitor &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_either.html" title="Alternative type that stores one or the other. ">Either</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00344">344</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00365">365</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +604,7 @@ template&lt;class... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a Either&lt;Lhs, Rhs&gt; where Lhs is the active alternative </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00236">236</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00257">257</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -648,7 +651,7 @@ template&lt;class... Args&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a Either&lt;Lhs, Rhs&gt; where Rhs is the active alternative </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00247">247</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00268">268</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -686,7 +689,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00286">286</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00307">307</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -724,7 +727,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00298">298</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00319">319</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -756,7 +759,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
 <p>Determines whether or not LHS is the active alternative. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if it is, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00273">273</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00294">294</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -788,7 +791,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
 <p>Determines whether or not RHS is the active alternative. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if it is, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00279">279</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00300">300</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -829,7 +832,7 @@ template&lt;class L &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a Either&lt;Lhs, Rhs&gt; where the Lhs is the active alternative </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00217">217</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00238">238</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -868,7 +871,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Lhs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00409">409</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00430">430</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -906,7 +909,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00154">154</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00175">175</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -954,7 +957,7 @@ template&lt;class NewLhs , class Mapper &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a correctly mapper Either&lt;NewLhs, Rhs&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00356">356</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00377">377</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -1002,7 +1005,7 @@ template&lt;class NewRhs , class Mapper &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a correctly mapper Either&lt;Lhs, NewRhs&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00373">373</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00394">394</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1066,7 @@ template&lt;class NewLhs , class NewRhs , class MapperLeft , class MapperRight &
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the mapped Either&lt;NewLhs, NewRhs&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00393">393</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00414">414</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -1104,7 +1107,7 @@ template&lt;class R &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a Either&lt;Lhs, Rhs&gt; where the Rhs is the active alternative </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00257">257</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00278">278</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -1143,7 +1146,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rhs </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00422">422</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00443">443</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -1181,7 +1184,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00160">160</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00181">181</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>
@@ -1240,7 +1243,7 @@ template&lt;class LeftVisitor , class RightVisitor &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_either.html" title="Alternative type that stores one or the other. ">Either</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00314">314</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_either_8h_source.html#l00335">335</a> of file <a class="el" href="_either_8h_source.html">Either.h</a>.</p>
 
 </div>
 </div>

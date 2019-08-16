@@ -50,7 +50,8 @@ namespace scl{
 
 					protected:
 						/**
-						 * @var consumer being the function to call on each element
+						 * @var consumer
+						 * the function to call on each element
 						 */
 						consumer_type consumer;
 				};
@@ -69,7 +70,8 @@ namespace scl{
 					using callback_t = typename ForEachTerminator<T>::consumer_type;
 
 					/**
-					 * @var callback being the callback
+					 * @var callback
+					 * the callback
 					 */
 					callback_t callback;
 				};

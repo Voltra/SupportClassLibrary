@@ -29,8 +29,11 @@ namespace scl{
 
 					protected:
 						/**
-						 * @var begin being the iterator to the first element
-						 * @var end being the iterator to the point after the last element
+						 * @var begin
+						 * the iterator to the first element
+						 *
+						 * @var end
+						 * the iterator to the point after the last element
 						 */
 						It begin, end;
 

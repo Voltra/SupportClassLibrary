@@ -4,6 +4,6 @@
 <area shape="rect" id="node7" href="$classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html" title="Creator for a numeric range. " alt="" coords="524,174,711,215"/>
 <area shape="rect" id="node8" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="Iterator powering an intermediate operation. " alt="" coords="513,239,721,281"/>
 <area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="5,142,196,183"/>
-<area shape="rect" id="node4" href="$classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html" title="scl::stream::operators\l::details::UniqueByOperator\l\&lt; T, U \&gt;" alt="" coords="769,5,952,61"/>
-<area shape="rect" id="node5" href="$classscl_1_1stream_1_1operators_1_1_filter_operator.html" title="scl::stream::operators\l::FilterOperator\&lt; T \&gt;" alt="" coords="786,86,935,127"/>
+<area shape="rect" id="node4" href="$classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html" title="Unique by operation. " alt="" coords="769,5,952,61"/>
+<area shape="rect" id="node5" href="$classscl_1_1stream_1_1operators_1_1_filter_operator.html" title="Filter operation. " alt="" coords="786,86,935,127"/>
 </map>

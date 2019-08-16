@@ -59,7 +59,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacescl.html">scl</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream.html">stream</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream_1_1operators.html">operators</a></li><li class="navelem"><b>details</b></li><li class="navelem"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html">uniqueBy_toolbox</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacescl.html">scl</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream.html">stream</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream_1_1operators.html">operators</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream_1_1operators_1_1details.html">details</a></li><li class="navelem"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html">uniqueBy_toolbox</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,25 +71,40 @@ $(function() {
 <div class="title">scl::stream::operators::details::uniqueBy_toolbox&lt; T, U &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Toolbox tag type for unique by operations.  
+ <a href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:acaee9c2ef0a92c12b747acacf0737e22"><td class="memItemLeft" align="right" valign="top"><a id="acaee9c2ef0a92c12b747acacf0737e22"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>map_t</b> = typename <a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html">UniqueByOperator</a>&lt; T, U &gt;::mapper_type</td></tr>
-<tr class="separator:acaee9c2ef0a92c12b747acacf0737e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1560fabdd419d438d91623f7cc82660b"><td class="memItemLeft" align="right" valign="top"><a id="a1560fabdd419d438d91623f7cc82660b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html#a1560fabdd419d438d91623f7cc82660b">map_t</a> = typename <a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html">UniqueByOperator</a>&lt; T, U &gt;::mapper_type</td></tr>
+<tr class="memdesc:a1560fabdd419d438d91623f7cc82660b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The key computation function type. <br /></td></tr>
+<tr class="separator:a1560fabdd419d438d91623f7cc82660b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:abfea9bdce385600ff34a02912e0ef82f"><td class="memItemLeft" align="right" valign="top"><a id="abfea9bdce385600ff34a02912e0ef82f"></a>
-map_t&#160;</td><td class="memItemRight" valign="bottom"><b>mapper</b></td></tr>
-<tr class="separator:abfea9bdce385600ff34a02912e0ef82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ce6a3d59a3e1d45ef4d8eba7d18ed58"><td class="memItemLeft" align="right" valign="top"><a id="a9ce6a3d59a3e1d45ef4d8eba7d18ed58"></a>
+<a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html#a1560fabdd419d438d91623f7cc82660b">map_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html#a9ce6a3d59a3e1d45ef4d8eba7d18ed58">mapper</a></td></tr>
+<tr class="memdesc:a9ce6a3d59a3e1d45ef4d8eba7d18ed58"><td class="mdescLeft">&#160;</td><td class="mdescRight">the key computation function <br /></td></tr>
+<tr class="separator:a9ce6a3d59a3e1d45ef4d8eba7d18ed58"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, class U&gt;<br />
 struct scl::stream::operators::details::uniqueBy_toolbox&lt; T, U &gt;</h3>
 
+<p>Toolbox tag type for unique by operations. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the value type </td></tr>
+    <tr><td class="paramname">U</td><td>being the key type </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00059">59</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00092">92</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
 </div><hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/scl/stream/operators/<a class="el" href="unique_by_8h_source.html">uniqueBy.h</a></li>
 </ul>

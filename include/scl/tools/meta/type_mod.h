@@ -35,8 +35,13 @@ namespace scl{
 			template <class T>
 			using remove_cv_ref_t = remove_cv_t<remove_reference_t<T>>;
 
+			/**
+			 * Type construct that exposes a single type that is its type argument
+			 * @tparam T being the type argument to expose
+			 */
 			template <class T>
 			struct NoOp{ using type = T; };
+
 			template <class T>
 			using no_op_t = typename NoOp<T>::type;
 

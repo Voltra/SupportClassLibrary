@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Namespace for functions and utilities that create streams.  
+<p>Namespace for functions and utilities that create streams (lazy)  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -106,13 +106,13 @@ Functions</h2></td></tr>
 <tr class="memitem:a9e5f2584a19428d89503a98a26692e2c"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; typename <a class="el" href="classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html">details::FromStlIterator</a>&lt; It &gt;::value_type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1creators.html#a9e5f2584a19428d89503a98a26692e2c">streamFrom</a> (C &amp;container)</td></tr>
 <tr class="memdesc:a9e5f2584a19428d89503a98a26692e2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a stream from a container.  <a href="#a9e5f2584a19428d89503a98a26692e2c">More...</a><br /></td></tr>
 <tr class="separator:a9e5f2584a19428d89503a98a26692e2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f5f1d00504bf8d6fcc4db42c1672236"><td class="memTemplParams" colspan="2"><a id="a2f5f1d00504bf8d6fcc4db42c1672236"></a>
-template&lt;class It &gt; </td></tr>
-<tr class="memitem:a2f5f1d00504bf8d6fcc4db42c1672236"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; typename <a class="el" href="classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html">details::FromStlIterator</a>&lt; It &gt;::value_type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>streamFrom</b> (It begin, It end)</td></tr>
+<tr class="memitem:a2f5f1d00504bf8d6fcc4db42c1672236"><td class="memTemplParams" colspan="2">template&lt;class It &gt; </td></tr>
+<tr class="memitem:a2f5f1d00504bf8d6fcc4db42c1672236"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; typename <a class="el" href="classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html">details::FromStlIterator</a>&lt; It &gt;::value_type &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1creators.html#a2f5f1d00504bf8d6fcc4db42c1672236">streamFrom</a> (It begin, It end)</td></tr>
+<tr class="memdesc:a2f5f1d00504bf8d6fcc4db42c1672236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a stream from a pair of iterators.  <a href="#a2f5f1d00504bf8d6fcc4db42c1672236">More...</a><br /></td></tr>
 <tr class="separator:a2f5f1d00504bf8d6fcc4db42c1672236"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Namespace for functions and utilities that create streams. </p>
+<div class="textblock"><p>Namespace for functions and utilities that create streams (lazy) </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a5d9acf32a922b6662c620c50c0158497"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5d9acf32a922b6662c620c50c0158497">&#9670;&nbsp;</a></span>infiniteRange()</h2>
@@ -152,14 +152,13 @@ template&lt;class T  = double, class  = META::enable_if_t&lt;				META::is_arithm
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">from</td><td>being the initial value </td></tr>
-    <tr><td class="paramname">to</td><td>being the last value </td></tr>
     <tr><td class="paramname">step</td><td>being the increment </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a stream that generates the range's values </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00114">114</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00120">120</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
 
 </div>
 </div>
@@ -214,7 +213,7 @@ template&lt;class T  = int, class  = META::enable_if_t&lt;META::is_arithmetic&lt
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a stream that generates the range's values </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00071">71</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00078">78</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
 
 </div>
 </div>
@@ -262,7 +261,7 @@ template&lt;class T  = int, class  = META::enable_if_t&lt;META::is_arithmetic&lt
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a stream that generates the range's values </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00098">98</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00105">105</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
 
 </div>
 </div>
@@ -310,12 +309,12 @@ template&lt;class T  = int, class  = META::enable_if_t&lt;META::is_arithmetic&lt
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a stream that generates the range's values </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00086">86</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="range_8h_source.html#l00093">93</a> of file <a class="el" href="range_8h_source.html">range.h</a>.</p>
 
 </div>
 </div>
 <a id="a9e5f2584a19428d89503a98a26692e2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e5f2584a19428d89503a98a26692e2c">&#9670;&nbsp;</a></span>streamFrom() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e5f2584a19428d89503a98a26692e2c">&#9670;&nbsp;</a></span>streamFrom() <span class="overload">[1/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -353,7 +352,7 @@ template&lt;class C , class It  = typename C::iterator&gt; </div>
 </div>
 </div>
 <a id="aa1d6ea0a63f0919d1b190f95189e1f91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa1d6ea0a63f0919d1b190f95189e1f91">&#9670;&nbsp;</a></span>streamFrom() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1d6ea0a63f0919d1b190f95189e1f91">&#9670;&nbsp;</a></span>streamFrom() <span class="overload">[2/3]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -387,6 +386,54 @@ template&lt;class T , size_t N&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>a stream that uses the array as its source of data </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="array_8h_source.html#l00071">71</a> of file <a class="el" href="array_8h_source.html">array.h</a>.</p>
+
+</div>
+</div>
+<a id="a2f5f1d00504bf8d6fcc4db42c1672236"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f5f1d00504bf8d6fcc4db42c1672236">&#9670;&nbsp;</a></span>streamFrom() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class It &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt;typename <a class="el" href="classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html">details::FromStlIterator</a>&lt;It&gt;::value_type&gt; scl::stream::creators::streamFrom </td>
+          <td>(</td>
+          <td class="paramtype">It&#160;</td>
+          <td class="paramname"><em>begin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">It&#160;</td>
+          <td class="paramname"><em>end</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a stream from a pair of iterators. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">It</td><td>being the type of iterators </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">begin</td><td>being the begin iterator </td></tr>
+    <tr><td class="paramname">end</td><td>being the end iterator </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>a stream that emits the range's values </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="stl__iterators_8h_source.html#l00072">72</a> of file <a class="el" href="stl__iterators_8h_source.html">stl_iterators.h</a>.</p>
 
 </div>
 </div>

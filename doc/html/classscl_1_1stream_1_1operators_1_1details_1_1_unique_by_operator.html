@@ -59,7 +59,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespacescl.html">scl</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream.html">stream</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream_1_1operators.html">operators</a></li><li class="navelem"><b>details</b></li><li class="navelem"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html">UniqueByOperator</a></li>  </ul>
+<li class="navelem"><a class="el" href="namespacescl.html">scl</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream.html">stream</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream_1_1operators.html">operators</a></li><li class="navelem"><a class="el" href="namespacescl_1_1stream_1_1operators_1_1details.html">details</a></li><li class="navelem"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html">UniqueByOperator</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -72,6 +72,11 @@ $(function() {
 <div class="title">scl::stream::operators::details::UniqueByOperator&lt; T, U &gt; Class Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Unique by operation.  
+ <a href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for scl::stream::operators::details::UniqueByOperator&lt; T, U &gt;:</div>
 <div class="dyncontent">
@@ -113,12 +118,14 @@ using&#160;</td><td class="memItemRight" valign="bottom"><b>parent_value_type</b
 <tr class="memitem:a83dd1d0f6e84686dac2c0b1738fe9ce7"><td class="memItemLeft" align="right" valign="top"><a id="a83dd1d0f6e84686dac2c0b1738fe9ce7"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>parent_payload_type</b> = typename parent_iterator_type::payload_type</td></tr>
 <tr class="separator:a83dd1d0f6e84686dac2c0b1738fe9ce7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56e2a823654b03e0093e47cd701cf241"><td class="memItemLeft" align="right" valign="top"><a id="a56e2a823654b03e0093e47cd701cf241"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>key_type</b> = U</td></tr>
-<tr class="separator:a56e2a823654b03e0093e47cd701cf241"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3784b16b3f265486bdc42629a80ee4e"><td class="memItemLeft" align="right" valign="top"><a id="ac3784b16b3f265486bdc42629a80ee4e"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>mapper_type</b> = std::function&lt; key_type(const <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#aedf5b7d7f1ccc3d652cac604bdaada02">value_type</a> &amp;)&gt;</td></tr>
-<tr class="separator:ac3784b16b3f265486bdc42629a80ee4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a93d329e24af171cbdccac1948b386654"><td class="memItemLeft" align="right" valign="top"><a id="a93d329e24af171cbdccac1948b386654"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a93d329e24af171cbdccac1948b386654">key_type</a> = U</td></tr>
+<tr class="memdesc:a93d329e24af171cbdccac1948b386654"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of keys (unique by key) <br /></td></tr>
+<tr class="separator:a93d329e24af171cbdccac1948b386654"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a986b60addf704a19c8a72f14a36268a2"><td class="memItemLeft" align="right" valign="top"><a id="a986b60addf704a19c8a72f14a36268a2"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a986b60addf704a19c8a72f14a36268a2">mapper_type</a> = std::function&lt; <a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a93d329e24af171cbdccac1948b386654">key_type</a>(const <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#aedf5b7d7f1ccc3d652cac604bdaada02">value_type</a> &amp;)&gt;</td></tr>
+<tr class="memdesc:a986b60addf704a19c8a72f14a36268a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The function type that computes a key from a value. <br /></td></tr>
+<tr class="separator:a986b60addf704a19c8a72f14a36268a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html">scl::stream::details::iterator::OpStreamIterator&lt; T &gt;</a></td></tr>
 <tr class="memitem:aaf3cc4d5937a6ccf4ce5c8c3880a2bfa inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator"><td class="memItemLeft" align="right" valign="top"><a id="aaf3cc4d5937a6ccf4ce5c8c3880a2bfa"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#aaf3cc4d5937a6ccf4ce5c8c3880a2bfa">parent_iterator_type</a> = <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html">BaseStreamIterator</a>&lt; T &gt;</td></tr>
@@ -135,14 +142,14 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <tr class="memdesc:a31849e6fc1cd956273765a6e58caf48d inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for the payload used. <br /></td></tr>
 <tr class="separator:a31849e6fc1cd956273765a6e58caf48d inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aedf5b7d7f1ccc3d652cac604bdaada02 inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memItemLeft" align="right" valign="top"><a id="aedf5b7d7f1ccc3d652cac604bdaada02"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#aedf5b7d7f1ccc3d652cac604bdaada02">value_type</a> = typename payload_type::value_type</td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#aedf5b7d7f1ccc3d652cac604bdaada02">value_type</a> = typename <a class="el" href="classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a5111b87cbf6c21e67b394ba5f7739f9c">payload_type::value_type</a></td></tr>
 <tr class="memdesc:aedf5b7d7f1ccc3d652cac604bdaada02 inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for the data type manipulated. <br /></td></tr>
 <tr class="separator:aedf5b7d7f1ccc3d652cac604bdaada02 inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9dc0d97b2f7e37c277243da044ef30e2"><td class="memItemLeft" align="right" valign="top"><a id="a9dc0d97b2f7e37c277243da044ef30e2"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>UniqueByOperator</b> (parent_iterator_type &amp;p, mapper_type key)</td></tr>
+<tr class="memitem:a9dc0d97b2f7e37c277243da044ef30e2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a9dc0d97b2f7e37c277243da044ef30e2">UniqueByOperator</a> (parent_iterator_type &amp;p, <a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a986b60addf704a19c8a72f14a36268a2">mapper_type</a> <a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a43d24ff8cc67989ff73f46c984eaa2f9">key</a>)</td></tr>
+<tr class="memdesc:a9dc0d97b2f7e37c277243da044ef30e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an operator from its parent iterator and the mapper function.  <a href="#a9dc0d97b2f7e37c277243da044ef30e2">More...</a><br /></td></tr>
 <tr class="separator:a9dc0d97b2f7e37c277243da044ef30e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cbbb5a7cacf95b655d693abd537a76b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a31849e6fc1cd956273765a6e58caf48d">payload_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a6cbbb5a7cacf95b655d693abd537a76b">next</a> () override</td></tr>
 <tr class="memdesc:a6cbbb5a7cacf95b655d693abd537a76b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the next iterator payload.  <a href="#a6cbbb5a7cacf95b655d693abd537a76b">More...</a><br /></td></tr>
@@ -157,21 +164,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a79eaa7c9a5bbcc64949b74a7076bb310 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#a79eaa7c9a5bbcc64949b74a7076bb310">hasNext</a> () const override</td></tr>
 <tr class="separator:a79eaa7c9a5bbcc64949b74a7076bb310 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a></td></tr>
-<tr class="memitem:a022b59494648128e9800e05635185b06 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html">StlAdapter</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a022b59494648128e9800e05635185b06">begin</a> ()</td></tr>
-<tr class="memdesc:a022b59494648128e9800e05635185b06 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a stl-like iterator for this stream iterator.  <a href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a022b59494648128e9800e05635185b06">More...</a><br /></td></tr>
-<tr class="separator:a022b59494648128e9800e05635185b06 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2368317185fc03a1a60660fcf842832 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html">StlAdapter</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#af2368317185fc03a1a60660fcf842832">end</a> ()</td></tr>
-<tr class="memdesc:af2368317185fc03a1a60660fcf842832 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a stl-like iterator for the end of this stream iterator.  <a href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#af2368317185fc03a1a60660fcf842832">More...</a><br /></td></tr>
-<tr class="separator:af2368317185fc03a1a60660fcf842832 inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a529e55cc180d88abc66c409388697a6f inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html">StlAdapter</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a529e55cc180d88abc66c409388697a6f">begin</a> ()</td></tr>
+<tr class="memdesc:a529e55cc180d88abc66c409388697a6f inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a stl-like iterator for this stream iterator.  <a href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a529e55cc180d88abc66c409388697a6f">More...</a><br /></td></tr>
+<tr class="separator:a529e55cc180d88abc66c409388697a6f inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2d66dbc056eb566bcc205c17e6f636a inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html">StlAdapter</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#af2d66dbc056eb566bcc205c17e6f636a">end</a> ()</td></tr>
+<tr class="memdesc:af2d66dbc056eb566bcc205c17e6f636a inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve a stl-like iterator for the end of this stream iterator.  <a href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#af2d66dbc056eb566bcc205c17e6f636a">More...</a><br /></td></tr>
+<tr class="separator:af2d66dbc056eb566bcc205c17e6f636a inherit pub_methods_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a3800c76282312b50b7a605e95b79e96d"><td class="memItemLeft" align="right" valign="top"><a id="a3800c76282312b50b7a605e95b79e96d"></a>
-mapper_type&#160;</td><td class="memItemRight" valign="bottom"><b>key</b></td></tr>
-<tr class="separator:a3800c76282312b50b7a605e95b79e96d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2d60be85189e11c9fdd01f75555647f"><td class="memItemLeft" align="right" valign="top"><a id="aa2d60be85189e11c9fdd01f75555647f"></a>
-std::unordered_set&lt; key_type &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>tagged</b></td></tr>
-<tr class="separator:aa2d60be85189e11c9fdd01f75555647f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43d24ff8cc67989ff73f46c984eaa2f9"><td class="memItemLeft" align="right" valign="top"><a id="a43d24ff8cc67989ff73f46c984eaa2f9"></a>
+<a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a986b60addf704a19c8a72f14a36268a2">mapper_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a43d24ff8cc67989ff73f46c984eaa2f9">key</a></td></tr>
+<tr class="memdesc:a43d24ff8cc67989ff73f46c984eaa2f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">the function that computes a key from a value <br /></td></tr>
+<tr class="separator:a43d24ff8cc67989ff73f46c984eaa2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afee540e984fbd0e108b00b52fea70d98"><td class="memItemLeft" align="right" valign="top"><a id="afee540e984fbd0e108b00b52fea70d98"></a>
+std::unordered_set&lt; <a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a93d329e24af171cbdccac1948b386654">key_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#afee540e984fbd0e108b00b52fea70d98">tagged</a></td></tr>
+<tr class="memdesc:afee540e984fbd0e108b00b52fea70d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">the state that keeps track of all encountered keys <br /></td></tr>
+<tr class="separator:afee540e984fbd0e108b00b52fea70d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html">scl::stream::details::iterator::OpStreamIterator&lt; T &gt;</a></td></tr>
 <tr class="memitem:a4ded4ae72a11ad6996e36704396049af inherit pro_attribs_classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator"><td class="memItemLeft" align="right" valign="top"><a id="a4ded4ae72a11ad6996e36704396049af"></a>
 <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#aaf3cc4d5937a6ccf4ce5c8c3880a2bfa">parent_iterator_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html#a4ded4ae72a11ad6996e36704396049af">parent_</a></td></tr>
@@ -182,9 +191,67 @@ std::unordered_set&lt; key_type &gt;&#160;</td><td class="memItemRight" valign="
 <div class="textblock"><h3>template&lt;class T, class U&gt;<br />
 class scl::stream::operators::details::UniqueByOperator&lt; T, U &gt;</h3>
 
+<p>Unique by operation. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the value type </td></tr>
+    <tr><td class="paramname">U</td><td>being the type to use as key </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00015">15</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
+<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00020">20</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a9dc0d97b2f7e37c277243da044ef30e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dc0d97b2f7e37c277243da044ef30e2">&#9670;&nbsp;</a></span>UniqueByOperator()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T, class U&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html">scl::stream::operators::details::UniqueByOperator</a>&lt; T, U &gt;::<a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html">UniqueByOperator</a> </td>
+          <td>(</td>
+          <td class="paramtype">parent_iterator_type &amp;&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a986b60addf704a19c8a72f14a36268a2">mapper_type</a>&#160;</td>
+          <td class="paramname"><em>key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct an operator from its parent iterator and the mapper function. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>being the parent iterator </td></tr>
+    <tr><td class="paramname">key</td><td>being the key computation function </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00047">47</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6cbbb5a7cacf95b655d693abd537a76b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6cbbb5a7cacf95b655d693abd537a76b">&#9670;&nbsp;</a></span>next()</h2>
 
@@ -216,7 +283,7 @@ template&lt;class T, class U&gt; </div>
 
 <p>Implements <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a2335451c7596d49c0193b5acae903b22">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00031">31</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="unique_by_8h_source.html#l00050">50</a> of file <a class="el" href="unique_by_8h_source.html">uniqueBy.h</a>.</p>
 
 </div>
 </div>

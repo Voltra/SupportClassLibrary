@@ -12,7 +12,7 @@ namespace scl{
 		class Exception : public Throwable{
 			protected:
 				/**
-				 * @var reason
+				 * @var _reason
 				 * The error message that comes with this Exception
 				 */
 				realConst(char*) _reason = "";

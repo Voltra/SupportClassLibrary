@@ -71,12 +71,14 @@ namespace scl{
 
 					protected:
 						/**
-						 * @var key being the function that computes a key from a value
+						 * @var key
+						 * the function that computes a key from a value
 						 */
 						mapper_type key;
 
 						/**
-						 * @var tagged being the state that keeps track of all encountered keys
+						 * @var tagged
+						 * the state that keeps track of all encountered keys
 						 */
 						std::unordered_set<key_type> tagged;
 				};
@@ -95,7 +97,8 @@ namespace scl{
 					using map_t = typename UniqueByOperator<T, U>::mapper_type;
 
 					/**
-					 * @var mapper being the key computation function
+					 * @var mapper
+					 * the key computation function
 					 */
 					map_t mapper;
 				};

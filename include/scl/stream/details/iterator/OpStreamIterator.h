@@ -28,7 +28,7 @@ namespace scl{
 
 						/**
 						 * Construct from a parent iterator
-						 * @param p being this iterator's parent
+						 * @param parent being this iterator's parent
 						 */
 						explicit OpStreamIterator(parent_iterator_type& parent) : parent_{parent}{
 						}

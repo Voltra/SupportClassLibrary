@@ -1,5 +1,5 @@
 <map id="scl::utils::Either&lt; Lhs, Rhs &gt;" name="scl::utils::Either&lt; Lhs, Rhs &gt;">
-<area shape="rect" id="node2" href="$structscl_1_1utils_1_1_either_1_1payload__t.html" title="scl::utils::Either\l\&lt; Lhs, Rhs \&gt;::payload_t" alt="" coords="62,109,225,151"/>
+<area shape="rect" id="node2" href="$structscl_1_1utils_1_1_either_1_1payload__t.html" title="Payload type that encapsulates both alternatives. " alt="" coords="62,109,225,151"/>
 <area shape="rect" id="node3" href="$classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Rhs \&gt;" alt="" coords="5,5,132,47"/>
 <area shape="rect" id="node4" href="$classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Lhs \&gt;" alt="" coords="156,5,283,47"/>
 </map>

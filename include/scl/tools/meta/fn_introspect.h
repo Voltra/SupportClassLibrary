@@ -8,15 +8,36 @@
 namespace scl{
 	namespace tools{
 		namespace meta{
+			/**
+			 * Traits for callable types
+			 */
 			template <class>
 			struct function_traits;
 
+			/**
+			 * Specialization for std::function
+			 * @tparam R being the return type
+			 * @tparam Args being the arguments' types
+			 */
 			template <class R, class... Args>
 			struct function_traits<std::function<R(Args...)>>{
+				/**
+				 * @static arity
+				 * The arity of the callable
+				 */
 				constexpr static size_t arity = sizeof...(Args);
 
+				/**
+				 * @typedef return_type
+				 * The return type of the callable
+				 */
 				using return_type = R;
 
+				/**
+				 * @typdef arg_t
+				 * @tparam i being the index of argument in the argument list (0-based index)
+				 * The type of the i-th argument of the callable
+				 */
 				template <size_t i>
 				using arg_t = typename std::tuple_element<i, std::tuple<Args...>>::type;
 			};

@@ -96,12 +96,12 @@ Collaboration diagram for scl::exceptions::RuntimeException:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:ae8e0ff40973531b366a9f68f85be8f1f"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
-<tr class="memitem:ae8e0ff40973531b366a9f68f85be8f1f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#ae8e0ff40973531b366a9f68f85be8f1f">RuntimeException</a> (T &amp;&amp;<a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#a2ed7af0d1333d04996d80c0d59c1807b">reason</a>)</td></tr>
+<tr class="memitem:ae8e0ff40973531b366a9f68f85be8f1f"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#ae8e0ff40973531b366a9f68f85be8f1f">RuntimeException</a> (T &amp;&amp;<a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#aff0e46be95ef9a42a10bcdaa6d2800e8">reason</a>)</td></tr>
 <tr class="memdesc:ae8e0ff40973531b366a9f68f85be8f1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an <a class="el" href="classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. ">scl::exceptions::Exception</a> from an error message.  <a href="#ae8e0ff40973531b366a9f68f85be8f1f">More...</a><br /></td></tr>
 <tr class="separator:ae8e0ff40973531b366a9f68f85be8f1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ed7af0d1333d04996d80c0d59c1807b"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#a2ed7af0d1333d04996d80c0d59c1807b">reason</a> () const override</td></tr>
-<tr class="memdesc:a2ed7af0d1333d04996d80c0d59c1807b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the reason.  <a href="#a2ed7af0d1333d04996d80c0d59c1807b">More...</a><br /></td></tr>
-<tr class="separator:a2ed7af0d1333d04996d80c0d59c1807b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff0e46be95ef9a42a10bcdaa6d2800e8"><td class="memItemLeft" align="right" valign="top">const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#aff0e46be95ef9a42a10bcdaa6d2800e8">reason</a> () const override</td></tr>
+<tr class="memdesc:aff0e46be95ef9a42a10bcdaa6d2800e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieve the reason.  <a href="#aff0e46be95ef9a42a10bcdaa6d2800e8">More...</a><br /></td></tr>
+<tr class="separator:aff0e46be95ef9a42a10bcdaa6d2800e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39ec42cb0b0437a8e2a4a9bc1943e231"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#a39ec42cb0b0437a8e2a4a9bc1943e231">what</a> () const noexcept override</td></tr>
 <tr class="memdesc:a39ec42cb0b0437a8e2a4a9bc1943e231"><td class="mdescLeft">&#160;</td><td class="mdescRight">Override that uses the user defined reason.  <a href="#a39ec42cb0b0437a8e2a4a9bc1943e231">More...</a><br /></td></tr>
 <tr class="separator:a39ec42cb0b0437a8e2a4a9bc1943e231"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -111,9 +111,10 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aae0fcda1e715e745e8088f8b05efc385"><td class="memItemLeft" align="right" valign="top"><a id="aae0fcda1e715e745e8088f8b05efc385"></a>
-const char *const&#160;</td><td class="memItemRight" valign="bottom"><b>_reason</b> = &quot;&quot;</td></tr>
-<tr class="separator:aae0fcda1e715e745e8088f8b05efc385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a24b4e0c4e01aa1a6bc601c7982cd76"><td class="memItemLeft" align="right" valign="top"><a id="a3a24b4e0c4e01aa1a6bc601c7982cd76"></a>
+const char *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1exceptions_1_1_runtime_exception.html#a3a24b4e0c4e01aa1a6bc601c7982cd76">_reason</a> = &quot;&quot;</td></tr>
+<tr class="memdesc:a3a24b4e0c4e01aa1a6bc601c7982cd76"><td class="mdescLeft">&#160;</td><td class="mdescRight">The error message that comes with this <a class="el" href="classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. ">Exception</a>. <br /></td></tr>
+<tr class="separator:a3a24b4e0c4e01aa1a6bc601c7982cd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for exceptions that could never be checked at compile-time. </p>
@@ -165,8 +166,8 @@ template&lt;class T &gt; </div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a2ed7af0d1333d04996d80c0d59c1807b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ed7af0d1333d04996d80c0d59c1807b">&#9670;&nbsp;</a></span>reason()</h2>
+<a id="aff0e46be95ef9a42a10bcdaa6d2800e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff0e46be95ef9a42a10bcdaa6d2800e8">&#9670;&nbsp;</a></span>reason()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -175,7 +176,7 @@ template&lt;class T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">scl::exceptions::RuntimeException::reason </td>
+          <td class="memname">const char* const scl::exceptions::RuntimeException::reason </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -189,7 +190,6 @@ template&lt;class T &gt; </div>
 </div><div class="memdoc">
 
 <p>Retrieve the reason. </p>
-<p>The error message that comes with this <a class="el" href="classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. ">Exception</a>.</p>
 <dl class="section return"><dt>Returns</dt><dd>the reason as a const char* const </dd></dl>
 
 <p>Reimplemented from <a class="el" href="structscl_1_1exceptions_1_1_throwable.html#a4c5b52ab284079d4a89f3d8643573495">scl::exceptions::Throwable</a>.</p>

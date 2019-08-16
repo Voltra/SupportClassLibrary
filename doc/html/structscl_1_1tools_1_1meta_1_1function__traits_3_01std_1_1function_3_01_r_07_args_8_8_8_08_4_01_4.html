@@ -71,30 +71,74 @@ $(function() {
 <div class="title">scl::tools::meta::function_traits&lt; std::function&lt; R(Args...)&gt; &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Specialization for std::function.  
+ <a href="structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="fn__introspect_8h_source.html">fn_introspect.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:aa2cd79a22a646306e8c63fb12e426484"><td class="memItemLeft" align="right" valign="top"><a id="aa2cd79a22a646306e8c63fb12e426484"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>return_type</b> = R</td></tr>
-<tr class="separator:aa2cd79a22a646306e8c63fb12e426484"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a283bd4ba7bf7d855cbe08b4ef0aa4085"><td class="memTemplParams" colspan="2"><a id="a283bd4ba7bf7d855cbe08b4ef0aa4085"></a>
-template&lt;size_t i&gt; </td></tr>
-<tr class="memitem:a283bd4ba7bf7d855cbe08b4ef0aa4085"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>arg_t</b> = typename std::tuple_element&lt; i, std::tuple&lt; Args... &gt; &gt;::type</td></tr>
+<tr class="memitem:a075864b806dde720f4b106bc3a3002f8"><td class="memItemLeft" align="right" valign="top"><a id="a075864b806dde720f4b106bc3a3002f8"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html#a075864b806dde720f4b106bc3a3002f8">return_type</a> = R</td></tr>
+<tr class="memdesc:a075864b806dde720f4b106bc3a3002f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The return type of the callable. <br /></td></tr>
+<tr class="separator:a075864b806dde720f4b106bc3a3002f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a283bd4ba7bf7d855cbe08b4ef0aa4085"><td class="memTemplParams" colspan="2">template&lt;size_t i&gt; </td></tr>
+<tr class="memitem:a283bd4ba7bf7d855cbe08b4ef0aa4085"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html#a283bd4ba7bf7d855cbe08b4ef0aa4085">arg_t</a> = typename std::tuple_element&lt; i, std::tuple&lt; Args... &gt; &gt;::type</td></tr>
+<tr class="memdesc:a283bd4ba7bf7d855cbe08b4ef0aa4085"><td class="mdescLeft">&#160;</td><td class="mdescRight">arg_t  <a href="#a283bd4ba7bf7d855cbe08b4ef0aa4085">More...</a><br /></td></tr>
 <tr class="separator:a283bd4ba7bf7d855cbe08b4ef0aa4085"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
 <tr class="memitem:ae33ffd5e69dad4220788ec7106903feb"><td class="memItemLeft" align="right" valign="top"><a id="ae33ffd5e69dad4220788ec7106903feb"></a>
-static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><b>arity</b> = sizeof...(Args)</td></tr>
+static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html#ae33ffd5e69dad4220788ec7106903feb">arity</a> = sizeof...(Args)</td></tr>
+<tr class="memdesc:ae33ffd5e69dad4220788ec7106903feb"><td class="mdescLeft">&#160;</td><td class="mdescRight">arity The arity of the callable <br /></td></tr>
 <tr class="separator:ae33ffd5e69dad4220788ec7106903feb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class R, class... Args&gt;<br />
 struct scl::tools::meta::function_traits&lt; std::function&lt; R(Args...)&gt; &gt;</h3>
 
+<p>Specialization for std::function. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">R</td><td>being the return type </td></tr>
+    <tr><td class="paramname">Args</td><td>being the arguments' types </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="fn__introspect_8h_source.html#l00015">15</a> of file <a class="el" href="fn__introspect_8h_source.html">fn_introspect.h</a>.</p>
-</div><hr/>The documentation for this struct was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="fn__introspect_8h_source.html#l00023">23</a> of file <a class="el" href="fn__introspect_8h_source.html">fn_introspect.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="a283bd4ba7bf7d855cbe08b4ef0aa4085"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a283bd4ba7bf7d855cbe08b4ef0aa4085">&#9670;&nbsp;</a></span>arg_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class R , class... Args&gt; </div>
+<div class="memtemplate">
+template&lt;size_t i&gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="structscl_1_1tools_1_1meta_1_1function__traits.html">scl::tools::meta::function_traits</a>&lt; std::function&lt; R(Args...)&gt; &gt;::<a class="el" href="structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html#a283bd4ba7bf7d855cbe08b4ef0aa4085">arg_t</a> =  typename std::tuple_element&lt;i, std::tuple&lt;Args...&gt; &gt;::type</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>arg_t </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">i</td><td>being the index of argument in the argument list (0-based index) The type of the i-th argument of the callable </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="fn__introspect_8h_source.html#l00042">42</a> of file <a class="el" href="fn__introspect_8h_source.html">fn_introspect.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this struct was generated from the following file:<ul>
 <li>include/scl/tools/meta/<a class="el" href="fn__introspect_8h_source.html">fn_introspect.h</a></li>
 </ul>
 </div><!-- contents -->

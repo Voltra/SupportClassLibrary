@@ -27,10 +27,17 @@ namespace scl{
 
 					protected:
 						/**
-						 * @var from being the starting point
-						 * @var to being the final point
-						 * @var step being the individual increment
-						 * @var cur being the current tate
+						 * @var from
+						 * the starting point
+						 *
+						 * @var to
+						 * the final point
+						 *
+						 * @var step
+						 * the individual increment
+						 *
+						 * @var cur
+						 * the current tate
 						 */
 						T from, to, step, cur;
 
@@ -38,7 +45,7 @@ namespace scl{
 						/**
 						 * Construct from initial, last and increment
 						 * @param from being the initial value
-						 * @param last being the last value
+						 * @param to being the last value
 						 * @param step being the increment value
 						 */
 						RangeCreator(T from, T to, T step) : from{from}, to{to}, step{step}, cur{from} {
@@ -103,7 +110,6 @@ namespace scl{
 			 * Generate a range from the given value to +inf
 			 * @tparam T being the type of the elements of the range
 			 * @param from being the initial value
-			 * @param to being the last value
 			 * @param step being the increment
 			 * @return a stream that generates the range's values
 			 */
