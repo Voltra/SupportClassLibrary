@@ -108,7 +108,9 @@ namespace scl{
 				 * Determines whether or not this Optional<T> is empty
 				 * @return TRUE if there's a value, FALSE otherwise
 				 */
-				bool hasValue() const{ return this->valueFlag; }
+				bool hasValue() const{
+					return this->valueFlag;
+				}
 
 				/**
 				 * Retrieves the value stored in this Optional<T>
@@ -377,15 +379,21 @@ namespace scl{
 				 * Calls a function if the value is present
 				 * @tparam F being the function's type
 				 * @param f being the function to call
+				 * @return a reference to this optional (for chaining purposes)
 				 */
 				template <class F>
-				void doIfPresent(F&& f) const{
+				const Optional& doIfPresent(F&& f) const{
 					if(this->hasValue())
 						f(this->get());
+
+					return *this;
 				}
 
+				/**
+				 * Alias for scl::utils::Optional::doIfPresent
+				 */
 				template <class F>
-				void ifSome(F&& f) const{
+				const Optional& ifSome(F&& f) const{
 					return this->doIfPresent(std::forward<F>(f));
 				}
 
@@ -393,15 +401,21 @@ namespace scl{
 				 * Calls a function if there is no value
 				 * @tparam F being the function's type
 				 * @param f being the function to call
+				 * @return a reference to this optional (for chaining purposes)
 				 */
 				template <class F>
-				void doIfEmpty(F&& f) const{
+				const Optional& doIfEmpty(F&& f) const{
 					if(!this->hasValue())
 						f();
+
+					return *this;
 				}
 
+				/**
+				 * Alias for scl::utils::Optional::doIfEmpty
+				 */
 				template <class F>
-				void ifNone(F&& f) const{
+				const Optional& ifNone(F&& f) const{
 					return this->doIfEmpty(std::forward<F>(f));
 				}
 

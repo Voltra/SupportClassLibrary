@@ -40,6 +40,9 @@ namespace scl{
 					}
 
 					payload_type next() override{
+						/*if(!this->parent().hasNext())
+							return payload_type::withoutValue();*/
+
 						const auto& alt = this->parent().next().value();
 						return payload_type{[&]{ return alt.template mapTo<value_type>(this->mapper); }};
 					}

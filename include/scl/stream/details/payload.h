@@ -52,7 +52,7 @@ namespace scl{
 					 * Retrieve the underlying sum type
 					 * @return an Either containing a value on its left or an invalid tag on its right
 					 */
-					const alternative& value(){
+					const alternative& value() const{
 						ensureGenerated();
 						return alt;
 					}

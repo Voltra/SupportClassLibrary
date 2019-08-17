@@ -1,5 +1,7 @@
 var searchData=
 [
+  ['ifnone',['ifNone',['../classscl_1_1utils_1_1_optional.html#a96f61fedcc41d08e0c83fcfb51b1cc19',1,'scl::utils::Optional']]],
+  ['ifsome',['ifSome',['../classscl_1_1utils_1_1_optional.html#ae68da6b5be7b0c8a3a0c6a74451b7b2b',1,'scl::utils::Optional']]],
   ['impl',['impl',['../classscl_1_1utils_1_1_any.html#a9994040fe1fe049d388b04fbc0850ab8',1,'scl::utils::Any']]],
   ['index',['index',['../classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html#a35a5ec7813bb6563d24f30f4c1ac6ce3',1,'scl::stream::creators::details::FromArrayIterator']]],
   ['inequalitycomparable',['InequalityComparable',['../structscl_1_1concepts_1_1_inequality_comparable.html',1,'scl::concepts']]],

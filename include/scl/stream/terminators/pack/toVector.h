@@ -35,10 +35,15 @@ namespace scl{
 							result_type process() {
 								result_type ret = {};
 
-								while (this->hasNext()) {
+								/*while (this->hasNext()) {
 									const auto& alt = this->next().value();
 									if (alt.hasValue())
 										ret.push_back(*alt);
+								}*/
+
+								for(auto&& payload : *this){
+									if(payload.isValid())
+										ret.push_back(*payload.value());
 								}
 
 								return ret;
