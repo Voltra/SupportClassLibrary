@@ -15,7 +15,7 @@ var searchData=
   ['result_5ftype',['result_type',['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a73736c8c0d75ec92c5f89a0f7b194ddb',1,'scl::stream::details::iterator::EndStreamIterator']]],
   ['return_5ftype',['return_type',['../structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html#a075864b806dde720f4b106bc3a3002f8',1,'scl::tools::meta::function_traits&lt; std::function&lt; R(Args...)&gt; &gt;']]],
   ['rhs_5ftag',['rhs_tag',['../structscl_1_1utils_1_1_either_1_1rhs__tag.html',1,'scl::utils::Either']]],
-  ['right',['right',['../structscl_1_1utils_1_1_either_1_1payload__t.html#a212e0e427de4541a1c71225a928bd054',1,'scl::utils::Either::payload_t::right()'],['../classscl_1_1utils_1_1_either.html#a878c45108c8d1247112e0c3320dc317a',1,'scl::utils::Either::right(R &amp;&amp;rhs)'],['../classscl_1_1utils_1_1_either.html#a186826a20ae59114e261dca7c8586cb7',1,'scl::utils::Either::Right(R &amp;&amp;rhs)']]],
+  ['right',['Right',['../classscl_1_1utils_1_1_either.html#a186826a20ae59114e261dca7c8586cb7',1,'scl::utils::Either::Right()'],['../structscl_1_1utils_1_1_either_1_1payload__t.html#a212e0e427de4541a1c71225a928bd054',1,'scl::utils::Either::payload_t::right()'],['../classscl_1_1utils_1_1_either.html#a878c45108c8d1247112e0c3320dc317a',1,'scl::utils::Either::right()']]],
   ['right_5ftype',['right_type',['../classscl_1_1utils_1_1_either.html#a73771e01c505b798afa3e7b185429e49',1,'scl::utils::Either']]],
   ['rightor',['rightOr',['../classscl_1_1utils_1_1_either.html#a67d2920dd2ecdcf9c22ebf0fdb68fcdc',1,'scl::utils::Either']]],
   ['rightvoidvisitor',['rightVoidVisitor',['../classscl_1_1utils_1_1_either.html#afd9eba423211974b35b8df25592cecf7',1,'scl::utils::Either']]],

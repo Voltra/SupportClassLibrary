@@ -209,7 +209,7 @@ namespace scl{
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
 
-					rhs = std::move(None{}); //set to none on move
+					rhs.valueFlag = false; //set to none on move
 				};
 
 				/**
@@ -226,7 +226,7 @@ namespace scl{
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
 
-					rhs = std::move(None{}); //set to none on move
+					rhs.valueFlag = false; //set to none on move
 					return *this;
 				};
 
@@ -457,7 +457,7 @@ namespace scl{
 				Optional<U> mapTo(F&& mapper) const{ return this->map<U>(mapper); }
 
 				/**
-				 * Filters the value accoding to the given predicate
+				 * Filters the value according to the given predicate
 				 * @tparam F being the type of predicate (auto deduction)
 				 * @param predicate being the predicate used to determine whether or not it should keep the value
 				 * @return a new optional that might not contain the original value
@@ -470,6 +470,26 @@ namespace scl{
 					}
 
 					return none;
+				}
+
+				/**
+				 * Flat maps this optional to an optional of another type
+				 * @tparam U being the value type of the mapped optional
+				 * @tparam F being the mapper's type
+				 * @param mapper being the mapper function
+				 * @return the mapped optional
+				 */
+				template <class U, class F>
+				Optional<U> flatMap(F&& mapper) const{
+					return this->hasValue() ? mapper(this->get()) : none;
+				}
+
+				/**
+				 * Alias for Optional::flatMap
+				 */
+				template <class U, class F>
+				Optional<U> flatMapTo(F&& mapper) const{
+					return this->flatMap<U>(std::forward<F>(mapper));
 				}
 
 			public:

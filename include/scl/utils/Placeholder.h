@@ -4,6 +4,7 @@ namespace scl{
 	namespace utils{
 		/**
 		 * Class representing parameter/return argument placholders
+		 * @warning Uses with std::unique_ptr and similar may result in dangling pointers
 		 */
 		struct Placeholder final{
 			constexpr Placeholder() = default;

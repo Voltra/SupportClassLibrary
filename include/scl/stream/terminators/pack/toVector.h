@@ -22,6 +22,7 @@ namespace scl{
 							using payload_type = typename iterator_type::payload_type;
 							using result_type = typename iterator_type::result_type;
 							using parent_iterator_type = typename iterator_type::parent_iterator_type;
+							using parent_type = typename iterator_type::parent_type;
 
 							/**
 							 * @typedef allocator_type
@@ -29,7 +30,7 @@ namespace scl{
 							 */
 							using allocator_type = Allocator;
 
-							explicit VectorPacker(parent_iterator_type& p) : iterator_type{p} {
+							explicit VectorPacker(parent_type p) : iterator_type{std::move(p)} {
 							}
 
 							result_type process() {

@@ -17,6 +17,7 @@ namespace scl{
 				template <class T>
 				class StreamIterator{
 					static_assert(!META::is_void<T>(), "Cannot make a StreamIterator<void>");
+					static_require(scl::concepts::Copyable<T>{});
 
 					public:
 						/**

@@ -211,8 +211,17 @@ template&lt;class U , class F &gt; </td></tr>
 <tr class="separator:a3833c10ed8d69123bd2a9d8754ef1fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad925cc777cf200731d1989b093de6553"><td class="memTemplParams" colspan="2">template&lt;class F &gt; </td></tr>
 <tr class="memitem:ad925cc777cf200731d1989b093de6553"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#ad925cc777cf200731d1989b093de6553">filter</a> (F predicate) const</td></tr>
-<tr class="memdesc:ad925cc777cf200731d1989b093de6553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the value accoding to the given predicate.  <a href="#ad925cc777cf200731d1989b093de6553">More...</a><br /></td></tr>
+<tr class="memdesc:ad925cc777cf200731d1989b093de6553"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filters the value according to the given predicate.  <a href="#ad925cc777cf200731d1989b093de6553">More...</a><br /></td></tr>
 <tr class="separator:ad925cc777cf200731d1989b093de6553"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3188ae99317264b8e29b6b685332033"><td class="memTemplParams" colspan="2">template&lt;class U , class F &gt; </td></tr>
+<tr class="memitem:af3188ae99317264b8e29b6b685332033"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#af3188ae99317264b8e29b6b685332033">flatMap</a> (F &amp;&amp;mapper) const</td></tr>
+<tr class="memdesc:af3188ae99317264b8e29b6b685332033"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flat maps this optional to an optional of another type.  <a href="#af3188ae99317264b8e29b6b685332033">More...</a><br /></td></tr>
+<tr class="separator:af3188ae99317264b8e29b6b685332033"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2bbc9118d9fecabf24db34ddf16955b"><td class="memTemplParams" colspan="2"><a id="ad2bbc9118d9fecabf24db34ddf16955b"></a>
+template&lt;class U , class F &gt; </td></tr>
+<tr class="memitem:ad2bbc9118d9fecabf24db34ddf16955b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&lt; U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#ad2bbc9118d9fecabf24db34ddf16955b">flatMapTo</a> (F &amp;&amp;mapper) const</td></tr>
+<tr class="memdesc:ad2bbc9118d9fecabf24db34ddf16955b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1utils_1_1_optional.html#af3188ae99317264b8e29b6b685332033" title="Flat maps this optional to an optional of another type. ">Optional::flatMap</a>. <br /></td></tr>
+<tr class="separator:ad2bbc9118d9fecabf24db34ddf16955b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b16f1a0e24514f7d8c2b026cc95df21"><td class="memItemLeft" align="right" valign="top"><a id="a6b16f1a0e24514f7d8c2b026cc95df21"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator==</b> (<a class="el" href="structscl_1_1utils_1_1_none.html">None</a>) const</td></tr>
 <tr class="separator:a6b16f1a0e24514f7d8c2b026cc95df21"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -738,7 +747,7 @@ template&lt;class F &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Filters the value accoding to the given predicate. </p>
+<p>Filters the value according to the given predicate. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">F</td><td>being the type of predicate (auto deduction) </td></tr>
@@ -754,6 +763,54 @@ template&lt;class F &gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>a new optional that might not contain the original value </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00466">466</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+
+</div>
+</div>
+<a id="af3188ae99317264b8e29b6b685332033"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3188ae99317264b8e29b6b685332033">&#9670;&nbsp;</a></span>flatMap()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<div class="memtemplate">
+template&lt;class U , class F &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&lt;U&gt; <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::flatMap </td>
+          <td>(</td>
+          <td class="paramtype">F &amp;&amp;&#160;</td>
+          <td class="paramname"><em>mapper</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Flat maps this optional to an optional of another type. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>being the value type of the mapped optional </td></tr>
+    <tr><td class="paramname">F</td><td>being the mapper's type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mapper</td><td>being the mapper function </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the mapped optional </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00483">483</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>

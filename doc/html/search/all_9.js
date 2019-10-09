@@ -24,7 +24,7 @@ var searchData=
   ['is_5ftrivially_5fmovable',['is_trivially_movable',['../namespacescl_1_1tools_1_1meta.html#adc78ff2ff09a688772759d2bb27322ea',1,'scl::tools::meta']]],
   ['isinvalid',['isInvalid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a76f23b8299d9455556ad4e1623c25de9',1,'scl::stream::details::StreamIteratorPayload']]],
   ['isvalid',['isValid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#ad43ad1fc2452e1964ee1442e0698168d',1,'scl::stream::details::StreamIteratorPayload']]],
-  ['it',['it',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a77cc0460b601fa765353a88682281d30',1,'scl::stream::details::iterator::StlAdapter::it()'],['../classscl_1_1stream_1_1_stream.html#a3da4fc6b7c26ffb5883234dd7513e553',1,'scl::stream::Stream::it()']]],
+  ['it',['it',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a77cc0460b601fa765353a88682281d30',1,'scl::stream::details::iterator::StlAdapter::it()'],['../classscl_1_1stream_1_1_stream.html#ac73a653ee819c7d97da836de278b25aa',1,'scl::stream::Stream::it()']]],
   ['it_5ft',['it_t',['../classscl_1_1stream_1_1_stream.html#a72258fa713e6faebbfcc29cad48f3b27',1,'scl::stream::Stream']]],
   ['iterator',['Iterator',['../structscl_1_1concepts_1_1_iterator.html',1,'scl::concepts::Iterator&lt; T &gt;'],['../classscl_1_1stream_1_1_stream.html#ad869514f77ac3a82a98df9b75fe2ee8c',1,'scl::stream::Stream::iterator()']]],
   ['iterator_5fcategory',['iterator_category',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a96bbfb65616e358ec154cc7dee25167e',1,'scl::stream::details::iterator::StlAdapter']]],

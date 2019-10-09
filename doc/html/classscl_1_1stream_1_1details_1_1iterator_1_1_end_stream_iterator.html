@@ -91,7 +91,8 @@ Collaboration diagram for scl::stream::details::iterator::EndStreamIterator&lt; 
 <div class="center"><img src="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator__coll__graph.png" border="0" usemap="#scl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator_3_01_ret_00_01_t_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="scl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator_3_01_ret_00_01_t_01_4_coll__map" id="scl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator_3_01_ret_00_01_t_01_4_coll__map">
 <area shape="rect" id="node2" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="5,11,196,53"/>
-<area shape="rect" id="node3" href="classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="A class for iterators that start a stream chain. " alt="" coords="245,47,467,89"/>
+<area shape="rect" id="node4" href="classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="A class for iterators that start a stream chain. " alt="" coords="245,47,467,89"/>
+<area shape="rect" id="node3" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\&lt; T \&gt;" alt="" coords="516,47,724,89"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -113,6 +114,9 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ad4156ed7474cd80c1795e5e12fec5038">parent_iterator_type</a> = <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html">BaseStreamIterator</a>&lt; T &gt;</td></tr>
 <tr class="memdesc:ad4156ed7474cd80c1795e5e12fec5038"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type alias for the "parent" iterator. <br /></td></tr>
 <tr class="separator:ad4156ed7474cd80c1795e5e12fec5038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8eb0bc7cec2d44890b90b4b76845eca0"><td class="memItemLeft" align="right" valign="top"><a id="a8eb0bc7cec2d44890b90b4b76845eca0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>parent_type</b> = typename <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html">OpStreamIterator</a>&lt; T &gt;::parent_type</td></tr>
+<tr class="separator:a8eb0bc7cec2d44890b90b4b76845eca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td colspan="2" onclick="javascript:toggleInherit('pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator')"><img src="closed.png" alt="-"/>&#160;Public Types inherited from <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a></td></tr>
 <tr class="memitem:a31849e6fc1cd956273765a6e58caf48d inherit pub_types_classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator"><td class="memItemLeft" align="right" valign="top"><a id="a31849e6fc1cd956273765a6e58caf48d"></a>
 using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a31849e6fc1cd956273765a6e58caf48d">payload_type</a> = <a class="el" href="classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html">StreamIteratorPayload</a>&lt; T &gt;</td></tr>
@@ -128,12 +132,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a5251fc785e21dcafa5b2ac82f7742ca1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a73736c8c0d75ec92c5f89a0f7b194ddb">result_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a5251fc785e21dcafa5b2ac82f7742ca1">process</a> ()=0</td></tr>
 <tr class="memdesc:a5251fc785e21dcafa5b2ac82f7742ca1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Process the return value.  <a href="#a5251fc785e21dcafa5b2ac82f7742ca1">More...</a><br /></td></tr>
 <tr class="separator:a5251fc785e21dcafa5b2ac82f7742ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a192f316ec4d95f786f43e72aa5abd588"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ad4156ed7474cd80c1795e5e12fec5038">parent_iterator_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a192f316ec4d95f786f43e72aa5abd588">parent</a> () const</td></tr>
-<tr class="memdesc:a192f316ec4d95f786f43e72aa5abd588"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the parent iterator.  <a href="#a192f316ec4d95f786f43e72aa5abd588">More...</a><br /></td></tr>
-<tr class="separator:a192f316ec4d95f786f43e72aa5abd588"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac4d6978c28f7eeab791fc62b22c5ef4b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ac4d6978c28f7eeab791fc62b22c5ef4b">EndStreamIterator</a> (<a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ad4156ed7474cd80c1795e5e12fec5038">parent_iterator_type</a> &amp;p)</td></tr>
-<tr class="memdesc:ac4d6978c28f7eeab791fc62b22c5ef4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a parent iterator.  <a href="#ac4d6978c28f7eeab791fc62b22c5ef4b">More...</a><br /></td></tr>
-<tr class="separator:ac4d6978c28f7eeab791fc62b22c5ef4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a730d70435f78b6d1748685dd7bf57e5b"><td class="memItemLeft" align="right" valign="top">parent_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a730d70435f78b6d1748685dd7bf57e5b">parent</a> () const</td></tr>
+<tr class="memdesc:a730d70435f78b6d1748685dd7bf57e5b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter for the parent iterator.  <a href="#a730d70435f78b6d1748685dd7bf57e5b">More...</a><br /></td></tr>
+<tr class="separator:a730d70435f78b6d1748685dd7bf57e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85890b6652249b1827db89ed41d21491"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a85890b6652249b1827db89ed41d21491">EndStreamIterator</a> (parent_type p)</td></tr>
+<tr class="memdesc:a85890b6652249b1827db89ed41d21491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from a parent iterator.  <a href="#a85890b6652249b1827db89ed41d21491">More...</a><br /></td></tr>
+<tr class="separator:a85890b6652249b1827db89ed41d21491"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bd2a44530f7d90615eab4ff88cf78af"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a9bd2a44530f7d90615eab4ff88cf78af">hasNext</a> () const override</td></tr>
 <tr class="separator:a9bd2a44530f7d90615eab4ff88cf78af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab424df1c5c34be9c1359274e7b88f11f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a8b1319104b03525dd2146ec56d76b77f">payload_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ab424df1c5c34be9c1359274e7b88f11f">next</a> () override</td></tr>
@@ -146,7 +150,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a3bfd431cf1e966cf6c98d8cee8c2cad5"><td class="memItemLeft" align="right" valign="top"><a id="a3bfd431cf1e966cf6c98d8cee8c2cad5"></a>
-<a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ad4156ed7474cd80c1795e5e12fec5038">parent_iterator_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a3bfd431cf1e966cf6c98d8cee8c2cad5">parent_</a></td></tr>
+parent_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#a3bfd431cf1e966cf6c98d8cee8c2cad5">parent_</a></td></tr>
 <tr class="memdesc:a3bfd431cf1e966cf6c98d8cee8c2cad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">This iterator's parent. <br /></td></tr>
 <tr class="separator:a3bfd431cf1e966cf6c98d8cee8c2cad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -163,10 +167,10 @@ class scl::stream::details::iterator::EndStreamIterator&lt; Ret, T &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00017">17</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00018">18</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="ac4d6978c28f7eeab791fc62b22c5ef4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac4d6978c28f7eeab791fc62b22c5ef4b">&#9670;&nbsp;</a></span>EndStreamIterator()</h2>
+<a id="a85890b6652249b1827db89ed41d21491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85890b6652249b1827db89ed41d21491">&#9670;&nbsp;</a></span>EndStreamIterator()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -179,7 +183,7 @@ template&lt;class Ret, class T&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html">scl::stream::details::iterator::EndStreamIterator</a>&lt; Ret, T &gt;::<a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html">EndStreamIterator</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ad4156ed7474cd80c1795e5e12fec5038">parent_iterator_type</a> &amp;&#160;</td>
+          <td class="paramtype">parent_type&#160;</td>
           <td class="paramname"><em>p</em></td><td>)</td>
           <td></td>
         </tr>
@@ -199,7 +203,7 @@ template&lt;class Ret, class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00059">59</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00062">62</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 
 </div>
 </div>
@@ -232,7 +236,7 @@ template&lt;class Ret, class T&gt; </div>
 
 <p>Reimplemented from <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a529e55cc180d88abc66c409388697a6f">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00075">75</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00078">78</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 
 </div>
 </div>
@@ -264,7 +268,7 @@ template&lt;class Ret, class T&gt; </div>
 
 <p>Reimplemented from <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#af2d66dbc056eb566bcc205c17e6f636a">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00082">82</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00085">85</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 
 </div>
 </div>
@@ -296,7 +300,7 @@ template&lt;class Ret, class T&gt; </div>
 
 <p>Implements <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#ae3fd9524e519360b60d1da794818f3e3">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00065">65</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00068">68</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 
 </div>
 </div>
@@ -328,12 +332,12 @@ template&lt;class Ret, class T&gt; </div>
 
 <p>Implements <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#a2335451c7596d49c0193b5acae903b22">scl::stream::details::iterator::StreamIterator&lt; T &gt;</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00070">70</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00073">73</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 
 </div>
 </div>
-<a id="a192f316ec4d95f786f43e72aa5abd588"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a192f316ec4d95f786f43e72aa5abd588">&#9670;&nbsp;</a></span>parent()</h2>
+<a id="a730d70435f78b6d1748685dd7bf57e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a730d70435f78b6d1748685dd7bf57e5b">&#9670;&nbsp;</a></span>parent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -344,7 +348,7 @@ template&lt;class Ret, class T&gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html#ad4156ed7474cd80c1795e5e12fec5038">parent_iterator_type</a>&amp; <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html">scl::stream::details::iterator::EndStreamIterator</a>&lt; Ret, T &gt;::parent </td>
+          <td class="memname">parent_type <a class="el" href="classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html">scl::stream::details::iterator::EndStreamIterator</a>&lt; Ret, T &gt;::parent </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -360,7 +364,7 @@ template&lt;class Ret, class T&gt; </div>
 <p>Getter for the parent iterator. </p>
 <dl class="section return"><dt>Returns</dt><dd>a reference to the parent iterator </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00053">53</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_end_stream_iterator_8h_source.html#l00056">56</a> of file <a class="el" href="_end_stream_iterator_8h_source.html">EndStreamIterator.h</a>.</p>
 
 </div>
 </div>

@@ -23,6 +23,7 @@ namespace scl {
 							using payload_type = typename iterator_type::payload_type;
 							using result_type = typename iterator_type::result_type;
 							using parent_iterator_type = typename iterator_type::parent_iterator_type;
+							using parent_type = typename iterator_type::parent_type;
 
 							/**
 							 * @typedef compare_type
@@ -36,16 +37,21 @@ namespace scl {
 							 */
 							using allocator_type = Allocator;
 
-							explicit SetPacker(parent_iterator_type& p) : iterator_type{p} {
+							explicit SetPacker(parent_type p) : iterator_type{std::move(p)} {
 							}
 
 							result_type process(){
 								result_type ret;
 
-								while(this->hasNext()){
+								/*while(this->hasNext()){
 									auto alt = this->next().value();
 									if(alt.hasValue())
 										ret.insert(*alt);
+								}*/
+
+								for(auto&& payload : *this){
+									if(payload.isValid())
+										ret.insert(*payload.value());
 								}
 
 								return ret;

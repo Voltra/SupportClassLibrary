@@ -73,8 +73,8 @@ struct Person{
 	Person& operator=(const Person&) = default;
 	Person& operator=(Person&&) = default;
 
-	template <class T>
-	explicit Person(T&& name) : name{std::forward<T>(name)}{
+
+	explicit Person(const std::string& name) : name{name}{
 	}
 
 	std::string getName() const{ return this->name; }
@@ -109,7 +109,7 @@ void testsStreamObj(){
 		Person{"jean"},
 		Person{"michel"},
 		Person{"denis"},
-		Person{"michel"}
+		Person{"2"}
 	};
 
 	auto res = streamFrom(p)
@@ -150,12 +150,13 @@ void testsStreamPackSet(){
 
 void testsStream(){
 	testsStreamObj();
-	testsVectorMapForEach();
-	testsStreamRange();
+	//testsVectorMapForEach();
+	//testsStreamRange();
+	//testsStreamPackSet();
 }
 
 void randomTests(){
-	int a;
+	int a = 0;
 	std::tie(_, a) = std::make_tuple(69, 42);
 	std::cout << "OwO _ is working " << a << nl;
 

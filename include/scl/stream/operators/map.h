@@ -24,6 +24,7 @@ namespace scl{
 					using parent_iterator_type = typename iterator_type::parent_iterator_type;
 					using parent_value_type = typename parent_iterator_type::value_type;
 					using parent_payload_type = typename parent_iterator_type::payload_type;
+					using parent_type = typename iterator_type::parent_type;
 
 					/**
 					 * @typedef mapper_type
@@ -36,15 +37,16 @@ namespace scl{
 					 * @param p being the parent iterator
 					 * @param mapper being the mapper function
 					 */
-					MapOperator(parent_iterator_type& p, mapper_type mapper) : iterator_type{p}, mapper{mapper} {
+					MapOperator(parent_type p, mapper_type mapper) : iterator_type{std::move(p)}, mapper{mapper} {
 					}
 
 					payload_type next() override{
-						/*if(!this->parent().hasNext())
-							return payload_type::withoutValue();*/
+						const auto& alt = this->parent()->next().value();
+//						return payload_type{[=]{ return alt.template mapTo<value_type>(this->mapper); }};
 
-						const auto& alt = this->parent().next().value();
-						return payload_type{[&]{ return alt.template mapTo<value_type>(this->mapper); }};
+						return alt.hasValue()
+						? payload_type::withValue(this->mapper(*alt))
+						: payload_type::withoutValue();
 					}
 
 				protected:

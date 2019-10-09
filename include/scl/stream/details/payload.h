@@ -80,7 +80,9 @@ namespace scl{
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withValue(const T& value){
-						return StreamIteratorPayload{[&]{ return alternative::ref(value); }};
+						return StreamIteratorPayload{[=]{
+							return alternative::ref(value);
+						}};
 					}
 
 					/**
@@ -88,7 +90,9 @@ namespace scl{
 					 * @return the instantiated payload
 					 */
 					constexpr static StreamIteratorPayload withoutValue(){
-						return StreamIteratorPayload{[]{ return scl::utils::none; }};
+						return StreamIteratorPayload{[]{
+							return scl::utils::none;
+						}};
 					}
 
 				protected:

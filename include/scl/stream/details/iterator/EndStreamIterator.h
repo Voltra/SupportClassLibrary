@@ -1,6 +1,7 @@
 #pragma once
 
 #include <scl/stream/details/iterator/StreamIterator.h>
+#include <scl/stream/details/iterator/OpStreamIterator.h>
 #include <scl/stream/details/iterator/BaseStreamIterator.h>
 #include <scl/stream/details/iterator/StlAdapter.h>
 
@@ -40,6 +41,8 @@ namespace scl{
 						 */
 						using parent_iterator_type = BaseStreamIterator<T>;
 
+						using parent_type = typename OpStreamIterator<T>::parent_type;
+
 						/**
 						 * Process the return value
 						 * @return the processed value
@@ -50,45 +53,45 @@ namespace scl{
 						 * Getter for the parent iterator
 						 * @return a reference to the parent iterator
 						 */
-						parent_iterator_type& parent() const{ return this->parent_; }
+						parent_type parent() const{ return this->parent_; }
 
 						/**
 						 * Construct from a parent iterator
 						 * @param p being this iterator's parent
 						 */
-						explicit EndStreamIterator(parent_iterator_type& p) : parent_{p}{
+						explicit EndStreamIterator(parent_type p) : parent_{std::move(p)}{
 						}
 
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::hasNext
 						 */
-						bool hasNext() const override{ return this->parent_.hasNext(); }
+						bool hasNext() const override{ return this->parent_->hasNext(); }
 
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::next
 						 */
-						payload_type next() override{ return std::move(this->parent_.next()); }
+						payload_type next() override{ return std::move(this->parent_->next()); }
 
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::begin
 						 */
 						StlAdapter<T> begin() override{
-							return this->parent_.begin();
+							return this->parent_->begin();
 						}
 
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::end
 						 */
 						StlAdapter<T> end() override{
-							return this->parent_.end();
+							return this->parent_->end();
 						}
 
 					protected:
 						/**
 						 * @var parent_
-						 * This iterator's parent
+						 * @brief This iterator's parent
 						 */
-						parent_iterator_type& parent_;
+						parent_type parent_;
 				};
 			}
 		}

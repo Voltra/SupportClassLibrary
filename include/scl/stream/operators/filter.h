@@ -21,6 +21,7 @@ namespace scl{
 					using value_type = typename iterator_type::value_type;
 					using payload_type = typename iterator_type::payload_type;
 					using parent_iterator_type = typename iterator_type::parent_iterator_type;
+					using parent_type = typename iterator_type::parent_type;
 
 					/**
 					 * @typedef predicate_type
@@ -33,12 +34,12 @@ namespace scl{
 					 * @param p being this iterator's parent
 					 * @param pred being the predicate to fulfill
 					 */
-					FilterOperator(parent_iterator_type& p, predicate_type pred) : iterator_type{p}, pred{pred} {
+					FilterOperator(parent_type p, predicate_type pred) : iterator_type{std::move(p)}, pred{pred} {
 					}
 
 					payload_type next() override{
-						while(this->parent().hasNext()){
-							const auto& alt = this->parent().next().value();
+						while(this->parent()->hasNext()){
+							const auto& alt = this->parent()->next().value();
 							if(alt.hasValue()){
 								const auto& value = *alt;
 								if(this->pred(value))

@@ -7,6 +7,8 @@
 #include <scl/exceptions/EmptyOptionalAccess.h>
 #include <scl/tools/make/make.hpp>
 #include <scl/tools/iostream/nl.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/is_same.h>
 
 #include <utility>
 #include <string>
@@ -66,11 +68,22 @@ TEST(OptionalTests, CanUseNonTriviallyMovableType){
 }
 
 TEST(OptionalTests, MovedFromHasCorrectSemantics){
-	Optional<std::string> no = none;
-	auto a = std::move(no);
+	{ // From none
+		Optional<std::string> no = none;
+		auto a = std::move(no);
 
-	//ASSERT_EQ(a.hasValue(), no.hasValue());
-	ASSERT_FALSE(no.hasValue());
+		//ASSERT_EQ(a.hasValue(), no.hasValue());
+		ASSERT_FALSE(no.hasValue());
+	}
+
+	{
+		Optional<int> o = 2;
+		auto a = std::move(o);
+
+		ASSERT_NE(a.hasValue(), o.hasValue());
+		ASSERT_FALSE(o.hasValue());
+		ASSERT_TRUE(a.hasValue());
+	}
 }
 
 TEST(OptionalTests, EmptyDoesNotHaveValue){
@@ -114,8 +127,8 @@ TEST(OptionalTests, FilteringTrueKeepsValue){
 }
 
 TEST(OptionalTests, CanCompareWithConvertibleValueType){
-	float gt = 43.f, lt = 41.f;
 	int value = 42;
+	float gt = value + 1.f, lt = value - 1.f;
 	float eq = static_cast<float>(value);
 	Optional<int> o = value;
 
@@ -161,11 +174,11 @@ TEST(OptionalTests, ComparingNoneWithNoneMakesSense){
 	None nil{};
 
 	ASSERT_TRUE(none == nil);
+	ASSERT_TRUE(none >= nil);
+	ASSERT_TRUE(none <= nil);
 	ASSERT_FALSE(none != nil);
 	ASSERT_FALSE(none < nil);
 	ASSERT_FALSE(none > nil);
-	ASSERT_TRUE(none >= nil);
-	ASSERT_TRUE(none <= nil);
 }
 
 TEST(OptionalTests, GetBackDefaultWhenEmpty){
@@ -180,11 +193,47 @@ TEST(OptionalTests, ThrowsGivenExceptionOnEmpty){
 	ASSERT_THROW(o.orThrow(e), decltype(e));
 }
 
+/* //Disabled test because it cannot be true
 TEST(OptionalTests, AdvancedInvalidTypesHaveWellDefinedBehavior){
-	/*using nm = Optional<NonMovable_t>;
-	using nc = Optional<NonCopyable_t>;*/
 	using nmnc = Optional<NonCopyableNonMovable_t>;
 
 	ASSERT_EQ(META::is_copyable<NonCopyableNonMovable_t>(), META::is_copyable<nmnc>());
 	ASSERT_EQ(META::is_movable<NonCopyableNonMovable_t>(), META::is_movable<nmnc>());
+}*/
+
+TEST(OptionalTests, NoneFunctionCalledIfEmptyNotIfPresent){
+	Optional<int> o = none;
+	o.doIfPresent([](const int& _){ //shouldn't be called
+		ASSERT_TRUE(false);
+	}).doIfEmpty([]{ //should be called
+		ASSERT_TRUE(true);
+	});
+}
+
+TEST(OptionalTests, ValueFunctionCalledIfPresentNotIfEmpty){
+	Optional<int> o = 42;
+	o.doIfPresent([](const int& _){ //should be called
+		ASSERT_TRUE(true);
+	}).doIfEmpty([]{ //shouldn't be called
+		ASSERT_TRUE(false);
+	});
+}
+
+TEST(OptionalTest, FlatMapOfEmptyGivesEmpty){
+	Optional<int> no = none;
+	auto f = no.flatMapTo<float>([](const int& i){
+		return Optional<float>{i + 2.f};
+	});
+
+	ASSERT_FALSE(f.hasValue());
+}
+
+TEST(OptionalTest, FlatMapGivesCorrectType){
+	Optional<int> i = 42;
+	auto f = i.flatMapTo<float>([](const int& i){
+		return Optional<float>{i + 2.f};
+	});
+
+	bool same = META::is_same<Optional<float>, decltype(f)>();
+	ASSERT_TRUE(same);
 }

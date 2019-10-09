@@ -1,6 +1,7 @@
 #pragma once
 
 #include <scl/stream/details/iterator/BaseStreamIterator.h>
+#include <scl/stream/details/iterator/OpStreamIterator.h>
 #include <scl/macros.h>
 
 namespace scl{
@@ -23,7 +24,7 @@ namespace scl{
 				 * @typedef it_t
 				 * The type of pointer to the iterator used by this stream
 				 */
-				using it_t = std::shared_ptr<iterator_type>;
+				using it_t = typename details::iterator::OpStreamIterator<T>::parent_type;
 
 				/**
 				 * @typedefe value_type
@@ -42,7 +43,8 @@ namespace scl{
 				 * Get a reference to the underlying iterator
 				 * @return the underlying iterator
 				 */
-				iterator_type& it() const{ return *(this->iterator); }
+//				iterator_type& it() const{ return *(this->iterator); }
+				it_t it() const{ return this->iterator; }
 
 			protected:
 				/**

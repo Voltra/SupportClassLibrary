@@ -1,5 +1,5 @@
 <map id="scl::stream::operators::details::UniqueByOperator&lt; T, U &gt;" name="scl::stream::operators::details::UniqueByOperator&lt; T, U &gt;">
-<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\&lt; T \&gt;" alt="" coords="12,200,220,241"/>
-<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="A class for iterators that start a stream chain. " alt="" coords="5,96,227,137"/>
+<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\&lt; T \&gt;" alt="" coords="12,184,220,225"/>
+<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="A class for iterators that start a stream chain. " alt="" coords="5,95,227,136"/>
 <area shape="rect" id="node4" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="21,5,211,47"/>
 </map>

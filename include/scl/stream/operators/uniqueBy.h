@@ -26,6 +26,7 @@ namespace scl{
 						using parent_iterator_type = typename iterator_type::parent_iterator_type;
 						using parent_value_type = typename parent_iterator_type::value_type;
 						using parent_payload_type = typename parent_iterator_type::payload_type;
+						using parent_type = typename iterator_type::parent_type;
 
 						/**
 						 * @typedef key_type
@@ -44,14 +45,14 @@ namespace scl{
 						 * @param p being the parent iterator
 						 * @param key being the key computation function
 						 */
-						UniqueByOperator(parent_iterator_type& p, mapper_type key) : iterator_type{p}, key{key} {
+						UniqueByOperator(parent_type p, mapper_type key) : iterator_type{std::move(p)}, key{key} {
 						}
 
 						payload_type next() override{
 							bool condition = true;
 
-							while(condition && this->parent().hasNext()){
-								const auto& alt = this->parent().next().value();
+							while(condition && this->parent()->hasNext()){
+								const auto& alt = this->parent()->next().value();
 								if(!alt.hasValue())
 									continue;
 

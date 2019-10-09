@@ -21,6 +21,7 @@ namespace scl{
 						using payload_type = typename iterator_type::payload_type;
 						using result_type = typename iterator_type::result_type;
 						using parent_iterator_type = typename iterator_type::parent_iterator_type;
+						using parent_type = typename iterator_type::parent_type;
 
 						/**
 						 * @typedef consumer_type
@@ -33,17 +34,19 @@ namespace scl{
 						 * @param p being the parent iterator
 						 * @param c being the consumer function
 						 */
-						ForEachTerminator(parent_iterator_type& p, consumer_type c) : iterator_type{p}, consumer{c} {
+						ForEachTerminator(parent_type p, consumer_type c) : iterator_type{std::move(p)}, consumer{c} {
 						}
 
 						result_type process(){
-							while(this->hasNext()){
+							/*while(this->hasNext()){
 								auto value = this->next().value();
-								value.doIfPresent(consumer);
-							}
+								value->doIfPresent(consumer);
+							}*/
 
-							/*for(auto&& alt : *this)
-								alt.doIfPresent(consumer);*/
+							for(auto&& payload : *this) {
+								if(payload.isValid())
+									payload.value().doIfPresent(consumer);
+							}
 
 							return;
 						};

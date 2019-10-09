@@ -20,30 +20,32 @@ namespace scl{
 						 */
 						using parent_iterator_type = BaseStreamIterator<ParentT>;
 
+						using parent_type = std::shared_ptr<parent_iterator_type>;
+
 						/**
 						 * Getter for the parent iterator
 						 * @return a reference to the parent iterator
 						 */
-						parent_iterator_type& parent() const{ return this->parent_; };
+						parent_type parent() const{ return this->parent_; };
 
 						/**
 						 * Construct from a parent iterator
 						 * @param parent being this iterator's parent
 						 */
-						explicit OpStreamIterator(parent_iterator_type& parent) : parent_{parent}{
+						explicit OpStreamIterator(parent_type parent) : parent_{std::move(parent)}{
 						}
 
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::hasNext
 						 */
-						bool hasNext() const override{ return this->parent_.hasNext(); }
+						bool hasNext() const override{ return this->parent_->hasNext(); }
 
 					protected:
 						/**
 						 * @var parent_
 						 * This iterator's parent
 						 */
-						parent_iterator_type& parent_;
+						parent_type parent_;
 				};
 			}
 		}
