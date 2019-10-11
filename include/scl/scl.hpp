@@ -12,3 +12,4 @@ namespace scl{}
 #include <scl/exceptions/exceptions.hpp>
 #include <scl/utils/utils.hpp>
 #include <scl/stream/stream.hpp>
+#include <scl/async/async.hpp>

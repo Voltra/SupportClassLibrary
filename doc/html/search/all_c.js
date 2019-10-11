@@ -14,5 +14,6 @@ var searchData=
   ['memfn_5ftype',['memfn_type',['../namespacescl_1_1tools_1_1meta.html#ac6c33bef173251a08aa2b2d44a8d7194',1,'scl::tools::meta']]],
   ['movable',['Movable',['../structscl_1_1concepts_1_1_movable.html',1,'scl::concepts']]],
   ['moveassignable',['MoveAssignable',['../structscl_1_1concepts_1_1_move_assignable.html',1,'scl::concepts']]],
-  ['moveconstructible',['MoveConstructible',['../structscl_1_1concepts_1_1_move_constructible.html',1,'scl::concepts']]]
+  ['moveconstructible',['MoveConstructible',['../structscl_1_1concepts_1_1_move_constructible.html',1,'scl::concepts']]],
+  ['mutexed',['Mutexed',['../classscl_1_1async_1_1_mutexed.html',1,'scl::async::Mutexed&lt; T, Lock, Guard &gt;'],['../namespacescl_1_1tools_1_1make.html#ab35aadca87889cd6f36cc32a4e2bc5bd',1,'scl::tools::make::mutexed()']]]
 ];

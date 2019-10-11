@@ -29,7 +29,7 @@ body {
     /* The html and body elements cannot have any padding or margin. */
 }
 
-/* Wrapper for page content to push down footer */
+/* Resource for page content to push down footer */
 #wrap {
     min-height: 100%;
     height: auto;

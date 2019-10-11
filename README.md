@@ -3,7 +3,7 @@ The SCL is a set of tools providing classes and utility functions that aim to ea
 
 
 
-You can have a loook at the documentation [here](https://voltra.github.io/SupportClassLibrary/doc/html/).
+You can have a look at the documentation [here](https://voltra.github.io/SupportClassLibrary/doc/html/).
 
 
 
@@ -30,13 +30,14 @@ Here is the namespace hierarchy:
     * [creators](./include/scl/stream/creators/creators.hpp) - Grouping stream creation functions
     * [operators](./include/scl/stream/operators/operators.hpp) - Grouping intermediate stream operation functions
     * [terminators](./include/scl/stream/terminators/terminators.hpp) - Grouping end of stream operation functions 
+  * [async](./async/async.hpp) - The asynchronous programming API
 
 
 
 Here are some [macros](./include/scl/macros.h) and their meaning:
 
-* Code base maros
-  * `realConst(type)` - Gives a `const` version of the given type (equivalent to `const type const`, useful for pointer)
+* Code based macros
+  * `realConst(type)` - Gives a `const` version of the given type (equivalent to `const type const`, useful for pointers)
   * `stringLiteral` - The actual string literal type (so you don't have to learn it by heart)
   * `assert_concept` - Compile time assertions of concepts outside of a block of code (must be simple concepts, not aggregates (e.g. `Copyable ` vs `Invocable`))
   * `static_require` - Require concepts without giving an additional error message

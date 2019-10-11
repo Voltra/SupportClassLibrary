@@ -158,3 +158,72 @@ for(auto&& e : container){
 "roughly" because we need to take in account the iterators lifetime as well as the space and state they may use.
 
 Because they are all objects, the state is limited to the lifetime of the iterators/streams and cannot be accessed outside unlike `tagged` and `superSpecial`.
+
+
+
+## Async API
+
+The async API is a set of tools that abstract away all the burden of maintaining and using asynchrony.
+
+
+
+### Guarded data and `Mutexed`
+
+`scl::async::Mutexed<T>` solves one problem : automatic guard when using data across asynchronous contexts.
+
+Used with `scl::async::with`, an abstraction over resource management (e.g. you could adapt it for the filesystem), it becomes one of the most useful tools to use the Monitor pattern :
+
+```c++
+#include "Queue.h"
+#include <scl/async/async.hpp>
+#include <scl/utils/utils.hpp>
+
+using namespace scl::async;
+using namespace scl::utils;
+
+template <class T>
+class AsyncQueue{
+    protected:
+    	Mutexed<Queue<T>> queue = {};
+    
+    public:
+    	AsyncQueue(){}
+    
+    	AsyncQueue& push(T elem){ //endpoint
+            with(this->queue, [](Queue<T>& queue){ //mutually exclusive
+                queue.push(elem);
+            });
+            
+            return *this;
+        }
+    
+    	Optional<T> pop(){ //endpoint
+            Optional<T> ret = none;
+            
+            with(this->queue, [&](Queue<T>& queue){ //mutually exclusive
+                if(!queue.isEmpty())
+                    ret = queue.pop();
+            });
+            
+            return ret;
+        }
+};
+```
+
+
+
+### `with` clause
+
+Think of `scl::async::with` as the `try-with-resources` of Java or the `using` of C# or even the classic RAII of C++, but with functions.
+
+
+
+Why the use of functions instead of wrapping in a block? It's nicer to read and reason about :
+
+* you need to remember to put the block of code around the exact portion of code that should be mutually exclusive
+* you need to have a ready to go RAII lock or a way to emulate it (e.g. `lock` and `unlock`)
+* the syntax is quite ugly
+
+
+
+With the function approach, we're closer to monitors and actually have a distinctive way to describe operations and their limited scope. You often have a function (or a way to make one) when you're dealing with this kind of code, why not make one then?

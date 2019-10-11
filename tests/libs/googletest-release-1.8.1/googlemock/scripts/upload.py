@@ -740,7 +740,7 @@ class SubversionVCS(VersionControlSystem):
     self.svn_base = self._GuessBase(required)
 
   def GuessBase(self, required):
-    """Wrapper for _GuessBase."""
+    """Resource for _GuessBase."""
     return self.svn_base
 
   def _GuessBase(self, required):

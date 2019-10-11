@@ -1305,7 +1305,7 @@ class MockSpec {
   GTEST_DISALLOW_ASSIGN_(MockSpec);
 };  // class MockSpec
 
-// Wrapper type for generically holding an ordinary value or lvalue reference.
+// Resource type for generically holding an ordinary value or lvalue reference.
 // If T is not a reference type, it must be copyable or movable.
 // ReferenceOrValueWrapper<T> is movable, and will also be copyable unless
 // T is a move-only value type (which means that it will always be copyable

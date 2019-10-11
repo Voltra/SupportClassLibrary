@@ -92,7 +92,7 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a39c8cde6232e7f72ba4698931f5c737d"><td class="memTemplParams" colspan="2">template&lt;class F , class Fn  = decltype(META::as_fn(std::declval&lt;F&gt;())), class T  = META::decay_t&lt;META::arg_t&lt;Fn, 0&gt;&gt;&gt; </td></tr>
+<tr class="memitem:a39c8cde6232e7f72ba4698931f5c737d"><td class="memTemplParams" colspan="2">template&lt;class F , class Fn  = decltype( scl::tools::meta ::as_fn(std::declval&lt;F&gt;())), class T  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::arg_t&lt;Fn, 0&gt;&gt;&gt; </td></tr>
 <tr class="memitem:a39c8cde6232e7f72ba4698931f5c737d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html">details::filter_toolbox</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1operators.html#a39c8cde6232e7f72ba4698931f5c737d">filter</a> (F &amp;&amp;predicate)</td></tr>
 <tr class="memdesc:a39c8cde6232e7f72ba4698931f5c737d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Filter a stream.  <a href="#a39c8cde6232e7f72ba4698931f5c737d">More...</a><br /></td></tr>
 <tr class="separator:a39c8cde6232e7f72ba4698931f5c737d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -104,7 +104,7 @@ Functions</h2></td></tr>
 <tr class="memitem:abe7a654abb6df99b2f13fc74443c5835"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1operators.html#abe7a654abb6df99b2f13fc74443c5835">operator|</a> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, const <a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html">details::filter_toolbox</a>&lt; T &gt; &amp;rhs)</td></tr>
 <tr class="memdesc:abe7a654abb6df99b2f13fc74443c5835"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pipe operator overload for filter operations.  <a href="#abe7a654abb6df99b2f13fc74443c5835">More...</a><br /></td></tr>
 <tr class="separator:abe7a654abb6df99b2f13fc74443c5835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af9d949fb54eeccd864c654472ccb0a1d"><td class="memTemplParams" colspan="2">template&lt;class F , class Fn  = decltype(META::as_fn(std::declval&lt;F&gt;())), class T  = META::decay_t&lt;META::arg_t&lt;Fn, 0&gt;&gt;, class U  = META::decay_t&lt;META::return_t&lt;Fn&gt;&gt;&gt; </td></tr>
+<tr class="memitem:af9d949fb54eeccd864c654472ccb0a1d"><td class="memTemplParams" colspan="2">template&lt;class F , class Fn  = decltype( scl::tools::meta ::as_fn(std::declval&lt;F&gt;())), class T  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::arg_t&lt;Fn, 0&gt;&gt;, class U  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::return_t&lt;Fn&gt;&gt;&gt; </td></tr>
 <tr class="memitem:af9d949fb54eeccd864c654472ccb0a1d"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1map__toolbox.html">details::map_toolbox</a>&lt; T, U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1operators.html#af9d949fb54eeccd864c654472ccb0a1d">map</a> (F &amp;&amp;mapper)</td></tr>
 <tr class="memdesc:af9d949fb54eeccd864c654472ccb0a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map a stream.  <a href="#af9d949fb54eeccd864c654472ccb0a1d">More...</a><br /></td></tr>
 <tr class="separator:af9d949fb54eeccd864c654472ccb0a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,7 +123,7 @@ Functions</h2></td></tr>
 <tr class="memitem:af8fc38d9f517f911b94aba9f9ff55960"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1operators.html#af8fc38d9f517f911b94aba9f9ff55960">operator|</a> (const <a class="el" href="classscl_1_1stream_1_1_stream.html">Stream</a>&lt; T &gt; &amp;lhs, <a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique__toolbox.html">details::unique_toolbox</a> rhs)</td></tr>
 <tr class="memdesc:af8fc38d9f517f911b94aba9f9ff55960"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pipe operator overload for unique operations.  <a href="#af8fc38d9f517f911b94aba9f9ff55960">More...</a><br /></td></tr>
 <tr class="separator:af8fc38d9f517f911b94aba9f9ff55960"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4f9637cb2e361d89cced07839f45cdb"><td class="memTemplParams" colspan="2">template&lt;class F , class Fn  = decltype(META::as_fn(std::declval&lt;F&gt;())), class T  = META::decay_t&lt;META::arg_t&lt;Fn, 0&gt;&gt;, class U  = META::decay_t&lt;META::return_t&lt;Fn&gt;&gt;&gt; </td></tr>
+<tr class="memitem:af4f9637cb2e361d89cced07839f45cdb"><td class="memTemplParams" colspan="2">template&lt;class F , class Fn  = decltype( scl::tools::meta ::as_fn(std::declval&lt;F&gt;())), class T  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::arg_t&lt;Fn, 0&gt;&gt;, class U  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::return_t&lt;Fn&gt;&gt;&gt; </td></tr>
 <tr class="memitem:af4f9637cb2e361d89cced07839f45cdb"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html">details::uniqueBy_toolbox</a>&lt; T, U &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1stream_1_1operators.html#af4f9637cb2e361d89cced07839f45cdb">uniqueBy</a> (F &amp;&amp;mapper)</td></tr>
 <tr class="memdesc:af4f9637cb2e361d89cced07839f45cdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove duplicates from a stream.  <a href="#af4f9637cb2e361d89cced07839f45cdb">More...</a><br /></td></tr>
 <tr class="separator:af4f9637cb2e361d89cced07839f45cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,7 +145,7 @@ Functions</h2></td></tr>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class F , class Fn  = decltype(META::as_fn(std::declval&lt;F&gt;())), class T  = META::decay_t&lt;META::arg_t&lt;Fn, 0&gt;&gt;&gt; </div>
+template&lt;class F , class Fn  = decltype( scl::tools::meta ::as_fn(std::declval&lt;F&gt;())), class T  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::arg_t&lt;Fn, 0&gt;&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html">details::filter_toolbox</a>&lt;T&gt; scl::stream::operators::filter </td>
@@ -221,7 +221,7 @@ template&lt;class T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class F , class Fn  = decltype(META::as_fn(std::declval&lt;F&gt;())), class T  = META::decay_t&lt;META::arg_t&lt;Fn, 0&gt;&gt;, class U  = META::decay_t&lt;META::return_t&lt;Fn&gt;&gt;&gt; </div>
+template&lt;class F , class Fn  = decltype( scl::tools::meta ::as_fn(std::declval&lt;F&gt;())), class T  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::arg_t&lt;Fn, 0&gt;&gt;, class U  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::return_t&lt;Fn&gt;&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1map__toolbox.html">details::map_toolbox</a>&lt;T, U&gt; scl::stream::operators::map </td>
@@ -507,7 +507,7 @@ template&lt;class T , class U &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class F , class Fn  = decltype(META::as_fn(std::declval&lt;F&gt;())), class T  = META::decay_t&lt;META::arg_t&lt;Fn, 0&gt;&gt;, class U  = META::decay_t&lt;META::return_t&lt;Fn&gt;&gt;&gt; </div>
+template&lt;class F , class Fn  = decltype( scl::tools::meta ::as_fn(std::declval&lt;F&gt;())), class T  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::arg_t&lt;Fn, 0&gt;&gt;, class U  = scl::tools::meta ::decay_t&lt; scl::tools::meta ::return_t&lt;Fn&gt;&gt;&gt; </div>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html">details::uniqueBy_toolbox</a>&lt;T, U&gt; scl::stream::operators::uniqueBy </td>

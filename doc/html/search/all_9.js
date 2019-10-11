@@ -12,6 +12,7 @@ var searchData=
   ['invalidargument',['InvalidArgument',['../classscl_1_1exceptions_1_1_invalid_argument.html',1,'scl::exceptions']]],
   ['invalidcast',['InvalidCast',['../classscl_1_1exceptions_1_1_invalid_cast.html',1,'scl::exceptions']]],
   ['invalideitheraccess',['InvalidEitherAccess',['../classscl_1_1exceptions_1_1_invalid_either_access.html',1,'scl::exceptions']]],
+  ['invalidresource',['InvalidResource',['../structscl_1_1exceptions_1_1_invalid_resource.html',1,'scl::exceptions']]],
   ['invalidvalue',['InvalidValue',['../structscl_1_1stream_1_1details_1_1_invalid_value.html',1,'scl::stream::details']]],
   ['invocable',['Invocable',['../structscl_1_1concepts_1_1_invocable.html',1,'scl::concepts']]],
   ['is_5fbase_5fof',['is_base_of',['../namespacescl_1_1tools_1_1meta.html#a92a177852fe95f322266420e143829a6',1,'scl::tools::meta']]],
