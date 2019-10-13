@@ -377,7 +377,7 @@ namespace scl{
 				Either<NewLhs, Rhs> mapLeftTo(Mapper mapper) const{
 					if(this->hasLeft()){
 						const Lhs& left = this->getLeft();
-						return Either<NewLhs, Rhs>::/*template*/ Left/*<NewLhs>*/(mapper(left));
+						return Either<NewLhs, Rhs>::Left(mapper(left));
 					}
 
 					return Either<NewLhs, Rhs>::Right(this->getRight());
@@ -428,11 +428,7 @@ namespace scl{
 				 * @return Lhs
 				 */
 				Lhs leftOr(Lhs&& defaultValue) const{
-					try{
-						return this->getLeft();
-					}catch(exceptions::InvalidEitherAccess&){
-						return std::forward<Lhs>(defaultValue);
-					}
+					return this->payload.left.orElse(defaultValue);
 				}
 
 				/**
@@ -441,11 +437,7 @@ namespace scl{
 				 * @return Rhs
 				 */
 				Rhs rightOr(Rhs&& defaultValue) const{
-					try{
-						return this->getRight();
-					}catch(exceptions::InvalidEitherAccess&){
-						return std::forward<Rhs>(defaultValue);
-					}
+					return this->payload.right.orElse(defaultValue);
 				}
 		};
 	}

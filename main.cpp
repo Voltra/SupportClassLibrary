@@ -18,6 +18,8 @@ using namespace scl::stream::creators;
 using namespace scl::stream::operators;
 using namespace scl::stream::terminators;
 
+using namespace scl::http;
+
 template <class T>
 T answerToLife(){
 	require(Same<T, int>{});
@@ -161,6 +163,10 @@ void randomTests(){
 	std::cout << "OwO _ is working " << a << nl;
 
 	std::cout << InvalidAnyCast{"OwO cool exceptions"} << nl;
+}
+
+void testHTTP(){
+	std::cout << StatusCode::OK << nl;
 }
 
 int main(){

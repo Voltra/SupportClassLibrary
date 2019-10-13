@@ -11,5 +11,6 @@ var searchData=
   ['foreachterminator',['ForEachTerminator',['../classscl_1_1stream_1_1terminators_1_1details_1_1_for_each_terminator.html#a6b84b15d2b1c71295996a916b783a54a',1,'scl::stream::terminators::details::ForEachTerminator']]],
   ['from',['from',['../namespacescl_1_1tools_1_1make.html#ac01ad3334bf3782bb9eb340428d80ef3',1,'scl::tools::make']]],
   ['fromarrayiterator',['FromArrayIterator',['../classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html#a578db196664856a528ac1eff58598291',1,'scl::stream::creators::details::FromArrayIterator']]],
+  ['fromcode',['fromCode',['../classscl_1_1http_1_1_status_code.html#a498a373320752a052b5e3264c5db9b70',1,'scl::http::StatusCode']]],
   ['fromstliterator',['FromStlIterator',['../classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html#ad0540a78abd9e16516aaf3a162b5706b',1,'scl::stream::creators::details::FromStlIterator']]]
 ];

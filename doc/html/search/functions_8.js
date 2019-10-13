@@ -11,7 +11,13 @@ var searchData=
   ['is_5fmovable',['is_movable',['../namespacescl_1_1tools_1_1meta.html#aa9eac95fcc8abd7696ea21f88fcc0cc8',1,'scl::tools::meta']]],
   ['is_5fsame',['is_same',['../namespacescl_1_1tools_1_1meta.html#aec4ebd2fde8aa8caa3b244335b6dbcd0',1,'scl::tools::meta']]],
   ['is_5ftrivially_5fmovable',['is_trivially_movable',['../namespacescl_1_1tools_1_1meta.html#adc78ff2ff09a688772759d2bb27322ea',1,'scl::tools::meta']]],
+  ['isclienterror',['isClientError',['../classscl_1_1http_1_1_status_code.html#a7edd235d016d1247a58872edaef1d488',1,'scl::http::StatusCode']]],
+  ['isinformational',['isInformational',['../classscl_1_1http_1_1_status_code.html#a586e6f2746ebada5016e4a82d017015d',1,'scl::http::StatusCode']]],
   ['isinvalid',['isInvalid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a76f23b8299d9455556ad4e1623c25de9',1,'scl::stream::details::StreamIteratorPayload']]],
+  ['isok',['isOk',['../classscl_1_1http_1_1_status_code.html#a7693901b267f9f1392641292c94c3a81',1,'scl::http::StatusCode']]],
+  ['isredirect',['isRedirect',['../classscl_1_1http_1_1_status_code.html#ad4403f4ebbd344d365a678b6e689df22',1,'scl::http::StatusCode']]],
+  ['isservererror',['isServerError',['../classscl_1_1http_1_1_status_code.html#ab78957302105f0109a6a553713ffd218',1,'scl::http::StatusCode']]],
+  ['issuccessful',['isSuccessful',['../classscl_1_1http_1_1_status_code.html#a4a3611d93f0d4e09a7dfeeae5f609e71',1,'scl::http::StatusCode']]],
   ['isvalid',['isValid',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#ad43ad1fc2452e1964ee1442e0698168d',1,'scl::stream::details::StreamIteratorPayload']]],
   ['it',['it',['../classscl_1_1stream_1_1_stream.html#ac73a653ee819c7d97da836de278b25aa',1,'scl::stream::Stream']]]
 ];

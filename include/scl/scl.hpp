@@ -13,3 +13,4 @@ namespace scl{}
 #include <scl/utils/utils.hpp>
 #include <scl/stream/stream.hpp>
 #include <scl/async/async.hpp>
+#include <scl/http/http.hpp>

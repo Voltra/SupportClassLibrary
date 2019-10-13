@@ -79,8 +79,8 @@ namespace scl{
 
 			public:
 				using value_type = META::remove_cv_ref_t<T>;
-				static constexpr bool is_movable = META::is_movable<value_type>();
-				static constexpr bool is_copyable =  META::is_copyable<value_type>();
+				/*static constexpr bool is_movable = META::is_movable<value_type>();
+				static constexpr bool is_copyable =  META::is_copyable<value_type>();*/
 
 			public:
 				template <class... Args>
@@ -125,24 +125,11 @@ namespace scl{
 				}
 
 				/**
-				 * Mutable accessor for the value stored
-				 * @return a reference to the value stored
-				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-				 */
-				value_type& get(){
-					if(!this->hasValue())
-						throw exceptions::EmptyOptionalAccess{};
-
-					//reinterpret_cast is allowed here since we allocated for a T
-					return *reinterpret_cast<value_type*>(&payload);
-				}
-
-				/**
 				 * Creates a non empty optional with the given value (copy)
 				 * @param value being the value to assign from
 				 */
 				Optional(const value_type& value) : valueFlag{true} {
-					static_require(is_copyable);
+//					static_require(is_copyable);
 					new(&this->payload)value_type{value};
 				}
 
@@ -152,7 +139,7 @@ namespace scl{
 				 * @return a reference to this Optional
 				 */
 				Optional& operator=(const value_type& value){
-					static_require(is_copyable);
+//					static_require(is_copyable);
 					this->valueFlag = true;
 					new(&this->payload)value_type{value};
 
@@ -164,7 +151,7 @@ namespace scl{
 				 * @param o being the Optional to copy from
 				 */
 				Optional(const Optional& o) : valueFlag{o.valueFlag} {
-					static_require(is_copyable);
+//					static_require(is_copyable);
 					if(o.hasValue())
 						new(&(this->payload))value_type{o.get()};
 				};
@@ -175,7 +162,7 @@ namespace scl{
 				 * @return a reference to this Optional<T>
 				 */
 				Optional& operator=(const Optional& rhs){
-					static_require(is_copyable);
+//					static_require(is_copyable);
 					this->valueFlag = rhs.hasValue();
 					if(this->valueFlag)
 						new(&(this->payload))value_type{rhs.get()};
@@ -191,13 +178,6 @@ namespace scl{
 				operator const value_type&() const{ return this->get(); }
 
 				/**
-				 * Automatic conversion operator
-				 * @return a mutable reference to the underlying value
-				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-				 */
-				operator value_type&(){ return this->get(); }
-
-				/**
 				 * Move constructor
 				 * @param rhs being the Optional to construct from
 				 *
@@ -205,7 +185,7 @@ namespace scl{
 				 * (i.e. equivalent to one constructed from none)
 				 */
 				Optional(Optional&& rhs) : valueFlag{rhs.valueFlag} {
-					static_require(is_movable);
+//					static_require(is_movable);
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
 
@@ -221,7 +201,7 @@ namespace scl{
 				 * (i.e. equivalent to one constructed from none)
 				 */
 				Optional& operator=(Optional&& rhs) noexcept{
-					static_require(is_movable);
+//					static_require(is_movable);
 					this->valueFlag = rhs.valueFlag;
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
@@ -312,25 +292,11 @@ namespace scl{
 				const value_type& value() const{ return this->get(); }
 
 				/**
-				 * A semantic alias for Optional<T>::get
-				 * @return a const& to the value stored
-				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-				 */
-				value_type& value(){ return this->get(); }
-
-				/**
 				 * Get an immutable pointer to the contained value
 				 * @return a realConst(T*) to the value
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
 				realConst(value_type*) ptr() const{ return &(this->get()); }
-
-				/**
-				 * Get a mutable pointer to the contained value
-				 * @return a T* to the value
-				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-				 */
-				value_type* ptr(){ return &(this->get()); }
 
 				/**
 				 * Automatic bool conversion
@@ -346,25 +312,11 @@ namespace scl{
 				const value_type& operator*() const{ return this->get(); }
 
 				/**
-				 * Mutable access to the value
-				 * @return a reference to the value stored
-				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-				 */
-				value_type& operator*(){ return this->get(); }
-
-				/**
 				 * Get an immutable pointer to the stored value
 				 * @return a realConst T* to the value stored
 				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 				 */
 				realConst(value_type*) operator->() const{ return this->ptr(); }
-
-				/**
-				 * Get a mutable pointer to the stored value
-				 * @return a T* to the value stored
-				 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-				 */
-				value_type* operator->(){ return this->ptr(); }
 
 				/**
 				 * Retrieves the value if there's one or return the default value provided

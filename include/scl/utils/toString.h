@@ -6,7 +6,7 @@
 #include <scl/tools/meta/void_t.h>
 #include <scl/tools/meta/exists.h>
 #include <scl/tools/meta/type_mod.h>
-#include <scl/tools/meta/is_convertible.h>
+#include <scl/tools/meta/is_same.h>
 
 namespace scl{
 	namespace utils{
@@ -25,9 +25,9 @@ namespace scl{
 		 */
 		template <class T>
 		struct ToString<T, META::void_t<META::enable_if_t<
-			META::is_convertible<T, char>()
-			|| META::is_convertible<T, const char*>()
-			|| META::is_convertible<T, std::string>()
+			META::is_same<T, char>()
+			|| META::is_same<T, const char*>()
+			|| META::is_same<T, std::string>()
 		>>>{
 			std::string operator()(const T& t) const{
 				return std::string{t};

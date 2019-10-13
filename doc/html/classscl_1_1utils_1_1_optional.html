@@ -67,7 +67,6 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
-<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="#friends">Friends</a> &#124;
 <a href="classscl_1_1utils_1_1_optional-members.html">List of all members</a>  </div>
@@ -83,9 +82,9 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a098eba2d6ff90d6864182442bd576e9e"><td class="memItemLeft" align="right" valign="top"><a id="a098eba2d6ff90d6864182442bd576e9e"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = META::remove_cv_ref_t&lt; T &gt;</td></tr>
-<tr class="separator:a098eba2d6ff90d6864182442bd576e9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e7e141ece99179c93f05504163b758c"><td class="memItemLeft" align="right" valign="top"><a id="a6e7e141ece99179c93f05504163b758c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = scl::tools::meta ::remove_cv_ref_t&lt; T &gt;</td></tr>
+<tr class="separator:a6e7e141ece99179c93f05504163b758c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -99,9 +98,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e5a56aae89adf8933e21c65b211ece2"><td class="memItemLeft" align="right" valign="top">const value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a9e5a56aae89adf8933e21c65b211ece2">get</a> () const</td></tr>
 <tr class="memdesc:a9e5a56aae89adf8933e21c65b211ece2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value stored in this Optional&lt;T&gt;  <a href="#a9e5a56aae89adf8933e21c65b211ece2">More...</a><br /></td></tr>
 <tr class="separator:a9e5a56aae89adf8933e21c65b211ece2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f62d19f7f239988e2f2d0801bd6c961"><td class="memItemLeft" align="right" valign="top">value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a1f62d19f7f239988e2f2d0801bd6c961">get</a> ()</td></tr>
-<tr class="memdesc:a1f62d19f7f239988e2f2d0801bd6c961"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable accessor for the value stored.  <a href="#a1f62d19f7f239988e2f2d0801bd6c961">More...</a><br /></td></tr>
-<tr class="separator:a1f62d19f7f239988e2f2d0801bd6c961"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4336fcd2487a07c327a97282cdf77fdf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a4336fcd2487a07c327a97282cdf77fdf">Optional</a> (const value_type &amp;<a class="el" href="classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041">value</a>)</td></tr>
 <tr class="memdesc:a4336fcd2487a07c327a97282cdf77fdf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a non empty optional with the given value (copy)  <a href="#a4336fcd2487a07c327a97282cdf77fdf">More...</a><br /></td></tr>
 <tr class="separator:a4336fcd2487a07c327a97282cdf77fdf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -117,9 +113,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4d4d4ec263f8fade4d55f8e36f931fe4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a4d4d4ec263f8fade4d55f8e36f931fe4">operator const value_type &amp;</a> () const</td></tr>
 <tr class="memdesc:a4d4d4ec263f8fade4d55f8e36f931fe4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic conversion operator.  <a href="#a4d4d4ec263f8fade4d55f8e36f931fe4">More...</a><br /></td></tr>
 <tr class="separator:a4d4d4ec263f8fade4d55f8e36f931fe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad95a4fe38c35bf01647deed773dad302"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#ad95a4fe38c35bf01647deed773dad302">operator value_type &amp;</a> ()</td></tr>
-<tr class="memdesc:ad95a4fe38c35bf01647deed773dad302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic conversion operator.  <a href="#ad95a4fe38c35bf01647deed773dad302">More...</a><br /></td></tr>
-<tr class="separator:ad95a4fe38c35bf01647deed773dad302"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a017bd3785be5800544c035adf329cd53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a017bd3785be5800544c035adf329cd53">Optional</a> (<a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;&amp;rhs)</td></tr>
 <tr class="memdesc:a017bd3785be5800544c035adf329cd53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor.  <a href="#a017bd3785be5800544c035adf329cd53">More...</a><br /></td></tr>
 <tr class="separator:a017bd3785be5800544c035adf329cd53"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -132,49 +125,37 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a97e0849d07c2548419d4bb7d4bf7721b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a97e0849d07c2548419d4bb7d4bf7721b">operator=</a> (<a class="el" href="structscl_1_1utils_1_1_none.html">None</a> _)</td></tr>
 <tr class="memdesc:a97e0849d07c2548419d4bb7d4bf7721b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Assign from <a class="el" href="structscl_1_1utils_1_1_none.html" title="An empty class serving as the type of an empty Optional&lt;T&gt; ">None</a>.  <a href="#a97e0849d07c2548419d4bb7d4bf7721b">More...</a><br /></td></tr>
 <tr class="separator:a97e0849d07c2548419d4bb7d4bf7721b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50332477946091e8a661c420a7354008"><td class="memTemplParams" colspan="2">template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
+<tr class="memitem:a50332477946091e8a661c420a7354008"><td class="memTemplParams" colspan="2">template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a50332477946091e8a661c420a7354008"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a50332477946091e8a661c420a7354008">Optional</a> (const U &amp;<a class="el" href="classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041">value</a>)</td></tr>
 <tr class="memdesc:a50332477946091e8a661c420a7354008"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit conversion copy constructor.  <a href="#a50332477946091e8a661c420a7354008">More...</a><br /></td></tr>
 <tr class="separator:a50332477946091e8a661c420a7354008"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c039eadd64b720ee4903ee14a4d9e5f"><td class="memTemplParams" colspan="2">template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
+<tr class="memitem:a7c039eadd64b720ee4903ee14a4d9e5f"><td class="memTemplParams" colspan="2">template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a7c039eadd64b720ee4903ee14a4d9e5f"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a7c039eadd64b720ee4903ee14a4d9e5f">operator=</a> (const U &amp;<a class="el" href="classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041">value</a>)</td></tr>
 <tr class="memdesc:a7c039eadd64b720ee4903ee14a4d9e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit conversion copy assignment.  <a href="#a7c039eadd64b720ee4903ee14a4d9e5f">More...</a><br /></td></tr>
 <tr class="separator:a7c039eadd64b720ee4903ee14a4d9e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6951f273c9bb662f903df788a0933da2"><td class="memTemplParams" colspan="2">template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
+<tr class="memitem:a6951f273c9bb662f903df788a0933da2"><td class="memTemplParams" colspan="2">template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a6951f273c9bb662f903df788a0933da2"><td class="memTemplItemLeft" align="right" valign="top">&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a6951f273c9bb662f903df788a0933da2">Optional</a> (U &amp;&amp;<a class="el" href="classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041">value</a>)</td></tr>
 <tr class="memdesc:a6951f273c9bb662f903df788a0933da2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit conversion move constructor.  <a href="#a6951f273c9bb662f903df788a0933da2">More...</a><br /></td></tr>
 <tr class="separator:a6951f273c9bb662f903df788a0933da2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0029ac4a81bf351d97b07eaee1441ef7"><td class="memTemplParams" colspan="2">template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
+<tr class="memitem:a0029ac4a81bf351d97b07eaee1441ef7"><td class="memTemplParams" colspan="2">template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a0029ac4a81bf351d97b07eaee1441ef7"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a0029ac4a81bf351d97b07eaee1441ef7">operator=</a> (U &amp;&amp;<a class="el" href="classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041">value</a>)</td></tr>
 <tr class="memdesc:a0029ac4a81bf351d97b07eaee1441ef7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implicit conversion move assignment.  <a href="#a0029ac4a81bf351d97b07eaee1441ef7">More...</a><br /></td></tr>
 <tr class="separator:a0029ac4a81bf351d97b07eaee1441ef7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93ee01113a38f9e71877ed35b012a041"><td class="memItemLeft" align="right" valign="top">const value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041">value</a> () const</td></tr>
 <tr class="memdesc:a93ee01113a38f9e71877ed35b012a041"><td class="mdescLeft">&#160;</td><td class="mdescRight">A semantic alias for <a class="el" href="classscl_1_1utils_1_1_optional.html#a9e5a56aae89adf8933e21c65b211ece2" title="Retrieves the value stored in this Optional&lt;T&gt; ">Optional&lt;T&gt;::get</a>.  <a href="#a93ee01113a38f9e71877ed35b012a041">More...</a><br /></td></tr>
 <tr class="separator:a93ee01113a38f9e71877ed35b012a041"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af64175a88ce449aa52ed091595cded78"><td class="memItemLeft" align="right" valign="top">value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#af64175a88ce449aa52ed091595cded78">value</a> ()</td></tr>
-<tr class="memdesc:af64175a88ce449aa52ed091595cded78"><td class="mdescLeft">&#160;</td><td class="mdescRight">A semantic alias for <a class="el" href="classscl_1_1utils_1_1_optional.html#a9e5a56aae89adf8933e21c65b211ece2" title="Retrieves the value stored in this Optional&lt;T&gt; ">Optional&lt;T&gt;::get</a>.  <a href="#af64175a88ce449aa52ed091595cded78">More...</a><br /></td></tr>
-<tr class="separator:af64175a88ce449aa52ed091595cded78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaa5cecfff2dff929e3bc45c931cebb7"><td class="memItemLeft" align="right" valign="top">const value_type *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#adaa5cecfff2dff929e3bc45c931cebb7">ptr</a> () const</td></tr>
 <tr class="memdesc:adaa5cecfff2dff929e3bc45c931cebb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an immutable pointer to the contained value.  <a href="#adaa5cecfff2dff929e3bc45c931cebb7">More...</a><br /></td></tr>
 <tr class="separator:adaa5cecfff2dff929e3bc45c931cebb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c7da34c0e145f8979a8a8dd6747bf17"><td class="memItemLeft" align="right" valign="top">value_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a4c7da34c0e145f8979a8a8dd6747bf17">ptr</a> ()</td></tr>
-<tr class="memdesc:a4c7da34c0e145f8979a8a8dd6747bf17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a mutable pointer to the contained value.  <a href="#a4c7da34c0e145f8979a8a8dd6747bf17">More...</a><br /></td></tr>
-<tr class="separator:a4c7da34c0e145f8979a8a8dd6747bf17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acfb9f7043c0e5a5835d4b01e8c5b55f8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#acfb9f7043c0e5a5835d4b01e8c5b55f8">operator bool</a> () const</td></tr>
 <tr class="memdesc:acfb9f7043c0e5a5835d4b01e8c5b55f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic bool conversion.  <a href="#acfb9f7043c0e5a5835d4b01e8c5b55f8">More...</a><br /></td></tr>
 <tr class="separator:acfb9f7043c0e5a5835d4b01e8c5b55f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4925696c294f8c1463fb89e4546d9278"><td class="memItemLeft" align="right" valign="top">const value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a4925696c294f8c1463fb89e4546d9278">operator*</a> () const</td></tr>
 <tr class="memdesc:a4925696c294f8c1463fb89e4546d9278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access to the value.  <a href="#a4925696c294f8c1463fb89e4546d9278">More...</a><br /></td></tr>
 <tr class="separator:a4925696c294f8c1463fb89e4546d9278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaec80db236332a3f0acb4049a5f07b83"><td class="memItemLeft" align="right" valign="top">value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#aaec80db236332a3f0acb4049a5f07b83">operator*</a> ()</td></tr>
-<tr class="memdesc:aaec80db236332a3f0acb4049a5f07b83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mutable access to the value.  <a href="#aaec80db236332a3f0acb4049a5f07b83">More...</a><br /></td></tr>
-<tr class="separator:aaec80db236332a3f0acb4049a5f07b83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc325cf364f011051abe1be304ecbde8"><td class="memItemLeft" align="right" valign="top">const value_type *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#afc325cf364f011051abe1be304ecbde8">operator-&gt;</a> () const</td></tr>
 <tr class="memdesc:afc325cf364f011051abe1be304ecbde8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an immutable pointer to the stored value.  <a href="#afc325cf364f011051abe1be304ecbde8">More...</a><br /></td></tr>
 <tr class="separator:afc325cf364f011051abe1be304ecbde8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac7e24c0f5048b79706161be6ecc893ca"><td class="memItemLeft" align="right" valign="top">value_type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#ac7e24c0f5048b79706161be6ecc893ca">operator-&gt;</a> ()</td></tr>
-<tr class="memdesc:ac7e24c0f5048b79706161be6ecc893ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a mutable pointer to the stored value.  <a href="#ac7e24c0f5048b79706161be6ecc893ca">More...</a><br /></td></tr>
-<tr class="separator:ac7e24c0f5048b79706161be6ecc893ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d438745079e4ae92a3a759d13135e22"><td class="memItemLeft" align="right" valign="top">const value_type &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a9d438745079e4ae92a3a759d13135e22">orElse</a> (const value_type &amp;defaultValue) const</td></tr>
 <tr class="memdesc:a9d438745079e4ae92a3a759d13135e22"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the value if there's one or return the default value provided.  <a href="#a9d438745079e4ae92a3a759d13135e22">More...</a><br /></td></tr>
 <tr class="separator:a9d438745079e4ae92a3a759d13135e22"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -241,27 +222,27 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (<a
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (<a class="el" href="structscl_1_1utils_1_1_none.html">None</a>) const</td></tr>
 <tr class="separator:a1123f293a2105260a815ee3d69be97fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a860a8e6d349b62d256c6211a91935f38"><td class="memTemplParams" colspan="2"><a id="a860a8e6d349b62d256c6211a91935f38"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a860a8e6d349b62d256c6211a91935f38"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator==</b> (const U &amp;t) const</td></tr>
 <tr class="separator:a860a8e6d349b62d256c6211a91935f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8ee8d4225f19c8f837529fa8259e526"><td class="memTemplParams" colspan="2"><a id="ac8ee8d4225f19c8f837529fa8259e526"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:ac8ee8d4225f19c8f837529fa8259e526"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator!=</b> (const U &amp;t) const</td></tr>
 <tr class="separator:ac8ee8d4225f19c8f837529fa8259e526"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d78399bb24e6d62153c409910e39aea"><td class="memTemplParams" colspan="2"><a id="a8d78399bb24e6d62153c409910e39aea"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a8d78399bb24e6d62153c409910e39aea"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;</b> (const U &amp;t) const</td></tr>
 <tr class="separator:a8d78399bb24e6d62153c409910e39aea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab98725b833d5a6bb93e9d5bf4e8b7f5"><td class="memTemplParams" colspan="2"><a id="aab98725b833d5a6bb93e9d5bf4e8b7f5"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:aab98725b833d5a6bb93e9d5bf4e8b7f5"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;=</b> (const U &amp;t) const</td></tr>
 <tr class="separator:aab98725b833d5a6bb93e9d5bf4e8b7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d78ec145983f57e2cb8a4322d02120c"><td class="memTemplParams" colspan="2"><a id="a9d78ec145983f57e2cb8a4322d02120c"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a9d78ec145983f57e2cb8a4322d02120c"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;</b> (const U &amp;t) const</td></tr>
 <tr class="separator:a9d78ec145983f57e2cb8a4322d02120c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae50a7329cf0cd6c8190022f6800248b5"><td class="memTemplParams" colspan="2"><a id="ae50a7329cf0cd6c8190022f6800248b5"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:ae50a7329cf0cd6c8190022f6800248b5"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;=</b> (const U &amp;t) const</td></tr>
 <tr class="separator:ae50a7329cf0cd6c8190022f6800248b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c15b635f349da6df2a460eccf2a0ba7"><td class="memTemplParams" colspan="2"><a id="a0c15b635f349da6df2a460eccf2a0ba7"></a>
@@ -299,15 +280,6 @@ template&lt;class... Args&gt; </td></tr>
 static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ref</b> (const value_type &amp;ref)</td></tr>
 <tr class="separator:ac0668ff92a30d6b2f9578c592129cff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
-Static Public Attributes</h2></td></tr>
-<tr class="memitem:a84fe0ac588b7ec62f328bc1cb992d73a"><td class="memItemLeft" align="right" valign="top"><a id="a84fe0ac588b7ec62f328bc1cb992d73a"></a>
-static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_movable</b> = META::is_movable&lt;value_type&gt;()</td></tr>
-<tr class="separator:a84fe0ac588b7ec62f328bc1cb992d73a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0d581cd986915c3479ebc5b497870e25"><td class="memItemLeft" align="right" valign="top"><a id="a0d581cd986915c3479ebc5b497870e25"></a>
-static constexpr bool&#160;</td><td class="memItemRight" valign="bottom"><b>is_copyable</b> = META::is_copyable&lt;value_type&gt;()</td></tr>
-<tr class="separator:a0d581cd986915c3479ebc5b497870e25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aad867eb8f76c2e593ec99ccf70e892a4"><td class="memItemLeft" align="right" valign="top"><a id="aad867eb8f76c2e593ec99ccf70e892a4"></a>
@@ -315,7 +287,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memdesc:aad867eb8f76c2e593ec99ccf70e892a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">determines whether or not there's a value inside this Optional&lt;T&gt; <br /></td></tr>
 <tr class="separator:aad867eb8f76c2e593ec99ccf70e892a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a91bd24a79765a2f36492bd45b67c04b7"><td class="memItemLeft" align="right" valign="top"><a id="a91bd24a79765a2f36492bd45b67c04b7"></a>
-META::aligned_storage_t&lt; sizeof(T), alignof(T)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a91bd24a79765a2f36492bd45b67c04b7">payload</a> = {}</td></tr>
+scl::tools::meta ::aligned_storage_t&lt; sizeof(T), alignof(T)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a91bd24a79765a2f36492bd45b67c04b7">payload</a> = {}</td></tr>
 <tr class="memdesc:a91bd24a79765a2f36492bd45b67c04b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A scl::tools::meta::aligned_storage_t of the correct size and alignment to maintain an instance of the object. <br /></td></tr>
 <tr class="separator:a91bd24a79765a2f36492bd45b67c04b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -340,27 +312,27 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;=</b> (<a
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator!=</b> (<a class="el" href="structscl_1_1utils_1_1_none.html">None</a>, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:a6aad01eb2c281d5978cc673661b90c2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9f14dd9d4f4a505a3c5975b02a34a88"><td class="memTemplParams" colspan="2"><a id="ac9f14dd9d4f4a505a3c5975b02a34a88"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:ac9f14dd9d4f4a505a3c5975b02a34a88"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator==</b> (const U &amp;t, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:ac9f14dd9d4f4a505a3c5975b02a34a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae1d4367f3f9d7ff068a3faa0c79384ba"><td class="memTemplParams" colspan="2"><a id="ae1d4367f3f9d7ff068a3faa0c79384ba"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:ae1d4367f3f9d7ff068a3faa0c79384ba"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator!=</b> (const U &amp;t, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:ae1d4367f3f9d7ff068a3faa0c79384ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83e86b173693fe82bb7b9f682700035c"><td class="memTemplParams" colspan="2"><a id="a83e86b173693fe82bb7b9f682700035c"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a83e86b173693fe82bb7b9f682700035c"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;</b> (const U &amp;t, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:a83e86b173693fe82bb7b9f682700035c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab0698dbaa63c7663c263b646c42c5475"><td class="memTemplParams" colspan="2"><a id="ab0698dbaa63c7663c263b646c42c5475"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:ab0698dbaa63c7663c263b646c42c5475"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;=</b> (const U &amp;t, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:ab0698dbaa63c7663c263b646c42c5475"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aad7867314c3305b291a17542ebf91b91"><td class="memTemplParams" colspan="2"><a id="aad7867314c3305b291a17542ebf91b91"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:aad7867314c3305b291a17542ebf91b91"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;</b> (const U &amp;t, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:aad7867314c3305b291a17542ebf91b91"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2dc246b44ae74f7629ea2e85f979ff21"><td class="memTemplParams" colspan="2"><a id="a2dc246b44ae74f7629ea2e85f979ff21"></a>
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;U, None&gt;()  &amp;&amp; !META::is_same&lt;U, Optional&gt;()  &amp;&amp; !META::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt;U, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt;U, Optional&gt;()  &amp;&amp; ! scl::tools::meta ::is_instance&lt;scl::utils::Optional, U&gt;() &gt;&gt; </td></tr>
 <tr class="memitem:a2dc246b44ae74f7629ea2e85f979ff21"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&gt;=</b> (const U &amp;t, const <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> &amp;o)</td></tr>
 <tr class="separator:a2dc246b44ae74f7629ea2e85f979ff21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -413,7 +385,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00144">144</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00131">131</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -451,7 +423,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00166">166</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00153">153</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +462,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>moved-from <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> are in empty state (i.e. equivalent to one constructed from none) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00207">207</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00187">187</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -528,7 +500,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00239">239</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00219">219</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -540,7 +512,7 @@ template&lt;class T&gt; </div>
 <div class="memtemplate">
 template&lt;class T&gt; </div>
 <div class="memtemplate">
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -574,7 +546,7 @@ template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::de
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00264">264</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00244">244</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -586,7 +558,7 @@ template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::de
 <div class="memtemplate">
 template&lt;class T&gt; </div>
 <div class="memtemplate">
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -620,7 +592,7 @@ template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::de
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00287">287</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00267">267</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -668,7 +640,7 @@ template&lt;class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this optional (for chaining purposes) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00407">407</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00359">359</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -715,7 +687,7 @@ template&lt;class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this optional (for chaining purposes) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00385">385</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00337">337</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -762,7 +734,7 @@ template&lt;class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a new optional that might not contain the original value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00466">466</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00418">418</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -810,12 +782,12 @@ template&lt;class U , class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the mapped optional </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00483">483</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00435">435</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
 <a id="a9e5a56aae89adf8933e21c65b211ece2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e5a56aae89adf8933e21c65b211ece2">&#9670;&nbsp;</a></span>get() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e5a56aae89adf8933e21c65b211ece2">&#9670;&nbsp;</a></span>get()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -849,44 +821,6 @@ template&lt;class T&gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00120">120</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
-
-</div>
-</div>
-<a id="a1f62d19f7f239988e2f2d0801bd6c961"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1f62d19f7f239988e2f2d0801bd6c961">&#9670;&nbsp;</a></span>get() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_type&amp; <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::get </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Mutable accessor for the value stored. </p>
-<dl class="section return"><dt>Returns</dt><dd>a reference to the value stored </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. ">scl::exceptions::EmptyOptionalAccess</a></td><td>if there's no value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00132">132</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -966,7 +900,7 @@ template&lt;class U , class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>an Optional&lt;U&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00444">444</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00396">396</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -998,7 +932,7 @@ template&lt;class T&gt; </div>
 <p>Automatic bool conversion. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if there's a value, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00339">339</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00305">305</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1036,50 +970,12 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00191">191</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
-
-</div>
-</div>
-<a id="ad95a4fe38c35bf01647deed773dad302"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad95a4fe38c35bf01647deed773dad302">&#9670;&nbsp;</a></span>operator value_type &()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::operator value_type &amp; </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Automatic conversion operator. </p>
-<dl class="section return"><dt>Returns</dt><dd>a mutable reference to the underlying value </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. ">scl::exceptions::EmptyOptionalAccess</a></td><td>if there's no value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00198">198</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00178">178</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
 <a id="a4925696c294f8c1463fb89e4546d9278"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4925696c294f8c1463fb89e4546d9278">&#9670;&nbsp;</a></span>operator*() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a4925696c294f8c1463fb89e4546d9278">&#9670;&nbsp;</a></span>operator*()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1112,50 +1008,12 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00346">346</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
-
-</div>
-</div>
-<a id="aaec80db236332a3f0acb4049a5f07b83"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aaec80db236332a3f0acb4049a5f07b83">&#9670;&nbsp;</a></span>operator*() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_type&amp; <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::operator* </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Mutable access to the value. </p>
-<dl class="section return"><dt>Returns</dt><dd>a reference to the value stored </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. ">scl::exceptions::EmptyOptionalAccess</a></td><td>if there's no value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00353">353</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00312">312</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
 <a id="afc325cf364f011051abe1be304ecbde8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc325cf364f011051abe1be304ecbde8">&#9670;&nbsp;</a></span>operator->() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afc325cf364f011051abe1be304ecbde8">&#9670;&nbsp;</a></span>operator->()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1188,45 +1046,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00360">360</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
-
-</div>
-</div>
-<a id="ac7e24c0f5048b79706161be6ecc893ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7e24c0f5048b79706161be6ecc893ca">&#9670;&nbsp;</a></span>operator->() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_type* <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::operator-&gt; </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a mutable pointer to the stored value. </p>
-<dl class="section return"><dt>Returns</dt><dd>a T* to the value stored </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. ">scl::exceptions::EmptyOptionalAccess</a></td><td>if there's no value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00367">367</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00319">319</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1265,7 +1085,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00154">154</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00141">141</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1304,7 +1124,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this Optional&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00177">177</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00164">164</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1344,7 +1164,7 @@ template&lt;class T&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this Optional&lt;T&gt;</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>moved-from <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> are in empty state (i.e. equivalent to one constructed from none) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00223">223</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00203">203</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1383,7 +1203,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00247">247</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00227">227</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1395,7 +1215,7 @@ template&lt;class T&gt; </div>
 <div class="memtemplate">
 template&lt;class T&gt; </div>
 <div class="memtemplate">
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1430,7 +1250,7 @@ template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::de
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00275">275</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00255">255</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1442,7 +1262,7 @@ template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::de
 <div class="memtemplate">
 template&lt;class T&gt; </div>
 <div class="memtemplate">
-template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::decay_t&lt;U&gt;, META::decay_t&lt;T&gt;&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; !META::is_same&lt;META::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
+template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;,  scl::tools::meta ::decay_t&lt;T&gt;&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, None&gt;()  &amp;&amp; ! scl::tools::meta ::is_same&lt; scl::tools::meta ::decay_t&lt;U&gt;, Optional&gt;() &gt;&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -1477,7 +1297,7 @@ template&lt;class U , class  = META::enable_if_t&lt;  !META::is_same&lt;META::de
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00298">298</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00278">278</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1516,7 +1336,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a const reference to the stored value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00374">374</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00326">326</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1563,12 +1383,12 @@ template&lt;class E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a const&amp; to the value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00429">429</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00381">381</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
 <a id="adaa5cecfff2dff929e3bc45c931cebb7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaa5cecfff2dff929e3bc45c931cebb7">&#9670;&nbsp;</a></span>ptr() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#adaa5cecfff2dff929e3bc45c931cebb7">&#9670;&nbsp;</a></span>ptr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1601,50 +1421,12 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00326">326</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
-
-</div>
-</div>
-<a id="a4c7da34c0e145f8979a8a8dd6747bf17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4c7da34c0e145f8979a8a8dd6747bf17">&#9670;&nbsp;</a></span>ptr() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_type* <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::ptr </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get a mutable pointer to the contained value. </p>
-<dl class="section return"><dt>Returns</dt><dd>a T* to the value </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. ">scl::exceptions::EmptyOptionalAccess</a></td><td>if there's no value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00333">333</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00299">299</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
 <a id="a93ee01113a38f9e71877ed35b012a041"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a93ee01113a38f9e71877ed35b012a041">&#9670;&nbsp;</a></span>value() <span class="overload">[1/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a93ee01113a38f9e71877ed35b012a041">&#9670;&nbsp;</a></span>value()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1677,45 +1459,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00312">312</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
-
-</div>
-</div>
-<a id="af64175a88ce449aa52ed091595cded78"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af64175a88ce449aa52ed091595cded78">&#9670;&nbsp;</a></span>value() <span class="overload">[2/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">value_type&amp; <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::value </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>A semantic alias for <a class="el" href="classscl_1_1utils_1_1_optional.html#a9e5a56aae89adf8933e21c65b211ece2" title="Retrieves the value stored in this Optional&lt;T&gt; ">Optional&lt;T&gt;::get</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>a const&amp; to the value stored </dd></dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. ">scl::exceptions::EmptyOptionalAccess</a></td><td>if there's no value </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00319">319</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00292">292</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>

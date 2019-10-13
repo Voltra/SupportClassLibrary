@@ -25,9 +25,9 @@ template <
 	class T_ = META::decay_t<T>,
 	class = META::void_t<META::enable_if_t<
 		!(
-			META::is_convertible<T_, char>()
-			|| META::is_convertible<T_, const char*>()
-			|| META::is_convertible<T_, std::string>()
+			META::is_same<T_, char>()
+			|| META::is_same<T_, const char*>()
+			|| META::is_same<T_, std::string>()
 			|| META::defines_ostream_operator<T_>()
 		) && scl::tools::meta::defines_scl_to_string<T>()
 	>>

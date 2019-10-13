@@ -16,18 +16,20 @@ using namespace scl::utils;
 using namespace scl::exceptions;
 using scl::tools::iostream::nl;
 
+using leftType = int;
+using rightType = std::string;
+using eitherType = Either<leftType, rightType>;
 
-
-Either<int, std::string> makeLeft(){
-	return Either<int, std::string>::Left(42);
+eitherType makeLeft(int i){
+	return eitherType::Left(i);
 }
 
-Either<int, std::string> makeRight(){
-	return Either<int, std::string>::Right("str(42)");
+eitherType makeRight(std::string s){
+	return eitherType::Right(std::move(s));
 }
 
 TEST(EitherTests, ConceptsRequirementsMet){
-	auto either = makeLeft();
+	auto either = makeLeft(42);
 	using et = decltype(either);
 
 	ASSERT_TRUE(
@@ -64,13 +66,89 @@ TEST(EitherTests, ConceptsRequirementsMet){
 }
 
 TEST(EitherTests, ConstructingLeftMakesLeftAvailableAndRightNonAvailable){
-	auto either = makeLeft();
+	auto either = makeLeft(42);
 	ASSERT_TRUE(either.hasLeft());
 	ASSERT_FALSE(either.hasRight());
 }
-
 TEST(EitherTests, ConstructingRightMakesRightAvailableAndLeftNonAvailable){
-	auto either = makeRight();
+	auto either = makeRight("str(42)");
 	ASSERT_TRUE(either.hasRight());
 	ASSERT_FALSE(either.hasLeft());
 }
+
+
+
+TEST(EitherTests, RetrievingLeftOnLeftGivesTheSameValue){
+	auto value = 42;
+	auto either = makeLeft(value);
+	ASSERT_EQ(value, either.getLeft());
+}
+TEST(EitherTests, RetrievingLeftOnRightGivesTheSameValue){
+	auto value = "str(42)";
+	auto either = makeRight(value);
+	ASSERT_EQ(value, either.getRight());
+}
+
+TEST(EitherTests, RetrievingWrongSideThrows){
+	ASSERT_THROW(makeLeft(42).getRight(), InvalidEitherAccess);
+	ASSERT_THROW(makeRight("str").getLeft(), InvalidEitherAccess);
+}
+
+TEST(EitherTests, VisitCallsTheCorrectBranch){
+	auto lefty = makeLeft(42);
+	auto righty = makeRight("str(42)");
+
+	lefty.visit(
+		[](const leftType&){ SUCCEED(); },
+		[](const rightType&){ FAIL(); }
+	);
+
+	righty.visit(
+		[](const leftType&){ FAIL(); },
+		[](const rightType&){ SUCCEED(); }
+	);
+}
+
+TEST(EitherTests, DoIfLeftCallsOnlyOnLeft){
+	auto lefty = makeLeft(42);
+	auto righty = makeRight("str(42)");
+
+	lefty.doIfLeft([](const leftType&){ SUCCEED(); });
+	righty.doIfLeft([](const leftType&){ FAIL(); });
+}
+TEST(EitherTests, DoIfRightCallsOnlyOnRight){
+	auto lefty = makeLeft(42);
+	auto righty = makeRight("str(42)");
+
+	righty.doIfRight([](const rightType&){ SUCCEED(); });
+	lefty.doIfRight([](const rightType&){ FAIL(); });
+}
+
+TEST(EitherTests, MappingChangesOnlyTheActiveAlternative){
+	leftType lvalue = 42;
+	rightType rvalue = "str(42)";
+	auto lefty = makeLeft(lvalue);
+	auto righty = makeRight(rvalue);
+
+	auto incr = [](const leftType& old){ return old+1; };
+	auto void_ = [](const rightType&){ return ""; };
+
+	auto nlefty = lefty.mapLeftTo<leftType>(incr);
+	auto nolefty = righty.mapLeftTo<leftType>(incr);
+	ASSERT_FALSE(nlefty.hasRight()); ASSERT_FALSE(nolefty.hasLeft());
+	ASSERT_TRUE(nlefty.hasLeft()); ASSERT_TRUE(nolefty.hasRight());
+	ASSERT_EQ(nlefty.getLeft(), lvalue + 1);
+	ASSERT_EQ(nolefty.getRight(), ""); //TODO: Check string corruption
+
+
+	auto nrighty = righty.mapRightTo<rightType>(void_);
+	auto norighty = lefty.mapRightTo<rightType>(void_);
+	ASSERT_TRUE(nrighty.hasRight()); ASSERT_TRUE(norighty.hasLeft());
+	ASSERT_FALSE(nrighty.hasLeft()); ASSERT_FALSE(norighty.hasRight());
+	ASSERT_EQ(nrighty.getRight(), "");
+	ASSERT_EQ(norighty.getLeft(), lvalue);
+}
+
+//TODO: Either::map
+//TODO: Either::leftOr
+//TODO: Either::rightOr

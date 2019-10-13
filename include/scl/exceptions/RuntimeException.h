@@ -25,7 +25,7 @@ namespace scl{
 				 * @param reason being the error message
 				 */
 				template <class T>
-				RuntimeException(T&& reason) : _reason{std::forward<T>(reason)} {
+				RuntimeException(T&& reason) : _reason{std::forward<T>(reason)}, runtime_error{std::forward<T>(reason)} {
 				}
 
 				/**

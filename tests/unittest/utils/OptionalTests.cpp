@@ -67,6 +67,12 @@ TEST(OptionalTests, CanUseNonTriviallyMovableType){
 	ASSERT_EQ(p.get(), value);
 }
 
+TEST(OptionalTests, ImplicitConversionConstructionDoesNotCorrupt){
+	auto value = "char*";
+	Optional<std::string> opt = value;
+	ASSERT_EQ(value, *opt);
+}
+
 TEST(OptionalTests, MovedFromHasCorrectSemantics){
 	{ // From none
 		Optional<std::string> no = none;
@@ -219,7 +225,7 @@ TEST(OptionalTests, ValueFunctionCalledIfPresentNotIfEmpty){
 	});
 }
 
-TEST(OptionalTest, FlatMapOfEmptyGivesEmpty){
+TEST(OptionalTests, FlatMapOfEmptyGivesEmpty){
 	Optional<int> no = none;
 	auto f = no.flatMapTo<float>([](const int& i){
 		return Optional<float>{i + 2.f};
@@ -228,7 +234,7 @@ TEST(OptionalTest, FlatMapOfEmptyGivesEmpty){
 	ASSERT_FALSE(f.hasValue());
 }
 
-TEST(OptionalTest, FlatMapGivesCorrectType){
+TEST(OptionalTests, FlatMapGivesCorrectType){
 	Optional<int> i = 42;
 	auto f = i.flatMapTo<float>([](const int& i){
 		return Optional<float>{i + 2.f};
