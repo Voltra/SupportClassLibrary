@@ -4,6 +4,7 @@ var searchData=
   ['rangecreator',['RangeCreator',['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html',1,'scl::stream::creators::details::RangeCreator&lt; T &gt;'],['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html#a432d5bcce09d88c3da84cca96107d184',1,'scl::stream::creators::details::RangeCreator::RangeCreator()']]],
   ['rangefrom',['rangeFrom',['../namespacescl_1_1stream_1_1creators.html#a62d9c015bba89c34ad44c01a7bd4a206',1,'scl::stream::creators']]],
   ['rangeto',['rangeTo',['../namespacescl_1_1stream_1_1creators.html#adb1c17233149c841279dda17f8772692',1,'scl::stream::creators']]],
+  ['rawstorage',['RawStorage',['../classscl_1_1utils_1_1_raw_storage.html',1,'scl::utils']]],
   ['real_5fconst',['real_const',['../structscl_1_1tools_1_1meta_1_1real__const.html',1,'scl::tools::meta']]],
   ['real_5fconst_3c_20t_20_2a_2c_20void_20_3e',['real_const&lt; T *, void &gt;',['../structscl_1_1tools_1_1meta_1_1real__const_3_01_t_01_5_00_01void_01_4.html',1,'scl::tools::meta']]],
   ['reason',['reason',['../classscl_1_1exceptions_1_1_exception.html#a46e0aa363a5b2bc55956e38c5f1d1255',1,'scl::exceptions::Exception::reason()'],['../classscl_1_1exceptions_1_1_runtime_exception.html#aff0e46be95ef9a42a10bcdaa6d2800e8',1,'scl::exceptions::RuntimeException::reason()'],['../structscl_1_1exceptions_1_1_throwable.html#a4c5b52ab284079d4a89f3d8643573495',1,'scl::exceptions::Throwable::reason()']]],

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['rangecreator',['RangeCreator',['../classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html',1,'scl::stream::creators::details']]],
+  ['rawstorage',['RawStorage',['../classscl_1_1utils_1_1_raw_storage.html',1,'scl::utils']]],
   ['real_5fconst',['real_const',['../structscl_1_1tools_1_1meta_1_1real__const.html',1,'scl::tools::meta']]],
   ['real_5fconst_3c_20t_20_2a_2c_20void_20_3e',['real_const&lt; T *, void &gt;',['../structscl_1_1tools_1_1meta_1_1real__const_3_01_t_01_5_00_01void_01_4.html',1,'scl::tools::meta']]],
   ['regular',['Regular',['../structscl_1_1concepts_1_1_regular.html',1,'scl::concepts']]],

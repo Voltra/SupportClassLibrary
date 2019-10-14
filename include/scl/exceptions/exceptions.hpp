@@ -19,3 +19,4 @@ namespace scl{
 #include <scl/exceptions/EmptyOptionalAccess.h>
 #include <scl/exceptions/InvalidEitherAccess.h>
 #include <scl/exceptions/InvalidResource.h>
+#include <scl/exceptions/UninitializedMemoryAccess.h>
