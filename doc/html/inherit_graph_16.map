@@ -1,3 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structscl_1_1concepts_1_1_derived_from.html" title="DerivedFrom concept, a type Derived is derived from another type Base if Derived is a derives from Ba..." alt="" coords="5,5,185,47"/>
+<area shape="rect" id="node2" href="$structscl_1_1concepts_1_1details_1_1____is__concept.html" title="scl::concepts::details\l::__is_concept\&lt; T, class \&gt;" alt="" coords="142,5,319,47"/>
+<area shape="rect" id="node3" href="$structscl_1_1tools_1_1meta_1_1details_1_1____exists.html" title="scl::tools::meta::details\l::__exists\&lt; T, class \&gt;" alt="" coords="151,71,310,112"/>
+<area shape="rect" id="node4" href="$structscl_1_1tools_1_1meta_1_1details_1_1____is__instance.html" title="scl::tools::meta::details\l::__is_instance\&lt; class,... \&gt;" alt="" coords="140,136,321,177"/>
+<area shape="rect" id="node5" href="$structscl_1_1tools_1_1meta_1_1details_1_1____is__swappable.html" title="scl::tools::meta::details\l::__is_swappable\&lt; T, class \&gt;" alt="" coords="135,201,327,243"/>
+<area shape="rect" id="node6" href="$structscl_1_1tools_1_1meta_1_1details_1_1____is__swappable__with.html" title="scl::tools::meta::details\l::__is_swappable_with\&lt;\l T, U, class \&gt;" alt="" coords="151,267,311,323"/>
+<area shape="rect" id="node7" href="$structscl_1_1tools_1_1meta_1_1details_1_1____ostream__op__defined.html" title="scl::tools::meta::details\l::__ostream_op_defined\l\&lt; T, class \&gt;" alt="" coords="151,347,311,403"/>
+<area shape="rect" id="node8" href="$structscl_1_1tools_1_1meta_1_1details_1_1____to__string__defined.html" title="scl::tools::meta::details\l::__to_string_defined\&lt;\l T, class \&gt;" alt="" coords="151,427,310,483"/>
+<area shape="rect" id="node9" href="$structscl_1_1tools_1_1meta_1_1details_1_1____to_string_defined.html" title="scl::tools::meta::details\l::__toStringDefined\&lt; T,\l class \&gt;" alt="" coords="151,507,310,563"/>
 </map>

@@ -3,17 +3,21 @@
 #include <type_traits>
 #include <scl/tools/meta/enable_if.h>
 #include <scl/tools/meta/is_convertible.h>
+#include <scl/tools/meta/type_check.h>
+#include <scl/macros.h>
 
-#define SCL_META scl::tools::meta
 namespace scl{
 	namespace concepts{
-		template <class T, class = void>
-		struct __is_concept : std::false_type{};
+		namespace details{
+			template <class T, class = void>
+			struct __is_concept : std::false_type{};
 
-		template <class T>
-		struct __is_concept<T,  SCL_META::enable_if_t<
-			SCL_META::is_convertible<T, bool>()
-		>>: std::true_type{};
+			template <class T>
+			struct __is_concept<T,  META::enable_if_t<
+				META::is_convertible<T, bool>()
+				&& META::is_default_constructible<T>()
+			>> : std::true_type{};
+		}
 
 		/**
 		 * Determine whether or not a given type is a concept-like type
@@ -22,7 +26,7 @@ namespace scl{
 		 */
 		template <class T>
 		constexpr bool is_concept(){
-			return __is_concept<T>::value;
+			return details::__is_concept<T>::value;
 		}
 
 		/*

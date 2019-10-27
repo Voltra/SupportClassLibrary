@@ -12,45 +12,47 @@
 
 namespace scl{
 	namespace utils{
-		struct __any_base{
-			using type = void;
+		namespace details{
+			struct __any_base{
+				using type = void;
 
-			virtual void polymorphism() const = 0;
-			//template <class U>
-			//U as() const{}
-		};
+				virtual void polymorphism() const = 0;
+				//template <class U>
+				//U as() const{}
+			};
 
-		template <class T>
-		class __any__impl final : public __any_base{
-			protected:
-				T value;
+			template <class T>
+			class __any__impl final : public __any_base{
+				protected:
+					T value;
 
-			public:
-				using type = T;
+				public:
+					using type = T;
 
-				void polymorphism() const final{}
+					void polymorphism() const final{}
 
-				template <class = META::enable_if_t<
-					META::is_move_constructible<T>()
-				>>
-				__any__impl(T&& value) : value{std::move(value)} {
-				}
-
-				template <class = META::enable_if_t<
-					META::is_copy_constructible<T>()
-				>>
-				__any__impl(const T& value) : value{value} {
-				}
-
-				template <class U>
-				U as() const{
-					try{
-						return static_cast<U>(this->value);
-					}catch(...){
-						throw exceptions::InvalidAnyCast{"Tried to cast Any to an unsupported type"};
+					template <class = META::enable_if_t<
+							META::is_move_constructible<T>()
+					>>
+					__any__impl(T&& value) : value{std::move(value)} {
 					}
-				}
-		};
+
+					template <class = META::enable_if_t<
+							META::is_copy_constructible<T>()
+					>>
+					__any__impl(const T& value) : value{value} {
+					}
+
+					template <class U>
+					U as() const{
+						try{
+							return static_cast<U>(this->value);
+						}catch(...){
+							throw exceptions::InvalidAnyCast{};
+						}
+					}
+			};
+		}
 
 		/**
 		 * Class that can hold any value type (and change value type mid lifetime)
@@ -61,7 +63,7 @@ namespace scl{
 				 * @var impl
 				 * A PIMPL
 				 */
-				std::unique_ptr<__any_base> impl;
+				std::unique_ptr<details::__any_base> impl;
 
 				/**
 				 * @var ti
@@ -76,7 +78,7 @@ namespace scl{
 				 * @param value being the value to construct from
 				 */
 				template <class T>
-				Any(T&& value) : impl{new __any__impl<META::decay_t<T>>(std::forward<T>(value))}, ti{&typeid(T)} {
+				Any(T&& value) : impl{new details::__any__impl<META::decay_t<T>>(std::forward<T>(value))}, ti{&typeid(T)} {
 				}
 
 				Any(Any&&) = default;
@@ -94,7 +96,7 @@ namespace scl{
 				 */
 				template <class T>
 				Any& operator=(T&& value){
-					this->impl.reset(new __any__impl<T>(std::forward<T>(value)));
+					this->impl.reset(new details::__any__impl<T>(std::forward<T>(value)));
 					this->ti = &typeid(T);
 					return *this;
 				}
@@ -119,7 +121,7 @@ namespace scl{
 				template <class U>
 				U as() const{
 					if(this->canCastTo<U>())
-						return dynamic_cast<__any__impl<U>*>(impl.get())->template as<U>();
+						return dynamic_cast<details::__any__impl<U>*>(impl.get())->template as<U>();
 
 					throw exceptions::InvalidAnyCast{"Tried to cast Any to an unsupported type"};
 				}

@@ -14,6 +14,9 @@ namespace scl{
 				realConst(char*) type() const noexcept override{
 					return "scl::exceptions::InvalidAnyCast";
 				}
+
+				InvalidAnyCast() : InvalidAnyCast("Tried to cast Any to an unsupported type"){
+				}
 		};
 	}
 }

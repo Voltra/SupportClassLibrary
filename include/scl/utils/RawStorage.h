@@ -13,26 +13,6 @@ namespace scl{
 		template <class T>
 		class RawStorage{
 			protected:
-				/**
-				 * Union that stores the data type uninitialized
-				 * @deprecated got back to std::aligned_storage
-				 */
-				/*union storage_type{
-					storage_type(){}
-					~storage_type(){}
-
-					storage_type(storage_type&& other) noexcept = default;
-					storage_type& operator=(storage_type&& other) noexcept = default;
-
-					storage_type(const storage_type& other) = delete;
-					storage_type& operator=(const storage_type& other) = delete;
-
-					*//**
-					 * @var value
-					 * Memory storage to hold a value of type T
-					 *//*
-					T value;
-				};*/
 				 using storage_type = META::aligned_storage_t<sizeof(T), alignof(T)>;
 
 				/**

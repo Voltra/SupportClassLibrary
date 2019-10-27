@@ -5,7 +5,7 @@ var searchData=
   ['concepts',['concepts',['../namespacescl_1_1concepts.html',1,'scl']]],
   ['console',['console',['../namespacescl_1_1console.html',1,'scl']]],
   ['creators',['creators',['../namespacescl_1_1stream_1_1creators.html',1,'scl::stream']]],
-  ['details',['details',['../namespacescl_1_1stream_1_1creators_1_1details.html',1,'scl::stream::creators::details'],['../namespacescl_1_1stream_1_1details.html',1,'scl::stream::details'],['../namespacescl_1_1stream_1_1operators_1_1details.html',1,'scl::stream::operators::details'],['../namespacescl_1_1stream_1_1terminators_1_1details.html',1,'scl::stream::terminators::details'],['../namespacescl_1_1stream_1_1terminators_1_1pack_1_1details.html',1,'scl::stream::terminators::pack::details']]],
+  ['details',['details',['../namespacescl_1_1concepts_1_1details.html',1,'scl::concepts::details'],['../namespacescl_1_1stream_1_1creators_1_1details.html',1,'scl::stream::creators::details'],['../namespacescl_1_1stream_1_1details.html',1,'scl::stream::details'],['../namespacescl_1_1stream_1_1operators_1_1details.html',1,'scl::stream::operators::details'],['../namespacescl_1_1stream_1_1terminators_1_1details.html',1,'scl::stream::terminators::details'],['../namespacescl_1_1stream_1_1terminators_1_1pack_1_1details.html',1,'scl::stream::terminators::pack::details'],['../namespacescl_1_1tools_1_1meta_1_1details.html',1,'scl::tools::meta::details'],['../namespacescl_1_1utils_1_1details.html',1,'scl::utils::details']]],
   ['exceptions',['exceptions',['../namespacescl_1_1exceptions.html',1,'scl']]],
   ['http',['http',['../namespacescl_1_1http.html',1,'scl']]],
   ['iostream',['iostream',['../namespacescl_1_1tools_1_1iostream.html',1,'scl::tools']]],

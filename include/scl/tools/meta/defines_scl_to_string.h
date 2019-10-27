@@ -7,13 +7,15 @@
 namespace scl{
 	namespace tools{
 		namespace meta{
-			template <class T, class = void>
-			struct __toStringDefined : std::false_type{
-			};
+			namespace details{
+				template <class T, class = void>
+				struct __toStringDefined : std::false_type{
+				};
 
-			template <class T>
-			struct __toStringDefined<T, void_t<scl::utils::ToString<T>>> : std::true_type{
-			};
+				template <class T>
+				struct __toStringDefined<T, void_t<scl::utils::ToString<T>>> : std::true_type{
+				};
+			}
 
 			/**
 			 * Determines whether or not ToString has been specialized for the given type
@@ -22,7 +24,7 @@ namespace scl{
 			 */
 			template <class T>
 			inline constexpr bool defines_scl_to_string(){
-				return __toStringDefined<T>::value;
+				return details::__toStringDefined<T>::value;
 			}
 		}
 	}

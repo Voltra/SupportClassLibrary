@@ -5,11 +5,13 @@
 namespace scl{
 	namespace tools{
 		namespace meta{
-			template <template <class, class...> class, class...>
-			struct __is_instance : std::false_type{};
+			namespace details{
+				template <template <class, class...> class, class...>
+				struct __is_instance : std::false_type{};
 
-			template <template <class, class...> class U, class... T>
-			struct __is_instance<U, U<T...>> : std::true_type{};
+				template <template <class, class...> class U, class... T>
+				struct __is_instance<U, U<T...>> : std::true_type{};
+			}
 
 			/**
 			 * Determines whether a template type is an "instance" of a templated type
@@ -19,7 +21,7 @@ namespace scl{
 			 */
 			template <template <class, class...> class U, class... T>
 			inline constexpr bool is_instance(){
-				return __is_instance<U, T...>::value;
+				return details::__is_instance<U, T...>::value;
 			}
 		}
 	}

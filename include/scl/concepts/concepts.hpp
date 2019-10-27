@@ -5,7 +5,13 @@ namespace scl{
 	 * @namespace scl::concepts
 	 * A lightweight concept-like library for C++11
 	 */
-	namespace concepts{}
+	namespace concepts{
+		/**
+		 * @namespace scl::concepts::details
+		 * Implementation details for concepts
+		 */
+		namespace details{}
+	}
 }
 
 #include <scl/concepts/is_concept.h>

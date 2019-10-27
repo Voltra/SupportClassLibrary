@@ -10,13 +10,15 @@
 namespace scl{
 	namespace tools{
 		namespace meta{
-			template <class T, class = void>
-			struct __to_string_defined : std::false_type{};
+			namespace details{
+				template <class T, class = void>
+				struct __to_string_defined : std::false_type{};
 
-			template <class T>
-			struct __to_string_defined<T, /*enable_if_t*/void_t<
-				/*exists<*/decltype(std::to_string(std::declval<const T&>()))/*>()*/
-			>> : std::true_type{};
+				template <class T>
+				struct __to_string_defined<T, /*enable_if_t*/void_t<
+					/*exists<*/decltype(std::to_string(std::declval<const T&>()))/*>()*/
+				>> : std::true_type{};
+			}
 
 			/**
 			 * Determines whether or not std::to_string(const T&) is defined
@@ -25,7 +27,7 @@ namespace scl{
 			 */
 			template <class T>
 			inline constexpr bool defines_std_to_string(){
-				return __to_string_defined<decay_t<T>>::value;
+				return details::__to_string_defined<decay_t<T>>::value;
 			}
 		}
 	}

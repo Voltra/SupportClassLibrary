@@ -5,7 +5,13 @@ namespace scl{
 	 * @namespace scl::utils
 	 * Utility classes (and rare functions)
 	 */
-	namespace utils{}
+	namespace utils{
+		/**
+		 * @namespace scl::utils::details
+		 * Implementation details for the utility classes
+		 */
+		namespace details{}
+	}
 }
 
 #include <scl/utils/toString.h>

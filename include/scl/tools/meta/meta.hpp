@@ -4,9 +4,15 @@ namespace scl{
 	namespace tools{
 		/**
 		 * @namespace scl::tools::meta
-		 * A namespae englobing all the TMP tools
+		 * A namespace englobing all the TMP tools
 		 */
-		namespace meta{}
+		namespace meta{
+			/**
+			 * @namespace scl::tools::meta::details
+			 * Namespace for implementation details for TMP
+			 */
+			namespace details{}
+		}
 	}
 }
 
