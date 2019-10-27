@@ -53,13 +53,14 @@ namespace scl{
 					this->destructor();
 				}
 
-				RawStorage(RawStorage&& other) noexcept{
+				RawStorage(RawStorage&& other){
 					*this = std::move(other);
 				}
 
-				RawStorage& operator=(RawStorage&& other) noexcept{
-					this->init = other.init;
-					this->storage = std::move(other.storage);
+				RawStorage& operator=(RawStorage&& other){
+					this->init = std::move(other.init);
+//					this->storage = std::move(other.storage);
+					this->constructor(std::move(other.get()));
 					other.init = false; //set the correct move semantics
 					return *this;
 				}

@@ -134,7 +134,7 @@ TEST(RawStorageTests, CanRetrieveTheValue){
 }
 
 TEST(RawStorageTests, MoveSemanticsAreGuaranteed){
-	using rs = RawStorage<std::mutex>;
+	using rs = RawStorage<std::unique_ptr<std::mutex>>;
 
 	rs x;
 	ASSERT_FALSE(x.hasValue());
