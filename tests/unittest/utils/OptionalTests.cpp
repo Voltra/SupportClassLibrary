@@ -60,7 +60,7 @@ TEST(OptionalTests, CanUseNonTriviallyCopyableType){
 	ASSERT_EQ(op2.get(), "42");
 }
 
-TEST(OptionalTests, CanUseNonTriviallyMovableType){
+TEST(OptionalTests, CanUseNonTriviallyMovableType){ //TODO: Fix memory corruption
 	const std::string value = "42";
 	Optional<std::string> o = value;
 	Optional<std::string> p = std::move(o);

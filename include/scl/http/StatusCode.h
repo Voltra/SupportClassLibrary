@@ -126,6 +126,7 @@ namespace scl{
 				CODE(NO_CONTENT);
 				CODE(RESET_CONTENT);
 				CODE(PARTIAL_CONTENT);
+				CODE(MULTI_STATUS);
 
 				//3xy - Redirections
 				CODE(MULTIPLE_CHOICES);
@@ -136,6 +137,7 @@ namespace scl{
 				CODE(__UNUSED);
 				CODE(USE_PROXY);
 				CODE(TEMPORARY_REDIRECT);
+				CODE(PERMANENT_REDIRECT);
 
 				//4xy - Client Error
 				CODE(BAD_REQUEST);
@@ -156,6 +158,15 @@ namespace scl{
 				CODE(UNSUPPORTED_MEDIA_TYPE);
 				CODE(REQUESTED_RANGE_NOT_SATISFIABLE);
 				CODE(EXPECTATION_FAILED);
+				CODE(UNPROCESSABLE_ENTITY); //
+				CODE(LOCKED);
+				CODE(FAILED_DEPENDENCY);
+				CODE(TOO_EARLY);
+				CODE(UPGRADE_REQUIRED);
+				CODE(PRECONDITION_REQUIRED);
+				CODE(TOO_MANY_REQUESTS);
+				CODE(REQUEST_HEADER_FIELDS_TOO_LARGE);
+				CODE(UNAVAILABLE_FOR_LEGAL_REASONS);
 
 				//5xy - Server Error
 				CODE(INTERNAL_SERVER_ERROR);
@@ -164,6 +175,8 @@ namespace scl{
 				CODE(SERVICE_UNAVAILABLE);
 				CODE(GATEWAY_TIMEOUT);
 				CODE(HTTP_VERSION_NOT_SUPPORTED);
+				CODE(INSUFFICIENT_STORAGE);
+				CODE(NETWORK_AUTHENTICATION_REQUIRED);
 #undef CODE
 
 			public:
@@ -178,10 +191,10 @@ namespace scl{
 					if(
 						status < 100
 						|| (101 < status && status < 200)
-						|| (206 < status && status < 300)
-						|| (307 < status && status < 400)
-						|| (417 < status && status < 500)
-						|| 505 < status
+						|| (207 < status && status < 300)
+						|| (308 < status && status < 400)
+						|| (451 < status && status < 500)
+						|| 511 < status
 					)//if invalid status
 						return scl::utils::none;
 
@@ -196,6 +209,7 @@ namespace scl{
 						case 204: return NO_CONTENT;
 						case 205: return RESET_CONTENT;
 						case 206: return PARTIAL_CONTENT;
+						case 207: return MULTI_STATUS;
 
 						case 300: return MULTIPLE_CHOICES;
 						case 301: return MOVED_PERMANENTLY;
@@ -205,6 +219,7 @@ namespace scl{
 						case 305: return USE_PROXY;
 						case 306: return __UNUSED; //unused status, but still return it as it's reserved
 						case 307: return TEMPORARY_REDIRECT;
+						case 308: return PERMANENT_REDIRECT;
 
 						case 400: return BAD_REQUEST;
 						case 401: return UNAUTHORIZED;
@@ -224,6 +239,15 @@ namespace scl{
 						case 415: return UNSUPPORTED_MEDIA_TYPE;
 						case 416: return REQUESTED_RANGE_NOT_SATISFIABLE;
 						case 417: return EXPECTATION_FAILED;
+						case 422: return UNPROCESSABLE_ENTITY;
+						case 423: return LOCKED;
+						case 424: return FAILED_DEPENDENCY;
+						case 425: return TOO_EARLY;
+						case 426: return UPGRADE_REQUIRED;
+						case 428: return PRECONDITION_REQUIRED;
+						case 429: return TOO_MANY_REQUESTS;
+						case 431: return REQUEST_HEADER_FIELDS_TOO_LARGE;
+						case 451: return UNAVAILABLE_FOR_LEGAL_REASONS;
 
 						case 500: return INTERNAL_SERVER_ERROR;
 						case 501: return NOT_IMPLEMENTED;
@@ -231,6 +255,8 @@ namespace scl{
 						case 503: return SERVICE_UNAVAILABLE;
 						case 504: return GATEWAY_TIMEOUT;
 						case 505: return HTTP_VERSION_NOT_SUPPORTED;
+						case 507: return INSUFFICIENT_STORAGE;
+						case 511: return NETWORK_AUTHENTICATION_REQUIRED;
 
 						default: return scl::utils::none;
 					}
@@ -250,6 +276,7 @@ namespace scl{
 		DEF_CODE(NO_CONTENT, "No Content", 204, "Request fulfilled, no entity-body returned");
 		DEF_CODE(RESET_CONTENT, "Reset Content", 205, "Request fulfilled, user agent should reset the document view");
 		DEF_CODE(PARTIAL_CONTENT, "Partial Content", 206, "Partial GET request fulfilled");
+		DEF_CODE(MULTI_STATUS, "Multi Status", 207, "Statuses for multiple operations");
 
 		//3xy
 		DEF_CODE(MULTIPLE_CHOICES, "Multiple Choices", 300, "The requested resource corresponds to any one of a set of representations");
@@ -260,6 +287,7 @@ namespace scl{
 		DEF_CODE(USE_PROXY, "Use Proxy", 305, "The requested resource must be accessed through the given proxy");
 		DEF_CODE(__UNUSED, "[[Unused]]", 306, "[[Was used in previous version of the specification, no longer used, reserved]]");
 		DEF_CODE(TEMPORARY_REDIRECT, "Temporary Redirect", 307, "The requested resource resides temporarily under a different URI");
+		DEF_CODE(PERMANENT_REDIRECT, "Permanent Redirect", 308, "The requested resource resides permanently under a different URI");
 
 		//4xy
 		DEF_CODE(BAD_REQUEST, "Bad Request", 400, "Request could not be understood due to malformed syntax");
@@ -280,6 +308,15 @@ namespace scl{
 		DEF_CODE(UNSUPPORTED_MEDIA_TYPE, "Unsupported Media Type", 415, "The format of the entity of the request is not supported");
 		DEF_CODE(REQUESTED_RANGE_NOT_SATISFIABLE, "Requested Range Not Satisfiable", 416, "Request Range could not be satisfied");
 		DEF_CODE(EXPECTATION_FAILED, "Expectation Failed", 417, "Request Expect could not be met");
+		DEF_CODE(UNPROCESSABLE_ENTITY, "Unprocessable Entity", 422, "The server understands the content type and the syntax is correct but was unable to process the contained instructions");
+		DEF_CODE(LOCKED, "Locked", 423, "The requested resource is locked");
+		DEF_CODE(FAILED_DEPENDENCY, "Failed Dependency", 424, "The server could not process the requested action because it depends on an action that failed");
+		DEF_CODE(TOO_EARLY, "Too Early", 425, "The server is unwilling to risk processing a request that might be replayed");
+		DEF_CODE(UPGRADE_REQUIRED, "Upgrade Required", 426, "The server refuses to perform the request using the current protocol but might if the client upgrades to a different protocol");
+		DEF_CODE(PRECONDITION_REQUIRED, "Precondition Required", 428, "The server requires the request to be conditional (missing If-Match header)");
+		DEF_CODE(TOO_MANY_REQUESTS, "Too Many Requests", 429, "The user has sent too many requests in a given amount of time");
+		DEF_CODE(REQUEST_HEADER_FIELDS_TOO_LARGE, "Request Header Fields Too Large", 431, "The server is unwilling to process the request because its header fields are too large");
+		DEF_CODE(UNAVAILABLE_FOR_LEGAL_REASONS, "Unavailable For Legal Reasons", 451, "The requested resource is unavailable for legal reasons");
 
 		//5xy
 		DEF_CODE(INTERNAL_SERVER_ERROR, "Internal Server Error", 500, "Unexpected server error");
@@ -288,23 +325,25 @@ namespace scl{
 		DEF_CODE(SERVICE_UNAVAILABLE, "Service Unavailable", 503, "The server is currently unable to handle the request due to a temporary overloading or maintenance");
 		DEF_CODE(GATEWAY_TIMEOUT, "Gateway Timeout", 504, "The server, acting as a gateway/proxy, did not receive a timely response from the upstream server it accessed in attempting to fulfill the request");
 		DEF_CODE(HTTP_VERSION_NOT_SUPPORTED, "HTTP Version Not Supported", 505, "The server does not support, or refuses to support, the HTTP protocol version that was used in th request");
+		DEF_CODE(INSUFFICIENT_STORAGE, "Insufficient Storage", 507, "The server was unable to process the request because it could not store the representation needed to successfully complete the request");
+		DEF_CODE(NETWORK_AUTHENTICATION_REQUIRED, "Network Authentication Required", 511, "The client needs to authenticate to gain network access");
 #undef DEF_CODE
 	}
 
 	namespace utils{
 		template <>
-		struct ToString<scl::http::StatusCode, void>{
+		struct ToString<scl::http::StatusCode>{
 			static const std::string STATUS, SEP, CF, SPECS;
 			std::string operator()(const scl::http::StatusCode& status){
 				return STATUS + std::to_string(status.status())
 				+ SEP + status.name()
-				+ CF + scl::asString(status.version()) + SPECS;
+				+ CF + asString(status.version()) + SPECS;
 			}
 		};
 
-		const std::string ToString<scl::http::StatusCode, void>::STATUS = "Status ";
-		const std::string ToString<scl::http::StatusCode, void>::SEP = ": ";
-		const std::string ToString<scl::http::StatusCode, void>::CF = " (cf. ";
-		const std::string ToString<scl::http::StatusCode, void>::SPECS = " specifications)";
+		const std::string ToString<scl::http::StatusCode>::STATUS = "Status ";
+		const std::string ToString<scl::http::StatusCode>::SEP = ": ";
+		const std::string ToString<scl::http::StatusCode>::CF = " (cf. ";
+		const std::string ToString<scl::http::StatusCode>::SPECS = " specifications)";
 	}
 }

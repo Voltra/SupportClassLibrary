@@ -1,5 +1,7 @@
 #pragma once
+#include <scl/macros.h>
 #include <scl/exceptions/UninitializedMemoryAccess.h>
+#include <scl/tools/meta/type_query.h>
 
 namespace scl{
 	namespace utils{
@@ -13,13 +15,25 @@ namespace scl{
 			protected:
 				/**
 				 * Union that stores the data type uninitialized
+				 * @deprecated got back to std::aligned_storage
 				 */
-				union storage_type{
+				/*union storage_type{
 					storage_type(){}
 					~storage_type(){}
 
+					storage_type(storage_type&& other) noexcept = default;
+					storage_type& operator=(storage_type&& other) noexcept = default;
+
+					storage_type(const storage_type& other) = delete;
+					storage_type& operator=(const storage_type& other) = delete;
+
+					*//**
+					 * @var value
+					 * Memory storage to hold a value of type T
+					 *//*
 					T value;
-				};
+				};*/
+				 using storage_type = META::aligned_storage_t<sizeof(T), alignof(T)>;
 
 				/**
 				 * @var init
@@ -39,6 +53,17 @@ namespace scl{
 					this->destructor();
 				}
 
+				RawStorage(RawStorage&& other) noexcept{
+					*this = std::move(other);
+				}
+
+				RawStorage& operator=(RawStorage&& other) noexcept{
+					this->init = other.init;
+					this->storage = std::move(other.storage);
+					other.init = false; //set the correct move semantics
+					return *this;
+				}
+
 				/**
 				 * Construct the variable in the storage
 				 * @tparam Args being the types of arguments passed to the constructor
@@ -50,10 +75,10 @@ namespace scl{
 				 */
 				template <class... Args>
 				T& constructor(Args&&... args){
-					this->ensureEmpty();
-					new (&this->storage.value) T{std::forward<Args>(args)...};
+					this->destructor();
+					new (&this->storage) T{std::forward<Args>(args)...};
 					this->init = true;
-					return this->storage.value;
+					return this->get();
 				}
 
 				/**
@@ -62,7 +87,7 @@ namespace scl{
 				 */
 				void destructor(){
 					if(this->init) {
-						this->storage.value.~T();
+						this->get().~T();
 						this->init = false;
 					}
 				}
@@ -91,7 +116,7 @@ namespace scl{
 					if(!this->init)
 						throw scl::exceptions::UninitializedMemoryAccess{};
 
-					return this->storage.value;
+					return *reinterpret_cast<T*>(&this->storage);
 				}
 
 				/**
@@ -109,6 +134,33 @@ namespace scl{
 				 * @throws scl::exceptions::UninitializedMemoryAccess
 				 */
 				T* operator->(){
+					return &(this->get());
+				}
+
+				/**
+				 * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the storage)
+				 * @return an immutable reference to the underlying value
+				 */
+				const T& get() const{
+					if(!this->init)
+						throw scl::exceptions::UninitializedMemoryAccess{};
+
+					return *reinterpret_cast<const T*>(&this->storage);
+				}
+
+				/**
+				 * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the storage)
+				 * @return an immutable reference to the underlying value
+				 */
+				const T& operator*() const{
+					return this->get();
+				}
+
+				/**
+				 * Get a pointer to the value from a constant RawStorage (e.g. w/ a constant class that uses the storage)
+				 * @return an immutable pointer to the underlying value
+				 */
+				realConst(T*) operator->() const{
 					return &(this->get());
 				}
 

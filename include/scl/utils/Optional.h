@@ -10,6 +10,8 @@
 #include <scl/tools/meta/type_check.h>
 #include <scl/tools/meta/type_query.h>
 #include <scl/utils/toString.h>
+#include <scl/utils/RawStorage.h>
+#include <scl/tools/meta/defines_scl_to_string.h>
 #include <iostream>
 
 #include <scl/tools/iostream/nl.h>
@@ -28,19 +30,19 @@ namespace scl{
 		 * An empty class serving as the type of an empty Optional<T>
 		 */
 		struct None final{
-			bool operator==(None) const{ return true; }
-			bool operator!=(None) const{ return false; }
-			bool operator<(None) const{ return false; }
-			bool operator<=(None) const{ return true; }
-			bool operator>(None) const{ return false; }
-			bool operator>=(None) const{ return true; }
+			constexpr bool operator==(None) const{ return true; }
+			constexpr bool operator!=(None) const{ return false; }
+			constexpr bool operator<(None) const{ return false; }
+			constexpr bool operator<=(None) const{ return true; }
+			constexpr bool operator>(None) const{ return false; }
+			constexpr bool operator>=(None) const{ return true; }
 		};
 
 		/**
 		 * @var none
 		 * A constant global variable of type None
 		 */
-		const None none = None{};
+		constexpr None none = None{};
 
 		/**
 		 * @class ToString<None>
@@ -52,7 +54,9 @@ namespace scl{
 			 * String representation of a None object
 			 * @return String representation of a None object
 			 */
-			constexpr stringLiteral operator()(const None&) const{ return "[none ; scl::utils::None]"; }
+			constexpr stringLiteral operator()(const None&) const{
+				return "[none ; scl::utils::None]";
+			}
 		};
 
 		/**
@@ -67,15 +71,15 @@ namespace scl{
 				/**
 				 * @var valueFlag
 				 * determines whether or not there's a value inside this Optional<T>
+				 * @deprecated Replaced by the raw storage utility
 				 */
-				bool valueFlag = false;
+				//bool valueFlag = false;
 
 				/**
 				 * @var payload
-				 * A scl::tools::meta::aligned_storage_t of the correct size and alignment
-				 * to maintain an instance of the object
+				 * A raw strage to hold an instance of the object
 				 */
-				META::aligned_storage_t<sizeof(T), alignof(T)> payload = {};
+				RawStorage<T> payload = {};
 
 			public:
 				using value_type = META::remove_cv_ref_t<T>;
@@ -93,15 +97,14 @@ namespace scl{
 
 				static Optional ref(const value_type& ref){
 					Optional ret = none;
-					new(&(ret.payload)) value_type{ref};
-					ret.valueFlag = true;
-					return std::move(ret);
+					ret.payload.construct(ref);
+					return ret;
 				}
 
 				/**
 				 * Default construct (no value)
 				 */
-				Optional() : valueFlag{false}, payload{} {
+				Optional() : payload{} {
 				}
 
 				/**
@@ -109,7 +112,7 @@ namespace scl{
 				 * @return TRUE if there's a value, FALSE otherwise
 				 */
 				bool hasValue() const{
-					return this->valueFlag;
+					return this->payload.hasValue();
 				}
 
 				/**
@@ -121,16 +124,16 @@ namespace scl{
 					if(!this->hasValue())
 						throw exceptions::EmptyOptionalAccess{};
 
-					return *reinterpret_cast<const value_type*>(&payload);
+					return this->payload.get();
 				}
 
 				/**
 				 * Creates a non empty optional with the given value (copy)
 				 * @param value being the value to assign from
 				 */
-				Optional(const value_type& value) : valueFlag{true} {
+				Optional(const value_type& value){
 //					static_require(is_copyable);
-					new(&this->payload)value_type{value};
+					this->payload.construct(value);
 				}
 
 				/**
@@ -140,9 +143,7 @@ namespace scl{
 				 */
 				Optional& operator=(const value_type& value){
 //					static_require(is_copyable);
-					this->valueFlag = true;
-					new(&this->payload)value_type{value};
-
+					this->payload.construct(value);
 					return *this;
 				}
 
@@ -150,10 +151,10 @@ namespace scl{
 				 * Copy constructor
 				 * @param o being the Optional to copy from
 				 */
-				Optional(const Optional& o) : valueFlag{o.valueFlag} {
+				Optional(const Optional& o){
 //					static_require(is_copyable);
 					if(o.hasValue())
-						new(&(this->payload))value_type{o.get()};
+						this->payload.construct(o.get());
 				};
 
 				/**
@@ -163,9 +164,8 @@ namespace scl{
 				 */
 				Optional& operator=(const Optional& rhs){
 //					static_require(is_copyable);
-					this->valueFlag = rhs.hasValue();
-					if(this->valueFlag)
-						new(&(this->payload))value_type{rhs.get()};
+					if(rhs.hasValue())
+						this->payload.construct(rhs.get());
 
 					return *this;
 				};
@@ -184,12 +184,10 @@ namespace scl{
 				 * @warning moved-from Optional are in empty state
 				 * (i.e. equivalent to one constructed from none)
 				 */
-				Optional(Optional&& rhs) : valueFlag{rhs.valueFlag} {
+				Optional(Optional&& rhs){
 //					static_require(is_movable);
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
-
-					rhs.valueFlag = false; //set to none on move
 				};
 
 				/**
@@ -202,11 +200,8 @@ namespace scl{
 				 */
 				Optional& operator=(Optional&& rhs) noexcept{
 //					static_require(is_movable);
-					this->valueFlag = rhs.valueFlag;
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
-
-					rhs.valueFlag = false; //set to none on move
 					return *this;
 				};
 
@@ -225,7 +220,6 @@ namespace scl{
 				 * @return a reference to this Optional
 				 */
 				Optional& operator=(None _){
-					this->valueFlag = false;
 					this->payload = {};
 					return *this;
 				}
@@ -241,8 +235,8 @@ namespace scl{
 				 * @param value being the value to construct from
 				 */
 				TPL
-				Optional(const U& value) : valueFlag{true} {
-					new(&this->payload)value_type{value};
+				Optional(const U& value){
+					this->payload.construct(value);
 				}
 
 				/**
@@ -253,8 +247,7 @@ namespace scl{
 				 */
 				TPL
 				Optional& operator=(const U& value){
-					this->valueFlag = true;
-					new(&this->payload)value_type{value};
+					this->payload.construct(value);
 					return *this;
 				}
 
@@ -264,8 +257,8 @@ namespace scl{
 				 * @param value being the value to construct from
 				 */
 				TPL
-				Optional(U&& value) : valueFlag{true} {
-					new(&this->payload)value_type{value};
+				Optional(U&& value){
+					this->payload.construct(std::forward<U&&>(value));
 				}
 
 				/**
@@ -276,9 +269,7 @@ namespace scl{
 				 */
 				TPL
 				Optional& operator=(U&& value){
-					this->valueFlag = true;
-					new(&this->payload)value_type{value};
-
+					this->payload.construct(std::forward<U&&>(value));
 					return *this;
 				}
 
@@ -525,5 +516,14 @@ namespace scl{
 				bool operator>=(const Optional<U>& o) const{ return o <= (*this); }
 #undef SCL_TPL
 		};
+
+		/*template <class T>
+		struct ToString<Optional<T>, META::enable_if_t<
+			META::defines_scl_to_string<T>()
+		>>{
+			std::string operator()(const Optional<T>& opt){
+				return opt.hasValue() ? asString(*opt) : asString(none);
+			}
+		};*/
 	}
 }

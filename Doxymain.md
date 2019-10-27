@@ -26,14 +26,13 @@ We will assume that the data is initially stored in a `std::vector`.
 
 #### Pure STL solution
 
-```
+```cpp
 template <class Predicate, class Action>
 void processActionIf(Predicate predicate, Action action){
-	std::vector<std::shared_ptr<GuiComponent>> components = GUI.getComponents();
-	for(GuiComponent& component : components){
+	for(std::shared_ptr<GuiComponent>& component : GUI.getComponents()){
 		if(predicate(component))
 			action(component);
-	}
+	} //raw loops :c
 }
 
 // OR
@@ -41,10 +40,12 @@ void processActionIf(Predicate predicate, Action action){
 template <class Predicate, class Action>
 void processActionIf(Predicate predicate, Action action){
 	std::vector<std::shared_ptr<GuiComponent>> components = GUI.getComponents();
+    
 	std::vector<std::shared_ptr<GuiComponent>> filtered;
-	
 	std::copy_if(begin(components), end(components), emplace_back(filtered), predicate);
 	std::for_each(begin(filtered), end(filtered), action);
+    
+    //if we had a std::do_if we wouldn't need a second vector
 }
 ```
 
@@ -56,7 +57,7 @@ In this simple use-case, using a for-loop reduces the amount of unnecessary copi
 
 #### Stream API
 
-```
+```cpp
 template <class Predicate, class Action>
 void processActionIf(Predicate predicate, Action action){	
 	streamFrom(GUI.getComponents())
@@ -117,13 +118,14 @@ You can have a look at `unique` to see how an operator is built on top of anothe
 
 Let's say you have
 
-```
+```cpp
 std::vector<SpecialElement> v = streamFrom(container)
 | map(&Element::getSpecialId)
 | unique()
 | filter(startsWith("s", Case::INSENSITIVE))
-| map(+[](const SpecialId& id){ return SpecialHub::from(id, Checks::NONE); })
-| pack::toVector();
+| map(+[](const SpecialId& id){
+    return SpecialHub::from(id, Checks::NONE);
+}) | pack::toVector();
 ```
 
 
@@ -132,7 +134,7 @@ std::vector<SpecialElement> v = streamFrom(container)
 
 This is roughly equivalent to
 
-```
+```cpp
 std::vector<SpecialElement> v;
 std::set<SpecialId> tagged;
 
@@ -173,7 +175,7 @@ The async API is a set of tools that abstract away all the burden of maintaining
 
 Used with `scl::async::with`, an abstraction over resource management (e.g. you could adapt it for the filesystem), it becomes one of the most useful tools to use the Monitor pattern :
 
-```c++
+```cpp
 #include "Queue.h"
 #include <scl/async/async.hpp>
 #include <scl/utils/utils.hpp>
@@ -182,7 +184,7 @@ using namespace scl::async;
 using namespace scl::utils;
 
 template <class T>
-class AsyncQueue{
+class AsyncQueue{ //kind of a Monitor
     protected:
     	Mutexed<Queue<T>> queue = {};
     
@@ -222,7 +224,7 @@ Why the use of functions instead of wrapping in a block? It's nicer to read and 
 
 * you need to remember to put the block of code around the exact portion of code that should be mutually exclusive
 * you need to have a ready to go RAII lock or a way to emulate it (e.g. `lock` and `unlock`)
-* the syntax is quite ugly
+* the syntax is quite ugly (blocks everywhere)
 
 
 

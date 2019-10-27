@@ -1,4 +1,8 @@
 # Support Class Library
+***<u>WARNING:</u> This is currently a Work In Progress***
+
+
+
 The SCL is a set of tools providing classes and utility functions that aim to ease the development of your applications.
 
 
@@ -31,6 +35,7 @@ Here is the namespace hierarchy:
     * [operators](./include/scl/stream/operators/operators.hpp) - Grouping intermediate stream operation functions
     * [terminators](./include/scl/stream/terminators/terminators.hpp) - Grouping end of stream operation functions 
   * [async](./async/async.hpp) - The asynchronous programming API
+  * [http]( ./http/http.hpp ) - The HTTP API
 
 
 
@@ -42,6 +47,7 @@ Here are some [macros](./include/scl/macros.h) and their meaning:
   * `assert_concept` - Compile time assertions of concepts outside of a block of code (must be simple concepts, not aggregates (e.g. `Copyable ` vs `Invocable`))
   * `static_require` - Require concepts without giving an additional error message
   * `META` - The fully qualified namespace path to the `meta` namespace (actually is `scl::tools::meta`)
+  * `asString` - The function that converts a variable to `std::string` using its `ToString` specialization
 * Flags
   * `SCL_CPP14` - Define this flag to use the C++14 add-ons (e.g. `is_final_t`)
   * `SCL_CPP17` - Define this flag to use the C++17 add-ons (e.g. `is_swappable_t`)

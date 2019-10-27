@@ -132,7 +132,7 @@ namespace scl{
 					 META::is_movable<Lhs>()
 				 >>
 				Either(lhs_tag, Lhs&& lhs) : lhs{true} {
-					this->payload.left = Optional<Lhs>(std::move(lhs));
+					this->payload.left = std::move(lhs);
 				}
 
 				/**
@@ -143,7 +143,7 @@ namespace scl{
 					 META::is_copyable<Lhs>()
 				 >>
 				Either(lhs_tag, const Lhs& lhs) : lhs{true} {
-					this->payload.left = Optional<Lhs>(lhs);
+					this->payload.left = lhs;
 				}
 
 				/**
@@ -154,7 +154,7 @@ namespace scl{
 					META::is_movable<Rhs>()
 				>>>
 				Either(rhs_tag, Rhs&& rhs) : lhs{false} {
-					this->payload.right = Optional<Rhs>(std::move(rhs));
+					this->payload.right = std::move(rhs);
 				}
 
 				/**
@@ -165,7 +165,7 @@ namespace scl{
 					META::is_copyable<Rhs>()
 				>>>
 				Either(rhs_tag, const Rhs& rhs) : lhs{false} {
-					this->payload.right = Optional<Rhs>(rhs);
+					this->payload.right = rhs;
 				}
 
 				/**
@@ -427,7 +427,7 @@ namespace scl{
 				 * @param defaultValue being the default value to use if LHS is not the current alternative
 				 * @return Lhs
 				 */
-				Lhs leftOr(Lhs&& defaultValue) const{
+				Lhs leftOr(const Lhs& defaultValue) const{
 					return this->payload.left.orElse(defaultValue);
 				}
 
@@ -436,7 +436,7 @@ namespace scl{
 				 * @param defaultValue being the default value to use if LHS is not the current alternative
 				 * @return Rhs
 				 */
-				Rhs rightOr(Rhs&& defaultValue) const{
+				Rhs rightOr(const Rhs& defaultValue) const{
 					return this->payload.right.orElse(defaultValue);
 				}
 		};

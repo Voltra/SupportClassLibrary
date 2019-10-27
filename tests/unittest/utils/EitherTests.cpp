@@ -138,15 +138,43 @@ TEST(EitherTests, MappingChangesOnlyTheActiveAlternative){
 	ASSERT_FALSE(nlefty.hasRight()); ASSERT_FALSE(nolefty.hasLeft());
 	ASSERT_TRUE(nlefty.hasLeft()); ASSERT_TRUE(nolefty.hasRight());
 	ASSERT_EQ(nlefty.getLeft(), lvalue + 1);
-	ASSERT_EQ(nolefty.getRight(), ""); //TODO: Check string corruption
+	ASSERT_EQ(nolefty.getRight(), rvalue); //TODO: Check string corruption
 
 
 	auto nrighty = righty.mapRightTo<rightType>(void_);
 	auto norighty = lefty.mapRightTo<rightType>(void_);
 	ASSERT_TRUE(nrighty.hasRight()); ASSERT_TRUE(norighty.hasLeft());
 	ASSERT_FALSE(nrighty.hasLeft()); ASSERT_FALSE(norighty.hasRight());
-	ASSERT_EQ(nrighty.getRight(), "");
+	ASSERT_EQ(nrighty.getRight(), void_(""));
 	ASSERT_EQ(norighty.getLeft(), lvalue);
+}
+
+TEST(EitherTests, LeftOrOnRightGivesDefault){
+	auto either = makeRight("strtr");
+	leftType default_ = 28;
+
+	ASSERT_EQ(either.leftOr(default_), default_);
+}
+TEST(EitherTests, LeftOrOnLeftGivesValue){
+	leftType value = 42;
+	leftType default_ = value + 4;
+	auto either = makeLeft(value);
+
+	ASSERT_EQ(either.leftOr(default_), value);
+}
+
+TEST(EitherTests, RightOrOnLeftGivesDefault){
+	auto either = makeLeft(42);
+	rightType default_ = "str(42)";
+
+	ASSERT_EQ(either.rightOr(default_), default_);
+}
+TEST(EitherTests, RightOrOnRightGivesValue){
+	rightType value = "42";
+	rightType default_ = value + "4";
+	auto either = makeRight(value);
+
+	ASSERT_EQ(either.rightOr(default_), value);
 }
 
 //TODO: Either::map

@@ -7,7 +7,6 @@ var searchData=
   ['signedintegral',['SignedIntegral',['../structscl_1_1concepts_1_1_signed_integral.html',1,'scl::concepts']]],
   ['statuscode',['StatusCode',['../classscl_1_1http_1_1_status_code.html',1,'scl::http']]],
   ['stladapter',['StlAdapter',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html',1,'scl::stream::details::iterator']]],
-  ['storage_5ftype',['storage_type',['../unionscl_1_1utils_1_1_raw_storage_1_1storage__type.html',1,'scl::utils::RawStorage']]],
   ['stream',['Stream',['../classscl_1_1stream_1_1_stream.html',1,'scl::stream']]],
   ['streamiterator',['StreamIterator',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['streamiterator_3c_20iterator_5fvalue_5ftype_3c_20it_20_3e_20_3e',['StreamIterator&lt; iterator_value_type&lt; It &gt; &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html',1,'scl::stream::details::iterator']]],

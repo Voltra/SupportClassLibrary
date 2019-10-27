@@ -86,9 +86,11 @@ Collaboration diagram for scl::utils::Either&lt; Lhs, Rhs &gt;:</div>
 <div class="dyncontent">
 <div class="center"><img src="classscl_1_1utils_1_1_either__coll__graph.png" border="0" usemap="#scl_1_1utils_1_1_either_3_01_lhs_00_01_rhs_01_4_coll__map" alt="Collaboration graph"/></div>
 <map name="scl_1_1utils_1_1_either_3_01_lhs_00_01_rhs_01_4_coll__map" id="scl_1_1utils_1_1_either_3_01_lhs_00_01_rhs_01_4_coll__map">
-<area shape="rect" id="node2" href="structscl_1_1utils_1_1_either_1_1payload__t.html" title="Payload type that encapsulates both alternatives. " alt="" coords="62,109,225,151"/>
-<area shape="rect" id="node3" href="classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Rhs \&gt;" alt="" coords="5,5,132,47"/>
-<area shape="rect" id="node4" href="classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Lhs \&gt;" alt="" coords="156,5,283,47"/>
+<area shape="rect" id="node2" href="structscl_1_1utils_1_1_either_1_1payload__t.html" title="Payload type that encapsulates both alternatives. " alt="" coords="99,213,261,255"/>
+<area shape="rect" id="node3" href="classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Rhs \&gt;" alt="" coords="23,109,150,151"/>
+<area shape="rect" id="node4" href="classscl_1_1utils_1_1_raw_storage.html" title="scl::utils::RawStorage\l\&lt; Rhs \&gt;" alt="" coords="5,5,155,47"/>
+<area shape="rect" id="node5" href="classscl_1_1utils_1_1_optional.html" title="scl::utils::Optional\l\&lt; Lhs \&gt;" alt="" coords="185,109,311,151"/>
+<area shape="rect" id="node6" href="classscl_1_1utils_1_1_raw_storage.html" title="scl::utils::RawStorage\l\&lt; Lhs \&gt;" alt="" coords="179,5,328,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -169,12 +171,12 @@ template&lt;class  = scl::tools::meta ::void_t&lt;					 scl::tools::meta ::enabl
 <tr class="memitem:ad043b7dd3d3955f69e65c036031439de"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_either.html">Either</a>&lt; NewLhs, NewRhs &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#ad043b7dd3d3955f69e65c036031439de">mapTo</a> (MapperLeft mapLeft, MapperRight mapRight) const</td></tr>
 <tr class="memdesc:ad043b7dd3d3955f69e65c036031439de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Maps both alternatives.  <a href="#ad043b7dd3d3955f69e65c036031439de">More...</a><br /></td></tr>
 <tr class="separator:ad043b7dd3d3955f69e65c036031439de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a00a3e2fd71c7e4a309aa59ac92f91d"><td class="memItemLeft" align="right" valign="top">Lhs&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#a5a00a3e2fd71c7e4a309aa59ac92f91d">leftOr</a> (Lhs &amp;&amp;defaultValue) const</td></tr>
-<tr class="memdesc:a5a00a3e2fd71c7e4a309aa59ac92f91d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to get the LHS value and fallback to default if not.  <a href="#a5a00a3e2fd71c7e4a309aa59ac92f91d">More...</a><br /></td></tr>
-<tr class="separator:a5a00a3e2fd71c7e4a309aa59ac92f91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a67d2920dd2ecdcf9c22ebf0fdb68fcdc"><td class="memItemLeft" align="right" valign="top">Rhs&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#a67d2920dd2ecdcf9c22ebf0fdb68fcdc">rightOr</a> (Rhs &amp;&amp;defaultValue) const</td></tr>
-<tr class="memdesc:a67d2920dd2ecdcf9c22ebf0fdb68fcdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to get the RHS value and fallback to default if not.  <a href="#a67d2920dd2ecdcf9c22ebf0fdb68fcdc">More...</a><br /></td></tr>
-<tr class="separator:a67d2920dd2ecdcf9c22ebf0fdb68fcdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3474157e40bd0830cd0b05be3aaaa8a5"><td class="memItemLeft" align="right" valign="top">Lhs&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#a3474157e40bd0830cd0b05be3aaaa8a5">leftOr</a> (const Lhs &amp;defaultValue) const</td></tr>
+<tr class="memdesc:a3474157e40bd0830cd0b05be3aaaa8a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to get the LHS value and fallback to default if not.  <a href="#a3474157e40bd0830cd0b05be3aaaa8a5">More...</a><br /></td></tr>
+<tr class="separator:a3474157e40bd0830cd0b05be3aaaa8a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a539051995fe485c9a792e5be0d3a7d79"><td class="memItemLeft" align="right" valign="top">Rhs&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_either.html#a539051995fe485c9a792e5be0d3a7d79">rightOr</a> (const Rhs &amp;defaultValue) const</td></tr>
+<tr class="memdesc:a539051995fe485c9a792e5be0d3a7d79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tries to get the RHS value and fallback to default if not.  <a href="#a539051995fe485c9a792e5be0d3a7d79">More...</a><br /></td></tr>
+<tr class="separator:a539051995fe485c9a792e5be0d3a7d79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -836,8 +838,8 @@ template&lt;class L &gt; </div>
 
 </div>
 </div>
-<a id="a5a00a3e2fd71c7e4a309aa59ac92f91d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a00a3e2fd71c7e4a309aa59ac92f91d">&#9670;&nbsp;</a></span>leftOr()</h2>
+<a id="a3474157e40bd0830cd0b05be3aaaa8a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3474157e40bd0830cd0b05be3aaaa8a5">&#9670;&nbsp;</a></span>leftOr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -850,7 +852,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
         <tr>
           <td class="memname">Lhs <a class="el" href="classscl_1_1utils_1_1_either.html">scl::utils::Either</a>&lt; Lhs, Rhs &gt;::leftOr </td>
           <td>(</td>
-          <td class="paramtype">Lhs &amp;&amp;&#160;</td>
+          <td class="paramtype">const Lhs &amp;&#160;</td>
           <td class="paramname"><em>defaultValue</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -1111,8 +1113,8 @@ template&lt;class R &gt; </div>
 
 </div>
 </div>
-<a id="a67d2920dd2ecdcf9c22ebf0fdb68fcdc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a67d2920dd2ecdcf9c22ebf0fdb68fcdc">&#9670;&nbsp;</a></span>rightOr()</h2>
+<a id="a539051995fe485c9a792e5be0d3a7d79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a539051995fe485c9a792e5be0d3a7d79">&#9670;&nbsp;</a></span>rightOr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1125,7 +1127,7 @@ template&lt;class Lhs , class Rhs &gt; </div>
         <tr>
           <td class="memname">Rhs <a class="el" href="classscl_1_1utils_1_1_either.html">scl::utils::Either</a>&lt; Lhs, Rhs &gt;::rightOr </td>
           <td>(</td>
-          <td class="paramtype">Rhs &amp;&amp;&#160;</td>
+          <td class="paramtype">const Rhs &amp;&#160;</td>
           <td class="paramname"><em>defaultValue</em></td><td>)</td>
           <td> const</td>
         </tr>

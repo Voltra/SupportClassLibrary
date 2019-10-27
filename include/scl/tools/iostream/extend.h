@@ -22,7 +22,7 @@ namespace std{
 		&& META::defines_scl_to_string<T>()
 	>>>
 	std::string to_string(T&& obj){
-		return scl::asString(std::forward<T>(obj));
+		return asString(std::forward<T>(obj));
 	}
 }
 
