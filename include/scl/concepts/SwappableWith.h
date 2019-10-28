@@ -1,6 +1,6 @@
 #pragma once
 
-//#ifdef SCL_CPP17
+#ifdef SCL_CPP17
 #include <scl/tools/meta/type_check.h>
 
 namespace scl{
@@ -20,4 +20,4 @@ namespace scl{
 		};
 	}
 }
-//#endif
+#endif

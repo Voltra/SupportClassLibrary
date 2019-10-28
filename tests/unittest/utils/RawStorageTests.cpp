@@ -146,7 +146,7 @@ TEST(RawStorageTests, MoveSemanticsAreGuaranteed){
 	ASSERT_FALSE(y.hasValue());
 
 	y = std::move(x);
-	ASSERT_TRUE(y.hasValue());
+	ASSERT_TRUE(y.hasValue());//TODO: Fix memory corruption
 	ASSERT_FALSE(x.hasValue()); //guarantees use-after-move semantics (safeguards)
 
 
@@ -158,7 +158,6 @@ TEST(RawStorageTests, MoveSemanticsAreGuaranteed){
 		x.constructor(value);
 
 		y = std::move(x);
-		//TODO: Fix memory corruption
 		ASSERT_EQ(y.get(), value);
 	}
 }

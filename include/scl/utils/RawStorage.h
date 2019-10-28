@@ -19,7 +19,7 @@ namespace scl{
 				 * @var init
 				 * Determines whether or not the object has been constructed
 				 */
-				bool init = false;
+				bool init;
 
 				/**
 				 * @var storage
@@ -27,8 +27,18 @@ namespace scl{
 				 */
 				storage_type storage;
 
+				storage_type* rawPtr(){
+					return &storage;
+				}
+
+				T* ptr(){
+					return reinterpret_cast<T*>(this->rawPtr());
+				}
+
 			public:
-				RawStorage() = default;
+				RawStorage() : init{false}, storage{} {
+				}
+
 				~RawStorage(){
 					this->destructor();
 				}
@@ -38,8 +48,7 @@ namespace scl{
 				}
 
 				RawStorage& operator=(RawStorage&& other){
-					this->init = std::move(other.init);
-//					this->storage = std::move(other.storage);
+					this->init = other.init;
 					this->constructor(std::move(other.get()));
 					other.init = false; //set the correct move semantics
 					return *this;
@@ -57,7 +66,7 @@ namespace scl{
 				template <class... Args>
 				T& constructor(Args&&... args){
 					this->destructor();
-					new (&this->storage) T{std::forward<Args>(args)...};
+					new( rawPtr() )T{std::forward<Args>(args)...};
 					this->init = true;
 					return this->get();
 				}
@@ -68,7 +77,7 @@ namespace scl{
 				 */
 				void destructor(){
 					if(this->init) {
-						this->get().~T();
+						this->ptr()->~T();
 						this->init = false;
 					}
 				}
@@ -97,7 +106,7 @@ namespace scl{
 					if(!this->init)
 						throw scl::exceptions::UninitializedMemoryAccess{};
 
-					return *reinterpret_cast<T*>(&this->storage);
+					return *ptr();
 				}
 
 				/**
