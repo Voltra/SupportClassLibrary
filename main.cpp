@@ -147,15 +147,12 @@ void testHTTP(){
 	std::cout << StatusCode::OK << nl;
 }
 
-int main(){
+int main(){ //TODO: Fix characters corruption?
 	std::ifstream file;
 	file.open("./main.h");
 
 	streamFrom(file)
-	| map(+[](const std::string& str){ return "<<{ " + str + " }>>"; })
 	| forEach(+[](const std::string& str){
 		std::cout << str << nl;
 	});
-
-	std::cout << nl << "DONE" << nl;
 }

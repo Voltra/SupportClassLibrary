@@ -70,7 +70,7 @@ namespace scl{
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::next
 						 */
-						payload_type next() override{ return std::move(this->parent_->next()); }
+						payload_type next() override{ return this->parent_->next(); }
 
 						/**
 						 * @see scl::stream::details::iterator::StreamIterator::begin

@@ -20,7 +20,7 @@ namespace scl{
 					 */
 					void ensureGenerated() const{
 						if(!generated){
-							this->alt = std::move(gen());
+							this->alt = gen();
 							generated = true;
 						}
 					}

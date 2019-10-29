@@ -38,10 +38,15 @@ namespace scl{
 						}
 
 						void process(){
-							for(auto&& payload : *this) {
+							while(this->hasNext()){
+								auto v = this->next();
+								if(v.isValid())
+									v.value().ifSome(consumer);
+							}
+							/*for(auto payload : *this) {
 								if(payload.isValid())
 									payload.value().doIfPresent(consumer);
-							}
+							}*/
 						};
 
 					protected:
