@@ -172,7 +172,7 @@ void testHTTP(){
 int main(){
 	//testsStream();
 
-	std::cout << asString(42) << nl;
+	/*std::cout << asString(42) << nl;
 	std::cout << make::optional<int>(42) << nl;
-	std::cout << make::any<stringLiteral>("Yes").as<stringLiteral>() << nl;
+	std::cout << make::any<stringLiteral>("Yes").as<stringLiteral>() << nl;*/
 }

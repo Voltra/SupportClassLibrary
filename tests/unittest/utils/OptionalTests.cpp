@@ -229,3 +229,14 @@ TEST(OptionalTests, FlatMapGivesCorrectType){
 	bool same = META::is_same<Optional<float>, decltype(f)>();
 	ASSERT_TRUE(same);
 }
+
+TEST(OptionalTests, ConstructingFromNullptrGivesNone){
+	auto opt = Optional<int>::fromPointer(nullptr);
+	ASSERT_FALSE(opt.hasValue());
+}
+
+TEST(OptionalTests, ConstructingFromValidPointerGivesValue){
+	int value = 42;
+	auto opt = Optional<decltype(value)>::fromPointer(&value);
+	ASSERT_EQ(opt.get(), value);
+}

@@ -74,6 +74,25 @@ namespace scl{
 				using value_type = META::remove_cv_ref_t<T>;
 
 			public:
+				/**
+				 * Construct an optional from a pointer
+				 * @param ptr being the pointer to construct from
+				 * @return an empty optional if ptr is null, an initialized pointer otherwise
+				 */
+				constexpr static Optional fromPointer(const T* ptr){
+					return !ptr ? Optional{none} : Optional{*ptr};
+				}
+
+				constexpr static Optional fromPointer(std::nullptr_t){
+					return none;
+				}
+
+				/**
+				 * Construct an optional inplace
+				 * @tparam Args being the types of the arguments for the constructor
+				 * @param args being the arguments for the constructor
+				 * @return an initialized optional
+				 */
 				template <class... Args>
 				static Optional inplace(Args&&... args){
 					Optional ret = none;
@@ -82,6 +101,11 @@ namespace scl{
 					return std::move(ret);
 				}
 
+				/**
+				 * Construct an optional from a reference to an object
+				 * @param ref being the reference to construct from
+				 * @return an initialized optional
+				 */
 				static Optional ref(const value_type& ref){
 					Optional ret = none;
 					ret.payload.construct(ref);
