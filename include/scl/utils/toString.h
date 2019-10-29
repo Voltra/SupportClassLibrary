@@ -25,11 +25,11 @@ namespace scl{
 		 * @tparam T being the type of objects to convert to string
 		 */
 		template <class T>
-		struct ToString<T, META::void_t<META::enable_if_t<
+		struct ToString<T, META::enable_if_t<
 			META::is_same<T, char>()
 			|| META::is_same<T, const char*>()
 			|| META::is_same<T, std::string>()
-		>>>{
+		>>{
 			std::string operator()(const T& t) const{
 				return std::string{t};
 			}
@@ -40,9 +40,9 @@ namespace scl{
 		 * @tparam T being the type of objects to convert to string
 		 */
 		template <class T>
-		struct ToString<T, META::void_t<META::enable_if_t<
+		struct ToString<T, META::enable_if_t<
 			META::defines_std_to_string<T>()
-		>>>{
+		>>{
 			std::string operator()(const T& t) const{
 				return std::to_string(t);
 			}

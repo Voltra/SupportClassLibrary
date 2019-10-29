@@ -37,18 +37,11 @@ namespace scl{
 						ForEachTerminator(parent_type p, consumer_type c) : iterator_type{std::move(p)}, consumer{c} {
 						}
 
-						result_type process(){
-							/*while(this->hasNext()){
-								auto value = this->next().value();
-								value->doIfPresent(consumer);
-							}*/
-
+						void process(){
 							for(auto&& payload : *this) {
 								if(payload.isValid())
 									payload.value().doIfPresent(consumer);
 							}
-
-							return;
 						};
 
 					protected:

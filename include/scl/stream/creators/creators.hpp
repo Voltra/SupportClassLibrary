@@ -22,3 +22,4 @@ namespace scl{
 #include <scl/stream/creators/stl_iterators.h>
 #include <scl/stream/creators/stl_containers.h>
 #include <scl/stream/creators/range.h>
+#include <scl/stream/creators/istream.h>

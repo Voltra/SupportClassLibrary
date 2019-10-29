@@ -52,8 +52,7 @@ namespace scl{
 							if(!this->hasNext())
 								return payload_type::withoutValue();
 
-							const value_type& value = *begin;
-							++begin;
+							const value_type& value = *(begin++);
 							return payload_type::withValue(value);
 						}
 

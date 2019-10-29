@@ -6,6 +6,8 @@
 #include "main.h"
 
 #include <scl/scl.hpp>
+#include <fstream>
+
 using namespace scl::tools;
 using namespace scl::tools::iostream;
 using namespace scl::concepts;
@@ -82,31 +84,7 @@ struct Person{
 	std::string getName() const{ return this->name; }
 };
 
-void testsConcepts(){
-	require(Iterator<int*>{});
-//	require(SwappableWith<int, int>{});
-}
-
-void testsMake(){
-	std::cout << "None: " << none << nl;
-	std::cout << "Optional<float>: " << make::optional<int>(3).mapTo<float>(threeToPi).orElse(42.f) << nl;
-
-	auto any = make::any<stringLiteral>("coucou");
-	std::cout << "Any<stringLiteral>: " << any.as<stringLiteral>() << nl;
-
-	std::cout << "Either<int, stringLiteral>.left: " << Either<int, stringLiteral>::Left(42).getLeft() << nl;
-	std::cout << nl;
-}
-
-void testsMakeUnique(){
-	auto ptr = make::unique<int>(answerToLife<int>());
-	auto log = scl::cli::wrap::log<int>("$> ", " <$");
-	log(*ptr);
-	std::cout << "addr: " << ptr << nl;
-	std::cout << nl;
-}
-
-void testsStreamObj(){
+/*void testsStreamObj(){
 	std::vector<Person> p = {
 		Person{"jean"},
 		Person{"michel"},
@@ -127,14 +105,14 @@ void testsVectorMapForEach(){
 	std::array<int, 4> v = {1,2,3,4};
 	streamFrom(v)
 	| map(+[](const int& i) -> float{ return i+1.14f; })
-	| forEach(logt<float>);
+	| forEach(logf);
 	std::cout << nl;
 }
 
 void testsStreamRange(){
 	rangeTo(10)
 	| map(+[](const int& i){ return i+2; })
-	| forEach(logt<int>);
+	| forEach(logi);
 
 	rangeTo(5)
 	| filter(+[](const int& i){ return i%2; })
@@ -148,10 +126,10 @@ void testsStreamPackSet(){
 				| pack::toSet();
 	std::for_each(std::begin(res2), std::end(res2), logt<int>);
 	std::cout << nl;
-}
+}*/
 
 void testsStream(){
-	testsStreamObj();
+	//testsStreamObj();
 	//testsVectorMapForEach();
 	//testsStreamRange();
 	//testsStreamPackSet();
@@ -170,6 +148,14 @@ void testHTTP(){
 }
 
 int main(){
-	int i = 42;
-	std::cout << make::optionalFromPointer(&i) << nl;
+	std::ifstream file;
+	file.open("./main.h");
+
+	streamFrom(file)
+	| map(+[](const std::string& str){ return "<<{ " + str + " }>>"; })
+	| forEach(+[](const std::string& str){
+		std::cout << str << nl;
+	});
+
+	std::cout << nl << "DONE" << nl;
 }
