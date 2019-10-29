@@ -66,6 +66,7 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-types">Protected Types</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classscl_1_1utils_1_1_raw_storage-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -102,6 +103,9 @@ template&lt;class... Args&gt; </td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html#ab2cb93a4dd5c328b773913f3790c0941">destroy</a> ()</td></tr>
 <tr class="memdesc:ab2cb93a4dd5c328b773913f3790c0941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1utils_1_1_raw_storage.html#aebf2aae3d78ac375e71ffeaccf46881f" title="Call the destructor on the allocated object. ">RawStorage::destructor</a>. <br /></td></tr>
 <tr class="separator:ab2cb93a4dd5c328b773913f3790c0941"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae51486e0e60bac66f3530a90dbcf5d41"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html">RawStorage</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html#ae51486e0e60bac66f3530a90dbcf5d41">reset</a> ()</td></tr>
+<tr class="memdesc:ae51486e0e60bac66f3530a90dbcf5d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1utils_1_1_raw_storage.html#ab2cb93a4dd5c328b773913f3790c0941" title="Alias for RawStorage::destructor. ">RawStorage::destroy</a>.  <a href="#ae51486e0e60bac66f3530a90dbcf5d41">More...</a><br /></td></tr>
+<tr class="separator:ae51486e0e60bac66f3530a90dbcf5d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af749ffabb9676a2ed0f2d1b7b80e8d02"><td class="memItemLeft" align="right" valign="top">T &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html#af749ffabb9676a2ed0f2d1b7b80e8d02">get</a> ()</td></tr>
 <tr class="memdesc:af749ffabb9676a2ed0f2d1b7b80e8d02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access the underlying data.  <a href="#af749ffabb9676a2ed0f2d1b7b80e8d02">More...</a><br /></td></tr>
 <tr class="separator:af749ffabb9676a2ed0f2d1b7b80e8d02"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,10 +137,19 @@ Protected Types</h2></td></tr>
 using&#160;</td><td class="memItemRight" valign="bottom"><b>storage_type</b> = scl::tools::meta ::aligned_storage_t&lt; sizeof(T), alignof(T)&gt;</td></tr>
 <tr class="separator:a856554c69e719659ccc174175b03bdf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a28d456372ea034e89b493169f794abfc"><td class="memItemLeft" align="right" valign="top"><a id="a28d456372ea034e89b493169f794abfc"></a>
+storage_type *&#160;</td><td class="memItemRight" valign="bottom"><b>rawPtr</b> ()</td></tr>
+<tr class="separator:a28d456372ea034e89b493169f794abfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d5008a02b633bc6613a238ed22ac21"><td class="memItemLeft" align="right" valign="top"><a id="aa0d5008a02b633bc6613a238ed22ac21"></a>
+T *&#160;</td><td class="memItemRight" valign="bottom"><b>ptr</b> ()</td></tr>
+<tr class="separator:aa0d5008a02b633bc6613a238ed22ac21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a19e7289774072c4d907ecdded6fc1126"><td class="memItemLeft" align="right" valign="top"><a id="a19e7289774072c4d907ecdded6fc1126"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html#a19e7289774072c4d907ecdded6fc1126">init</a> = false</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html#a19e7289774072c4d907ecdded6fc1126">init</a></td></tr>
 <tr class="memdesc:a19e7289774072c4d907ecdded6fc1126"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines whether or not the object has been constructed. <br /></td></tr>
 <tr class="separator:a19e7289774072c4d907ecdded6fc1126"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0977aff09fb4134dcd0d28b346ce477d"><td class="memItemLeft" align="right" valign="top"><a id="a0977aff09fb4134dcd0d28b346ce477d"></a>
@@ -205,7 +218,7 @@ template&lt;class... Args&gt; </div>
 <dd>
 Cleans the memory if there was data (calls the destrutor) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00058">58</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00067">67</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -237,7 +250,7 @@ template&lt;class T&gt; </div>
 <p>Call the destructor on the allocated object. </p>
 <dl class="section warning"><dt>Warning</dt><dd>If non initialized, it is a no-op </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00069">69</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00078">78</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -275,7 +288,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00096">96</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00114">114</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -307,7 +320,7 @@ template&lt;class T&gt; </div>
 <p>Get the value from a constant <a class="el" href="classscl_1_1utils_1_1_raw_storage.html" title="Class that handles raw storage (and manual memory management) for a variable type. ">RawStorage</a> (e.g. </p>
 <p>w/ a constant class that uses the storage) </p><dl class="section return"><dt>Returns</dt><dd>an immutable reference to the underlying value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00125">125</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00143">143</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -339,7 +352,7 @@ template&lt;class T&gt; </div>
 <p>Determine whether or not the storage holds a value. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if it does, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00152">152</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00170">170</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -371,7 +384,7 @@ template&lt;class T&gt; </div>
 <p>Implicit conversion to bool. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if the storage holds a value, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00160">160</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00178">178</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -409,7 +422,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00108">108</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00126">126</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -441,7 +454,7 @@ template&lt;class T&gt; </div>
 <p>Get the value from a constant <a class="el" href="classscl_1_1utils_1_1_raw_storage.html" title="Class that handles raw storage (and manual memory management) for a variable type. ">RawStorage</a> (e.g. </p>
 <p>w/ a constant class that uses the storage) </p><dl class="section return"><dt>Returns</dt><dd>an immutable reference to the underlying value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00136">136</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00154">154</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -479,7 +492,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00117">117</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00135">135</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>
@@ -511,7 +524,39 @@ template&lt;class T&gt; </div>
 <p>Get a pointer to the value from a constant <a class="el" href="classscl_1_1utils_1_1_raw_storage.html" title="Class that handles raw storage (and manual memory management) for a variable type. ">RawStorage</a> (e.g. </p>
 <p>w/ a constant class that uses the storage) </p><dl class="section return"><dt>Returns</dt><dd>an immutable pointer to the underlying value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00144">144</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00162">162</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
+
+</div>
+</div>
+<a id="ae51486e0e60bac66f3530a90dbcf5d41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae51486e0e60bac66f3530a90dbcf5d41">&#9670;&nbsp;</a></span>reset()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1utils_1_1_raw_storage.html">RawStorage</a>&amp; <a class="el" href="classscl_1_1utils_1_1_raw_storage.html">scl::utils::RawStorage</a>&lt; T &gt;::reset </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Alias for <a class="el" href="classscl_1_1utils_1_1_raw_storage.html#ab2cb93a4dd5c328b773913f3790c0941" title="Alias for RawStorage::destructor. ">RawStorage::destroy</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_raw_storage.html" title="Class that handles raw storage (and manual memory management) for a variable type. ">RawStorage</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_raw_storage_8h_source.html#l00104">104</a> of file <a class="el" href="_raw_storage_8h_source.html">RawStorage.h</a>.</p>
 
 </div>
 </div>

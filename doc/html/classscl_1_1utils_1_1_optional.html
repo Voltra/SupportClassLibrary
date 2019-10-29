@@ -272,19 +272,25 @@ template&lt;class U &gt; </td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:ae3b6c98c3a216b5229698548fe4b89bb"><td class="memTemplParams" colspan="2"><a id="ae3b6c98c3a216b5229698548fe4b89bb"></a>
-template&lt;class... Args&gt; </td></tr>
-<tr class="memitem:ae3b6c98c3a216b5229698548fe4b89bb"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>inplace</b> (Args &amp;&amp;... args)</td></tr>
+<tr class="memitem:a310ee116ce079f7cee9cb2cbd519e082"><td class="memItemLeft" align="right" valign="top">static constexpr <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a310ee116ce079f7cee9cb2cbd519e082">fromPointer</a> (const T *<a class="el" href="classscl_1_1utils_1_1_optional.html#adaa5cecfff2dff929e3bc45c931cebb7">ptr</a>)</td></tr>
+<tr class="memdesc:a310ee116ce079f7cee9cb2cbd519e082"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an optional from a pointer.  <a href="#a310ee116ce079f7cee9cb2cbd519e082">More...</a><br /></td></tr>
+<tr class="separator:a310ee116ce079f7cee9cb2cbd519e082"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59fb8dc84947474baa9334a6db161631"><td class="memItemLeft" align="right" valign="top"><a id="a59fb8dc84947474baa9334a6db161631"></a>
+static constexpr <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fromPointer</b> (std::nullptr_t)</td></tr>
+<tr class="separator:a59fb8dc84947474baa9334a6db161631"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3b6c98c3a216b5229698548fe4b89bb"><td class="memTemplParams" colspan="2">template&lt;class... Args&gt; </td></tr>
+<tr class="memitem:ae3b6c98c3a216b5229698548fe4b89bb"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#ae3b6c98c3a216b5229698548fe4b89bb">inplace</a> (Args &amp;&amp;... args)</td></tr>
+<tr class="memdesc:ae3b6c98c3a216b5229698548fe4b89bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an optional inplace.  <a href="#ae3b6c98c3a216b5229698548fe4b89bb">More...</a><br /></td></tr>
 <tr class="separator:ae3b6c98c3a216b5229698548fe4b89bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0668ff92a30d6b2f9578c592129cff1"><td class="memItemLeft" align="right" valign="top"><a id="ac0668ff92a30d6b2f9578c592129cff1"></a>
-static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ref</b> (const value_type &amp;ref)</td></tr>
+<tr class="memitem:ac0668ff92a30d6b2f9578c592129cff1"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#ac0668ff92a30d6b2f9578c592129cff1">ref</a> (const value_type &amp;ref)</td></tr>
+<tr class="memdesc:ac0668ff92a30d6b2f9578c592129cff1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct an optional from a reference to an object.  <a href="#ac0668ff92a30d6b2f9578c592129cff1">More...</a><br /></td></tr>
 <tr class="separator:ac0668ff92a30d6b2f9578c592129cff1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a91bd24a79765a2f36492bd45b67c04b7"><td class="memItemLeft" align="right" valign="top"><a id="a91bd24a79765a2f36492bd45b67c04b7"></a>
-<a class="el" href="classscl_1_1utils_1_1_raw_storage.html">RawStorage</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a91bd24a79765a2f36492bd45b67c04b7">payload</a> = {}</td></tr>
-<tr class="memdesc:a91bd24a79765a2f36492bd45b67c04b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A raw strage to hold an instance of the object. <br /></td></tr>
+<a class="el" href="classscl_1_1utils_1_1_raw_storage.html">RawStorage</a>&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1utils_1_1_optional.html#a91bd24a79765a2f36492bd45b67c04b7">payload</a></td></tr>
+<tr class="memdesc:a91bd24a79765a2f36492bd45b67c04b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">A raw storage to hold an instance of the object. <br /></td></tr>
 <tr class="separator:a91bd24a79765a2f36492bd45b67c04b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -345,7 +351,7 @@ class scl::utils::Optional&lt; T &gt;</h3>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd><a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> defines move and/or copy semantics only if the underlying type does as well </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00069">69</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00065">65</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4336fcd2487a07c327a97282cdf77fdf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4336fcd2487a07c327a97282cdf77fdf">&#9670;&nbsp;</a></span>Optional() <span class="overload">[1/6]</span></h2>
@@ -381,7 +387,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00134">134</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00145">145</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -419,7 +425,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00154">154</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00163">163</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -458,7 +464,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>moved-from <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> are in empty state (i.e. equivalent to one constructed from none) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00187">187</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00194">194</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -496,7 +502,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00214">214</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00219">219</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -542,7 +548,7 @@ template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools:
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00238">238</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00243">243</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -588,7 +594,7 @@ template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools:
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00260">260</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00265">265</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -636,7 +642,7 @@ template&lt;class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this optional (for chaining purposes) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00350">350</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00355">355</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -683,7 +689,7 @@ template&lt;class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this optional (for chaining purposes) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00328">328</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00333">333</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -730,7 +736,7 @@ template&lt;class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a new optional that might not contain the original value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00409">409</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00414">414</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -778,7 +784,46 @@ template&lt;class U , class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>the mapped optional </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00426">426</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00431">431</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+
+</div>
+</div>
+<a id="a310ee116ce079f7cee9cb2cbd519e082"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a310ee116ce079f7cee9cb2cbd519e082">&#9670;&nbsp;</a></span>fromPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static constexpr <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::fromPointer </td>
+          <td>(</td>
+          <td class="paramtype">const T *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct an optional from a pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>being the pointer to construct from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an empty optional if ptr is null, an initialized pointer otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00082">82</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -816,7 +861,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00123">123</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00134">134</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -848,7 +893,54 @@ template&lt;class T&gt; </div>
 <p>Determines whether or not this Optional&lt;T&gt; is empty. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if there's a value, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00114">114</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00125">125</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+
+</div>
+</div>
+<a id="ae3b6c98c3a216b5229698548fe4b89bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3b6c98c3a216b5229698548fe4b89bb">&#9670;&nbsp;</a></span>inplace()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<div class="memtemplate">
+template&lt;class... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::inplace </td>
+          <td>(</td>
+          <td class="paramtype">Args &amp;&amp;...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct an optional inplace. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Args</td><td>being the types of the arguments for the constructor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>being the arguments for the constructor </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an initialized optional </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00097">97</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -896,7 +988,7 @@ template&lt;class U , class F &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>an Optional&lt;U&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00387">387</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00392">392</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -928,7 +1020,7 @@ template&lt;class T&gt; </div>
 <p>Automatic bool conversion. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if there's a value, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00296">296</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00301">301</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -966,7 +1058,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00178">178</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00185">185</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +1096,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00303">303</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00308">308</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1042,7 +1134,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00310">310</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00315">315</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1081,7 +1173,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00144">144</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00154">154</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1120,7 +1212,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this Optional&lt;T&gt; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00165">165</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00173">173</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1160,7 +1252,7 @@ template&lt;class T&gt; </div>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this Optional&lt;T&gt;</dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>moved-from <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> are in empty state (i.e. equivalent to one constructed from none) </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00201">201</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00207">207</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1199,7 +1291,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00222">222</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00227">227</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1246,7 +1338,7 @@ template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools:
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00249">249</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00254">254</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1293,7 +1385,7 @@ template&lt;class U , class  = scl::tools::meta ::enable_if_t&lt;  ! scl::tools:
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1utils_1_1_optional.html" title="A class that allows the use of optional types (might be there) ">Optional</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00271">271</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00276">276</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1332,7 +1424,7 @@ template&lt;class T&gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a const reference to the stored value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00317">317</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00322">322</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1471,7 @@ template&lt;class E &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>a const&amp; to the value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00372">372</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00377">377</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1417,7 +1509,46 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00290">290</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00295">295</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+
+</div>
+</div>
+<a id="ac0668ff92a30d6b2f9578c592129cff1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0668ff92a30d6b2f9578c592129cff1">&#9670;&nbsp;</a></span>ref()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="classscl_1_1utils_1_1_optional.html">Optional</a> <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; T &gt;::ref </td>
+          <td>(</td>
+          <td class="paramtype">const value_type &amp;&#160;</td>
+          <td class="paramname"><em>ref</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct an optional from a reference to an object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ref</td><td>being the reference to construct from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an initialized optional </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00109">109</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1586,7 @@ template&lt;class T&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00283">283</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_2optional_8h_source.html#l00288">288</a> of file <a class="el" href="utils_2optional_8h_source.html">Optional.h</a>.</p>
 
 </div>
 </div>

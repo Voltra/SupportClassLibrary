@@ -8,6 +8,7 @@ var searchData=
   ['inequalitycomparablewith',['InequalityComparableWith',['../structscl_1_1concepts_1_1_inequality_comparable_with.html',1,'scl::concepts']]],
   ['infiniterange',['infiniteRange',['../namespacescl_1_1stream_1_1creators.html#a5d9acf32a922b6662c620c50c0158497',1,'scl::stream::creators']]],
   ['init',['init',['../classscl_1_1utils_1_1_raw_storage.html#a19e7289774072c4d907ecdded6fc1126',1,'scl::utils::RawStorage']]],
+  ['inplace',['inplace',['../classscl_1_1utils_1_1_optional.html#ae3b6c98c3a216b5229698548fe4b89bb',1,'scl::utils::Optional']]],
   ['integral',['Integral',['../structscl_1_1concepts_1_1_integral.html',1,'scl::concepts']]],
   ['integral_5ftype',['integral_type',['../classscl_1_1http_1_1_version.html#ae5b32ef1fb9d458a958941ef0b22a07c',1,'scl::http::Version']]],
   ['invalidanycast',['InvalidAnyCast',['../classscl_1_1exceptions_1_1_invalid_any_cast.html',1,'scl::exceptions']]],

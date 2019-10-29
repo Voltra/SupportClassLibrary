@@ -12,6 +12,5 @@ var searchData=
   ['streamiterator_3c_20iterator_5fvalue_5ftype_3c_20it_20_3e_20_3e',['StreamIterator&lt; iterator_value_type&lt; It &gt; &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['streamiterator_3c_20u_20_3e',['StreamIterator&lt; U &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['streamiteratorpayload',['StreamIteratorPayload',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html',1,'scl::stream::details']]],
-  ['swappable',['Swappable',['../structscl_1_1concepts_1_1_swappable.html',1,'scl::concepts']]],
-  ['swappablewith',['SwappableWith',['../structscl_1_1concepts_1_1_swappable_with.html',1,'scl::concepts']]]
+  ['swappable',['Swappable',['../structscl_1_1concepts_1_1_swappable.html',1,'scl::concepts']]]
 ];

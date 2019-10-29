@@ -3,6 +3,7 @@ var searchData=
   ['ifnone',['ifNone',['../classscl_1_1utils_1_1_optional.html#a96f61fedcc41d08e0c83fcfb51b1cc19',1,'scl::utils::Optional']]],
   ['ifsome',['ifSome',['../classscl_1_1utils_1_1_optional.html#ae68da6b5be7b0c8a3a0c6a74451b7b2b',1,'scl::utils::Optional']]],
   ['infiniterange',['infiniteRange',['../namespacescl_1_1stream_1_1creators.html#a5d9acf32a922b6662c620c50c0158497',1,'scl::stream::creators']]],
+  ['inplace',['inplace',['../classscl_1_1utils_1_1_optional.html#ae3b6c98c3a216b5229698548fe4b89bb',1,'scl::utils::Optional']]],
   ['is_5fbase_5fof',['is_base_of',['../namespacescl_1_1tools_1_1meta.html#a92a177852fe95f322266420e143829a6',1,'scl::tools::meta']]],
   ['is_5fconcept',['is_concept',['../namespacescl_1_1concepts.html#ad4648f0bded717fe938407724fd6f702',1,'scl::concepts']]],
   ['is_5fconvertible',['is_convertible',['../namespacescl_1_1tools_1_1meta.html#ad00459e04b41eab90de7a4280293c03f',1,'scl::tools::meta']]],
