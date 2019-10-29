@@ -24,7 +24,7 @@ Here is the namespace hierarchy:
         * [prefixed](./include/scl/tool/iostream/log/prefixed.h) - Log w/ a prefix
         * [surrounded](./include/scl/tool/iostream/log/surrounded.h) - Log w/ a prefix & a suffix
         * [wrap](./include/scl/tool/iostream/log/log.hpp) - An alias for [scl::tools::iostream::log::surrounded](./include/scl/tool/iostream/log/surrounded.h)
-    * [meta](#scl-tools-meta) - Template Meta Programming utils (such as `void_t`, `enable_if_t` and `constexpr` functions like `is_same` or even handy stuff like `constexpr_assert`)
+    * [meta](./include/scl/tools/meta/meta.hpp) - Template Meta Programming utils (such as `void_t`, `enable_if_t` and `constexpr` functions like `is_same` or even handy stuff like `constexpr_assert`)
     * [console](./include/scl/tool/iostream/log/log.hpp) - An alias for [scl::tools::iostream::log](./include/scl/tool/iostream/log/log.hpp)
     * [cli](./include/scl/tool/iostream/log/log.hpp) - An alias for [scl::console](./include/scl/tool/iostream/log/log.hpp)
   * [exceptions](./include/scl/exceptions/exceptions.hpp) - Exception types used in the library
@@ -34,8 +34,8 @@ Here is the namespace hierarchy:
     * [creators](./include/scl/stream/creators/creators.hpp) - Grouping stream creation functions
     * [operators](./include/scl/stream/operators/operators.hpp) - Grouping intermediate stream operation functions
     * [terminators](./include/scl/stream/terminators/terminators.hpp) - Grouping end of stream operation functions 
-  * [async](./async/async.hpp) - The asynchronous programming API
-  * [http]( ./http/http.hpp ) - The HTTP API
+  * [async](./include/scl/async/async.hpp) - The asynchronous programming API
+  * [http]( ./include/scl/http/http.hpp ) - The HTTP API
 
 
 

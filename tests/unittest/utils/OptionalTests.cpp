@@ -21,13 +21,6 @@ using namespace scl::tools;
 using scl::tools::iostream::nl;
 
 TEST(OptionalTests, ConceptsRequirementsMet) {
-	/*{
-		Optional<int> o = 42;
-		Optional<int> x{o};
-		x = o;
-		std::cout << "x: " << x.get() << ", o: " << o.get() << nl;
-	}*/
-
 	ASSERT_TRUE(DefaultConstructible<Optional<int>>{});
 	ASSERT_TRUE(Movable<Optional<int>>{});
 	ASSERT_TRUE(Copyable<Optional<int>>{});
@@ -41,12 +34,14 @@ TEST(OptionalTests, ConceptsRequirementsMet) {
 
 TEST(OptionalTests, CanConstructFromNone){
 	Optional<int> o{none};
+	SUCCEED();
 }
 
 TEST(OptionalTests, CanAssignFromNone){
 	Optional<int> o = none;
 	Optional<int> op;
 	op = none;
+	SUCCEED();
 }
 
 TEST(OptionalTests, CanUseNonTriviallyCopyableType){
@@ -78,7 +73,6 @@ TEST(OptionalTests, MovedFromHasCorrectSemantics){
 		Optional<std::string> no = none;
 		auto a = std::move(no);
 
-		//ASSERT_EQ(a.hasValue(), no.hasValue());
 		ASSERT_FALSE(no.hasValue());
 	}
 
@@ -199,29 +193,21 @@ TEST(OptionalTests, ThrowsGivenExceptionOnEmpty){
 	ASSERT_THROW(o.orThrow(e), decltype(e));
 }
 
-/* //Disabled test because it cannot be true
-TEST(OptionalTests, AdvancedInvalidTypesHaveWellDefinedBehavior){
-	using nmnc = Optional<NonCopyableNonMovable_t>;
-
-	ASSERT_EQ(META::is_copyable<NonCopyableNonMovable_t>(), META::is_copyable<nmnc>());
-	ASSERT_EQ(META::is_movable<NonCopyableNonMovable_t>(), META::is_movable<nmnc>());
-}*/
-
 TEST(OptionalTests, NoneFunctionCalledIfEmptyNotIfPresent){
 	Optional<int> o = none;
 	o.doIfPresent([](const int& _){ //shouldn't be called
-		ASSERT_TRUE(false);
+		FAIL();
 	}).doIfEmpty([]{ //should be called
-		ASSERT_TRUE(true);
+		SUCCEED();
 	});
 }
 
 TEST(OptionalTests, ValueFunctionCalledIfPresentNotIfEmpty){
 	Optional<int> o = 42;
 	o.doIfPresent([](const int& _){ //should be called
-		ASSERT_TRUE(true);
+		SUCCEED();
 	}).doIfEmpty([]{ //shouldn't be called
-		ASSERT_TRUE(false);
+		FAIL();
 	});
 }
 

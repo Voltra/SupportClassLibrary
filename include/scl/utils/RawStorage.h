@@ -98,6 +98,15 @@ namespace scl{
 				}
 
 				/**
+				 * Alias for RawStorage::destroy
+				 * @return a reference to this RawStorage
+				 */
+				RawStorage& reset(){
+					this->destroy();
+					return *this;
+				}
+
+				/**
 				 * Access the underlying data
 				 * @return a mutable reference to the underlying data
 				 * @throws scl::exceptions::UninitializedMemoryAccess

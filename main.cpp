@@ -84,7 +84,7 @@ struct Person{
 
 void testsConcepts(){
 	require(Iterator<int*>{});
-	require(SwappableWith<int, int>{});
+//	require(SwappableWith<int, int>{});
 }
 
 void testsMake(){
@@ -170,10 +170,9 @@ void testHTTP(){
 }
 
 int main(){
-	//TODO: Fix references bug (undef ref / empty optional access)
 	//testsStream();
 
-//	std::cout << asString(42) << nl;
-//	std::cout << Optional<int>{42} << nl;
+	std::cout << asString(42) << nl;
+	std::cout << make::optional<int>(42) << nl;
 	std::cout << make::any<stringLiteral>("Yes").as<stringLiteral>() << nl;
 }

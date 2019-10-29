@@ -20,10 +20,6 @@
 #include <scl/concepts/require.h>
 #include <scl/concepts/Movable.h>
 
-using scl::tools::iostream::nl;
-
-//TODO: Fix copy/move problems
-
 namespace scl{
 	namespace utils{
 		/**
@@ -69,22 +65,13 @@ namespace scl{
 		class Optional{
 			protected:
 				/**
-				 * @var valueFlag
-				 * determines whether or not there's a value inside this Optional<T>
-				 * @deprecated Replaced by the raw storage utility
-				 */
-				//bool valueFlag = false;
-
-				/**
 				 * @var payload
-				 * A raw strage to hold an instance of the object
+				 * A raw storage to hold an instance of the object
 				 */
-				RawStorage<T> payload = {};
+				RawStorage<T> payload;
 
 			public:
 				using value_type = META::remove_cv_ref_t<T>;
-				/*static constexpr bool is_movable = META::is_movable<value_type>();
-				static constexpr bool is_copyable =  META::is_copyable<value_type>();*/
 
 			public:
 				template <class... Args>
@@ -132,7 +119,6 @@ namespace scl{
 				 * @param value being the value to assign from
 				 */
 				Optional(const value_type& value){
-//					static_require(is_copyable);
 					this->payload.construct(value);
 				}
 
@@ -142,7 +128,6 @@ namespace scl{
 				 * @return a reference to this Optional
 				 */
 				Optional& operator=(const value_type& value){
-//					static_require(is_copyable);
 					this->payload.construct(value);
 					return *this;
 				}
@@ -152,7 +137,6 @@ namespace scl{
 				 * @param o being the Optional to copy from
 				 */
 				Optional(const Optional& o){
-//					static_require(is_copyable);
 					if(o.hasValue())
 						this->payload.construct(o.get());
 				};
@@ -163,7 +147,6 @@ namespace scl{
 				 * @return a reference to this Optional<T>
 				 */
 				Optional& operator=(const Optional& rhs){
-//					static_require(is_copyable);
 					if(rhs.hasValue())
 						this->payload.construct(rhs.get());
 
@@ -185,7 +168,6 @@ namespace scl{
 				 * (i.e. equivalent to one constructed from none)
 				 */
 				Optional(Optional&& rhs){
-//					static_require(is_movable);
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
 				};
@@ -199,7 +181,6 @@ namespace scl{
 				 * (i.e. equivalent to one constructed from none)
 				 */
 				Optional& operator=(Optional&& rhs) noexcept{
-//					static_require(is_movable);
 					if(rhs.hasValue())
 						this->payload = std::move(rhs.payload);
 					return *this;
@@ -220,7 +201,7 @@ namespace scl{
 				 * @return a reference to this Optional
 				 */
 				Optional& operator=(None _){
-					this->payload = {};
+					this->payload.reset();
 					return *this;
 				}
 
@@ -517,13 +498,13 @@ namespace scl{
 #undef SCL_TPL
 		};
 
-		/*template <class T>
+		template <class T>
 		struct ToString<Optional<T>, META::enable_if_t<
 			META::defines_scl_to_string<T>()
 		>>{
 			std::string operator()(const Optional<T>& opt){
 				return opt.hasValue() ? asString(*opt) : asString(none);
 			}
-		};*/
+		};
 	}
 }

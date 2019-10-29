@@ -7,6 +7,7 @@
 #include <scl/tools/meta/exists.h>
 #include <scl/tools/meta/type_mod.h>
 #include <scl/tools/meta/is_same.h>
+#include <scl/tools/meta/defines_std_to_string.h>
 
 namespace scl{
 	namespace utils{
@@ -31,6 +32,19 @@ namespace scl{
 		>>>{
 			std::string operator()(const T& t) const{
 				return std::string{t};
+			}
+		};
+
+		/**
+		 * Specialization for types that define std::to_string
+		 * @tparam T being the type of objects to convert to string
+		 */
+		template <class T>
+		struct ToString<T, META::void_t<META::enable_if_t<
+			META::defines_std_to_string<T>()
+		>>>{
+			std::string operator()(const T& t) const{
+				return std::to_string(t);
 			}
 		};
 
