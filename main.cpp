@@ -170,9 +170,6 @@ void testHTTP(){
 }
 
 int main(){
-	//testsStream();
-
-	/*std::cout << asString(42) << nl;
-	std::cout << make::optional<int>(42) << nl;
-	std::cout << make::any<stringLiteral>("Yes").as<stringLiteral>() << nl;*/
+	int i = 42;
+	std::cout << make::optionalFromPointer(&i) << nl;
 }

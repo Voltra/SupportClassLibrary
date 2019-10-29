@@ -2,6 +2,7 @@
 
 #include <scl/utils/Optional.h>
 #include <utility>
+#include <scl/tools/make/from.h>
 
 namespace scl{
 	namespace tools{
@@ -14,9 +15,8 @@ namespace scl{
 			 * @return an Optional<T> constructed with the given arguments
 			 */
 			template <class T, class... Args>
-			scl::utils::Optional<T> optional(Args&&... args){
-				return T{std::forward<Args>(args)...};
-//				return scl::utils::Optional<T>::inplace(std::forward<Args>(args)...);
+			constexpr scl::utils::Optional<T> optional(Args&&... args){
+				return make::from<T>(std::forward<Args>(args)...);
 			}
 
 			/**
@@ -25,7 +25,7 @@ namespace scl{
 			 * @return an Optional<T> initialized with None
 			 */
 			template <class T>
-			scl::utils::Optional<T> emptyOptional(){
+			constexpr scl::utils::Optional<T> emptyOptional(){
 				return scl::utils::none;
 			}
 
@@ -33,7 +33,7 @@ namespace scl{
 			 * Alias for scl::tools::make::optional
 			 */
 			template <class T, class... Args>
-			scl::utils::Optional<T> some(Args&&... args){
+			constexpr scl::utils::Optional<T> some(Args&&... args){
 				return optional<T>(std::forward<Args>(args)...);
 			}
 
@@ -41,8 +41,19 @@ namespace scl{
 			 * Alias for scl::tools::make::emptyOptional
 			 */
 			template <class T>
-			scl::utils::Optional<T> none(){
+			constexpr scl::utils::Optional<T> none(){
 				return emptyOptional<T>();
+			}
+
+			/**
+			 * Creates an optional from a pointer
+			 * @tparam T being the value type of the Optional
+			 * @param ptr being the pointer to construct from
+			 * @return an empty optional if null, an initialized optional otherwise
+			 */
+			template <class T>
+			constexpr scl::utils::Optional<T> optionalFromPointer(const T* ptr){
+				return scl::utils::Optional<T>::fromPointer(ptr);
 			}
 		}
 	}
