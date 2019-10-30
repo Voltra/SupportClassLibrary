@@ -1,3 +1,3 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structscl_1_1concepts_1_1_same.html" title="Same concept, two types Lhs and Rhs are considered the same if meta::is_same&lt;Lhs, Rhs&gt;() is true..." alt="" coords="5,5,148,47"/>
+<area shape="rect" id="node1" href="$structscl_1_1concepts_1_1_regular_invocable.html" title="RegularInvocable concept, a type F is regular invocable with Args if it is Invocable and is equality ..." alt="" coords="5,5,211,47"/>
 </map>

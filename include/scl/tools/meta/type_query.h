@@ -34,6 +34,9 @@ namespace scl{
 			template <class T>
 			using underlying_type_t = typename std::underlying_type<T>::type;
 
+			template <size_t I, class Tuple>
+			using tuple_element_t = typename std::tuple_element<I, Tuple>::type;
+
 #ifdef SCL_CPP17
 			template <class F, class... Args>
 			using invoke_result_t = typename std::invoke_result<F, Args...>::type;

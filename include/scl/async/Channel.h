@@ -5,7 +5,8 @@
 #include <condition_variable>
 #include <chrono>
 #include <tuple>
-#include <scl/exceptions/NonNullViolation.h>
+#include <scl/macros.h>
+#include <scl/tools/meta/type_query.h>
 
 //TODO: Refactor names i.e. sender -> emitter, send -> emit
 
@@ -23,15 +24,15 @@ namespace scl{
 
 			/**
 			 * Traits for the implementation of the transport of information in a scl::async::Channel
-			 * @tparam Channel being the channel type
+			 * @tparam Chan being the channel type
 			 */
-			template <class Channel>
+			template <class Chan>
 			struct channel_transport_traits{
 				/**
 				 * @typedef channel_type
 				 * The type of the channel
 				 */
-				using channel_type = Channel;
+				using channel_type = Chan;
 
 				/**
 				 * @typdef sender_type
@@ -50,7 +51,6 @@ namespace scl{
 				 * The type of transport payload
 				 */
 				using type = std::tuple<sender_type&, receiver_type&>;
-//				using type = std::pair<sender_type, receiver_type>;
 
 				/**
 				 * Create a transport payload from a sender and a receiver
@@ -60,21 +60,20 @@ namespace scl{
 				 */
 				static type factory(sender_type& sender, receiver_type& receiver){
 					return type{sender, receiver};
-//					return type{std::move(sender), std::move(receiver)};
 				}
 			};
 
 			/**
 			 * Traits for actors that interact with the channel
-			 * @tparam ChannelActor being the type of the actor
+			 * @tparam Actor being the type of the actor
 			 */
-			template <class ChannelActor>
+			template <class Actor>
 			struct channel_actor_traits{
 				/**
 				 * @typedef actor_type
 				 * The type of the actor
 				 */
-				using actor_type = ChannelActor;
+				using actor_type = Actor;
 
 				/**
 				 * @typedef channel_type
@@ -167,7 +166,10 @@ namespace scl{
 				template <class Pred>
 				void waitUntil(Pred&& pred){
 					this->lock();
-					this->actor->channel->condition.wait(this->lock_, pred);
+					this->actor->channel->condition.wait(
+						this->lock_,
+						std::forward<Pred>(pred)
+					);
 				}
 
 				/**
@@ -198,7 +200,11 @@ namespace scl{
 				template <class Rep, class Period, class Pred>
 				bool waitFor(const std::chrono::duration<Rep, Period>& time, Pred&& pred){
 					this->lock();
-					return this->actor->channel->condition.wait_for(this->lock_, time, pred);
+					return this->actor->channel->condition.wait_for(
+						this->lock_,
+						time,
+						std::forward<Pred>(pred)
+					);
 				}
 			};
 		}
@@ -275,7 +281,7 @@ namespace scl{
 				friend details::channel_actor_traits<receiver_type>;
 
 				template <size_t I, class U, class L, template<class> class G, class C>
-				friend auto std::get(Channel<U, L, G, C>& chan) -> typename std::tuple_element<I, typename Channel<U, L, G, C>::transport_type>::type;
+				friend auto std::get(Channel<U, L, G, C>& chan) -> META::tuple_element_t<I, typename Channel<U, L, G, C>::transport_type>;
 
 			protected:
 				/**
@@ -308,7 +314,6 @@ namespace scl{
 				 * @return the transport payload
 				 */
 				transport_type interface(){
-					//TODO: Wonder if it would be better to only have one of each
 					return transport_traits::factory(this->sender(), this->receiver());
 				}
 
@@ -364,6 +369,33 @@ namespace scl{
 				sender_type& sender(){
 					return this->sender_;
 //					return sender_type{this};
+				}
+
+				/**
+				 * Copy a value into the channel
+				 * @param value being the value to copy
+				 * @return a reference to this Channel's ChannelSender
+				 */
+				sender_type& operator<<(const value_type& value){
+					return this->sender() << value;
+				}
+
+				/**
+				 * Move a value into the channel
+				 * @param value being the value to move
+				 * @return a reference to this Channel's ChannelSender
+				 */
+				sender_type& operator<<(value_type&& value){
+					return this->sender() << std::move(value);
+				}
+
+				/**
+				 * Extract a value from the channel
+				 * @param value being where to store the data
+				 * @return a reference to this Channel's ChannelReceiver
+				 */
+				receiver_type& operator>>(value_type& value){
+					return this->receiver() >> value;
 				}
 		};
 
@@ -428,6 +460,7 @@ namespace scl{
 
 					/**
 					 * Construct a sender from a (safe) pointer to its channel
+					 * @param chan being the channel to construct from
 					 */
 					explicit ChannelSender(channel_type& chan) : channel{&chan}, traits{*this} {
 					}
@@ -485,36 +518,110 @@ namespace scl{
 					 * Alias for ChannelSender::push
 					 */
 					ChannelSender& queue(const value_type& value){ return this->push(value); }
+
+					/**
+					 * Alias for ChannelSender::push
+					 */
 					ChannelSender& queue(value_type&& value){ return this->push(std::move(value)); }
+
+					/**
+					 * Alias for ChannelSender::push
+					 */
 					ChannelSender& enqueue(const value_type& value){ return this->push(value); }
+
+					/**
+					 * Alias for ChannelSender::push
+					 */
 					ChannelSender& enqueue(value_type&& value){ return this->push(std::move(value)); }
+
+					/**
+					 * Alias for ChannelSender::push
+					 */
 					ChannelSender& send(const value_type& value){ return this->push(value); }
+
+					/**
+					 * Alias for ChannelSender::push
+					 */
 					ChannelSender& send(value_type&& value){ return this->push(std::move(value)); }
 
+					/**
+					 * Alias for ChannelSender::push
+					 * @return a reference to this ChannelSender
+					 */
 					ChannelSender& operator<<(const value_type& value){ return this->push(value); }
+
+					/**
+					 * Alias for ChannelSender::push
+					 * @return a reference to this ChannelSender
+					 */
 					ChannelSender& operator<<(value_type&& value){ return this->push(value); }
 			};
 
 			template <class Chan>
 			class ChannelReceiver{
 				public:
+					/**
+					 * @typedef channel_type
+					 * The type of the channel
+					 */
 					using channel_type = Chan;
+
+					/**
+					 * @typedef receiver_traits
+					 * The type of the traits for this receiver
+					 */
 					using receiver_traits = channel_actor_traits<ChannelReceiver>;
+
+					/**
+					 * @typedef lock_type
+					 * The type of locks used by the traits
+					 */
 					using lock_type = typename receiver_traits::lock_type;
 
+					/**
+					 * @typedef guard_type
+					 * @tparam L being the type of the lock
+					 * The type of lock guards used by the traits
+					 */
 					template <class L>
 					using guard_type = typename receiver_traits::template guard_type<L>;
+
+					/**
+					 * @typedef queue_type
+					 * The type of queue used by the channel
+					 */
 					using queue_type = typename receiver_traits::queue_type;
+
+					/**
+					 * @typedef value_type
+					 * The type of values used by the channel
+					 */
 					using value_type = typename receiver_traits::value_type;
+
+					/**
+					 * @typedef optional_type
+					 * The alternative type when there might not be a value
+					 */
 					using optional_type = scl::utils::Optional<value_type>;
 
 					friend receiver_traits;
 					friend channel_type;
 
 				protected:
+					/**
+					 * A (safe) pointer to the channel
+					 */
 					channel_type* channel;
+
+					/**
+					 * The traits for this receiver
+					 */
 					receiver_traits traits;
 
+					/**
+					 * Construct a receiver from its channel
+					 * @param chan being the channel to construct from
+					 */
 					explicit ChannelReceiver(channel_type& chan) : channel{&chan}, traits{*this} {
 					}
 
@@ -524,6 +631,10 @@ namespace scl{
 					ChannelReceiver(ChannelReceiver&&) = delete;
 					ChannelReceiver& operator=(ChannelReceiver&&) = delete;
 
+					/**
+					 * Get a value from the channel
+					 * @return the first remaining value
+					 */
 					value_type pop(){
 						this->traits.waitUntil([&]{
 							return !this->channel->queue.empty();
@@ -535,6 +646,13 @@ namespace scl{
 						return value;
 					}
 
+					/**
+					 * Wait for a given duration before popping
+					 * @tparam Rep being the time representation type
+					 * @tparam Period being the time period type
+					 * @param duration being the time to wait
+					 * @return NONE if it could not get a value, a value otherwise
+					 */
 					template <class Rep, class Period>
 					optional_type tryPop(const std::chrono::duration<Rep, Period>& duration){
 						bool isEmpty = this->traits.waitFor(duration, [&]{
@@ -590,8 +708,18 @@ namespace scl{
 }
 
 namespace std{
+	/**
+	 * Get either the sender or the receiver from the channel
+	 * @tparam I being the index in the tuple (sender, receiver)
+	 * @tparam T being the type of values used in the channel
+	 * @tparam Lock being the type of locks for the channel
+	 * @tparam Guard being the type of guards for the channel
+	 * @tparam Container being the type of containers for the queue of the channel
+	 * @param channel being the channel to extract data from
+	 * @return the sender or the receiver
+	 */
 	template <size_t I, class T, class Lock, template<class> class Guard, class Container>
-	auto get(scl::async::Channel<T, Lock, Guard, Container>& channel) -> typename std::tuple_element<I, typename scl::async::Channel<T, Lock, Guard, Container>::transport_type>::type {
+	auto get(scl::async::Channel<T, Lock, Guard, Container>& channel) -> META::tuple_element_t<I, typename scl::async::Channel<T, Lock, Guard, Container>::transport_type> {
 		return std::get<I>(channel.interface());
 	}
 

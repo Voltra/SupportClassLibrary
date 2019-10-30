@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['factory',['factory',['../structscl_1_1async_1_1details_1_1channel__transport__traits.html#a9552a164004667b5081b684a26d50a27',1,'scl::async::details::channel_transport_traits']]],
+  ['factory',['factory',['../structscl_1_1async_1_1details_1_1channel__transport__traits.html#a7b5462dfaab25715b809389e23d25cac',1,'scl::async::details::channel_transport_traits']]],
   ['filter',['filter',['../classscl_1_1utils_1_1_optional.html#ad925cc777cf200731d1989b093de6553',1,'scl::utils::Optional::filter()'],['../namespacescl_1_1stream_1_1operators.html#a39c8cde6232e7f72ba4698931f5c737d',1,'scl::stream::operators::filter()']]],
   ['filter_5f',['filter_',['../namespacescl_1_1stream_1_1operators.html#ae24bc87e8ca423bbb39023f5b1c4b201',1,'scl::stream::operators']]],
   ['filter_5ftoolbox',['filter_toolbox',['../structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html',1,'scl::stream::operators::details']]],

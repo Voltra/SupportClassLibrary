@@ -8,6 +8,6 @@ var searchData=
   ['nonmovable',['NonMovable',['../structscl_1_1concepts_1_1_non_movable.html',1,'scl::concepts']]],
   ['nonnullviolation',['NonNullViolation',['../structscl_1_1exceptions_1_1_non_null_violation.html',1,'scl::exceptions']]],
   ['noop',['NoOp',['../structscl_1_1tools_1_1meta_1_1details_1_1_no_op.html',1,'scl::tools::meta::details']]],
-  ['notify',['notify',['../structscl_1_1async_1_1details_1_1channel__actor__traits.html#adbc75bd85d07cd88febdd0b105a7e8b4',1,'scl::async::details::channel_actor_traits']]],
+  ['notify',['notify',['../structscl_1_1async_1_1details_1_1channel__actor__traits.html#a0f0963f7ff68f2f26442eade27ed82c1',1,'scl::async::details::channel_actor_traits']]],
   ['nullablepointer',['NullablePointer',['../structscl_1_1concepts_1_1_nullable_pointer.html',1,'scl::concepts']]]
 ];

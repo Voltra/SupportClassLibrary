@@ -34,7 +34,7 @@ namespace scl{
 				using return_type = R;
 
 				/**
-				 * @typdef arg_t
+				 * @typedef arg_t
 				 * @tparam i being the index of argument in the argument list (0-based index)
 				 * The type of the i-th argument of the callable
 				 */

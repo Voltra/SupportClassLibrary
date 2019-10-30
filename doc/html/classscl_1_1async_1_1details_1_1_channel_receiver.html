@@ -67,6 +67,7 @@ $(function() {
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classscl_1_1async_1_1details_1_1_channel_receiver-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -84,59 +85,75 @@ Collaboration diagram for scl::async::details::ChannelReceiver&lt; Chan &gt;:</d
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a0f177440569132658ad6a6803815aef6"><td class="memItemLeft" align="right" valign="top"><a id="a0f177440569132658ad6a6803815aef6"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>channel_type</b> = Chan</td></tr>
-<tr class="separator:a0f177440569132658ad6a6803815aef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f6904e79a719f0d081d5b5d16f04e98"><td class="memItemLeft" align="right" valign="top"><a id="a6f6904e79a719f0d081d5b5d16f04e98"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>receiver_traits</b> = <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">channel_actor_traits</a>&lt; <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &gt;</td></tr>
-<tr class="separator:a6f6904e79a719f0d081d5b5d16f04e98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac82ae2400a291bc6ee6ca6a59f519c83"><td class="memItemLeft" align="right" valign="top"><a id="ac82ae2400a291bc6ee6ca6a59f519c83"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>lock_type</b> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a8ed9f136a1216624dc95b57a7008b375">receiver_traits::lock_type</a></td></tr>
-<tr class="separator:ac82ae2400a291bc6ee6ca6a59f519c83"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7d34f4801060dc64446ebeef593c3c9"><td class="memTemplParams" colspan="2"><a id="af7d34f4801060dc64446ebeef593c3c9"></a>
-template&lt;class L &gt; </td></tr>
-<tr class="memitem:af7d34f4801060dc64446ebeef593c3c9"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>guard_type</b> = typename receiver_traits::template guard_type&lt; L &gt;</td></tr>
-<tr class="separator:af7d34f4801060dc64446ebeef593c3c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2730f80dcbb93116746740f6676b3c28"><td class="memItemLeft" align="right" valign="top"><a id="a2730f80dcbb93116746740f6676b3c28"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>queue_type</b> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a6ba1d783d2f61e293b4dc4f838f8e0f9">receiver_traits::queue_type</a></td></tr>
-<tr class="separator:a2730f80dcbb93116746740f6676b3c28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a73856e47109a93ee2c5d1d2b3182f9cf"><td class="memItemLeft" align="right" valign="top"><a id="a73856e47109a93ee2c5d1d2b3182f9cf"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a44f41370483d2b3971dd5a15689c48a9">receiver_traits::value_type</a></td></tr>
-<tr class="separator:a73856e47109a93ee2c5d1d2b3182f9cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac9b325136bc1d7b004cf56b741d05490"><td class="memItemLeft" align="right" valign="top"><a id="ac9b325136bc1d7b004cf56b741d05490"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><b>optional_type</b> = <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; value_type &gt;</td></tr>
-<tr class="separator:ac9b325136bc1d7b004cf56b741d05490"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70340360bbb1a74059d03a4dc0f45f8c"><td class="memItemLeft" align="right" valign="top"><a id="a70340360bbb1a74059d03a4dc0f45f8c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a70340360bbb1a74059d03a4dc0f45f8c">channel_type</a> = Chan</td></tr>
+<tr class="memdesc:a70340360bbb1a74059d03a4dc0f45f8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the channel. <br /></td></tr>
+<tr class="separator:a70340360bbb1a74059d03a4dc0f45f8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a781ebfe8813f387064c80016bcd74e63"><td class="memItemLeft" align="right" valign="top"><a id="a781ebfe8813f387064c80016bcd74e63"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a781ebfe8813f387064c80016bcd74e63">receiver_traits</a> = <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">channel_actor_traits</a>&lt; <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &gt;</td></tr>
+<tr class="memdesc:a781ebfe8813f387064c80016bcd74e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the traits for this receiver. <br /></td></tr>
+<tr class="separator:a781ebfe8813f387064c80016bcd74e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04a6061246625d6d34ab5ce306e3c931"><td class="memItemLeft" align="right" valign="top"><a id="a04a6061246625d6d34ab5ce306e3c931"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a04a6061246625d6d34ab5ce306e3c931">lock_type</a> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a7daf47cf992eadc92c98722e22735ca2">receiver_traits::lock_type</a></td></tr>
+<tr class="memdesc:a04a6061246625d6d34ab5ce306e3c931"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of locks used by the traits. <br /></td></tr>
+<tr class="separator:a04a6061246625d6d34ab5ce306e3c931"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa1c69c8c3d879b937a099aa268a35dbc"><td class="memTemplParams" colspan="2">template&lt;class L &gt; </td></tr>
+<tr class="memitem:aa1c69c8c3d879b937a099aa268a35dbc"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#aa1c69c8c3d879b937a099aa268a35dbc">guard_type</a> = typename receiver_traits::template <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#aa1c69c8c3d879b937a099aa268a35dbc">guard_type</a>&lt; L &gt;</td></tr>
+<tr class="separator:aa1c69c8c3d879b937a099aa268a35dbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39d593a2bf85ae592bd574230f3ba20d"><td class="memItemLeft" align="right" valign="top"><a id="a39d593a2bf85ae592bd574230f3ba20d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a39d593a2bf85ae592bd574230f3ba20d">queue_type</a> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a7d85ac7db604518e787b6412702b098d">receiver_traits::queue_type</a></td></tr>
+<tr class="memdesc:a39d593a2bf85ae592bd574230f3ba20d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of queue used by the channel. <br /></td></tr>
+<tr class="separator:a39d593a2bf85ae592bd574230f3ba20d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a371b67978f4422f84569a72d50192f9d"><td class="memItemLeft" align="right" valign="top"><a id="a371b67978f4422f84569a72d50192f9d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a4704aa81a167ff4ab703832b4f241d5c">receiver_traits::value_type</a></td></tr>
+<tr class="memdesc:a371b67978f4422f84569a72d50192f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of values used by the channel. <br /></td></tr>
+<tr class="separator:a371b67978f4422f84569a72d50192f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0efc0d17aa203f6e3e1ce622ee15a2f0"><td class="memItemLeft" align="right" valign="top"><a id="a0efc0d17aa203f6e3e1ce622ee15a2f0"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a0efc0d17aa203f6e3e1ce622ee15a2f0">optional_type</a> = <a class="el" href="classscl_1_1utils_1_1_optional.html">scl::utils::Optional</a>&lt; <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> &gt;</td></tr>
+<tr class="memdesc:a0efc0d17aa203f6e3e1ce622ee15a2f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The alternative type when there might not be a value. <br /></td></tr>
+<tr class="separator:a0efc0d17aa203f6e3e1ce622ee15a2f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:acc4bf16135bdd30102e86afc05cf2ea9"><td class="memItemLeft" align="right" valign="top"><a id="acc4bf16135bdd30102e86afc05cf2ea9"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ChannelReceiver</b> (Chan *chan)</td></tr>
-<tr class="separator:acc4bf16135bdd30102e86afc05cf2ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a877b2a6a2d40afccabf17dca0cd1c20f"><td class="memItemLeft" align="right" valign="top"><a id="a877b2a6a2d40afccabf17dca0cd1c20f"></a>
-value_type&#160;</td><td class="memItemRight" valign="bottom"><b>pop</b> ()</td></tr>
+<tr class="memitem:a06ba35292565390a184319a6be8c7f0f"><td class="memItemLeft" align="right" valign="top"><a id="a06ba35292565390a184319a6be8c7f0f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ChannelReceiver</b> (const <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;)=delete</td></tr>
+<tr class="separator:a06ba35292565390a184319a6be8c7f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6879f991202f9665c272405cefdbb08f"><td class="memItemLeft" align="right" valign="top"><a id="a6879f991202f9665c272405cefdbb08f"></a>
+<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;)=delete</td></tr>
+<tr class="separator:a6879f991202f9665c272405cefdbb08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad89f777f1e1007fa19ce9be4c3719094"><td class="memItemLeft" align="right" valign="top"><a id="ad89f777f1e1007fa19ce9be4c3719094"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>ChannelReceiver</b> (<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:ad89f777f1e1007fa19ce9be4c3719094"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56a4932aa65d231c2953261bcee8fa5a"><td class="memItemLeft" align="right" valign="top"><a id="a56a4932aa65d231c2953261bcee8fa5a"></a>
+<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a56a4932aa65d231c2953261bcee8fa5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a877b2a6a2d40afccabf17dca0cd1c20f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a877b2a6a2d40afccabf17dca0cd1c20f">pop</a> ()</td></tr>
+<tr class="memdesc:a877b2a6a2d40afccabf17dca0cd1c20f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a value from the channel.  <a href="#a877b2a6a2d40afccabf17dca0cd1c20f">More...</a><br /></td></tr>
 <tr class="separator:a877b2a6a2d40afccabf17dca0cd1c20f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a36390521beb03edb2f173da724e93e2b"><td class="memTemplParams" colspan="2"><a id="a36390521beb03edb2f173da724e93e2b"></a>
-template&lt;class Rep , class Period &gt; </td></tr>
-<tr class="memitem:a36390521beb03edb2f173da724e93e2b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>tryPop</b> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
+<tr class="memitem:a36390521beb03edb2f173da724e93e2b"><td class="memTemplParams" colspan="2">template&lt;class Rep , class Period &gt; </td></tr>
+<tr class="memitem:a36390521beb03edb2f173da724e93e2b"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a0efc0d17aa203f6e3e1ce622ee15a2f0">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a36390521beb03edb2f173da724e93e2b">tryPop</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
+<tr class="memdesc:a36390521beb03edb2f173da724e93e2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a given duration before popping.  <a href="#a36390521beb03edb2f173da724e93e2b">More...</a><br /></td></tr>
 <tr class="separator:a36390521beb03edb2f173da724e93e2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1e26c668ec9483231e84766925d3169"><td class="memItemLeft" align="right" valign="top"><a id="ab1e26c668ec9483231e84766925d3169"></a>
-value_type&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#ab1e26c668ec9483231e84766925d3169">dequeue</a> ()</td></tr>
-<tr class="memdesc:ab1e26c668ec9483231e84766925d3169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for ChannelReceiver::receive. <br /></td></tr>
+<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#ab1e26c668ec9483231e84766925d3169">dequeue</a> ()</td></tr>
+<tr class="memdesc:ab1e26c668ec9483231e84766925d3169"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>. <br /></td></tr>
 <tr class="separator:ab1e26c668ec9483231e84766925d3169"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6143766771e6b13d5530c5d9b71331de"><td class="memItemLeft" align="right" valign="top"><a id="a6143766771e6b13d5530c5d9b71331de"></a>
-value_type&#160;</td><td class="memItemRight" valign="bottom"><b>receive</b> ()</td></tr>
+<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de">receive</a> ()</td></tr>
+<tr class="memdesc:a6143766771e6b13d5530c5d9b71331de"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>. <br /></td></tr>
 <tr class="separator:a6143766771e6b13d5530c5d9b71331de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a594bd3fcbd5dd0ed1335c87b73201be8"><td class="memTemplParams" colspan="2"><a id="a594bd3fcbd5dd0ed1335c87b73201be8"></a>
 template&lt;class Rep , class Period &gt; </td></tr>
-<tr class="memitem:a594bd3fcbd5dd0ed1335c87b73201be8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a594bd3fcbd5dd0ed1335c87b73201be8">tryDeque</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
-<tr class="memdesc:a594bd3fcbd5dd0ed1335c87b73201be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for ChannelReceiver::tryPop. <br /></td></tr>
+<tr class="memitem:a594bd3fcbd5dd0ed1335c87b73201be8"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a0efc0d17aa203f6e3e1ce622ee15a2f0">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a594bd3fcbd5dd0ed1335c87b73201be8">tryDeque</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
+<tr class="memdesc:a594bd3fcbd5dd0ed1335c87b73201be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a36390521beb03edb2f173da724e93e2b" title="Wait for a given duration before popping. ">ChannelReceiver::tryPop</a>. <br /></td></tr>
 <tr class="separator:a594bd3fcbd5dd0ed1335c87b73201be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae56be7034e36d4443839be858c938799"><td class="memTemplParams" colspan="2"><a id="ae56be7034e36d4443839be858c938799"></a>
 template&lt;class Rep , class Period &gt; </td></tr>
-<tr class="memitem:ae56be7034e36d4443839be858c938799"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1utils_1_1_optional.html">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><b>tryReceive</b> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
+<tr class="memitem:ae56be7034e36d4443839be858c938799"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a0efc0d17aa203f6e3e1ce622ee15a2f0">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#ae56be7034e36d4443839be858c938799">tryReceive</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
+<tr class="memdesc:ae56be7034e36d4443839be858c938799"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a36390521beb03edb2f173da724e93e2b" title="Wait for a given duration before popping. ">ChannelReceiver::tryPop</a>. <br /></td></tr>
 <tr class="separator:ae56be7034e36d4443839be858c938799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20920de0705b77d183e559b2110c1f21"><td class="memItemLeft" align="right" valign="top"><a id="a20920de0705b77d183e559b2110c1f21"></a>
-<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&gt;&gt;</b> (value_type &amp;value)</td></tr>
+<tr class="memitem:a20920de0705b77d183e559b2110c1f21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a20920de0705b77d183e559b2110c1f21">operator&gt;&gt;</a> (<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> &amp;value)</td></tr>
+<tr class="memdesc:a20920de0705b77d183e559b2110c1f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>.  <a href="#a20920de0705b77d183e559b2110c1f21">More...</a><br /></td></tr>
 <tr class="separator:a20920de0705b77d183e559b2110c1f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
@@ -144,14 +161,25 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ae4f321c3dbe3e7c5aa6d5cc4687d2e7b"><td class="memItemLeft" align="right" valign="top"><a id="ae4f321c3dbe3e7c5aa6d5cc4687d2e7b"></a>
 friend&#160;</td><td class="memItemRight" valign="bottom"><b>receiver_traits</b></td></tr>
 <tr class="separator:ae4f321c3dbe3e7c5aa6d5cc4687d2e7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0e58dccd36542327585b57a6e270c26"><td class="memItemLeft" align="right" valign="top"><a id="ad0e58dccd36542327585b57a6e270c26"></a>
+friend&#160;</td><td class="memItemRight" valign="bottom"><b>channel_type</b></td></tr>
+<tr class="separator:ad0e58dccd36542327585b57a6e270c26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:a13853267f7e57189c3a6da055740ca01"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a13853267f7e57189c3a6da055740ca01">ChannelReceiver</a> (<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a70340360bbb1a74059d03a4dc0f45f8c">channel_type</a> &amp;chan)</td></tr>
+<tr class="memdesc:a13853267f7e57189c3a6da055740ca01"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a receiver from its channel.  <a href="#a13853267f7e57189c3a6da055740ca01">More...</a><br /></td></tr>
+<tr class="separator:a13853267f7e57189c3a6da055740ca01"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:aef5f3393daffa2b0386ee0eebc80b944"><td class="memItemLeft" align="right" valign="top"><a id="aef5f3393daffa2b0386ee0eebc80b944"></a>
-Chan *&#160;</td><td class="memItemRight" valign="bottom"><b>channel</b></td></tr>
-<tr class="separator:aef5f3393daffa2b0386ee0eebc80b944"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a265b145867f3bb91f850c6e353f21d10"><td class="memItemLeft" align="right" valign="top"><a id="a265b145867f3bb91f850c6e353f21d10"></a>
+<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a70340360bbb1a74059d03a4dc0f45f8c">channel_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a265b145867f3bb91f850c6e353f21d10">channel</a></td></tr>
+<tr class="memdesc:a265b145867f3bb91f850c6e353f21d10"><td class="mdescLeft">&#160;</td><td class="mdescRight">A (safe) pointer to the channel. <br /></td></tr>
+<tr class="separator:a265b145867f3bb91f850c6e353f21d10"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8d39c93ab4ddc36bc4d0180dca09a68"><td class="memItemLeft" align="right" valign="top"><a id="ab8d39c93ab4ddc36bc4d0180dca09a68"></a>
-<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">receiver_traits</a>&#160;</td><td class="memItemRight" valign="bottom"><b>traits</b></td></tr>
+<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a781ebfe8813f387064c80016bcd74e63">receiver_traits</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#ab8d39c93ab4ddc36bc4d0180dca09a68">traits</a></td></tr>
+<tr class="memdesc:ab8d39c93ab4ddc36bc4d0180dca09a68"><td class="mdescLeft">&#160;</td><td class="mdescRight">The traits for this receiver. <br /></td></tr>
 <tr class="separator:ab8d39c93ab4ddc36bc4d0180dca09a68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -159,8 +187,188 @@ Chan *&#160;</td><td class="memItemRight" valign="bottom"><b>channel</b></td></t
 class scl::async::details::ChannelReceiver&lt; Chan &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00020">20</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
-</div><hr/>The documentation for this class was generated from the following file:<ul>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00023">23</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+</div><h2 class="groupheader">Member Typedef Documentation</h2>
+<a id="aa1c69c8c3d879b937a099aa268a35dbc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa1c69c8c3d879b937a099aa268a35dbc">&#9670;&nbsp;</a></span>guard_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Chan&gt; </div>
+<div class="memtemplate">
+template&lt;class L &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">scl::async::details::ChannelReceiver</a>&lt; Chan &gt;::<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#aa1c69c8c3d879b937a099aa268a35dbc">guard_type</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">L</td><td>being the type of the lock The type of lock guards used by the traits </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00560">560</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a13853267f7e57189c3a6da055740ca01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13853267f7e57189c3a6da055740ca01">&#9670;&nbsp;</a></span>ChannelReceiver()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Chan&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">scl::async::details::ChannelReceiver</a>&lt; Chan &gt;::<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a70340360bbb1a74059d03a4dc0f45f8c">channel_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>chan</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construct a receiver from its channel. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">chan</td><td>being the channel to construct from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00598">598</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a20920de0705b77d183e559b2110c1f21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20920de0705b77d183e559b2110c1f21">&#9670;&nbsp;</a></span>operator>>()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Chan&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a>&amp; <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">scl::async::details::ChannelReceiver</a>&lt; Chan &gt;::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00674">674</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<a id="a877b2a6a2d40afccabf17dca0cd1c20f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a877b2a6a2d40afccabf17dca0cd1c20f">&#9670;&nbsp;</a></span>pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Chan&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">scl::async::details::ChannelReceiver</a>&lt; Chan &gt;::pop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Get a value from the channel. </p>
+<dl class="section return"><dt>Returns</dt><dd>the first remaining value </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00611">611</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<a id="a36390521beb03edb2f173da724e93e2b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36390521beb03edb2f173da724e93e2b">&#9670;&nbsp;</a></span>tryPop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Chan&gt; </div>
+<div class="memtemplate">
+template&lt;class Rep , class Period &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a0efc0d17aa203f6e3e1ce622ee15a2f0">optional_type</a> <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">scl::async::details::ChannelReceiver</a>&lt; Chan &gt;::tryPop </td>
+          <td>(</td>
+          <td class="paramtype">const std::chrono::duration&lt; Rep, Period &gt; &amp;&#160;</td>
+          <td class="paramname"><em>duration</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Wait for a given duration before popping. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">Rep</td><td>being the time representation type </td></tr>
+    <tr><td class="paramname">Period</td><td>being the time period type </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">duration</td><td>being the time to wait </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NONE if it could not get a value, a value otherwise </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00630">630</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/scl/async/<a class="el" href="_channel_8h_source.html">Channel.h</a></li>
 </ul>
 </div><!-- contents -->

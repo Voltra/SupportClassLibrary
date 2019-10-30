@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.13"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Support Class Library: scl::async::details::channel_actor_traits&lt; ChannelActor &gt; Struct Template Reference</title>
+<title>Support Class Library: scl::async::details::channel_actor_traits&lt; Actor &gt; Struct Template Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,7 +69,7 @@ $(function() {
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="structscl_1_1async_1_1details_1_1channel__actor__traits-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">scl::async::details::channel_actor_traits&lt; ChannelActor &gt; Struct Template Reference</div>  </div>
+<div class="title">scl::async::details::channel_actor_traits&lt; Actor &gt; Struct Template Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -80,100 +80,100 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a535b9627945129f182ddb710e127c82c"><td class="memItemLeft" align="right" valign="top"><a id="a535b9627945129f182ddb710e127c82c"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a535b9627945129f182ddb710e127c82c">actor_type</a> = ChannelActor</td></tr>
-<tr class="memdesc:a535b9627945129f182ddb710e127c82c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the actor. <br /></td></tr>
-<tr class="separator:a535b9627945129f182ddb710e127c82c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a826e2df7509fecc72a08cf9c87640a79"><td class="memItemLeft" align="right" valign="top"><a id="a826e2df7509fecc72a08cf9c87640a79"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a826e2df7509fecc72a08cf9c87640a79">channel_type</a> = typename actor_type::channel_type</td></tr>
-<tr class="memdesc:a826e2df7509fecc72a08cf9c87640a79"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the channel. <br /></td></tr>
-<tr class="separator:a826e2df7509fecc72a08cf9c87640a79"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ed9f136a1216624dc95b57a7008b375"><td class="memItemLeft" align="right" valign="top"><a id="a8ed9f136a1216624dc95b57a7008b375"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a8ed9f136a1216624dc95b57a7008b375">lock_type</a> = typename channel_type::lock_type</td></tr>
-<tr class="memdesc:a8ed9f136a1216624dc95b57a7008b375"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of lock used by the channel. <br /></td></tr>
-<tr class="separator:a8ed9f136a1216624dc95b57a7008b375"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae52708cbff838dd75c064fc85ae4637e"><td class="memTemplParams" colspan="2">template&lt;class L &gt; </td></tr>
-<tr class="memitem:ae52708cbff838dd75c064fc85ae4637e"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#ae52708cbff838dd75c064fc85ae4637e">guard_type</a> = typename channel_type::template <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#ae52708cbff838dd75c064fc85ae4637e">guard_type</a>&lt; L &gt;</td></tr>
-<tr class="separator:ae52708cbff838dd75c064fc85ae4637e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44f41370483d2b3971dd5a15689c48a9"><td class="memItemLeft" align="right" valign="top"><a id="a44f41370483d2b3971dd5a15689c48a9"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a44f41370483d2b3971dd5a15689c48a9">value_type</a> = typename channel_type::value_type</td></tr>
-<tr class="memdesc:a44f41370483d2b3971dd5a15689c48a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of values transmitted through channels. <br /></td></tr>
-<tr class="separator:a44f41370483d2b3971dd5a15689c48a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ba1d783d2f61e293b4dc4f838f8e0f9"><td class="memItemLeft" align="right" valign="top"><a id="a6ba1d783d2f61e293b4dc4f838f8e0f9"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a6ba1d783d2f61e293b4dc4f838f8e0f9">queue_type</a> = typename channel_type::queue_type</td></tr>
-<tr class="memdesc:a6ba1d783d2f61e293b4dc4f838f8e0f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the queue used in the channel. <br /></td></tr>
-<tr class="separator:a6ba1d783d2f61e293b4dc4f838f8e0f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e4a999f3e6f29ee3fac23cb4ab648fd"><td class="memItemLeft" align="right" valign="top"><a id="a1e4a999f3e6f29ee3fac23cb4ab648fd"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a1e4a999f3e6f29ee3fac23cb4ab648fd">actor_type</a> = Actor</td></tr>
+<tr class="memdesc:a1e4a999f3e6f29ee3fac23cb4ab648fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the actor. <br /></td></tr>
+<tr class="separator:a1e4a999f3e6f29ee3fac23cb4ab648fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2579f083493a1bf29d6336de39424bb"><td class="memItemLeft" align="right" valign="top"><a id="aa2579f083493a1bf29d6336de39424bb"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#aa2579f083493a1bf29d6336de39424bb">channel_type</a> = typename actor_type::channel_type</td></tr>
+<tr class="memdesc:aa2579f083493a1bf29d6336de39424bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the channel. <br /></td></tr>
+<tr class="separator:aa2579f083493a1bf29d6336de39424bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7daf47cf992eadc92c98722e22735ca2"><td class="memItemLeft" align="right" valign="top"><a id="a7daf47cf992eadc92c98722e22735ca2"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a7daf47cf992eadc92c98722e22735ca2">lock_type</a> = typename channel_type::lock_type</td></tr>
+<tr class="memdesc:a7daf47cf992eadc92c98722e22735ca2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of lock used by the channel. <br /></td></tr>
+<tr class="separator:a7daf47cf992eadc92c98722e22735ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3db4f74208d3164183c52077922455f"><td class="memTemplParams" colspan="2">template&lt;class L &gt; </td></tr>
+<tr class="memitem:aa3db4f74208d3164183c52077922455f"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#aa3db4f74208d3164183c52077922455f">guard_type</a> = typename channel_type::template <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#aa3db4f74208d3164183c52077922455f">guard_type</a>&lt; L &gt;</td></tr>
+<tr class="separator:aa3db4f74208d3164183c52077922455f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4704aa81a167ff4ab703832b4f241d5c"><td class="memItemLeft" align="right" valign="top"><a id="a4704aa81a167ff4ab703832b4f241d5c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a4704aa81a167ff4ab703832b4f241d5c">value_type</a> = typename channel_type::value_type</td></tr>
+<tr class="memdesc:a4704aa81a167ff4ab703832b4f241d5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of values transmitted through channels. <br /></td></tr>
+<tr class="separator:a4704aa81a167ff4ab703832b4f241d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d85ac7db604518e787b6412702b098d"><td class="memItemLeft" align="right" valign="top"><a id="a7d85ac7db604518e787b6412702b098d"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a7d85ac7db604518e787b6412702b098d">queue_type</a> = typename channel_type::queue_type</td></tr>
+<tr class="memdesc:a7d85ac7db604518e787b6412702b098d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the queue used in the channel. <br /></td></tr>
+<tr class="separator:a7d85ac7db604518e787b6412702b098d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a105f5584b64b6848b9f7eb5b780ecf5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a105f5584b64b6848b9f7eb5b780ecf5c">channel_actor_traits</a> (<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a535b9627945129f182ddb710e127c82c">actor_type</a> *act)</td></tr>
-<tr class="memdesc:a105f5584b64b6848b9f7eb5b780ecf5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a trait from a pointer to its actor.  <a href="#a105f5584b64b6848b9f7eb5b780ecf5c">More...</a><br /></td></tr>
-<tr class="separator:a105f5584b64b6848b9f7eb5b780ecf5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaff565f9160f8c97b9e2b7a79352fce"><td class="memItemLeft" align="right" valign="top"><a id="afaff565f9160f8c97b9e2b7a79352fce"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#afaff565f9160f8c97b9e2b7a79352fce">lock</a> ()</td></tr>
-<tr class="memdesc:afaff565f9160f8c97b9e2b7a79352fce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the channel. <br /></td></tr>
-<tr class="separator:afaff565f9160f8c97b9e2b7a79352fce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac39484468fadbbb552966b25be677aa4"><td class="memItemLeft" align="right" valign="top"><a id="ac39484468fadbbb552966b25be677aa4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#ac39484468fadbbb552966b25be677aa4">unlock</a> ()</td></tr>
-<tr class="memdesc:ac39484468fadbbb552966b25be677aa4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the channel. <br /></td></tr>
-<tr class="separator:ac39484468fadbbb552966b25be677aa4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adbc75bd85d07cd88febdd0b105a7e8b4"><td class="memItemLeft" align="right" valign="top"><a id="adbc75bd85d07cd88febdd0b105a7e8b4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#adbc75bd85d07cd88febdd0b105a7e8b4">notify</a> ()</td></tr>
-<tr class="memdesc:adbc75bd85d07cd88febdd0b105a7e8b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify the channel. <br /></td></tr>
-<tr class="separator:adbc75bd85d07cd88febdd0b105a7e8b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a294604200a4ce5292e7854f1224a5421"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a294604200a4ce5292e7854f1224a5421">wait</a> ()</td></tr>
-<tr class="memdesc:a294604200a4ce5292e7854f1224a5421"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the channel.  <a href="#a294604200a4ce5292e7854f1224a5421">More...</a><br /></td></tr>
-<tr class="separator:a294604200a4ce5292e7854f1224a5421"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa0e161be82ba5ff9bcfe9758a4a2dc90"><td class="memTemplParams" colspan="2">template&lt;class Pred &gt; </td></tr>
-<tr class="memitem:aa0e161be82ba5ff9bcfe9758a4a2dc90"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#aa0e161be82ba5ff9bcfe9758a4a2dc90">waitUntil</a> (Pred &amp;&amp;pred)</td></tr>
-<tr class="memdesc:aa0e161be82ba5ff9bcfe9758a4a2dc90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the channel until a condition is met.  <a href="#aa0e161be82ba5ff9bcfe9758a4a2dc90">More...</a><br /></td></tr>
-<tr class="separator:aa0e161be82ba5ff9bcfe9758a4a2dc90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0667e8c46ba1a3d8006a52d28c97968a"><td class="memTemplParams" colspan="2">template&lt;class Rep , class Period &gt; </td></tr>
-<tr class="memitem:a0667e8c46ba1a3d8006a52d28c97968a"><td class="memTemplItemLeft" align="right" valign="top">std::cv_status&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a0667e8c46ba1a3d8006a52d28c97968a">waitFor</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;time)</td></tr>
-<tr class="memdesc:a0667e8c46ba1a3d8006a52d28c97968a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a specific duration for the channel.  <a href="#a0667e8c46ba1a3d8006a52d28c97968a">More...</a><br /></td></tr>
-<tr class="separator:a0667e8c46ba1a3d8006a52d28c97968a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ba0aef9f4c6f18df036473b2a6a9986"><td class="memTemplParams" colspan="2">template&lt;class Rep , class Period , class Pred &gt; </td></tr>
-<tr class="memitem:a3ba0aef9f4c6f18df036473b2a6a9986"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a3ba0aef9f4c6f18df036473b2a6a9986">waitFor</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;time, Pred &amp;&amp;pred)</td></tr>
-<tr class="memdesc:a3ba0aef9f4c6f18df036473b2a6a9986"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a given period of time until the predicate is satisfied.  <a href="#a3ba0aef9f4c6f18df036473b2a6a9986">More...</a><br /></td></tr>
-<tr class="separator:a3ba0aef9f4c6f18df036473b2a6a9986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b29fcdde3332bf431105992730cc16f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a4b29fcdde3332bf431105992730cc16f">channel_actor_traits</a> (<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a1e4a999f3e6f29ee3fac23cb4ab648fd">actor_type</a> &amp;act)</td></tr>
+<tr class="memdesc:a4b29fcdde3332bf431105992730cc16f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a trait from a pointer to its actor.  <a href="#a4b29fcdde3332bf431105992730cc16f">More...</a><br /></td></tr>
+<tr class="separator:a4b29fcdde3332bf431105992730cc16f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4eb06c131ebdec2826432ada111a011f"><td class="memItemLeft" align="right" valign="top"><a id="a4eb06c131ebdec2826432ada111a011f"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a4eb06c131ebdec2826432ada111a011f">lock</a> ()</td></tr>
+<tr class="memdesc:a4eb06c131ebdec2826432ada111a011f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lock the channel. <br /></td></tr>
+<tr class="separator:a4eb06c131ebdec2826432ada111a011f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfbe555c613e331108ddfe728e4d0285"><td class="memItemLeft" align="right" valign="top"><a id="abfbe555c613e331108ddfe728e4d0285"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#abfbe555c613e331108ddfe728e4d0285">unlock</a> ()</td></tr>
+<tr class="memdesc:abfbe555c613e331108ddfe728e4d0285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unlock the channel. <br /></td></tr>
+<tr class="separator:abfbe555c613e331108ddfe728e4d0285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0f0963f7ff68f2f26442eade27ed82c1"><td class="memItemLeft" align="right" valign="top"><a id="a0f0963f7ff68f2f26442eade27ed82c1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a0f0963f7ff68f2f26442eade27ed82c1">notify</a> ()</td></tr>
+<tr class="memdesc:a0f0963f7ff68f2f26442eade27ed82c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Notify the channel. <br /></td></tr>
+<tr class="separator:a0f0963f7ff68f2f26442eade27ed82c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae20cebbb21426df23eff4691de04cf69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#ae20cebbb21426df23eff4691de04cf69">wait</a> ()</td></tr>
+<tr class="memdesc:ae20cebbb21426df23eff4691de04cf69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the channel.  <a href="#ae20cebbb21426df23eff4691de04cf69">More...</a><br /></td></tr>
+<tr class="separator:ae20cebbb21426df23eff4691de04cf69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb3153128107490afd8eb6b583419d64"><td class="memTemplParams" colspan="2">template&lt;class Pred &gt; </td></tr>
+<tr class="memitem:adb3153128107490afd8eb6b583419d64"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#adb3153128107490afd8eb6b583419d64">waitUntil</a> (Pred &amp;&amp;pred)</td></tr>
+<tr class="memdesc:adb3153128107490afd8eb6b583419d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for the channel until a condition is met.  <a href="#adb3153128107490afd8eb6b583419d64">More...</a><br /></td></tr>
+<tr class="separator:adb3153128107490afd8eb6b583419d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcad4d57cfcb5182adcf77aa35f73c5e"><td class="memTemplParams" colspan="2">template&lt;class Rep , class Period &gt; </td></tr>
+<tr class="memitem:adcad4d57cfcb5182adcf77aa35f73c5e"><td class="memTemplItemLeft" align="right" valign="top">std::cv_status&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#adcad4d57cfcb5182adcf77aa35f73c5e">waitFor</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;time)</td></tr>
+<tr class="memdesc:adcad4d57cfcb5182adcf77aa35f73c5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a specific duration for the channel.  <a href="#adcad4d57cfcb5182adcf77aa35f73c5e">More...</a><br /></td></tr>
+<tr class="separator:adcad4d57cfcb5182adcf77aa35f73c5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9493c8c3a394dba07380040a2fcde4bc"><td class="memTemplParams" colspan="2">template&lt;class Rep , class Period , class Pred &gt; </td></tr>
+<tr class="memitem:a9493c8c3a394dba07380040a2fcde4bc"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a9493c8c3a394dba07380040a2fcde4bc">waitFor</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;time, Pred &amp;&amp;pred)</td></tr>
+<tr class="memdesc:a9493c8c3a394dba07380040a2fcde4bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wait for a given period of time until the predicate is satisfied.  <a href="#a9493c8c3a394dba07380040a2fcde4bc">More...</a><br /></td></tr>
+<tr class="separator:a9493c8c3a394dba07380040a2fcde4bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3210722c0a29d8611157fe8e94825030"><td class="memItemLeft" align="right" valign="top"><a id="a3210722c0a29d8611157fe8e94825030"></a>
-<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a535b9627945129f182ddb710e127c82c">actor_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a3210722c0a29d8611157fe8e94825030">actor</a></td></tr>
-<tr class="memdesc:a3210722c0a29d8611157fe8e94825030"><td class="mdescLeft">&#160;</td><td class="mdescRight">A (safe) pointer to the actor. <br /></td></tr>
-<tr class="separator:a3210722c0a29d8611157fe8e94825030"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7604ef9eda679267c17b1849a295c30f"><td class="memItemLeft" align="right" valign="top"><a id="a7604ef9eda679267c17b1849a295c30f"></a>
-std::unique_lock&lt; <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a8ed9f136a1216624dc95b57a7008b375">lock_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a7604ef9eda679267c17b1849a295c30f">lock_</a></td></tr>
-<tr class="memdesc:a7604ef9eda679267c17b1849a295c30f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The handle to the channel's lock. <br /></td></tr>
-<tr class="separator:a7604ef9eda679267c17b1849a295c30f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f31ebfe8ecc902d5cf96d805bedd57"><td class="memItemLeft" align="right" valign="top"><a id="af0f31ebfe8ecc902d5cf96d805bedd57"></a>
+<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a1e4a999f3e6f29ee3fac23cb4ab648fd">actor_type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#af0f31ebfe8ecc902d5cf96d805bedd57">actor</a></td></tr>
+<tr class="memdesc:af0f31ebfe8ecc902d5cf96d805bedd57"><td class="mdescLeft">&#160;</td><td class="mdescRight">A (safe) pointer to the actor. <br /></td></tr>
+<tr class="separator:af0f31ebfe8ecc902d5cf96d805bedd57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e6d484dc89bd257d2230be7b7589bb9"><td class="memItemLeft" align="right" valign="top"><a id="a9e6d484dc89bd257d2230be7b7589bb9"></a>
+std::unique_lock&lt; <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a7daf47cf992eadc92c98722e22735ca2">lock_type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a9e6d484dc89bd257d2230be7b7589bb9">lock_</a></td></tr>
+<tr class="memdesc:a9e6d484dc89bd257d2230be7b7589bb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The handle to the channel's lock. <br /></td></tr>
+<tr class="separator:a9e6d484dc89bd257d2230be7b7589bb9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><h3>template&lt;class ChannelActor&gt;<br />
-struct scl::async::details::channel_actor_traits&lt; ChannelActor &gt;</h3>
+<div class="textblock"><h3>template&lt;class Actor&gt;<br />
+struct scl::async::details::channel_actor_traits&lt; Actor &gt;</h3>
 
 <p>Traits for actors that interact with the channel. </p>
 <dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
-    <tr><td class="paramname">ChannelActor</td><td>being the type of the actor </td></tr>
+    <tr><td class="paramname">Actor</td><td>being the type of the actor </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00070">70</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00071">71</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="ae52708cbff838dd75c064fc85ae4637e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae52708cbff838dd75c064fc85ae4637e">&#9670;&nbsp;</a></span>guard_type</h2>
+<a id="aa3db4f74208d3164183c52077922455f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3db4f74208d3164183c52077922455f">&#9670;&nbsp;</a></span>guard_type</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class ChannelActor&gt; </div>
+template&lt;class Actor&gt; </div>
 <div class="memtemplate">
 template&lt;class L &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; ChannelActor &gt;::<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#ae52708cbff838dd75c064fc85ae4637e">guard_type</a></td>
+          <td class="memname"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; Actor &gt;::<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#aa3db4f74208d3164183c52077922455f">guard_type</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -184,26 +184,26 @@ template&lt;class L &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00095">95</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00096">96</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a105f5584b64b6848b9f7eb5b780ecf5c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a105f5584b64b6848b9f7eb5b780ecf5c">&#9670;&nbsp;</a></span>channel_actor_traits()</h2>
+<a id="a4b29fcdde3332bf431105992730cc16f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b29fcdde3332bf431105992730cc16f">&#9670;&nbsp;</a></span>channel_actor_traits()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class ChannelActor&gt; </div>
+template&lt;class Actor&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; ChannelActor &gt;::<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">channel_actor_traits</a> </td>
+          <td class="memname"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; Actor &gt;::<a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">channel_actor_traits</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a535b9627945129f182ddb710e127c82c">actor_type</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html#a1e4a999f3e6f29ee3fac23cb4ab648fd">actor_type</a> &amp;&#160;</td>
           <td class="paramname"><em>act</em></td><td>)</td>
           <td></td>
         </tr>
@@ -222,31 +222,25 @@ template&lt;class ChannelActor&gt; </div>
   </table>
   </dd>
 </dl>
-<dl class="exception"><dt>Exceptions</dt><dd>
-  <table class="exception">
-    <tr><td class="paramname"><a class="el" href="structscl_1_1exceptions_1_1_non_null_violation.html">scl::exceptions::NonNullViolation</a></td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 <p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00124">124</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a294604200a4ce5292e7854f1224a5421"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a294604200a4ce5292e7854f1224a5421">&#9670;&nbsp;</a></span>wait()</h2>
+<a id="ae20cebbb21426df23eff4691de04cf69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae20cebbb21426df23eff4691de04cf69">&#9670;&nbsp;</a></span>wait()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class ChannelActor&gt; </div>
+template&lt;class Actor&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; ChannelActor &gt;::wait </td>
+          <td class="memname">void <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; Actor &gt;::wait </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -262,17 +256,17 @@ template&lt;class ChannelActor&gt; </div>
 <p>Wait for the channel. </p>
 <dl class="section warning"><dt>Warning</dt><dd>locks, will need to unlock afterward </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00157">157</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00154">154</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
-<a id="a0667e8c46ba1a3d8006a52d28c97968a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0667e8c46ba1a3d8006a52d28c97968a">&#9670;&nbsp;</a></span>waitFor() <span class="overload">[1/2]</span></h2>
+<a id="adcad4d57cfcb5182adcf77aa35f73c5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adcad4d57cfcb5182adcf77aa35f73c5e">&#9670;&nbsp;</a></span>waitFor() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class ChannelActor&gt; </div>
+template&lt;class Actor&gt; </div>
 <div class="memtemplate">
 template&lt;class Rep , class Period &gt; </div>
 <table class="mlabels">
@@ -280,7 +274,7 @@ template&lt;class Rep , class Period &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::cv_status <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; ChannelActor &gt;::waitFor </td>
+          <td class="memname">std::cv_status <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; Actor &gt;::waitFor </td>
           <td>(</td>
           <td class="paramtype">const std::chrono::duration&lt; Rep, Period &gt; &amp;&#160;</td>
           <td class="paramname"><em>time</em></td><td>)</td>
@@ -315,13 +309,13 @@ template&lt;class Rep , class Period &gt; </div>
 
 </div>
 </div>
-<a id="a3ba0aef9f4c6f18df036473b2a6a9986"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3ba0aef9f4c6f18df036473b2a6a9986">&#9670;&nbsp;</a></span>waitFor() <span class="overload">[2/2]</span></h2>
+<a id="a9493c8c3a394dba07380040a2fcde4bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9493c8c3a394dba07380040a2fcde4bc">&#9670;&nbsp;</a></span>waitFor() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class ChannelActor&gt; </div>
+template&lt;class Actor&gt; </div>
 <div class="memtemplate">
 template&lt;class Rep , class Period , class Pred &gt; </div>
 <table class="mlabels">
@@ -329,7 +323,7 @@ template&lt;class Rep , class Period , class Pred &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; ChannelActor &gt;::waitFor </td>
+          <td class="memname">bool <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; Actor &gt;::waitFor </td>
           <td>(</td>
           <td class="paramtype">const std::chrono::duration&lt; Rep, Period &gt; &amp;&#160;</td>
           <td class="paramname"><em>time</em>, </td>
@@ -375,13 +369,13 @@ template&lt;class Rep , class Period , class Pred &gt; </div>
 
 </div>
 </div>
-<a id="aa0e161be82ba5ff9bcfe9758a4a2dc90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa0e161be82ba5ff9bcfe9758a4a2dc90">&#9670;&nbsp;</a></span>waitUntil()</h2>
+<a id="adb3153128107490afd8eb6b583419d64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb3153128107490afd8eb6b583419d64">&#9670;&nbsp;</a></span>waitUntil()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;class ChannelActor&gt; </div>
+template&lt;class Actor&gt; </div>
 <div class="memtemplate">
 template&lt;class Pred &gt; </div>
 <table class="mlabels">
@@ -389,7 +383,7 @@ template&lt;class Pred &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; ChannelActor &gt;::waitUntil </td>
+          <td class="memname">void <a class="el" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html">scl::async::details::channel_actor_traits</a>&lt; Actor &gt;::waitUntil </td>
           <td>(</td>
           <td class="paramtype">Pred &amp;&amp;&#160;</td>
           <td class="paramname"><em>pred</em></td><td>)</td>
@@ -418,7 +412,7 @@ template&lt;class Pred &gt; </div>
 </dl>
 <dl class="section warning"><dt>Warning</dt><dd>locks, will need to unlock afterward </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00170">170</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00167">167</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>

@@ -80,6 +80,17 @@ $(function() {
  <a href="classscl_1_1async_1_1_channel.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_channel_8h_source.html">Channel.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for scl::async::Channel&lt; T, Lock, Guard, Container &gt;:</div>
+<div class="dyncontent">
+<div class="center"><img src="classscl_1_1async_1_1_channel__coll__graph.png" border="0" usemap="#scl_1_1async_1_1_channel_3_01_t_00_01_lock_00_01_guard_00_01_container_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="scl_1_1async_1_1_channel_3_01_t_00_01_lock_00_01_guard_00_01_container_01_4_coll__map" id="scl_1_1async_1_1_channel_3_01_t_00_01_lock_00_01_guard_00_01_container_01_4_coll__map">
+<area shape="rect" id="node2" href="classscl_1_1async_1_1details_1_1_channel_sender.html" title="scl::async::details\l::ChannelSender\&lt; Channel \&gt;" alt="" coords="237,17,427,58"/>
+<area shape="rect" id="node3" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html" title="scl::async::details\l::channel_actor_traits\l\&lt; ChannelSender \&gt;" alt="" coords="5,5,152,61"/>
+<area shape="rect" id="node4" href="classscl_1_1async_1_1details_1_1_channel_receiver.html" title="scl::async::details\l::ChannelReceiver\&lt; Channel \&gt;" alt="" coords="233,86,431,127"/>
+<area shape="rect" id="node5" href="structscl_1_1async_1_1details_1_1channel__actor__traits.html" title="scl::async::details\l::channel_actor_traits\l\&lt; ChannelReceiver \&gt;" alt="" coords="5,85,152,141"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
@@ -115,7 +126,7 @@ using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cla
 <tr class="memdesc:a41a278b793858f22b92bb51a5b11a16d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the transport traits for the channel. <br /></td></tr>
 <tr class="separator:a41a278b793858f22b92bb51a5b11a16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa75b92b4c239ac362a6b07ac63812ed7"><td class="memItemLeft" align="right" valign="top"><a id="aa75b92b4c239ac362a6b07ac63812ed7"></a>
-using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#aa75b92b4c239ac362a6b07ac63812ed7">transport_type</a> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__transport__traits.html#aad98231c064762234445f761b7d606b9">transport_traits::type</a></td></tr>
+using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#aa75b92b4c239ac362a6b07ac63812ed7">transport_type</a> = typename <a class="el" href="structscl_1_1async_1_1details_1_1channel__transport__traits.html#a04984a7d8033adf46d610b29d576667e">transport_traits::type</a></td></tr>
 <tr class="memdesc:aa75b92b4c239ac362a6b07ac63812ed7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the transport payload. <br /></td></tr>
 <tr class="separator:aa75b92b4c239ac362a6b07ac63812ed7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -147,12 +158,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae68f7506b4854dd9e0d384642891bcf1"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#ae68f7506b4854dd9e0d384642891bcf1">isEmpty</a> () const</td></tr>
 <tr class="memdesc:ae68f7506b4854dd9e0d384642891bcf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determine whether or not the channel is currently empty.  <a href="#ae68f7506b4854dd9e0d384642891bcf1">More...</a><br /></td></tr>
 <tr class="separator:ae68f7506b4854dd9e0d384642891bcf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab54cbd7e3c852f21d079491615a8a029"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1_channel.html#aa8eb46b5f55d239e533a30b1e2b44736">receiver_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#ab54cbd7e3c852f21d079491615a8a029">receiver</a> ()</td></tr>
-<tr class="memdesc:ab54cbd7e3c852f21d079491615a8a029"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a receiver for this channel.  <a href="#ab54cbd7e3c852f21d079491615a8a029">More...</a><br /></td></tr>
-<tr class="separator:ab54cbd7e3c852f21d079491615a8a029"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a787c56745ff9318e1f1cc1c3a4e0f204"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1_channel.html#aa55a3c3134523ae8fd6b93fdf5a0ca36">sender_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#a787c56745ff9318e1f1cc1c3a4e0f204">sender</a> ()</td></tr>
-<tr class="memdesc:a787c56745ff9318e1f1cc1c3a4e0f204"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sender for this channel.  <a href="#a787c56745ff9318e1f1cc1c3a4e0f204">More...</a><br /></td></tr>
-<tr class="separator:a787c56745ff9318e1f1cc1c3a4e0f204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab212fac84f11dd3d587e7f41ae2c227a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1_channel.html#aa8eb46b5f55d239e533a30b1e2b44736">receiver_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#ab212fac84f11dd3d587e7f41ae2c227a">receiver</a> ()</td></tr>
+<tr class="memdesc:ab212fac84f11dd3d587e7f41ae2c227a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a receiver for this channel.  <a href="#ab212fac84f11dd3d587e7f41ae2c227a">More...</a><br /></td></tr>
+<tr class="separator:ab212fac84f11dd3d587e7f41ae2c227a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac94550065faaf0810196672bb11d2cc4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1_channel.html#aa55a3c3134523ae8fd6b93fdf5a0ca36">sender_type</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#ac94550065faaf0810196672bb11d2cc4">sender</a> ()</td></tr>
+<tr class="memdesc:ac94550065faaf0810196672bb11d2cc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a sender for this channel.  <a href="#ac94550065faaf0810196672bb11d2cc4">More...</a><br /></td></tr>
+<tr class="separator:ac94550065faaf0810196672bb11d2cc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -183,13 +194,21 @@ std::condition_variable_any&#160;</td><td class="memItemRight" valign="bottom"><
 <a class="el" href="classscl_1_1async_1_1_channel.html#a18f00c9a7759f88b4f6aaa8d53e02f24">queue_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#a544a9e7f29f52186b4c99b3ff7570959">queue</a></td></tr>
 <tr class="memdesc:a544a9e7f29f52186b4c99b3ff7570959"><td class="mdescLeft">&#160;</td><td class="mdescRight">The underlying queue used to store data. <br /></td></tr>
 <tr class="separator:a544a9e7f29f52186b4c99b3ff7570959"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6da6c456c2795275d78938daf192ec9"><td class="memItemLeft" align="right" valign="top"><a id="aa6da6c456c2795275d78938daf192ec9"></a>
+<a class="el" href="classscl_1_1async_1_1_channel.html#aa55a3c3134523ae8fd6b93fdf5a0ca36">sender_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#aa6da6c456c2795275d78938daf192ec9">sender_</a></td></tr>
+<tr class="memdesc:aa6da6c456c2795275d78938daf192ec9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sender for this channel. <br /></td></tr>
+<tr class="separator:aa6da6c456c2795275d78938daf192ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adcd7506583646cac463a038206f515d8"><td class="memItemLeft" align="right" valign="top"><a id="adcd7506583646cac463a038206f515d8"></a>
+<a class="el" href="classscl_1_1async_1_1_channel.html#aa8eb46b5f55d239e533a30b1e2b44736">receiver_type</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html#adcd7506583646cac463a038206f515d8">receiver_</a></td></tr>
+<tr class="memdesc:adcd7506583646cac463a038206f515d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">The receiver for this channel. <br /></td></tr>
+<tr class="separator:adcd7506583646cac463a038206f515d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a4cc4b605e8e5485c211d23f4b4f15998"><td class="memTemplParams" colspan="2"><a id="a4cc4b605e8e5485c211d23f4b4f15998"></a>
+<tr class="memitem:a5b0e180a46e1ddbb53215ea3cb4f7d57"><td class="memTemplParams" colspan="2"><a id="a5b0e180a46e1ddbb53215ea3cb4f7d57"></a>
 template&lt;size_t I, class U , class L , template&lt; class &gt; class G, class C &gt; </td></tr>
-<tr class="memitem:a4cc4b605e8e5485c211d23f4b4f15998"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>std::get</b> (<a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; U, L, G, C &gt; &amp;chan) -&gt; typename std::tuple_element&lt; I, typename <a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; U, L, G, C &gt;::<a class="el" href="classscl_1_1async_1_1_channel.html#aa75b92b4c239ac362a6b07ac63812ed7">transport_type</a> &gt;::type</td></tr>
-<tr class="separator:a4cc4b605e8e5485c211d23f4b4f15998"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b0e180a46e1ddbb53215ea3cb4f7d57"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><b>std::get</b> (<a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; U, L, G, C &gt; &amp;chan) -&gt; scl::tools::meta ::tuple_element_t&lt; I, typename <a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; U, L, G, C &gt;::<a class="el" href="classscl_1_1async_1_1_channel.html#aa75b92b4c239ac362a6b07ac63812ed7">transport_type</a> &gt;</td></tr>
+<tr class="separator:a5b0e180a46e1ddbb53215ea3cb4f7d57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guard = std::lock_guard, class Container = std::deque&lt;T&gt;&gt;<br />
@@ -206,7 +225,7 @@ class scl::async::Channel&lt; T, Lock, Guard, Container &gt;</h3>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00013">13</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00016">16</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ac84a6502cc2a2e68b0583a13e1ac6f0d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac84a6502cc2a2e68b0583a13e1ac6f0d">&#9670;&nbsp;</a></span>guard_type</h2>
@@ -230,7 +249,7 @@ template&lt;class L &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00230">230</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00234">234</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
@@ -263,7 +282,7 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
 <p>Implementation details to get a receiver and sender for this channel. </p>
 <dl class="section return"><dt>Returns</dt><dd>the transport payload </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00302">302</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00316">316</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
@@ -295,12 +314,12 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
 <p>Determine whether or not the channel is currently empty. </p>
 <dl class="section return"><dt>Returns</dt><dd>TRUE if it is, FALSE otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00339">339</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00352">352</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
-<a id="ab54cbd7e3c852f21d079491615a8a029"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab54cbd7e3c852f21d079491615a8a029">&#9670;&nbsp;</a></span>receiver()</h2>
+<a id="ab212fac84f11dd3d587e7f41ae2c227a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab212fac84f11dd3d587e7f41ae2c227a">&#9670;&nbsp;</a></span>receiver()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,7 +330,7 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classscl_1_1async_1_1_channel.html#aa8eb46b5f55d239e533a30b1e2b44736">receiver_type</a> <a class="el" href="classscl_1_1async_1_1_channel.html">scl::async::Channel</a>&lt; T, Lock, Guard, Container &gt;::receiver </td>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1_channel.html#aa8eb46b5f55d239e533a30b1e2b44736">receiver_type</a>&amp; <a class="el" href="classscl_1_1async_1_1_channel.html">scl::async::Channel</a>&lt; T, Lock, Guard, Container &gt;::receiver </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -327,12 +346,12 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
 <p>Get a receiver for this channel. </p>
 <dl class="section return"><dt>Returns</dt><dd>the receiver </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00347">347</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00360">360</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
-<a id="a787c56745ff9318e1f1cc1c3a4e0f204"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a787c56745ff9318e1f1cc1c3a4e0f204">&#9670;&nbsp;</a></span>sender()</h2>
+<a id="ac94550065faaf0810196672bb11d2cc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac94550065faaf0810196672bb11d2cc4">&#9670;&nbsp;</a></span>sender()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -343,7 +362,7 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classscl_1_1async_1_1_channel.html#aa55a3c3134523ae8fd6b93fdf5a0ca36">sender_type</a> <a class="el" href="classscl_1_1async_1_1_channel.html">scl::async::Channel</a>&lt; T, Lock, Guard, Container &gt;::sender </td>
+          <td class="memname"><a class="el" href="classscl_1_1async_1_1_channel.html#aa55a3c3134523ae8fd6b93fdf5a0ca36">sender_type</a>&amp; <a class="el" href="classscl_1_1async_1_1_channel.html">scl::async::Channel</a>&lt; T, Lock, Guard, Container &gt;::sender </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -359,7 +378,7 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
 <p>Get a sender for this channel. </p>
 <dl class="section return"><dt>Returns</dt><dd>the sender </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00355">355</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00369">369</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
@@ -391,7 +410,7 @@ template&lt;class T, class Lock = std::mutex, template&lt; class &gt; class Guar
 <p>Retrieve the size of the queue. </p>
 <dl class="section return"><dt>Returns</dt><dd>the size of the queue </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00323">323</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00336">336</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
