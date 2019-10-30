@@ -11,6 +11,10 @@ namespace scl{
 
 			UninitializedMemoryAccess() : UninitializedMemoryAccess("Trying to access uninitialized memory") {
 			}
+
+			realConst(char*) type() const noexcept override {
+				return "scl::exceptions::UninitializedMemoryAccess";
+			}
 		};
 	}
 }
