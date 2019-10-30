@@ -1,6 +1,7 @@
 #pragma once
 #include <scl/macros.h>
 #include <scl/tools/meta/type_mod.h>
+#include <scl/tools/meta/fn_introspect.h>
 #include <mutex>
 #include <scl/exceptions/InvalidResource.h>
 
@@ -19,7 +20,7 @@ namespace scl{
 			 * @param delegate being the delegate to which the value will be passed
 			 */
 			template <class F>
-			void operator()(Resource& resource, F&& delegate){
+			auto operator()(Resource& resource, F&& delegate) -> META::return_t<F> {
 				throw scl::exceptions::InvalidResource{};
 			}
 		};
@@ -27,9 +28,9 @@ namespace scl{
 		template<>
 		struct with_traits<std::mutex>{
 			template <class F>
-			void operator()(std::mutex& mutex, F&& delegate){
+			auto operator()(std::mutex& mutex, F&& delegate) -> META::return_t<F> {
 				std::lock_guard<decltype(mutex)> _{mutex};
-				std::forward<F>(delegate)();
+				return std::forward<F>(delegate)();
 			}
 		};
 	}

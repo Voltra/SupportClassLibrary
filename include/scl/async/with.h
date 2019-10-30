@@ -11,9 +11,9 @@ namespace scl{
 		 * @param f being the transaction to execute
 		 */
 		template <class Resource, class F>
-		void with(Resource&& res, F&& f){
+		auto with(Resource&& res, F&& f) -> META::return_t<F> {
 			with_traits<Resource> traits;
-			traits(std::forward<Resource>(res), std::forward<F>(f));
+			return traits(std::forward<Resource>(res), std::forward<F>(f));
 		}
 	}
 }

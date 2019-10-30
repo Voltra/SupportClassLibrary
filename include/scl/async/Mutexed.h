@@ -19,7 +19,7 @@ namespace scl{
 
 			protected:
 				value_type value;
-				lock_type lock{};
+				mutable std::unique_lock<lock_type> lock{lock_type{}, std::defer_lock};
 
 			public:
 				template <class... Args>
@@ -45,7 +45,7 @@ namespace scl{
 		template <class T>
 		struct with_traits<Mutexed<T>>{
 			template <class F>
-			void operator()(Mutexed<T>& mutex, F&& delegate){
+			auto operator()(Mutexed<T>& mutex, F&& delegate) -> META::return_t<F> {
 				mutex.transaction(std::forward<F&&>(delegate));
 			}
 		};
