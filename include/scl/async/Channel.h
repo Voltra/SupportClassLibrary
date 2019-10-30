@@ -3,6 +3,7 @@
 #include <queue>
 #include <deque>
 #include <condition_variable>
+#include <chrono>
 #include <scl/exceptions/NonNullViolation.h>
 
 namespace scl{
@@ -63,7 +64,7 @@ namespace scl{
 				 * The type of guard used to protect the lock
 				 */
 				template <class L>
-				using guard_type = typename channel_type::guard_type<L>;
+				using guard_type = typename channel_type::template guard_type<L>;
 
 				/**
 				 * @typedef value_type
@@ -132,6 +133,18 @@ namespace scl{
 					this->lock();
 					this->actor->channel->condition.wait(this->lock_, pred);
 				}
+
+				template <class Rep, class Period>
+				std::cv_status waitFor(const std::chrono::duration<Rep, Period>& time){
+					this->lock();
+					return this->actor->channel->condition.wait_for(this->lock_, time);
+				}
+
+				template <class Rep, class Period, class Pred>
+				bool waitFor(const std::chrono::duration<Rep, Period>& time, Pred&& pred){
+					this->lock();
+					return this->actor->channel->condition.wait_for(this->lock_, time, pred);
+				}
 			};
 		}
 
@@ -197,7 +210,7 @@ namespace scl{
 					using lock_type = typename sender_traits::lock_type;
 
 					template <class L>
-					using guard_type = typename sender_traits::guard_type<L>;
+					using guard_type = typename sender_traits::template guard_type<L>;
 					using queue_type = typename sender_traits::queue_type;
 					using value_type = typename sender_traits::value_type;
 
@@ -258,7 +271,7 @@ namespace scl{
 					using lock_type = typename receiver_traits::lock_type;
 
 					template <class L>
-					using guard_type = typename receiver_traits::guard_type<L>;
+					using guard_type = typename receiver_traits::template guard_type<L>;
 					using queue_type = typename receiver_traits::queue_type;
 					using value_type = typename receiver_traits::value_type;
 					using optional_type = scl::utils::Optional<value_type>;
@@ -281,19 +294,45 @@ namespace scl{
 							return !this->channel->queue.empty();
 						});
 
-						auto value = this->channel.queue.front();
-						this->channel.queue.pop();
+						auto value = this->channel->queue.front();
+						this->channel->queue.pop();
 						this->traits.unlock(); //TODO: Check if necessary
 						return value;
 					}
 
-					value_type dequeue(){
-						return this->doPop();
+					template <class Rep, class Period>
+					optional_type tryPop(const std::chrono::duration<Rep, Period>& duration){
+						bool isEmpty = this->traits.waitFor(duration, [&]{
+							return !this->channel->queue.empty();
+						});
+
+						if(isEmpty)
+							return optional_type{};
+
+						auto value = this->channel->queue.front();
+						this->channel->queue.pop();
+						this->traits.unlock();
+						return optional_type{std::move(value)};
 					}
 
-					value_type receive(){
-						return this->doPop();
+					/**
+					 * Alias for ChannelReceiver::receive
+					 */
+					value_type dequeue(){ return this->pop(); }
+					value_type receive(){ return this->pop(); }
+
+					/**
+					 * Alias for ChannelReceiver::tryPop
+					 */
+					template <class Rep, class Period>
+					optional_type tryDeque(const std::chrono::duration<Rep, Period>& duration){
+						return this->tryPop(duration);
 					}
+					template <class Rep, class Period>
+					optional_type tryReceive(const std::chrono::duration<Rep, Period>& duration){
+						return this->tryPop(duration);
+					}
+
 			};
 		}
 	}
