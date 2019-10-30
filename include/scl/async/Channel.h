@@ -164,6 +164,7 @@ namespace scl{
 				using guard_type = Guard<L>;
 				using queue_type = std::queue<T, Container>;
 				using value_type = typename queue_type::value_type;
+				using size_type = typename queue_type::size_type;
 
 				using sender_type = details::ChannelSender<Channel>;
 				using receiver_type = details::ChannelReceiver<Channel>;
@@ -172,6 +173,8 @@ namespace scl{
 
 				friend sender_type;
 				friend receiver_type;
+
+				template <class... Args>
 				friend transport_type std::get(Channel&);
 
 			protected:
@@ -195,6 +198,19 @@ namespace scl{
 				Channel(Channel&&) = delete;
 				Channel& operator=(const Channel&) = delete;
 				Channel& operator=(Channel&&) = delete;
+
+				size_type size() const{
+					guard_type<lock_type> _{lock};
+					return this->queue.size();
+				}
+
+				size_type length() const{
+					return this->size();
+				}
+
+				bool isEmpty() const{
+					return this->size() <= 0;
+				}
 		};
 
 		namespace details{
