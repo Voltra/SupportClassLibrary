@@ -20,7 +20,7 @@ var searchData=
   ['same',['Same',['../structscl_1_1concepts_1_1_same.html',1,'scl::concepts']]],
   ['scl',['scl',['../namespacescl.html',1,'']]],
   ['semiregular',['SemiRegular',['../structscl_1_1concepts_1_1_semi_regular.html',1,'scl::concepts']]],
-  ['send',['send',['../classscl_1_1async_1_1details_1_1_channel_sender.html#a797aba9f57e29de4e0d5791d2fe195ad',1,'scl::async::details::ChannelSender::send(const value_type &amp;value)'],['../classscl_1_1async_1_1details_1_1_channel_sender.html#a41299562a492f5590c835d6865166267',1,'scl::async::details::ChannelSender::send(value_type &amp;&amp;value)']]],
+  ['send',['send',['../classscl_1_1async_1_1details_1_1_channel_sender.html#abeba907bcc678d328cdd7b28573c87d0',1,'scl::async::details::ChannelSender']]],
   ['sender',['sender',['../classscl_1_1async_1_1_channel.html#ac94550065faaf0810196672bb11d2cc4',1,'scl::async::Channel']]],
   ['sender_5f',['sender_',['../classscl_1_1async_1_1_channel.html#aa6da6c456c2795275d78938daf192ec9',1,'scl::async::Channel']]],
   ['sender_5ftraits',['sender_traits',['../classscl_1_1async_1_1details_1_1_channel_sender.html#a1fe5af167a2fa96fa22b337359989ad7',1,'scl::async::details::ChannelSender']]],

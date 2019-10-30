@@ -5,6 +5,7 @@
 #include <condition_variable>
 #include <chrono>
 #include <tuple>
+#include <utility>
 #include <scl/macros.h>
 #include <scl/tools/meta/type_query.h>
 #include <scl/tools/meta/type_mod.h>
@@ -373,21 +374,14 @@ namespace scl{
 				}
 
 				/**
-				 * Copy a value into the channel
-				 * @param value being the value to copy
+				 * Forward a value into the channel
+				 * @tparam U being the type of data to forward (defaults to Channel::value_type)
+				 * @param value being the value to forward
 				 * @return a reference to this Channel's ChannelSender
 				 */
-				sender_type& operator<<(const value_type& value){
-					return this->sender() << value;
-				}
-
-				/**
-				 * Move a value into the channel
-				 * @param value being the value to move
-				 * @return a reference to this Channel's ChannelSender
-				 */
-				sender_type& operator<<(value_type&& value){
-					return this->sender() << std::move(value);
+				template <class U = value_type>
+				sender_type& operator<<(U&& value){
+					return this->sender() << std::forward<U>(value);
 				}
 
 				/**
@@ -403,35 +397,23 @@ namespace scl{
 		};
 
 		/**
-		 * Copy a value into a channel
+		 * Forward a value into a channel
+		 * @tparam U being the type of data to forward
 		 * @tparam T being the type of values in the channel
 		 * @tparam L being the type of locks in the channel
 		 * @tparam G being the type of lock guards in the channel
 		 * @tparam C being the type of container used in the channel
-		 * @param value being the value to copy
-		 * @param channel being the channel to copy the value into
+		 * @param value being the value to forward
+		 * @param channel being the channel to forward the value into
 		 */
-		template <class T, class L, template<class> class G, class C>
-		void operator>>(const META::remove_cv_ref_t<T>& value, Channel<T, L, G, C>& channel){
-			channel << value;
-		}
-
-		/**
-		 * Move a value into a channel
-		 * @tparam T being the type of values in the channel
-		 * @tparam L being the type of locks in the channel
-		 * @tparam G being the type of lock guards in the channel
-		 * @tparam C being the type of container used in the channel
-		 * @param value being the value to move
-		 * @param channel being the channel to move the value into
-		 */
-		template <class T, class L, template<class> class G, class C>
-		void operator>>(META::remove_cv_ref_t<T>&& value, Channel<T, L, G, C>& channel){
-			channel << std::move(value);
+		template <class U, class T, class L, template<class> class G, class C>
+		void operator>>(U&& value, Channel<T, L, G, C>& channel) {
+			channel << std::forward<U>(value);
 		}
 
 		/**
 		 * Extract a value from the channel
+		 * @tparam U being the type to store the data into
 		 * @tparam T being the type of values in the channel
 		 * @tparam L being the type of locks in the channel
 		 * @tparam G being the type of lock guards in the channel
@@ -531,21 +513,14 @@ namespace scl{
 					ChannelSender& operator=(ChannelSender&&) = delete;
 
 					/**
-					 * Push by copy
-					 * @param value being the value to copy
+					 * Forward a value into the queue
+				 	 * @tparam U being the type of data to forward (defaults to ChannelSender::value_type)
+					 * @param value being the value to forward
 					 * @return a reference to this ChannelSender
 					 */
-					ChannelSender& push(const value_type& value){
-						return this->doPush(value);
-					}
-
-					/**
-					 * Push by move
-					 * @param value being the value to move
-					 * @return a reference to this ChannelSender
-					 */
-					ChannelSender& push(value_type&& value){
-						return this->doPush(std::move(value));
+					template <class U = value_type>
+					ChannelSender& push(U&& value){
+						return this->doPush(std::forward<U>(value));
 					}
 
 					/**
@@ -562,44 +537,30 @@ namespace scl{
 					/**
 					 * Alias for ChannelSender::push
 					 */
-					ChannelSender& queue(const value_type& value){ return this->push(value); }
+				 	template <class U = value_type>
+					ChannelSender& queue(U&& value){
+						return this->push(std::forward<U>(value));
+					}
 
 					/**
 					 * Alias for ChannelSender::push
 					 */
-					ChannelSender& queue(value_type&& value){ return this->push(std::move(value)); }
+					template <class U = value_type>
+					ChannelSender& enqueue(U&& value){
+						return this->push(std::forward<U>(value));
+					}
 
 					/**
 					 * Alias for ChannelSender::push
 					 */
-					ChannelSender& enqueue(const value_type& value){ return this->push(value); }
+					template <class U = value_type>
+					ChannelSender& send(U&& value){ return this->push(value); }
 
 					/**
 					 * Alias for ChannelSender::push
 					 */
-					ChannelSender& enqueue(value_type&& value){ return this->push(std::move(value)); }
-
-					/**
-					 * Alias for ChannelSender::push
-					 */
-					ChannelSender& send(const value_type& value){ return this->push(value); }
-
-					/**
-					 * Alias for ChannelSender::push
-					 */
-					ChannelSender& send(value_type&& value){ return this->push(std::move(value)); }
-
-					/**
-					 * Alias for ChannelSender::push
-					 * @return a reference to this ChannelSender
-					 */
-					ChannelSender& operator<<(const value_type& value){ return this->push(value); }
-
-					/**
-					 * Alias for ChannelSender::push
-					 * @return a reference to this ChannelSender
-					 */
-					ChannelSender& operator<<(value_type&& value){ return this->push(value); }
+					template <class U = value_type>
+					ChannelSender& operator<<(U&& value){ return this->push(value); }
 			};
 
 			template <class Chan>
@@ -744,7 +705,7 @@ namespace scl{
 					 * @tparam U being the type to store the data in (defaults to ChannelReceiver::value_type)
 					 * @return a reference to this ChannelReceiver
 					 */
-					 template <class U = value_type>
+					template <class U = value_type>
 					ChannelReceiver& operator>>(U& value){
 						value = std::move(this->receive());
 						return *this;

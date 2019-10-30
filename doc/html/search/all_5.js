@@ -11,7 +11,7 @@ var searchData=
   ['endstreamiterator_3c_20std_3a_3aset_3c_20t_2c_20compare_2c_20allocator_20_3e_2c_20t_20_3e',['EndStreamIterator&lt; std::set&lt; T, Compare, Allocator &gt;, T &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['endstreamiterator_3c_20std_3a_3avector_3c_20t_2c_20allocator_20_3e_2c_20t_20_3e',['EndStreamIterator&lt; std::vector&lt; T, Allocator &gt;, T &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['endstreamiterator_3c_20void_2c_20t_20_3e',['EndStreamIterator&lt; void, T &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html',1,'scl::stream::details::iterator']]],
-  ['enqueue',['enqueue',['../classscl_1_1async_1_1details_1_1_channel_sender.html#ae753c3942b01917d75970351cfa46608',1,'scl::async::details::ChannelSender::enqueue(const value_type &amp;value)'],['../classscl_1_1async_1_1details_1_1_channel_sender.html#a87b1980274e793730756fda7adbaf904',1,'scl::async::details::ChannelSender::enqueue(value_type &amp;&amp;value)']]],
+  ['enqueue',['enqueue',['../classscl_1_1async_1_1details_1_1_channel_sender.html#a04edf3a1219c9ccecb99753df43d1e64',1,'scl::async::details::ChannelSender']]],
   ['ensuregenerated',['ensureGenerated',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#af398d69b40a5a0dac4a10f4286bb8998',1,'scl::stream::details::StreamIteratorPayload']]],
   ['equalitycomparable',['EqualityComparable',['../structscl_1_1concepts_1_1_equality_comparable.html',1,'scl::concepts']]],
   ['equalitycomparablewith',['EqualityComparableWith',['../structscl_1_1concepts_1_1_equality_comparable_with.html',1,'scl::concepts']]],

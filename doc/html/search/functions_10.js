@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['send',['send',['../classscl_1_1async_1_1details_1_1_channel_sender.html#a797aba9f57e29de4e0d5791d2fe195ad',1,'scl::async::details::ChannelSender::send(const value_type &amp;value)'],['../classscl_1_1async_1_1details_1_1_channel_sender.html#a41299562a492f5590c835d6865166267',1,'scl::async::details::ChannelSender::send(value_type &amp;&amp;value)']]],
+  ['send',['send',['../classscl_1_1async_1_1details_1_1_channel_sender.html#abeba907bcc678d328cdd7b28573c87d0',1,'scl::async::details::ChannelSender']]],
   ['sender',['sender',['../classscl_1_1async_1_1_channel.html#ac94550065faaf0810196672bb11d2cc4',1,'scl::async::Channel']]],
   ['shared',['shared',['../namespacescl_1_1tools_1_1make.html#a493f31efda83addb7dcb61f90c5dc471',1,'scl::tools::make']]],
   ['size',['size',['../classscl_1_1async_1_1_async_queue.html#a5d81a367132c03b00db49adfbb4efdb5',1,'scl::async::AsyncQueue::size()'],['../classscl_1_1async_1_1_channel.html#adc228670bde8067b4a1ca184d695f946',1,'scl::async::Channel::size()']]],
