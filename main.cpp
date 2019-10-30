@@ -84,9 +84,10 @@ void testStreamFile(){
 
 int main(){ //TODO: Fix characters corruption?
 	Channel<int> chan;
-	auto sender = chan.sender();
-	auto receiver = chan.receiver();
+	auto&& sender = chan.sender();
+	auto&& receiver = chan.receiver();
 
-	std::thread([&]{ std::cout << receiver.receive() << nl; }).detach();
-	std::thread([&]{ sender.send(42); }).join();
+
+	std::thread([&]{ sender.send(42); }).detach();
+	std::thread([&]{ std::cout << receiver.receive() << nl; }).join();
 }

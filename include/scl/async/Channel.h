@@ -7,6 +7,8 @@
 #include <tuple>
 #include <scl/exceptions/NonNullViolation.h>
 
+//TODO: Refactor names i.e. sender -> emitter, send -> emit
+
 namespace scl{
 	namespace async{
 		template <class, class, template<class> class, class>
@@ -47,7 +49,7 @@ namespace scl{
 				 * @typedef type
 				 * The type of transport payload
 				 */
-				using type = std::tuple<sender_type, receiver_type>;
+				using type = std::tuple<sender_type&, receiver_type&>;
 //				using type = std::pair<sender_type, receiver_type>;
 
 				/**
@@ -56,9 +58,9 @@ namespace scl{
 				 * @param receiver being  a receiver for the channel
 				 * @return the corresponding transport payload
 				 */
-				static type factory(sender_type sender, receiver_type receiver){
-					return type{std::move(sender), std::move(receiver)};
-//					return std::make_pair(std::move(sender), std::move(receiver));
+				static type factory(sender_type& sender, receiver_type& receiver){
+					return type{sender, receiver};
+//					return type{std::move(sender), std::move(receiver)};
 				}
 			};
 
@@ -119,12 +121,8 @@ namespace scl{
 				/**
 				 * Construct a trait from a pointer to its actor
 				 * @param act being a (safe) pointer to the actor
-				 * @throws scl::exceptions::NonNullViolation
 				 */
-				explicit channel_actor_traits(actor_type* act) : actor{act} {
-					if(!act)
-						throw scl::exceptions::NonNullViolation{};
-
+				explicit channel_actor_traits(actor_type& act) : actor{&act} {
 					this->lock_ = {this->actor->channel->lock, std::defer_lock};
 				}
 
@@ -296,6 +294,16 @@ namespace scl{
 				queue_type queue;
 
 				/**
+				 * The sender for this channel
+				 */
+				sender_type sender_;
+
+				/**
+				 * The receiver for this channel
+				 */
+				receiver_type receiver_;
+
+				/**
 				 * Implementation details to get a receiver and sender for this channel
 				 * @return the transport payload
 				 */
@@ -308,7 +316,7 @@ namespace scl{
 				/**
 				 * Construct a channel
 				 */
-				Channel() : lock{}, condition{}, queue{} {
+				Channel() : lock{}, condition{}, queue{}, sender_{*this}, receiver_{*this} {
 				}
 
 				Channel(const Channel&) = delete;
@@ -344,16 +352,18 @@ namespace scl{
 				 * Get a receiver for this channel
 				 * @return the receiver
 				 */
-				receiver_type receiver(){
-					return receiver_type{this};
+				receiver_type& receiver(){
+					return this->receiver_;
+//					return receiver_type{this};
 				}
 
 				/**
 				 * Get a sender for this channel
 				 * @return the sender
 				 */
-				sender_type sender(){
-					return sender_type{this};
+				sender_type& sender(){
+					return this->sender_;
+//					return sender_type{this};
 				}
 		};
 
@@ -403,28 +413,25 @@ namespace scl{
 					using value_type = typename sender_traits::value_type;
 
 					friend sender_traits;
+					friend channel_type;
 
 				protected:
 					/**
 					 * A (safe) pointer to the channel
 					 */
-					Chan* channel;
+					channel_type* channel;
 
 					/**
 					 * The traits for the sender
 					 */
 					sender_traits traits;
 
-				public:
 					/**
 					 * Construct a sender from a (safe) pointer to its channel
 					 */
-					explicit ChannelSender(Chan* chan) : channel{chan}, traits{this} {
-						if(!chan)
-							throw scl::exceptions::NonNullViolation{};
+					explicit ChannelSender(channel_type& chan) : channel{&chan}, traits{*this} {
 					}
 
-				protected:
 					/**
 					 * Implementation details to push data onto the channel
 					 * @tparam Args being the type of the arguments for the constructor
@@ -440,6 +447,11 @@ namespace scl{
 					}
 
 				public:
+					ChannelSender(const ChannelSender&) = delete;
+					ChannelSender& operator=(const ChannelSender&) = delete;
+					ChannelSender(ChannelSender&&) = delete;
+					ChannelSender& operator=(ChannelSender&&) = delete;
+
 					/**
 					 * Push by copy
 					 * @param value being the value to copy
@@ -497,18 +509,21 @@ namespace scl{
 					using optional_type = scl::utils::Optional<value_type>;
 
 					friend receiver_traits;
+					friend channel_type;
 
 				protected:
-					Chan* channel;
+					channel_type* channel;
 					receiver_traits traits;
 
-				public:
-					explicit ChannelReceiver(Chan* chan) : channel{chan}, traits{this} {
-						if(!chan)
-							throw scl::exceptions::NonNullViolation{};
+					explicit ChannelReceiver(channel_type& chan) : channel{&chan}, traits{*this} {
 					}
 
 				public:
+					ChannelReceiver(const ChannelReceiver&) = delete;
+					ChannelReceiver& operator=(const ChannelReceiver&) = delete;
+					ChannelReceiver(ChannelReceiver&&) = delete;
+					ChannelReceiver& operator=(ChannelReceiver&&) = delete;
+
 					value_type pop(){
 						this->traits.waitUntil([&]{
 							return !this->channel->queue.empty();
@@ -539,6 +554,10 @@ namespace scl{
 					 * Alias for ChannelReceiver::receive
 					 */
 					value_type dequeue(){ return this->pop(); }
+
+					/**
+					 * Alias for ChannelReceiver::receive
+					 */
 					value_type receive(){ return this->pop(); }
 
 					/**
@@ -548,11 +567,19 @@ namespace scl{
 					optional_type tryDeque(const std::chrono::duration<Rep, Period>& duration){
 						return this->tryPop(duration);
 					}
+
+					/**
+					 * Alias for ChannelReceiver::tryPop
+					 */
 					template <class Rep, class Period>
 					optional_type tryReceive(const std::chrono::duration<Rep, Period>& duration){
 						return this->tryPop(duration);
 					}
 
+					/**
+					 * Alias for ChannelReceiver::receive
+					 * @return a reference to this ChannelReceiver
+					 */
 					ChannelReceiver& operator>>(value_type& value){
 						value = this->receive();
 						return *this;
