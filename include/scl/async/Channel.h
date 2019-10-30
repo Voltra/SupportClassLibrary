@@ -7,6 +7,7 @@
 #include <tuple>
 #include <scl/macros.h>
 #include <scl/tools/meta/type_query.h>
+#include <scl/tools/meta/type_mod.h>
 
 //TODO: Refactor names i.e. sender -> emitter, send -> emit
 
@@ -391,13 +392,57 @@ namespace scl{
 
 				/**
 				 * Extract a value from the channel
+				 * @tparam U being the type to store the data into (defaults to Channel::value_type)
 				 * @param value being where to store the data
 				 * @return a reference to this Channel's ChannelReceiver
 				 */
-				receiver_type& operator>>(value_type& value){
+				template <class U = value_type>
+				receiver_type& operator>>(U& value){
 					return this->receiver() >> value;
 				}
 		};
+
+		/**
+		 * Copy a value into a channel
+		 * @tparam T being the type of values in the channel
+		 * @tparam L being the type of locks in the channel
+		 * @tparam G being the type of lock guards in the channel
+		 * @tparam C being the type of container used in the channel
+		 * @param value being the value to copy
+		 * @param channel being the channel to copy the value into
+		 */
+		template <class T, class L, template<class> class G, class C>
+		void operator>>(const META::remove_cv_ref_t<T>& value, Channel<T, L, G, C>& channel){
+			channel << value;
+		}
+
+		/**
+		 * Move a value into a channel
+		 * @tparam T being the type of values in the channel
+		 * @tparam L being the type of locks in the channel
+		 * @tparam G being the type of lock guards in the channel
+		 * @tparam C being the type of container used in the channel
+		 * @param value being the value to move
+		 * @param channel being the channel to move the value into
+		 */
+		template <class T, class L, template<class> class G, class C>
+		void operator>>(META::remove_cv_ref_t<T>&& value, Channel<T, L, G, C>& channel){
+			channel << std::move(value);
+		}
+
+		/**
+		 * Extract a value from the channel
+		 * @tparam T being the type of values in the channel
+		 * @tparam L being the type of locks in the channel
+		 * @tparam G being the type of lock guards in the channel
+		 * @tparam C being the type of container used in the channel
+		 * @param value being the place to store the extracted data
+		 * @param channel being the channel to extract data from
+		 */
+		template <class U, class T, class L, template<class> class G, class C>
+		void operator<<(U& value, Channel<T, L, G, C>& channel){
+			channel >> value;
+		}
 
 		namespace details{
 			/**
@@ -640,9 +685,9 @@ namespace scl{
 							return !this->channel->queue.empty();
 						});
 
-						auto value = this->channel->queue.front();
-						this->channel->queue.pop();
-						this->traits.unlock(); //TODO: Check if necessary
+						auto value = this->channel->queue.front(); //get front
+						this->channel->queue.pop(); //remove from queue
+						this->traits.unlock();
 						return value;
 					}
 
@@ -662,8 +707,8 @@ namespace scl{
 						if(isEmpty)
 							return optional_type{};
 
-						auto value = this->channel->queue.front();
-						this->channel->queue.pop();
+						auto value = this->channel->queue.front(); //get front
+						this->channel->queue.pop(); //remove from queue
 						this->traits.unlock();
 						return optional_type{std::move(value)};
 					}
@@ -696,10 +741,12 @@ namespace scl{
 
 					/**
 					 * Alias for ChannelReceiver::receive
+					 * @tparam U being the type to store the data in (defaults to ChannelReceiver::value_type)
 					 * @return a reference to this ChannelReceiver
 					 */
-					ChannelReceiver& operator>>(value_type& value){
-						value = this->receive();
+					 template <class U = value_type>
+					ChannelReceiver& operator>>(U& value){
+						value = std::move(this->receive());
 						return *this;
 					}
 			};

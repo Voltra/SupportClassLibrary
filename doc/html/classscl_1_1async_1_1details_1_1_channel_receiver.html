@@ -152,9 +152,10 @@ template&lt;class Rep , class Period &gt; </td></tr>
 <tr class="memitem:ae56be7034e36d4443839be858c938799"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a0efc0d17aa203f6e3e1ce622ee15a2f0">optional_type</a>&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#ae56be7034e36d4443839be858c938799">tryReceive</a> (const std::chrono::duration&lt; Rep, Period &gt; &amp;duration)</td></tr>
 <tr class="memdesc:ae56be7034e36d4443839be858c938799"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a36390521beb03edb2f173da724e93e2b" title="Wait for a given duration before popping. ">ChannelReceiver::tryPop</a>. <br /></td></tr>
 <tr class="separator:ae56be7034e36d4443839be858c938799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20920de0705b77d183e559b2110c1f21"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a20920de0705b77d183e559b2110c1f21">operator&gt;&gt;</a> (<a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> &amp;value)</td></tr>
-<tr class="memdesc:a20920de0705b77d183e559b2110c1f21"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>.  <a href="#a20920de0705b77d183e559b2110c1f21">More...</a><br /></td></tr>
-<tr class="separator:a20920de0705b77d183e559b2110c1f21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7774c835a8d262e4394bc4167f2a7317"><td class="memTemplParams" colspan="2">template&lt;class U  = value_type&gt; </td></tr>
+<tr class="memitem:a7774c835a8d262e4394bc4167f2a7317"><td class="memTemplItemLeft" align="right" valign="top"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a7774c835a8d262e4394bc4167f2a7317">operator&gt;&gt;</a> (U &amp;value)</td></tr>
+<tr class="memdesc:a7774c835a8d262e4394bc4167f2a7317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>.  <a href="#a7774c835a8d262e4394bc4167f2a7317">More...</a><br /></td></tr>
+<tr class="separator:a7774c835a8d262e4394bc4167f2a7317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -187,7 +188,7 @@ Protected Attributes</h2></td></tr>
 class scl::async::details::ChannelReceiver&lt; Chan &gt;</h3>
 
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00023">23</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00024">24</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="aa1c69c8c3d879b937a099aa268a35dbc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1c69c8c3d879b937a099aa268a35dbc">&#9670;&nbsp;</a></span>guard_type</h2>
@@ -211,7 +212,7 @@ template&lt;class L &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00560">560</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00632">632</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
@@ -250,18 +251,20 @@ template&lt;class Chan&gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00598">598</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00670">670</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a20920de0705b77d183e559b2110c1f21"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20920de0705b77d183e559b2110c1f21">&#9670;&nbsp;</a></span>operator>>()</h2>
+<a id="a7774c835a8d262e4394bc4167f2a7317"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7774c835a8d262e4394bc4167f2a7317">&#9670;&nbsp;</a></span>operator>>()</h2>
 
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
 template&lt;class Chan&gt; </div>
+<div class="memtemplate">
+template&lt;class U  = value_type&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -269,7 +272,7 @@ template&lt;class Chan&gt; </div>
         <tr>
           <td class="memname"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a>&amp; <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">scl::async::details::ChannelReceiver</a>&lt; Chan &gt;::operator&gt;&gt; </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d">value_type</a> &amp;&#160;</td>
+          <td class="paramtype">U &amp;&#160;</td>
           <td class="paramname"><em>value</em></td><td>)</td>
           <td></td>
         </tr>
@@ -282,9 +285,15 @@ template&lt;class Chan&gt; </div>
 </div><div class="memdoc">
 
 <p>Alias for <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a6143766771e6b13d5530c5d9b71331de" title="Alias for ChannelReceiver::receive. ">ChannelReceiver::receive</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">U</td><td>being the type to store the data in (defaults to <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html#a371b67978f4422f84569a72d50192f9d" title="The type of values used by the channel. ">ChannelReceiver::value_type</a>) </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section return"><dt>Returns</dt><dd>a reference to this <a class="el" href="classscl_1_1async_1_1details_1_1_channel_receiver.html">ChannelReceiver</a> </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00674">674</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00748">748</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
@@ -316,7 +325,7 @@ template&lt;class Chan&gt; </div>
 <p>Get a value from the channel. </p>
 <dl class="section return"><dt>Returns</dt><dd>the first remaining value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00611">611</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00683">683</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>
@@ -364,7 +373,7 @@ template&lt;class Rep , class Period &gt; </div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NONE if it could not get a value, a value otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00630">630</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00702">702</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
 
 </div>
 </div>

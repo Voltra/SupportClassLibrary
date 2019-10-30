@@ -94,6 +94,18 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ab37a28160f7f145d85b6e7bdc8a1a8a4"><td class="memTemplParams" colspan="2">template&lt;class T , class L , template&lt; class &gt; class G, class C &gt; </td></tr>
+<tr class="memitem:ab37a28160f7f145d85b6e7bdc8a1a8a4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1async.html#ab37a28160f7f145d85b6e7bdc8a1a8a4">operator&gt;&gt;</a> (const scl::tools::meta ::remove_cv_ref_t&lt; T &gt; &amp;value, <a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; T, L, G, C &gt; &amp;channel)</td></tr>
+<tr class="memdesc:ab37a28160f7f145d85b6e7bdc8a1a8a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a value into a channel.  <a href="#ab37a28160f7f145d85b6e7bdc8a1a8a4">More...</a><br /></td></tr>
+<tr class="separator:ab37a28160f7f145d85b6e7bdc8a1a8a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75c4f78e3949f35eca34a9a99b912e00"><td class="memTemplParams" colspan="2">template&lt;class T , class L , template&lt; class &gt; class G, class C &gt; </td></tr>
+<tr class="memitem:a75c4f78e3949f35eca34a9a99b912e00"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1async.html#a75c4f78e3949f35eca34a9a99b912e00">operator&gt;&gt;</a> (scl::tools::meta ::remove_cv_ref_t&lt; T &gt; &amp;&amp;value, <a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; T, L, G, C &gt; &amp;channel)</td></tr>
+<tr class="memdesc:a75c4f78e3949f35eca34a9a99b912e00"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move a value into a channel.  <a href="#a75c4f78e3949f35eca34a9a99b912e00">More...</a><br /></td></tr>
+<tr class="separator:a75c4f78e3949f35eca34a9a99b912e00"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e370cd16e9b471d4c4d3f33ac76c2b4"><td class="memTemplParams" colspan="2">template&lt;class U , class T , class L , template&lt; class &gt; class G, class C &gt; </td></tr>
+<tr class="memitem:a2e370cd16e9b471d4c4d3f33ac76c2b4"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1async.html#a2e370cd16e9b471d4c4d3f33ac76c2b4">operator&lt;&lt;</a> (U &amp;value, <a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; T, L, G, C &gt; &amp;channel)</td></tr>
+<tr class="memdesc:a2e370cd16e9b471d4c4d3f33ac76c2b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extract a value from the channel.  <a href="#a2e370cd16e9b471d4c4d3f33ac76c2b4">More...</a><br /></td></tr>
+<tr class="separator:a2e370cd16e9b471d4c4d3f33ac76c2b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a375d67175e2f57299edb0234caba4941"><td class="memTemplParams" colspan="2">template&lt;class Resource , class F &gt; </td></tr>
 <tr class="memitem:a375d67175e2f57299edb0234caba4941"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1async.html#a375d67175e2f57299edb0234caba4941">with</a> (Resource &amp;&amp;res, F &amp;&amp;f) -&gt; scl::tools::meta ::return_t&lt; F &gt;</td></tr>
 <tr class="memdesc:a375d67175e2f57299edb0234caba4941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a transaction in a guarded manner.  <a href="#a375d67175e2f57299edb0234caba4941">More...</a><br /></td></tr>
@@ -102,6 +114,156 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base namespace for asynchronous APIs. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a2e370cd16e9b471d4c4d3f33ac76c2b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e370cd16e9b471d4c4d3f33ac76c2b4">&#9670;&nbsp;</a></span>operator<<()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class U , class T , class L , template&lt; class &gt; class G, class C &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void scl::async::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">U &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; T, L, G, C &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Extract a value from the channel. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the type of values in the channel </td></tr>
+    <tr><td class="paramname">L</td><td>being the type of locks in the channel </td></tr>
+    <tr><td class="paramname">G</td><td>being the type of lock guards in the channel </td></tr>
+    <tr><td class="paramname">C</td><td>being the type of container used in the channel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>being the place to store the extracted data </td></tr>
+    <tr><td class="paramname">channel</td><td>being the channel to extract data from </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00443">443</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<a id="ab37a28160f7f145d85b6e7bdc8a1a8a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab37a28160f7f145d85b6e7bdc8a1a8a4">&#9670;&nbsp;</a></span>operator>>() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class L , template&lt; class &gt; class G, class C &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void scl::async::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">const scl::tools::meta ::remove_cv_ref_t&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; T, L, G, C &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Copy a value into a channel. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the type of values in the channel </td></tr>
+    <tr><td class="paramname">L</td><td>being the type of locks in the channel </td></tr>
+    <tr><td class="paramname">G</td><td>being the type of lock guards in the channel </td></tr>
+    <tr><td class="paramname">C</td><td>being the type of container used in the channel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>being the value to copy </td></tr>
+    <tr><td class="paramname">channel</td><td>being the channel to copy the value into </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00415">415</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
+<a id="a75c4f78e3949f35eca34a9a99b912e00"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75c4f78e3949f35eca34a9a99b912e00">&#9670;&nbsp;</a></span>operator>>() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T , class L , template&lt; class &gt; class G, class C &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">void scl::async::operator&gt;&gt; </td>
+          <td>(</td>
+          <td class="paramtype">scl::tools::meta ::remove_cv_ref_t&lt; T &gt; &amp;&amp;&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a>&lt; T, L, G, C &gt; &amp;&#160;</td>
+          <td class="paramname"><em>channel</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Move a value into a channel. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>being the type of values in the channel </td></tr>
+    <tr><td class="paramname">L</td><td>being the type of locks in the channel </td></tr>
+    <tr><td class="paramname">G</td><td>being the type of lock guards in the channel </td></tr>
+    <tr><td class="paramname">C</td><td>being the type of container used in the channel </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>being the value to move </td></tr>
+    <tr><td class="paramname">channel</td><td>being the channel to move the value into </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="_channel_8h_source.html#l00429">429</a> of file <a class="el" href="_channel_8h_source.html">Channel.h</a>.</p>
+
+</div>
+</div>
 <a id="a375d67175e2f57299edb0234caba4941"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a375d67175e2f57299edb0234caba4941">&#9670;&nbsp;</a></span>with()</h2>
 

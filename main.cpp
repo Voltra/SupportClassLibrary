@@ -91,5 +91,9 @@ int main(){ //TODO: Fix characters corruption?
 	std::thread([&]{ std::cout << receiver.receive() << nl; }).join();*/
 
 	std::thread([&]{ chan << 42; }).detach();
-	std::thread([&]{ std::cout << chan.receiver().receive() << nl; }).join();
+	std::thread([&]{
+		Optional<int> i;
+		chan >> i;
+		std::cout << *i << nl;
+	}).join();
 }
