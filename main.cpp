@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <vector>
 #include "main.h"
+#include <thread>
 
 #include <scl/scl.hpp>
 #include <fstream>
@@ -21,37 +22,7 @@ using namespace scl::stream::operators;
 using namespace scl::stream::terminators;
 
 using namespace scl::http;
-
-template <class T>
-T answerToLife(){
-	require(Same<T, int>{});
-	return 42;
-}
-
-class X{};
-
-namespace scl{
-	namespace utils{
-		template <>
-		struct ToString<X>{
-			std::string operator()(const X&) const{
-				return std::to_string(42);
-			}
-		};
-	}
-}
-
-template <class T>
-void ostreamStringChecks(){
-	std::boolalpha(std::cout);
-	std::cout << "Defines ostream << : " << meta::defines_ostream_operator<T>() << nl;
-	std::cout << "Defines scl::utils::ToString : " <<  meta::defines_scl_to_string<T>() << nl;
-	std::cout << "Defines std::to_string : " <<  meta::defines_std_to_string<T>() << nl;
-	std::cout << "Convertible to char : " <<  meta::is_convertible<T, char>() << nl;
-	std::cout << "Convertible to char* : " <<  meta::is_convertible<T, stringLiteral>() << nl;
-	std::cout << "Convertible to std::string : " <<  meta::is_convertible<T, std::string>() << nl;
-	std::noboolalpha(std::cout);
-}
+using namespace scl::async;
 
 float threeToPi(const int& i){ return 0.14f + i; }
 
@@ -84,7 +55,7 @@ struct Person{
 	std::string getName() const{ return this->name; }
 };
 
-/*void testsStreamObj(){
+void testsStreamObj(){
 	std::vector<Person> p = {
 		Person{"jean"},
 		Person{"michel"},
@@ -101,53 +72,7 @@ struct Person{
 	std::cout << nl;
 }
 
-void testsVectorMapForEach(){
-	std::array<int, 4> v = {1,2,3,4};
-	streamFrom(v)
-	| map(+[](const int& i) -> float{ return i+1.14f; })
-	| forEach(logf);
-	std::cout << nl;
-}
-
-void testsStreamRange(){
-	rangeTo(10)
-	| map(+[](const int& i){ return i+2; })
-	| forEach(logi);
-
-	rangeTo(5)
-	| filter(+[](const int& i){ return i%2; })
-	| forEach(logt<int>);
-}
-
-void testsStreamPackSet(){
-	std::array<int, 2> arr = {1, 1};
-	auto res2 = streamFrom(arr)
-				| map(+[](const int& i){ return i+1; })
-				| pack::toSet();
-	std::for_each(std::begin(res2), std::end(res2), logt<int>);
-	std::cout << nl;
-}*/
-
-void testsStream(){
-	//testsStreamObj();
-	//testsVectorMapForEach();
-	//testsStreamRange();
-	//testsStreamPackSet();
-}
-
-void randomTests(){
-	int a = 0;
-	std::tie(_, a) = std::make_tuple(69, 42);
-	std::cout << "OwO _ is working " << a << nl;
-
-	std::cout << InvalidAnyCast{"OwO cool exceptions"} << nl;
-}
-
-void testHTTP(){
-	std::cout << StatusCode::OK << nl;
-}
-
-int main(){ //TODO: Fix characters corruption?
+void testStreamFile(){
 	std::ifstream file;
 	file.open("./main.h");
 
@@ -155,4 +80,13 @@ int main(){ //TODO: Fix characters corruption?
 	| forEach(+[](const std::string& str){
 		std::cout << str << nl;
 	});
+}
+
+int main(){ //TODO: Fix characters corruption?
+	Channel<int> chan;
+	auto sender = chan.sender();
+	auto receiver = chan.receiver();
+
+	std::thread([&]{ std::cout << receiver.receive() << nl; }).detach();
+	std::thread([&]{ sender.send(42); }).join();
 }
