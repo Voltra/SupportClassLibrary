@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['what',['what',['../classscl_1_1exceptions_1_1_exception.html#a7dc95f30f32c66e6296c701649c81704',1,'scl::exceptions::Exception::what()'],['../classscl_1_1exceptions_1_1_runtime_exception.html#a39ec42cb0b0437a8e2a4a9bc1943e231',1,'scl::exceptions::RuntimeException::what()']]],
-  ['with',['with',['../namespacescl_1_1async.html#af0a661a056cc99dd037395f92d328cc9',1,'scl::async']]],
-  ['with_5ftraits',['with_traits',['../structscl_1_1async_1_1with__traits.html',1,'scl::async']]],
-  ['with_5ftraits_3c_20mutexed_3c_20t_20_3e_20_3e',['with_traits&lt; Mutexed&lt; T &gt; &gt;',['../structscl_1_1async_1_1with__traits_3_01_mutexed_3_01_t_01_4_01_4.html',1,'scl::async']]],
-  ['with_5ftraits_3c_20std_3a_3amutex_20_3e',['with_traits&lt; std::mutex &gt;',['../structscl_1_1async_1_1with__traits_3_01std_1_1mutex_01_4.html',1,'scl::async']]],
-  ['withoutvalue',['withoutValue',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#ae7e65f6cb5d56b744045398fbbd4e83e',1,'scl::stream::details::StreamIteratorPayload']]],
-  ['withvalue',['withValue',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#acace50758eb5c9533f05493c4b303c0c',1,'scl::stream::details::StreamIteratorPayload']]]
+  ['value',['value',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a97b375b5c905edb778233e86968bbc18',1,'scl::stream::details::StreamIteratorPayload::value()'],['../classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041',1,'scl::utils::Optional::value()']]],
+  ['value_5ftype',['value_type',['../structscl_1_1async_1_1details_1_1channel__actor__traits.html#a44f41370483d2b3971dd5a15689c48a9',1,'scl::async::details::channel_actor_traits::value_type()'],['../classscl_1_1async_1_1_channel.html#a4f32db5f415846aea077fd085f9e2ba2',1,'scl::async::Channel::value_type()'],['../classscl_1_1async_1_1details_1_1_channel_sender.html#a5a0d74024c1bd13886a1fe7eac3f94a3',1,'scl::async::details::ChannelSender::value_type()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a85c3e86d47917e938e1876523a285d9f',1,'scl::stream::details::iterator::StlAdapter::value_type()'],['../classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html#aedf5b7d7f1ccc3d652cac604bdaada02',1,'scl::stream::details::iterator::StreamIterator::value_type()'],['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a5111b87cbf6c21e67b394ba5f7739f9c',1,'scl::stream::details::StreamIteratorPayload::value_type()'],['../classscl_1_1stream_1_1_stream.html#afbb3f7ac85a54c6a92ff1115c0463e58',1,'scl::stream::Stream::value_type()']]],
+  ['valueswappable',['ValueSwappable',['../structscl_1_1concepts_1_1_value_swappable.html',1,'scl::concepts']]],
+  ['vectorpacker',['VectorPacker',['../classscl_1_1stream_1_1terminators_1_1pack_1_1details_1_1_vector_packer.html',1,'scl::stream::terminators::pack::details']]],
+  ['version',['Version',['../classscl_1_1http_1_1_version.html',1,'scl::http::Version'],['../classscl_1_1http_1_1_version.html#a53840eca2dec61a23648520c16f6d795',1,'scl::http::Version::Version()']]],
+  ['version_5ftype',['version_type',['../classscl_1_1http_1_1_version.html#a400df7d780d5d7d70f80f1f8ff818017',1,'scl::http::Version']]],
+  ['visit',['visit',['../classscl_1_1utils_1_1_either.html#abc0d92cdbac84236f6892a16ad5473bf',1,'scl::utils::Either']]],
+  ['void_5ft',['void_t',['../namespacescl_1_1tools_1_1meta.html#aeb46f26f244da289c22de936bc59d7f1',1,'scl::tools::meta']]]
 ];

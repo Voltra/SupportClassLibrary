@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['what',['what',['../classscl_1_1exceptions_1_1_exception.html#a7dc95f30f32c66e6296c701649c81704',1,'scl::exceptions::Exception::what()'],['../classscl_1_1exceptions_1_1_runtime_exception.html#a39ec42cb0b0437a8e2a4a9bc1943e231',1,'scl::exceptions::RuntimeException::what()']]],
-  ['with',['with',['../namespacescl_1_1async.html#af0a661a056cc99dd037395f92d328cc9',1,'scl::async']]],
-  ['withoutvalue',['withoutValue',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#ae7e65f6cb5d56b744045398fbbd4e83e',1,'scl::stream::details::StreamIteratorPayload']]],
-  ['withvalue',['withValue',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#acace50758eb5c9533f05493c4b303c0c',1,'scl::stream::details::StreamIteratorPayload']]]
+  ['value',['value',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a97b375b5c905edb778233e86968bbc18',1,'scl::stream::details::StreamIteratorPayload::value()'],['../classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041',1,'scl::utils::Optional::value()']]],
+  ['version',['Version',['../classscl_1_1http_1_1_version.html#a53840eca2dec61a23648520c16f6d795',1,'scl::http::Version']]],
+  ['visit',['visit',['../classscl_1_1utils_1_1_either.html#abc0d92cdbac84236f6892a16ad5473bf',1,'scl::utils::Either']]]
 ];

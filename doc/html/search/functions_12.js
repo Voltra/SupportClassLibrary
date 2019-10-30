@@ -1,6 +1,8 @@
 var searchData=
 [
-  ['value',['value',['../classscl_1_1stream_1_1details_1_1_stream_iterator_payload.html#a97b375b5c905edb778233e86968bbc18',1,'scl::stream::details::StreamIteratorPayload::value()'],['../classscl_1_1utils_1_1_optional.html#a93ee01113a38f9e71877ed35b012a041',1,'scl::utils::Optional::value()']]],
-  ['version',['Version',['../classscl_1_1http_1_1_version.html#a53840eca2dec61a23648520c16f6d795',1,'scl::http::Version']]],
-  ['visit',['visit',['../classscl_1_1utils_1_1_either.html#abc0d92cdbac84236f6892a16ad5473bf',1,'scl::utils::Either']]]
+  ['unique',['unique',['../namespacescl_1_1stream_1_1operators.html#a43c6fcee8415e83b860c64a24049c6ff',1,'scl::stream::operators::unique()'],['../namespacescl_1_1tools_1_1make.html#a6011eb0dd2165d8cc8731ec4e1b3b735',1,'scl::tools::make::unique()']]],
+  ['uniqueby',['uniqueBy',['../namespacescl_1_1stream_1_1operators.html#af4f9637cb2e361d89cced07839f45cdb',1,'scl::stream::operators']]],
+  ['uniqueby_5f',['uniqueBy_',['../namespacescl_1_1stream_1_1operators.html#a0bb681f6b643e6e91eb0511843ada62a',1,'scl::stream::operators']]],
+  ['uniquebyoperator',['UniqueByOperator',['../classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a1178dd6dd3641a17454ad916c5c7d2ee',1,'scl::stream::operators::details::UniqueByOperator']]],
+  ['unlock',['unlock',['../structscl_1_1async_1_1details_1_1channel__actor__traits.html#ac39484468fadbbb552966b25be677aa4',1,'scl::async::details::channel_actor_traits']]]
 ];

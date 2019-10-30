@@ -1,0 +1,4 @@
+<map id="scl::exceptions::NonNullViolation" name="scl::exceptions::NonNullViolation">
+<area shape="rect" id="node2" href="$classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. " alt="" coords="5,155,181,181"/>
+<area shape="rect" id="node3" href="$structscl_1_1exceptions_1_1_throwable.html" title="Base class of all throwable objects. " alt="" coords="5,80,181,107"/>
+</map>

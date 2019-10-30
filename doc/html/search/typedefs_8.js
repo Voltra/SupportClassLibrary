@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['map_5ft',['map_t',['../structscl_1_1stream_1_1operators_1_1details_1_1unique_by__toolbox.html#a1560fabdd419d438d91623f7cc82660b',1,'scl::stream::operators::details::uniqueBy_toolbox']]],
-  ['mapper_5ft',['mapper_t',['../structscl_1_1stream_1_1operators_1_1details_1_1map__toolbox.html#af7eb0ad46a734252bf183551effb5bac',1,'scl::stream::operators::details::map_toolbox']]],
-  ['mapper_5ftype',['mapper_type',['../classscl_1_1stream_1_1operators_1_1_map_operator.html#ab86c4232b0be94d314d97ac3cf00de76',1,'scl::stream::operators::MapOperator::mapper_type()'],['../classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html#a986b60addf704a19c8a72f14a36268a2',1,'scl::stream::operators::details::UniqueByOperator::mapper_type()']]],
-  ['memfn_5ftype',['memfn_type',['../namespacescl_1_1tools_1_1meta.html#ac6c33bef173251a08aa2b2d44a8d7194',1,'scl::tools::meta']]]
+  ['left_5ftype',['left_type',['../classscl_1_1utils_1_1_either.html#afbe9327342fb22d8a1180d9dda514aee',1,'scl::utils::Either']]],
+  ['lock_5ftype',['lock_type',['../structscl_1_1async_1_1details_1_1channel__actor__traits.html#a8ed9f136a1216624dc95b57a7008b375',1,'scl::async::details::channel_actor_traits::lock_type()'],['../classscl_1_1async_1_1_channel.html#a8d10eef914ba9d6afce50ed0287752e1',1,'scl::async::Channel::lock_type()'],['../classscl_1_1async_1_1details_1_1_channel_sender.html#a945289aefa9d6d4e053e99a6bc8521c4',1,'scl::async::details::ChannelSender::lock_type()']]]
 ];

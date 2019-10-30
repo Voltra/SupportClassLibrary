@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['back',['back',['../classscl_1_1async_1_1_async_queue.html#a2ea21dcb7d83a3c95e99a1a9424103ac',1,'scl::async::AsyncQueue']]],
   ['basestreamiterator',['BaseStreamIterator',['../classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['basestreamiterator_3c_20iterator_5fvalue_5ftype_3c_20it_20_3e_20_3e',['BaseStreamIterator&lt; iterator_value_type&lt; It &gt; &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html',1,'scl::stream::details::iterator']]],
   ['basestreamiterator_3c_20u_20_3e',['BaseStreamIterator&lt; U &gt;',['../classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html',1,'scl::stream::details::iterator']]],

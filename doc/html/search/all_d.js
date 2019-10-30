@@ -6,6 +6,8 @@ var searchData=
   ['noncopyable',['NonCopyable',['../structscl_1_1concepts_1_1_non_copyable.html',1,'scl::concepts']]],
   ['none',['None',['../structscl_1_1utils_1_1_none.html',1,'scl::utils::None'],['../namespacescl_1_1utils.html#afc7877e327a072b87dc79b4d61630730',1,'scl::utils::none()'],['../namespacescl_1_1tools_1_1make.html#a82f6d406191a8a0655da350257abb9b8',1,'scl::tools::make::none()']]],
   ['nonmovable',['NonMovable',['../structscl_1_1concepts_1_1_non_movable.html',1,'scl::concepts']]],
+  ['nonnullviolation',['NonNullViolation',['../structscl_1_1exceptions_1_1_non_null_violation.html',1,'scl::exceptions']]],
   ['noop',['NoOp',['../structscl_1_1tools_1_1meta_1_1details_1_1_no_op.html',1,'scl::tools::meta::details']]],
+  ['notify',['notify',['../structscl_1_1async_1_1details_1_1channel__actor__traits.html#adbc75bd85d07cd88febdd0b105a7e8b4',1,'scl::async::details::channel_actor_traits']]],
   ['nullablepointer',['NullablePointer',['../structscl_1_1concepts_1_1_nullable_pointer.html',1,'scl::concepts']]]
 ];

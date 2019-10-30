@@ -76,11 +76,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_async_queue.html">AsyncQueue</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_channel.html">Channel</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A channel to use for asynchronous communication of data in a queued manner.  <a href="classscl_1_1async_1_1_channel.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classscl_1_1async_1_1_mutexed.html">Mutexed</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">A wrapper class that protects a value with a lock.  <a href="classscl_1_1async_1_1_mutexed.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1with__traits.html">with_traits</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traits for use with the <a class="el" href="namespacescl_1_1async.html#af0a661a056cc99dd037395f92d328cc9" title="Execute a transaction in a guarded manner. ">scl::async::with</a> function.  <a href="structscl_1_1async_1_1with__traits.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traits for use with the <a class="el" href="namespacescl_1_1async.html#a375d67175e2f57299edb0234caba4941" title="Execute a transaction in a guarded manner. ">scl::async::with</a> function.  <a href="structscl_1_1async_1_1with__traits.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscl_1_1async_1_1with__traits_3_01_mutexed_3_01_t_01_4_01_4.html">with_traits&lt; Mutexed&lt; T &gt; &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -89,16 +94,16 @@ Classes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af0a661a056cc99dd037395f92d328cc9"><td class="memTemplParams" colspan="2">template&lt;class Resource , class F &gt; </td></tr>
-<tr class="memitem:af0a661a056cc99dd037395f92d328cc9"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1async.html#af0a661a056cc99dd037395f92d328cc9">with</a> (Resource &amp;&amp;res, F &amp;&amp;f)</td></tr>
-<tr class="memdesc:af0a661a056cc99dd037395f92d328cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a transaction in a guarded manner.  <a href="#af0a661a056cc99dd037395f92d328cc9">More...</a><br /></td></tr>
-<tr class="separator:af0a661a056cc99dd037395f92d328cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a375d67175e2f57299edb0234caba4941"><td class="memTemplParams" colspan="2">template&lt;class Resource , class F &gt; </td></tr>
+<tr class="memitem:a375d67175e2f57299edb0234caba4941"><td class="memTemplItemLeft" align="right" valign="top">auto&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="namespacescl_1_1async.html#a375d67175e2f57299edb0234caba4941">with</a> (Resource &amp;&amp;res, F &amp;&amp;f) -&gt; scl::tools::meta ::return_t&lt; F &gt;</td></tr>
+<tr class="memdesc:a375d67175e2f57299edb0234caba4941"><td class="mdescLeft">&#160;</td><td class="mdescRight">Execute a transaction in a guarded manner.  <a href="#a375d67175e2f57299edb0234caba4941">More...</a><br /></td></tr>
+<tr class="separator:a375d67175e2f57299edb0234caba4941"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base namespace for asynchronous APIs. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="af0a661a056cc99dd037395f92d328cc9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0a661a056cc99dd037395f92d328cc9">&#9670;&nbsp;</a></span>with()</h2>
+<a id="a375d67175e2f57299edb0234caba4941"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a375d67175e2f57299edb0234caba4941">&#9670;&nbsp;</a></span>with()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -106,7 +111,7 @@ Functions</h2></td></tr>
 template&lt;class Resource , class F &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">void scl::async::with </td>
+          <td class="memname">auto scl::async::with </td>
           <td>(</td>
           <td class="paramtype">Resource &amp;&amp;&#160;</td>
           <td class="paramname"><em>res</em>, </td>
@@ -120,7 +125,7 @@ template&lt;class Resource , class F &gt; </div>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> -&gt; scl::tools::meta ::return_t&lt;F&gt; </td>
         </tr>
       </table>
 </div><div class="memdoc">

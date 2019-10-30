@@ -1,9 +1,11 @@
 var searchData=
 [
+  ['factory',['factory',['../structscl_1_1async_1_1details_1_1channel__transport__traits.html#a9552a164004667b5081b684a26d50a27',1,'scl::async::details::channel_transport_traits']]],
   ['filter',['filter',['../classscl_1_1utils_1_1_optional.html#ad925cc777cf200731d1989b093de6553',1,'scl::utils::Optional::filter()'],['../namespacescl_1_1stream_1_1operators.html#a39c8cde6232e7f72ba4698931f5c737d',1,'scl::stream::operators::filter()']]],
   ['filter_5f',['filter_',['../namespacescl_1_1stream_1_1operators.html#ae24bc87e8ca423bbb39023f5b1c4b201',1,'scl::stream::operators']]],
   ['filter_5ftoolbox',['filter_toolbox',['../structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html',1,'scl::stream::operators::details']]],
   ['filteroperator',['FilterOperator',['../classscl_1_1stream_1_1operators_1_1_filter_operator.html',1,'scl::stream::operators::FilterOperator&lt; T &gt;'],['../classscl_1_1stream_1_1operators_1_1_filter_operator.html#a58294f4b06e9352c99a0dc9e7bc75dd3',1,'scl::stream::operators::FilterOperator::FilterOperator()']]],
+  ['first',['first',['../classscl_1_1async_1_1_async_queue.html#a1d06deb57990300249bfec312fdc7a20',1,'scl::async::AsyncQueue']]],
   ['flatmap',['flatMap',['../classscl_1_1utils_1_1_optional.html#af3188ae99317264b8e29b6b685332033',1,'scl::utils::Optional']]],
   ['flatmapto',['flatMapTo',['../classscl_1_1utils_1_1_optional.html#ad2bbc9118d9fecabf24db34ddf16955b',1,'scl::utils::Optional']]],
   ['fn',['fn',['../structscl_1_1tools_1_1meta_1_1fn.html',1,'scl::tools::meta']]],
@@ -23,6 +25,7 @@ var searchData=
   ['fromcode',['fromCode',['../classscl_1_1http_1_1_status_code.html#a498a373320752a052b5e3264c5db9b70',1,'scl::http::StatusCode']]],
   ['frompointer',['fromPointer',['../classscl_1_1utils_1_1_optional.html#a310ee116ce079f7cee9cb2cbd519e082',1,'scl::utils::Optional']]],
   ['fromstliterator',['FromStlIterator',['../classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html',1,'scl::stream::creators::details::FromStlIterator&lt; It &gt;'],['../classscl_1_1stream_1_1creators_1_1details_1_1_from_stl_iterator.html#ad0540a78abd9e16516aaf3a162b5706b',1,'scl::stream::creators::details::FromStlIterator::FromStlIterator()']]],
+  ['front',['front',['../classscl_1_1async_1_1_async_queue.html#a815c6ea28c6137e49680d27c8d08dfca',1,'scl::async::AsyncQueue']]],
   ['function_5ftraits',['function_traits',['../structscl_1_1tools_1_1meta_1_1function__traits.html',1,'scl::tools::meta']]],
   ['function_5ftraits_3c_20std_3a_3afunction_3c_20r_28args_2e_2e_2e_29_3e_20_3e',['function_traits&lt; std::function&lt; R(Args...)&gt; &gt;',['../structscl_1_1tools_1_1meta_1_1function__traits_3_01std_1_1function_3_01_r_07_args_8_8_8_08_4_01_4.html',1,'scl::tools::meta']]],
   ['functionobject',['FunctionObject',['../structscl_1_1concepts_1_1_function_object.html',1,'scl::concepts']]]

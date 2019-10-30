@@ -1,6 +1,14 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="scl::stream::details\l::iterator::StreamIterator\&lt; U \&gt;" alt="" coords="5,13,199,54"/>
-<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="scl::stream::details\l::iterator::BaseStreamIterator\&lt; U \&gt;" alt="" coords="247,13,469,54"/>
-<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\l\&lt; U, T \&gt;" alt="" coords="517,5,695,61"/>
-<area shape="rect" id="node4" href="$classscl_1_1stream_1_1operators_1_1_map_operator.html" title="Mapping operation. " alt="" coords="743,13,896,54"/>
+<area shape="rect" id="node2" href="$structscl_1_1exceptions_1_1_throwable.html" title="Base class of all throwable objects. " alt="" coords="132,262,308,289"/>
+<area shape="rect" id="node3" href="$classscl_1_1exceptions_1_1_exception.html" title="Base class for all regular exceptions. " alt="" coords="356,195,532,222"/>
+<area shape="rect" id="node11" href="$classscl_1_1exceptions_1_1_runtime_exception.html" title="Base class for exceptions that could never be checked at compile&#45;time. " alt="" coords="361,371,527,412"/>
+<area shape="rect" id="node4" href="$classscl_1_1exceptions_1_1_empty_optional_access.html" title="Exception class used when attempting to access the value of an empty scl::utils::Optional. " alt="" coords="580,5,784,47"/>
+<area shape="rect" id="node5" href="$classscl_1_1exceptions_1_1_invalid_argument.html" title="Exception class used when passing an argument that does not respect the preconditions. " alt="" coords="605,71,759,112"/>
+<area shape="rect" id="node6" href="$classscl_1_1exceptions_1_1_invalid_cast.html" title="Exception class used when a conversion is impossible. " alt="" coords="592,137,772,163"/>
+<area shape="rect" id="node8" href="$classscl_1_1exceptions_1_1_invalid_either_access.html" title="Exception class used when attempting to access the wrong type stored in an scl::utils::Either. " alt="" coords="605,188,759,229"/>
+<area shape="rect" id="node9" href="$structscl_1_1exceptions_1_1_non_null_violation.html" title="scl::exceptions::NonNull\lViolation" alt="" coords="601,253,763,295"/>
+<area shape="rect" id="node10" href="$classscl_1_1exceptions_1_1_out_of_bound.html" title="Exception class used when attempting to access elements out of bounds (eg. " alt="" coords="587,319,777,346"/>
+<area shape="rect" id="node7" href="$classscl_1_1exceptions_1_1_invalid_any_cast.html" title="Exception class used when attempting to cast an Any to the wrong type. " alt="" coords="832,129,985,171"/>
+<area shape="rect" id="node12" href="$structscl_1_1exceptions_1_1_invalid_resource.html" title="Exception class used when a resource is used without specialized traits. " alt="" coords="605,371,759,412"/>
+<area shape="rect" id="node13" href="$structscl_1_1exceptions_1_1_uninitialized_memory_access.html" title="Exception class used when trying to access uninitialized memory. " alt="" coords="588,436,776,477"/>
 </map>
