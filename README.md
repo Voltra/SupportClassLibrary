@@ -36,6 +36,8 @@ Here is the namespace hierarchy:
     * [terminators](./include/scl/stream/terminators/terminators.hpp) - Grouping end of stream operation functions 
   * [async](./include/scl/async/async.hpp) - The asynchronous programming API
   * [http]( ./include/scl/http/http.hpp ) - The HTTP API
+  * [detect](./include/scl/detect/detect.hpp) - The feature/platform detection API
+    * [platform](./include/scl/detect/platform/platform.hpp) - The platform detection API
 
 
 
@@ -55,4 +57,5 @@ Here are some [macros](./include/scl/macros.h) and their meaning:
   * `SCL_USE_IOSTREAM_EXTEND` - Define this flag if you wish to use the general purpose `operator<<` for `ostream` that uses `std::to_string` and `scl::utils::toString` for conversions
   * `SCL_ENABLE_DEPRECATED_TYPEMODS` - Define this flag if you wish to define the deprecated typemods (e.g. `result_of_t`)
   * `SCL_ENABLE_DEPRECATED_TYPECHECKS` - Define this flag if you wish to define the deprecated typechecks (e.g. `is_pod_t`)
+  * `SCL_KEEP_DETECT_MACROS` - Define this flag if you wish to keep the macros for `scl::detect` defined
 
