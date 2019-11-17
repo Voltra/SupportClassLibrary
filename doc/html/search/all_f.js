@@ -9,6 +9,7 @@ var searchData=
   ['placeholder',['Placeholder',['../structscl_1_1utils_1_1_placeholder.html',1,'scl::utils::Placeholder'],['../structscl_1_1utils_1_1_placeholder.html#aedab31308f8432c77e0398c929660d26',1,'scl::utils::Placeholder::Placeholder()']]],
   ['pointer',['pointer',['../classscl_1_1stream_1_1details_1_1iterator_1_1_stl_adapter.html#a7738b4488edf9b0e18d65eb29fa4a980',1,'scl::stream::details::iterator::StlAdapter']]],
   ['pop',['pop',['../classscl_1_1async_1_1_async_queue.html#a559e0395d9bc74df200cb5838915c567',1,'scl::async::AsyncQueue::pop()'],['../classscl_1_1async_1_1details_1_1_channel_receiver.html#a877b2a6a2d40afccabf17dca0cd1c20f',1,'scl::async::details::ChannelReceiver::pop()']]],
+  ['posix',['posix',['../namespacescl_1_1detect_1_1platform.html#a12e15e9d0b26d73c16ec35cbf2215a5c',1,'scl::detect::platform']]],
   ['pred',['pred',['../classscl_1_1stream_1_1operators_1_1_filter_operator.html#a526bf2f24f6b0e22ee79740c4d67fc44',1,'scl::stream::operators::FilterOperator::pred()'],['../structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html#a71f8d3ebcafebc008fe094f62413baa0',1,'scl::stream::operators::details::filter_toolbox::pred()']]],
   ['pred_5ft',['pred_t',['../structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html#a4b561c6460fa8d37f28f7ece2037252b',1,'scl::stream::operators::details::filter_toolbox']]],
   ['predicate',['Predicate',['../structscl_1_1concepts_1_1_predicate.html',1,'scl::concepts']]],
