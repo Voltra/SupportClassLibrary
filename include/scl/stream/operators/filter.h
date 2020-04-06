@@ -10,54 +10,53 @@
 namespace scl{
 	namespace stream{
 		namespace operators{
-			/**
+			namespace details{/**
 			 * Filter operation
 			 * @tparam T being the type of values to filter
 			 */
-			template <class T>
-			class FilterOperator : public scl::stream::details::iterator::OpStreamIterator<T>{
-				public:
-					using iterator_type = scl::stream::details::iterator::OpStreamIterator<T>;
-					using value_type = typename iterator_type::value_type;
-					using payload_type = typename iterator_type::payload_type;
-					using parent_iterator_type = typename iterator_type::parent_iterator_type;
-					using parent_type = typename iterator_type::parent_type;
+				template <class T>
+				class FilterOperator : public scl::stream::details::iterator::OpStreamIterator<T>{
+					public:
+						using iterator_type = scl::stream::details::iterator::OpStreamIterator<T>;
+						using value_type = typename iterator_type::value_type;
+						using payload_type = typename iterator_type::payload_type;
+						using parent_iterator_type = typename iterator_type::parent_iterator_type;
+						using parent_type = typename iterator_type::parent_type;
 
-					/**
-					 * @typedef predicate_type
-					 * The function type used to determine whether to keep the value or not
-					 */
-					using predicate_type = std::function<bool(const value_type&)>;
+						/**
+						 * @typedef predicate_type
+						 * The function type used to determine whether to keep the value or not
+						 */
+						using predicate_type = std::function<bool(const value_type&)>;
 
-					/**
-					 * Construct a filter operation from a parent iterator and a predicate
-					 * @param p being this iterator's parent
-					 * @param pred being the predicate to fulfill
-					 */
-					FilterOperator(parent_type p, predicate_type pred) : iterator_type{std::move(p)}, pred{pred} {
-					}
-
-					payload_type next() override{
-						while(this->parent()->hasNext()){
-							const auto& alt = this->parent()->next().value();
-							if(alt.hasValue()){
-								const auto& value = *alt;
-								if(this->pred(value))
-									return payload_type::withValue(value);
-							}
+						/**
+						 * Construct a filter operation from a parent iterator and a predicate
+						 * @param p being this iterator's parent
+						 * @param pred being the predicate to fulfill
+						 */
+						FilterOperator(parent_type p, predicate_type pred) : iterator_type{std::move(p)}, pred{pred} {
 						}
 
-						return payload_type::withoutValue();
-					}
-				protected:
-					/**
-					 * @var pred
-					 * The predicate
-					 */
-					predicate_type pred;
-			};
+						payload_type next() override{
+							while(this->parent()->hasNext()){
+								const auto& alt = this->parent()->next().value();
+								if(alt.hasValue()){
+									const auto& value = *alt;
+									if(this->pred(value))
+										return payload_type::withValue(value);
+								}
+							}
 
-			namespace details{
+							return payload_type::withoutValue();
+						}
+					protected:
+						/**
+						 * @var pred
+						 * The predicate
+						 */
+						predicate_type pred;
+				};
+
 				/**
 				 * Tag type for filter operations
 				 * @tparam T being the value type
@@ -117,7 +116,7 @@ namespace scl{
 			Stream<T> operator|(const Stream<T>& lhs, const details::filter_toolbox<T>& rhs){
 				using namespace scl::tools;
 				return Stream<T>{
-					make::ptr<FilterOperator<T>>(lhs.it(), rhs.pred)
+					make::ptr<details::FilterOperator<T>>(lhs.it(), rhs.pred)
 				};
 			}
 		}

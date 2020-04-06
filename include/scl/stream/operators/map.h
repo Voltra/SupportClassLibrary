@@ -9,54 +9,54 @@
 namespace scl{
 	namespace stream{
 		namespace operators{
-			/**
-			 * Mapping operation
-			 * @tparam T being the type to map from
-			 * @tparam U being the type to map to
-			 */
-			template <class T, class U>
-			class MapOperator : public scl::stream::details::iterator::OpStreamIterator<U, T>{
-				public:
-					using iterator_type = scl::stream::details::iterator::OpStreamIterator<U, T>;
-					using value_type = typename iterator_type::value_type;
-					using payload_type = typename iterator_type::payload_type;
-
-					using parent_iterator_type = typename iterator_type::parent_iterator_type;
-					using parent_value_type = typename parent_iterator_type::value_type;
-					using parent_payload_type = typename parent_iterator_type::payload_type;
-					using parent_type = typename iterator_type::parent_type;
-
-					/**
-					 * @typedef mapper_type
-					 * Function type that maps the parent value type to the current value type
-					 */
-					using mapper_type = std::function<value_type(const parent_value_type&)>;
-
-					/**
-					 * Construct the operator from the parent iterator and a mapper function
-					 * @param p being the parent iterator
-					 * @param mapper being the mapper function
-					 */
-					MapOperator(parent_type p, mapper_type mapper) : iterator_type{std::move(p)}, mapper{mapper} {
-					}
-
-					payload_type next() override{
-						auto alt = this->parent()->next().value();
-
-						return alt.hasValue()
-						? payload_type::withValue(this->mapper(*alt))
-						: payload_type::withoutValue();
-					}
-
-				protected:
-					/**
-					 * @var mapper
-					 * the function used to map values from the parent iterator
-					 */
-					mapper_type mapper;
-			};
-
 			namespace details{
+				/**
+				 * Mapping operation
+				 * @tparam T being the type to map from
+				 * @tparam U being the type to map to
+				 */
+				template <class T, class U>
+				class MapOperator : public scl::stream::details::iterator::OpStreamIterator<U, T>{
+					public:
+						using iterator_type = scl::stream::details::iterator::OpStreamIterator<U, T>;
+						using value_type = typename iterator_type::value_type;
+						using payload_type = typename iterator_type::payload_type;
+
+						using parent_iterator_type = typename iterator_type::parent_iterator_type;
+						using parent_value_type = typename parent_iterator_type::value_type;
+						using parent_payload_type = typename parent_iterator_type::payload_type;
+						using parent_type = typename iterator_type::parent_type;
+
+						/**
+						 * @typedef mapper_type
+						 * Function type that maps the parent value type to the current value type
+						 */
+						using mapper_type = std::function<value_type(const parent_value_type&)>;
+
+						/**
+						 * Construct the operator from the parent iterator and a mapper function
+						 * @param p being the parent iterator
+						 * @param mapper being the mapper function
+						 */
+						MapOperator(parent_type p, mapper_type mapper) : iterator_type{std::move(p)}, mapper{mapper} {
+						}
+
+						payload_type next() override{
+							auto alt = this->parent()->next().value();
+
+							return alt.hasValue()
+								   ? payload_type::withValue(this->mapper(*alt))
+								   : payload_type::withoutValue();
+						}
+
+					protected:
+						/**
+						 * @var mapper
+						 * the function used to map values from the parent iterator
+						 */
+						mapper_type mapper;
+				};
+
 				/**
 				 * Tag type that allows operation piping for map operations
 				 * @tparam T being the type to map from
@@ -120,7 +120,7 @@ namespace scl{
 			Stream<U> operator|(const Stream<T>& lhs, const details::map_toolbox<T, U>& rhs){
 				using namespace scl::tools;
 				return Stream<U>{
-					make::ptr<MapOperator<T, U>>(lhs.it(), rhs.mapper)
+					make::ptr<details::MapOperator<T, U>>(lhs.it(), rhs.mapper)
 				};
 			}
 		}
