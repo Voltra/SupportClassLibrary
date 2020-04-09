@@ -4,7 +4,7 @@ var searchData=
   ['filter',['filter',['../classscl_1_1utils_1_1_optional.html#ad925cc777cf200731d1989b093de6553',1,'scl::utils::Optional::filter()'],['../namespacescl_1_1stream_1_1operators.html#a39c8cde6232e7f72ba4698931f5c737d',1,'scl::stream::operators::filter()']]],
   ['filter_5f',['filter_',['../namespacescl_1_1stream_1_1operators.html#ae24bc87e8ca423bbb39023f5b1c4b201',1,'scl::stream::operators']]],
   ['filter_5ftoolbox',['filter_toolbox',['../structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html',1,'scl::stream::operators::details']]],
-  ['filteroperator',['FilterOperator',['../classscl_1_1stream_1_1operators_1_1_filter_operator.html',1,'scl::stream::operators::FilterOperator&lt; T &gt;'],['../classscl_1_1stream_1_1operators_1_1_filter_operator.html#a58294f4b06e9352c99a0dc9e7bc75dd3',1,'scl::stream::operators::FilterOperator::FilterOperator()']]],
+  ['filteroperator',['FilterOperator',['../classscl_1_1stream_1_1operators_1_1details_1_1_filter_operator.html',1,'scl::stream::operators::details::FilterOperator&lt; T &gt;'],['../classscl_1_1stream_1_1operators_1_1details_1_1_filter_operator.html#a940f35a1349ae2a41f2cad015a8398d1',1,'scl::stream::operators::details::FilterOperator::FilterOperator()']]],
   ['first',['first',['../classscl_1_1async_1_1_async_queue.html#a1d06deb57990300249bfec312fdc7a20',1,'scl::async::AsyncQueue']]],
   ['flatmap',['flatMap',['../classscl_1_1utils_1_1_optional.html#af3188ae99317264b8e29b6b685332033',1,'scl::utils::Optional']]],
   ['flatmapto',['flatMapTo',['../classscl_1_1utils_1_1_optional.html#ad2bbc9118d9fecabf24db34ddf16955b',1,'scl::utils::Optional']]],

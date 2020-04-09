@@ -1,7 +1,7 @@
 var searchData=
 [
   ['filter_5ftoolbox',['filter_toolbox',['../structscl_1_1stream_1_1operators_1_1details_1_1filter__toolbox.html',1,'scl::stream::operators::details']]],
-  ['filteroperator',['FilterOperator',['../classscl_1_1stream_1_1operators_1_1_filter_operator.html',1,'scl::stream::operators']]],
+  ['filteroperator',['FilterOperator',['../classscl_1_1stream_1_1operators_1_1details_1_1_filter_operator.html',1,'scl::stream::operators::details']]],
   ['fn',['fn',['../structscl_1_1tools_1_1meta_1_1fn.html',1,'scl::tools::meta']]],
   ['fn_3c_20decltype_28_26f_3a_3aoperator_28_29_29_2c_20std_3a_3anullptr_5ft_20_3e',['fn&lt; decltype(&amp;F::operator()), std::nullptr_t &gt;',['../structscl_1_1tools_1_1meta_1_1fn.html',1,'scl::tools::meta']]],
   ['fn_3c_20f_2c_20decltype_28_26f_3a_3aoperator_28_29_29_3e',['fn&lt; F, decltype(&amp;F::operator())&gt;',['../structscl_1_1tools_1_1meta_1_1fn_3_01_f_00_01decltype_07_6_f_1_1operator_07_08_08_4.html',1,'scl::tools::meta']]],

@@ -11,6 +11,6 @@
 <area shape="rect" id="node12" href="$classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html" title="Creator for std::array. " alt="" coords="518,283,726,325"/>
 <area shape="rect" id="node13" href="$classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html" title="Creator for a numeric range. " alt="" coords="529,349,715,390"/>
 <area shape="rect" id="node14" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html" title="Iterator powering an intermediate operation. " alt="" coords="518,414,726,455"/>
-<area shape="rect" id="node10" href="$classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html" title="Unique by operation. " alt="" coords="779,181,961,237"/>
-<area shape="rect" id="node11" href="$classscl_1_1stream_1_1operators_1_1_filter_operator.html" title="Filter operation. " alt="" coords="795,262,945,303"/>
+<area shape="rect" id="node10" href="$classscl_1_1stream_1_1operators_1_1details_1_1_filter_operator.html" title="Filter operation. " alt="" coords="779,189,965,230"/>
+<area shape="rect" id="node11" href="$classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html" title="Unique by operation. " alt="" coords="781,255,963,311"/>
 </map>

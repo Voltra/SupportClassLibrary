@@ -263,7 +263,15 @@ namespace scl{
 				};
 		};
 
-#define DEF_CODE(name, shortInfo, code, msg) const StatusCode StatusCode::name{shortInfo, code, msg}
+#define DEF_CODE(name, shortInfo, code, msg) \
+		/** \
+		 * msg \
+		 * @var const StatusCode StatusCode::name
+		 * @brief shortInfo
+		 * @details msg
+		 */ \
+		const StatusCode StatusCode::name{shortInfo, code, msg};
+
 		//1xy
 		DEF_CODE(CONTINUE, "Continue", 100, "Continue with the request");
 		DEF_CODE(SWITCHING_PROTOCOLS, "Switching Protocols", 101, "Switching protocols");

@@ -82,7 +82,7 @@ void testStreamFile(){
 	});
 }
 
-int main(){ //TODO: Fix characters corruption?
+void testChannel(){
 	Channel<int> chan;
 
 	/*auto& sender = chan.sender();
@@ -96,4 +96,10 @@ int main(){ //TODO: Fix characters corruption?
 		chan >> i;
 		std::cout << *i << nl;
 	}).join();
+}
+
+int main(){ //TODO: Fix characters corruption?
+	testChannel();
+
+	return 0;
 }
