@@ -1,5 +1,4 @@
 #pragma once
-
 #include <scl/exceptions/Exception.h>
 #include <scl/macros.h>
 

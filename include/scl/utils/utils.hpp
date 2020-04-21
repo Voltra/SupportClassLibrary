@@ -19,4 +19,5 @@ namespace scl{
 #include <scl/utils/RawStorage.h>
 #include <scl/utils/Optional.h>
 #include <scl/utils/Either.h>
+#include <scl/utils/Result.h>
 #include <scl/utils/Placeholder.h>
