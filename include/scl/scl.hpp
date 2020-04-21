@@ -15,3 +15,5 @@ namespace scl{}
 #include <scl/async/async.hpp>
 #include <scl/http/http.hpp>
 #include <scl/detect/detect.hpp>
+#include <scl/alias/alias.hpp>
+#include <scl/prelude/prelude.hpp>

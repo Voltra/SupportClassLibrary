@@ -11,6 +11,14 @@
 #include <scl/exceptions/exceptions.hpp>
 
 namespace scl{
+	/**
+	 * @namespace scl::prelude
+	 * Namespace that groups together a lot of useful and often used features in one place
+	 * @code
+	 * #include <scl/prelud/prelude.hpp>
+	 * using namespace scl::prelude;
+	 * @endcode
+	 */
 	namespace prelude{
 		namespace make = scl::tools::make;
 

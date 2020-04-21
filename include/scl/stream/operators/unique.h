@@ -1,4 +1,5 @@
 #pragma once
+#include <scl/stream/details/deprecation.h>
 #include <scl/stream/operators/uniqueBy.h>
 
 namespace scl{

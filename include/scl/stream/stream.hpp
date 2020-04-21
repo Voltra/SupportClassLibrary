@@ -1,11 +1,13 @@
 #pragma once
+#include <scl/stream/details/deprecation.h>
 
 namespace scl{
 	/**
 	 * @namespace scl::stream
 	 * Namespace of the stream API
 	 */
-	namespace stream{}
+	namespace stream{
+	}
 }
 
 #include <scl/stream/details/details.hpp>

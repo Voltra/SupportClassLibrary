@@ -1,5 +1,5 @@
 #pragma once
-
+#include <scl/stream/details/deprecation.h>
 #include <scl/stream/creators/stl_iterators.h>
 #include <scl/macros.h>
 #include <scl/tools/meta/meta.hpp>

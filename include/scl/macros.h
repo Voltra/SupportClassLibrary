@@ -7,3 +7,11 @@
 
 #define META scl::tools::meta
 #define asString scl::utils::toString
+
+#ifdef SCL_CPP20
+	#define SCL_CPP17
+#endif
+
+#ifdef SCL_CPP17
+	#define SCL_CPP14
+#endif

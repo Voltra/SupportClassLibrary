@@ -1,5 +1,5 @@
 #pragma once
-
+#include <scl/stream/details/deprecation.h>
 #include <scl/stream/details/iterator/EndStreamIterator.h>
 #include <functional>
 #include <scl/stream/Stream.h>

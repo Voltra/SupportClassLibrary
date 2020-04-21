@@ -1,5 +1,5 @@
 #pragma once
-
+#include <scl/stream/details/deprecation.h>
 #include <scl/stream/details/payload.h>
 #include <scl/macros.h>
 

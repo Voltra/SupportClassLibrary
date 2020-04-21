@@ -1,5 +1,5 @@
 #pragma once
-
+#include <scl/stream/details/deprecation.h>
 #include <scl/stream/details/iterator/OpStreamIterator.h>
 #include <functional>
 #include <memory>
@@ -10,10 +10,11 @@
 namespace scl{
 	namespace stream{
 		namespace operators{
-			namespace details{/**
-			 * Filter operation
-			 * @tparam T being the type of values to filter
-			 */
+			namespace details{
+				/**
+				 * Filter operation
+				 * @tparam T being the type of values to filter
+				 */
 				template <class T>
 				class FilterOperator : public scl::stream::details::iterator::OpStreamIterator<T>{
 					public:

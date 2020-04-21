@@ -1,4 +1,5 @@
 #pragma once
+#include <scl/stream/details/deprecation.h>
 #include <iterator>
 #include <scl/stream/details/iterator/StreamIterator.h>
 

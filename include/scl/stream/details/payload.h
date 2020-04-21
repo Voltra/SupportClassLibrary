@@ -1,5 +1,5 @@
 #pragma once
-
+#include <scl/stream/details/deprecation.h>
 #include <scl/stream/details/invalid_value.h>
 #include <scl/utils/Either.h>
 #include <scl/utils/Optional.h>

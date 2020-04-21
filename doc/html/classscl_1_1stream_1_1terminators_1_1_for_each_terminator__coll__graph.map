@@ -1,5 +1,0 @@
-<map id="scl::stream::terminators::ForEachTerminator&lt; T &gt;" name="scl::stream::terminators::ForEachTerminator&lt; T &gt;">
-<area shape="rect" id="node2" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_end_stream_iterator.html" title="scl::stream::details\l::iterator::EndStreamIterator\l\&lt; void, T \&gt;" alt="" coords="563,5,745,61"/>
-<area shape="rect" id="node3" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="5,11,196,53"/>
-<area shape="rect" id="node4" href="$classscl_1_1stream_1_1details_1_1iterator_1_1_base_stream_iterator.html" title="A class for iterators that start a stream chain. " alt="" coords="245,47,467,89"/>
-</map>

@@ -3,6 +3,7 @@
 #include <string>
 #include <scl/stream/Stream.h>
 #include <scl/stream/creators/stl_iterators.h>
+#include <scl/stream/details/deprecation.h>
 
 namespace scl{
 	namespace stream{

@@ -1,5 +1,5 @@
 #pragma once
-
+#include <scl/stream/details/deprecation.h>
 #include <array>
 #include <scl/stream/details/iterator/BaseStreamIterator.h>
 #include <scl/stream/details/payload.h>
