@@ -46,7 +46,7 @@ namespace scl{
 		struct with_traits<Mutexed<T>>{
 			template <class F>
 			auto operator()(Mutexed<T>& mutex, F&& delegate) -> META::return_t<F> {
-				mutex.transaction(std::forward<F&&>(delegate));
+				return mutex.transaction(std::forward<F&&>(delegate));
 			}
 		};
 	}

@@ -1,0 +1,10 @@
+digraph "scl::http::StatusCode"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="scl::http::StatusCode",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" UNAVAILABLE_FOR_LEGAL\l_REASONS\nREQUEST_URI_TOO_LONG\nUNPROCESSABLE_ENTITY\nMULTI_STATUS\nSERVICE_UNAVAILABLE\nREQUEST_HEADER_FIELDS\l_TOO_LARGE\nPRECONDITION_FAILED\nPAYMENT_REQUIRED\nUSE_PROXY\nCREATED\n..." ,fontname="Helvetica"];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" vers" ,fontname="Helvetica"];
+  Node2 [label="scl::http::Version",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1http_1_1_version.html",tooltip="A pseudo enum class that describes the version of the HTTP Protocol. "];
+  Node2 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" V1_0\nV2_0\nV1_1\nV3_0" ,fontname="Helvetica"];
+}

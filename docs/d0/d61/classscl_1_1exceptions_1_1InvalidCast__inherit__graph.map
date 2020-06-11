@@ -1,0 +1,6 @@
+<map id="scl::exceptions::InvalidCast" name="scl::exceptions::InvalidCast">
+<area shape="rect" id="node5" href="$d2/de1/classscl_1_1exceptions_1_1InvalidAnyCast.html" title="Exception class used when attempting to cast an Any to the wrong type. " alt="" coords="19,304,172,345"/>
+<area shape="rect" id="node2" href="$db/d0e/classscl_1_1exceptions_1_1Exception.html" title="Base class for all regular exceptions. " alt="" coords="7,155,183,181"/>
+<area shape="rect" id="node3" href="$d9/d49/structscl_1_1exceptions_1_1Throwable.html" title="Base class of all throwable objects. " alt="" coords="7,80,183,107"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="43,5,147,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="scl::async::Channel&lt; T, Lock, Guard, Container &gt;" name="scl::async::Channel&lt; T, Lock, Guard, Container &gt;">
+<area shape="rect" id="node2" href="$d6/d8b/classscl_1_1async_1_1details_1_1ChannelSender.html" title="scl::async::details\l::ChannelSender\&lt; Channel \&gt;" alt="" coords="261,21,451,62"/>
+<area shape="rect" id="node3" href="$d2/d9c/structscl_1_1async_1_1details_1_1channel__actor__traits.html" title="scl::async::details\l::channel_actor_traits\l\&lt; ChannelSender \&gt;" alt="" coords="5,5,152,61"/>
+<area shape="rect" id="node4" href="$d8/d6f/classscl_1_1async_1_1details_1_1ChannelReceiver.html" title="scl::async::details\l::ChannelReceiver\&lt; Channel \&gt;" alt="" coords="257,93,455,134"/>
+<area shape="rect" id="node5" href="$d2/d9c/structscl_1_1async_1_1details_1_1channel__actor__traits.html" title="scl::async::details\l::channel_actor_traits\l\&lt; ChannelReceiver \&gt;" alt="" coords="5,85,152,141"/>
+</map>

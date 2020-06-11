@@ -7,6 +7,9 @@
 
 #define META scl::tools::meta
 #define asString scl::utils::toString
+#define SCL_RETURNS(stmt) -> decltype(stmt){\
+	return stmt;\
+}
 
 #ifdef SCL_CPP20
 	#define SCL_CPP17

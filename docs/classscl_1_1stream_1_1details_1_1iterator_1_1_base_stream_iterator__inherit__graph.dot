@@ -1,0 +1,21 @@
+digraph "scl::stream::details::iterator::BaseStreamIterator&lt; T &gt;"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node0 [label="scl::stream::details\l::iterator::BaseStreamIterator\< T \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="scl::stream::details\l::iterator::StreamIterator\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1details_1_1iterator_1_1_stream_iterator.html",tooltip="Abstract base class for stream iterators defining the required behavior. "];
+  Node0 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="OpStreamIterator\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html"];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="scl::stream::operators\l::details::FilterOperator\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1operators_1_1details_1_1_filter_operator.html",tooltip="Filter operation. "];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="scl::stream::operators\l::details::UniqueByOperator\l\< T, U \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1operators_1_1details_1_1_unique_by_operator.html",tooltip="Unique by operation. "];
+  Node0 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="scl::stream::creators\l::details::FromArrayIterator\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1creators_1_1details_1_1_from_array_iterator.html",tooltip="Creator for std::array. "];
+  Node0 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="scl::stream::creators\l::details::RangeCreator\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1creators_1_1details_1_1_range_creator.html",tooltip="Creator for a numeric range. "];
+  Node0 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="scl::stream::details\l::iterator::OpStreamIterator\< T \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classscl_1_1stream_1_1details_1_1iterator_1_1_op_stream_iterator.html",tooltip="Iterator powering an intermediate operation. "];
+}

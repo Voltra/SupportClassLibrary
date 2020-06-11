@@ -13,3 +13,4 @@ namespace scl{
 #include <scl/async/Mutexed.h>
 #include <scl/async/AsyncQueue.h>
 #include <scl/async/Channel.h>
+#include <scl/async/Active.h>

@@ -1,0 +1,8 @@
+<map id="scl::utils::Result&lt; Value, Error &gt;" name="scl::utils::Result&lt; Value, Error &gt;">
+<area shape="rect" id="node2" href="$df/d63/classscl_1_1utils_1_1Either.html" title="scl::utils::Either\l\&lt; value_type, error\l_type \&gt;" alt="" coords="115,317,245,373"/>
+<area shape="rect" id="node3" href="$d2/d93/structscl_1_1utils_1_1Either_1_1payload__t.html" title="Payload type that encapsulates both alternatives. " alt="" coords="99,213,261,255"/>
+<area shape="rect" id="node4" href="$df/dd6/classscl_1_1utils_1_1Optional.html" title="scl::utils::Optional\l\&lt; Rhs \&gt;" alt="" coords="23,109,150,151"/>
+<area shape="rect" id="node5" href="$dd/d65/classscl_1_1utils_1_1RawStorage.html" title="scl::utils::RawStorage\l\&lt; Rhs \&gt;" alt="" coords="5,5,155,47"/>
+<area shape="rect" id="node6" href="$df/dd6/classscl_1_1utils_1_1Optional.html" title="scl::utils::Optional\l\&lt; Lhs \&gt;" alt="" coords="185,109,311,151"/>
+<area shape="rect" id="node7" href="$dd/d65/classscl_1_1utils_1_1RawStorage.html" title="scl::utils::RawStorage\l\&lt; Lhs \&gt;" alt="" coords="179,5,328,47"/>
+</map>

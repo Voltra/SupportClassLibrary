@@ -32,7 +32,7 @@ namespace scl{
 				AsyncQueue(std::initializer_list<value_type> list) : AsyncQueue(){
 					with(this->queue_, [&](queue_type& queue){
 						for(auto&& elem : list)
-							queue.emplace(elem);
+							queue.emplace(std::move(elem));
 					});
 				}
 

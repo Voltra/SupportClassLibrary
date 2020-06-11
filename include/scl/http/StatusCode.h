@@ -1,15 +1,16 @@
 #pragma once
-#include <scl/macros.h>
 #include <string>
+#include <scl/macros.h>
 #include <scl/http/Version.h>
 #include <scl/utils/Optional.h>
+#include <scl/alias/aliases.h>
 
 namespace scl{
 	namespace http{
 		class StatusCode{
 			public:
 				using name_type = stringLiteral;
-				using status_type = unsigned int;
+				using status_type = scl::alias::uint;
 				using message_type = stringLiteral;
 				using version_type = Version;
 
@@ -105,78 +106,88 @@ namespace scl{
 				 * @return TRUE if it is, FALSE otherwise
 				 */
 				constexpr bool isOk() const{
-					return (this->isSuccessful() ||this->isRedirect())
-					&& *this != SEE_OTHER //did not move
+					return (this->isInformational() || this->isSuccessful() ||this->isRedirect())
+						   && *this != SEE_OTHER //did not move
 					&& *this != USE_PROXY //returns asking for proxy
-					&& *this != __UNUSED //unused status code
+					/*&& *this != UNUSED //unused status code*/
 					&& *this != TEMPORARY_REDIRECT; //did not move
 				}
 
 			public:
 #define CODE(name) static const StatusCode name
 				//1xy - Informational
-				CODE(CONTINUE);
-				CODE(SWITCHING_PROTOCOLS);
+				CODE(CONTINUE); //RFC 7231 6.2.1
+				CODE(SWITCHING_PROTOCOLS); //RFC 7231 6.2.2
+				CODE(PROCESSING); //RFC 2518 10.1
+                CODE(EARLY_HINTS); //RFC 8297 2
 
 				//2xy - Successful
-				CODE(OK);
-				CODE(CREATED);
-				CODE(ACCEPTED);
-				CODE(NON_AUTHORITATIVE_INFORMATION);
-				CODE(NO_CONTENT);
-				CODE(RESET_CONTENT);
-				CODE(PARTIAL_CONTENT);
-				CODE(MULTI_STATUS);
+				CODE(OK);  //RFC 7231 6.3.1
+				CODE(CREATED); //RFC 7231 6.3.2
+				CODE(ACCEPTED); //RFC 7231 6.3.3
+				CODE(NON_AUTHORITATIVE_INFORMATION); //RFC 7231 6.3.4
+				CODE(NO_CONTENT); //RFC 7231 6.3.5
+				CODE(RESET_CONTENT); //RFC 7231 6.3.6
+				CODE(PARTIAL_CONTENT); //RFC 7233 4.1
+				CODE(MULTI_STATUS); //RFC 4918 11.1
+				CODE(ALREADY_REPORTED); //RFC 5842 7.1
+				CODE(IM_USED); //RFC 3229 10.4.1
 
 				//3xy - Redirections
-				CODE(MULTIPLE_CHOICES);
-				CODE(MOVED_PERMANENTLY);
-				CODE(FOUND);
-				CODE(SEE_OTHER);
-				CODE(NOT_MODIFIED);
-				CODE(__UNUSED);
-				CODE(USE_PROXY);
-				CODE(TEMPORARY_REDIRECT);
-				CODE(PERMANENT_REDIRECT);
+				CODE(MULTIPLE_CHOICES); //RFC 7231 6.4.1
+				CODE(MOVED_PERMANENTLY); //RFC 7231 6.4.2
+				CODE(FOUND); //RFC 7231 6.4.3
+				CODE(SEE_OTHER); //RFC 7231 6.4.4
+				CODE(NOT_MODIFIED); //RFC 7232 4.1
+				/*CODE(UNUSED);*/
+				CODE(USE_PROXY); //RFC 7231 6.4.5
+				CODE(TEMPORARY_REDIRECT); //RFC 7231 6.4.7
+				CODE(PERMANENT_REDIRECT); //RFC 7238 3
 
 				//4xy - Client Error
-				CODE(BAD_REQUEST);
-				CODE(UNAUTHORIZED);
-				CODE(PAYMENT_REQUIRED);
-				CODE(FORBIDDEN);
-				CODE(NOT_FOUND);
-				CODE(METHOD_NOT_ALLOWED);
-				CODE(NOT_ACCEPTABLE);
-				CODE(PROXY_ATHENTICATION_REQUIRED);
-				CODE(REQUEST_TIMEOUT);
-				CODE(CONFLICT);
-				CODE(GONE);
-				CODE(LENGTH_REQUIRED);
-				CODE(PRECONDITION_FAILED);
-				CODE(REQUEST_ENTITY_TOO_LARGE);
-				CODE(REQUEST_URI_TOO_LONG);
-				CODE(UNSUPPORTED_MEDIA_TYPE);
-				CODE(REQUESTED_RANGE_NOT_SATISFIABLE);
-				CODE(EXPECTATION_FAILED);
-				CODE(UNPROCESSABLE_ENTITY); //
-				CODE(LOCKED);
-				CODE(FAILED_DEPENDENCY);
-				CODE(TOO_EARLY);
-				CODE(UPGRADE_REQUIRED);
-				CODE(PRECONDITION_REQUIRED);
-				CODE(TOO_MANY_REQUESTS);
-				CODE(REQUEST_HEADER_FIELDS_TOO_LARGE);
-				CODE(UNAVAILABLE_FOR_LEGAL_REASONS);
+				CODE(BAD_REQUEST); //RFC 7231 6.5.1
+				CODE(UNAUTHORIZED); //RFC 7235 3.1
+				CODE(PAYMENT_REQUIRED); //RFC 7231 6.5.2
+				CODE(FORBIDDEN); //RFC 7231 6.5.3
+				CODE(NOT_FOUND); //RFC 7231 6.5.4
+				CODE(METHOD_NOT_ALLOWED); //RFC 7231 6.5.5
+				CODE(NOT_ACCEPTABLE); //RFC 7231 6.5.6
+				CODE(PROXY_AUTHENTICATION_REQUIRED); //RFC 7235 3.2
+				CODE(REQUEST_TIMEOUT); //RFC 7231 6.5.7
+				CODE(CONFLICT); //RFC 7231 6.5.8
+				CODE(GONE); //RFC 7231 6.5.9
+				CODE(LENGTH_REQUIRED); //RFC 7231 6.5.10
+				CODE(PRECONDITION_FAILED); //RFC 7232 4.2
+				CODE(REQUEST_ENTITY_TOO_LARGE); //RFC 7231 6.5.11  //TODO: Change name
+				CODE(REQUEST_URI_TOO_LONG); //RFC 7231 6.5.12 //TODO: Change name
+				CODE(UNSUPPORTED_MEDIA_TYPE); //RFC 7231 6.5.13
+				CODE(REQUESTED_RANGE_NOT_SATISFIABLE); //RFC 7233 4.4
+				CODE(EXPECTATION_FAILED); //RFC 7231 6.5.14
+				CODE(TEAPOT); //RFC 7168 2.3.3
+				CODE(MISDIRECTED_REQUEST); // RFC 7540 9.1.2
+				CODE(UNPROCESSABLE_ENTITY); //RFC 4918 11.2
+				CODE(LOCKED); //RFC 4918 11.3
+				CODE(FAILED_DEPENDENCY); //RFC 4918 11.4
+				CODE(TOO_EARLY); //RFC 8470 5.2 //TODO: add to node/deno
+				CODE(UPGRADE_REQUIRED); //RFC 7231 6.5.15
+				CODE(PRECONDITION_REQUIRED); //RFC 6585 3
+				CODE(TOO_MANY_REQUESTS); //RFC 6585 4
+				CODE(REQUEST_HEADER_FIELDS_TOO_LARGE); //RFC 6585 5
+				CODE(UNAVAILABLE_FOR_LEGAL_REASONS); //RFC 7725 3
 
 				//5xy - Server Error
-				CODE(INTERNAL_SERVER_ERROR);
-				CODE(NOT_IMPLEMENTED);
-				CODE(BAD_GATEWAY);
-				CODE(SERVICE_UNAVAILABLE);
-				CODE(GATEWAY_TIMEOUT);
-				CODE(HTTP_VERSION_NOT_SUPPORTED);
-				CODE(INSUFFICIENT_STORAGE);
-				CODE(NETWORK_AUTHENTICATION_REQUIRED);
+				CODE(INTERNAL_SERVER_ERROR); //RFC 7231 6.6.1
+				CODE(NOT_IMPLEMENTED); //RFC 7231 6.6.2
+				CODE(BAD_GATEWAY); //RFC 7231 6.6.3
+				CODE(SERVICE_UNAVAILABLE); //RFC 7231 6.6.4
+				CODE(GATEWAY_TIMEOUT); //RFC 7231 6.6.5
+				CODE(HTTP_VERSION_NOT_SUPPORTED); //RFC 7231 6.6.6
+				CODE(VARIANT_ALSO_NEGOTIATES); //RFC 2295 8.1
+				CODE(INSUFFICIENT_STORAGE); //RFC 4918 11.5
+				CODE(LOOP_DETECTED); //RFC 5842 7.2
+                CODE(BANDWIDTH_LIMIT_EXCEEDED); //no RFC
+				CODE(NOT_EXTENDED); //RFC 2774 7
+				CODE(NETWORK_AUTHENTICATION_REQUIRED); //RFC 6585 6
 #undef CODE
 
 			public:
@@ -188,19 +199,21 @@ namespace scl{
 				 * @warning Uses a very long switch statement
 				 */
 				static scl::utils::Optional<StatusCode> fromCode(const status_type& status){
-					if(
+					/*if(
 						status < 100
-						|| (101 < status && status < 200)
-						|| (207 < status && status < 300)
+						|| (103 < status && status < 200)
+						|| (226 < status && status < 300)
 						|| (308 < status && status < 400)
 						|| (451 < status && status < 500)
 						|| 511 < status
 					)//if invalid status
-						return scl::utils::none;
+						return scl::utils::none;*/
 
 					switch(status){
 						case 100: return CONTINUE;
 						case 101: return SWITCHING_PROTOCOLS;
+						case 102: return PROCESSING;
+                        case 103: return EARLY_HINTS;
 
 						case 200: return OK;
 						case 201: return CREATED;
@@ -210,6 +223,8 @@ namespace scl{
 						case 205: return RESET_CONTENT;
 						case 206: return PARTIAL_CONTENT;
 						case 207: return MULTI_STATUS;
+						case 208: return ALREADY_REPORTED;
+						case 226: return IM_USED;
 
 						case 300: return MULTIPLE_CHOICES;
 						case 301: return MOVED_PERMANENTLY;
@@ -217,7 +232,6 @@ namespace scl{
 						case 303: return SEE_OTHER;
 						case 304: return NOT_MODIFIED;
 						case 305: return USE_PROXY;
-						case 306: return __UNUSED; //unused status, but still return it as it's reserved
 						case 307: return TEMPORARY_REDIRECT;
 						case 308: return PERMANENT_REDIRECT;
 
@@ -228,7 +242,7 @@ namespace scl{
 						case 404: return NOT_FOUND;
 						case 405: return METHOD_NOT_ALLOWED;
 						case 406: return NOT_ACCEPTABLE;
-						case 407: return PROXY_ATHENTICATION_REQUIRED;
+						case 407: return PROXY_AUTHENTICATION_REQUIRED;
 						case 408: return REQUEST_TIMEOUT;
 						case 409: return CONFLICT;
 						case 410: return GONE;
@@ -239,6 +253,8 @@ namespace scl{
 						case 415: return UNSUPPORTED_MEDIA_TYPE;
 						case 416: return REQUESTED_RANGE_NOT_SATISFIABLE;
 						case 417: return EXPECTATION_FAILED;
+						case 418: return TEAPOT;
+						case 421: return MISDIRECTED_REQUEST;
 						case 422: return UNPROCESSABLE_ENTITY;
 						case 423: return LOCKED;
 						case 424: return FAILED_DEPENDENCY;
@@ -255,7 +271,11 @@ namespace scl{
 						case 503: return SERVICE_UNAVAILABLE;
 						case 504: return GATEWAY_TIMEOUT;
 						case 505: return HTTP_VERSION_NOT_SUPPORTED;
+						case 506: return VARIANT_ALSO_NEGOTIATES;
 						case 507: return INSUFFICIENT_STORAGE;
+						case 508: return LOOP_DETECTED;
+                        case 509: return BANDWIDTH_LIMIT_EXCEEDED;
+						case 510: return NOT_EXTENDED;
 						case 511: return NETWORK_AUTHENTICATION_REQUIRED;
 
 						default: return scl::utils::none;
@@ -275,6 +295,8 @@ namespace scl{
 		//1xy
 		DEF_CODE(CONTINUE, "Continue", 100, "Continue with the request");
 		DEF_CODE(SWITCHING_PROTOCOLS, "Switching Protocols", 101, "Switching protocols");
+		DEF_CODE(PROCESSING, "Processing", 102, "The server has accepted the request but has not yet completed it");
+		DEF_CODE(EARLY_HINTS, "Early Hints", 103, "The server is likely to send a final response with the header fields included in the informational response");
 
 		//2xy
 		DEF_CODE(OK, "Ok", 200, "Request fulfilled");
@@ -285,6 +307,8 @@ namespace scl{
 		DEF_CODE(RESET_CONTENT, "Reset Content", 205, "Request fulfilled, user agent should reset the document view");
 		DEF_CODE(PARTIAL_CONTENT, "Partial Content", 206, "Partial GET request fulfilled");
 		DEF_CODE(MULTI_STATUS, "Multi Status", 207, "Statuses for multiple operations");
+		DEF_CODE(ALREADY_REPORTED, "Already reported", 208, "One of the requested resources has already been reported");
+		DEF_CODE(IM_USED, "IM Used", 226, "The server has fulfilled a GET request for the resource, and the response is a representation of the result of one or more instance-manipulation applied to the current instance");
 
 		//3xy
 		DEF_CODE(MULTIPLE_CHOICES, "Multiple Choices", 300, "The requested resource corresponds to any one of a set of representations");
@@ -293,7 +317,7 @@ namespace scl{
 		DEF_CODE(SEE_OTHER, "See Other", 303, "The requested resource can be found under a different URI");
 		DEF_CODE(NOT_MODIFIED, "Not Modified", 304, "Document has not been modified");
 		DEF_CODE(USE_PROXY, "Use Proxy", 305, "The requested resource must be accessed through the given proxy");
-		DEF_CODE(__UNUSED, "[[Unused]]", 306, "[[Was used in previous version of the specification, no longer used, reserved]]");
+		/*DEF_CODE(UNUSED, "[[Unused]]", 306, "[[Was used in previous version of the specification, no longer used, reserved]]");*/
 		DEF_CODE(TEMPORARY_REDIRECT, "Temporary Redirect", 307, "The requested resource resides temporarily under a different URI");
 		DEF_CODE(PERMANENT_REDIRECT, "Permanent Redirect", 308, "The requested resource resides permanently under a different URI");
 
@@ -305,7 +329,7 @@ namespace scl{
 		DEF_CODE(NOT_FOUND, "Not Found", 404, "The requested resource has not been found");
 		DEF_CODE(METHOD_NOT_ALLOWED, "Method Not Allowed", 405, "The specified method is not allowed for the identified resource");
 		DEF_CODE(NOT_ACCEPTABLE, "Not Acceptable", 406, "Responses would not be acceptable according to accept headers in the request");
-		DEF_CODE(PROXY_ATHENTICATION_REQUIRED, "Proxy Authentication Required", 407, "Client must first authenticate itself with the proxy");
+		DEF_CODE(PROXY_AUTHENTICATION_REQUIRED, "Proxy Authentication Required", 407, "Client must first authenticate itself with the proxy");
 		DEF_CODE(REQUEST_TIMEOUT, "Request Timeout", 408, "Client did not produce a request within the time the server was prepared to wait");
 		DEF_CODE(CONFLICT, "Conflict", 409, "Request could not be completed due to a conflict with the current state of the resource");
 		DEF_CODE(GONE, "Gone", 410, "The requested resource is no longer available");
@@ -316,6 +340,8 @@ namespace scl{
 		DEF_CODE(UNSUPPORTED_MEDIA_TYPE, "Unsupported Media Type", 415, "The format of the entity of the request is not supported");
 		DEF_CODE(REQUESTED_RANGE_NOT_SATISFIABLE, "Requested Range Not Satisfiable", 416, "Request Range could not be satisfied");
 		DEF_CODE(EXPECTATION_FAILED, "Expectation Failed", 417, "Request Expect could not be met");
+		DEF_CODE(TEAPOT, "I'm a teapot", 418, "I'm a teapot");
+		DEF_CODE(MISDIRECTED_REQUEST, "Misdirected Request", 421, "Request was directed at a server that is not able to produce a response");
 		DEF_CODE(UNPROCESSABLE_ENTITY, "Unprocessable Entity", 422, "The server understands the content type and the syntax is correct but was unable to process the contained instructions");
 		DEF_CODE(LOCKED, "Locked", 423, "The requested resource is locked");
 		DEF_CODE(FAILED_DEPENDENCY, "Failed Dependency", 424, "The server could not process the requested action because it depends on an action that failed");
@@ -332,8 +358,12 @@ namespace scl{
 		DEF_CODE(BAD_GATEWAY, "Bad Gateway", 502, "The server, acting as a gateway/proxy, received an invalid response from the upstream server it accessed in attempting to fulfill the request");
 		DEF_CODE(SERVICE_UNAVAILABLE, "Service Unavailable", 503, "The server is currently unable to handle the request due to a temporary overloading or maintenance");
 		DEF_CODE(GATEWAY_TIMEOUT, "Gateway Timeout", 504, "The server, acting as a gateway/proxy, did not receive a timely response from the upstream server it accessed in attempting to fulfill the request");
-		DEF_CODE(HTTP_VERSION_NOT_SUPPORTED, "HTTP Version Not Supported", 505, "The server does not support, or refuses to support, the HTTP protocol version that was used in th request");
+		DEF_CODE(HTTP_VERSION_NOT_SUPPORTED, "HTTP Version Not Supported", 505, "The server does not support, or refuses to support, the HTTP protocol version that was used in the request");
+		DEF_CODE(VARIANT_ALSO_NEGOTIATES, "Variant Also Negotiates", 506, "The chosen variant resource is configured to engage in transparent content negotiation and is therefore not a proper end point in the negotiation process");
 		DEF_CODE(INSUFFICIENT_STORAGE, "Insufficient Storage", 507, "The server was unable to process the request because it could not store the representation needed to successfully complete the request");
+		DEF_CODE(LOOP_DETECTED, "Loop Detected", 508, "The server terminated an operation because it encountered an infinite loop while processing a request");
+		DEF_CODE(BANDWIDTH_LIMIT_EXCEEDED, "Loop Detected", 509, "The amount of bandwidth allocated has been reached");
+		DEF_CODE(NOT_EXTENDED, "Not Extended", 510, "The policy for accessing the resource has not been met in the request");
 		DEF_CODE(NETWORK_AUTHENTICATION_REQUIRED, "Network Authentication Required", 511, "The client needs to authenticate to gain network access");
 #undef DEF_CODE
 	}
@@ -345,7 +375,7 @@ namespace scl{
 			std::string operator()(const scl::http::StatusCode& status){
 				return STATUS + std::to_string(status.status())
 				+ SEP + status.name()
-				+ CF + asString(status.version()) + SPECS;
+				+ CF + std::to_string(status.version()) + SPECS;
 			}
 		};
 

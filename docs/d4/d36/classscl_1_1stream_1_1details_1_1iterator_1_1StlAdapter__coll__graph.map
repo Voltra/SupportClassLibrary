@@ -1,0 +1,6 @@
+<map id="scl::stream::details::iterator::StlAdapter&lt; T &gt;" name="scl::stream::details::iterator::StlAdapter&lt; T &gt;">
+<area shape="rect" id="node2" href="$d4/d40/classscl_1_1stream_1_1details_1_1StreamIteratorPayload.html" title="A class representing a stream iterator&#39;s payload. " alt="" coords="445,5,636,47"/>
+<area shape="rect" id="node3" href="$df/dd6/classscl_1_1utils_1_1Optional.html" title="scl::utils::Optional\l\&lt; value_type \&gt;" alt="" coords="252,5,379,47"/>
+<area shape="rect" id="node4" href="$dd/d65/classscl_1_1utils_1_1RawStorage.html" title="scl::utils::RawStorage\l\&lt; value_type \&gt;" alt="" coords="5,5,155,47"/>
+<area shape="rect" id="node5" href="$df/daa/classscl_1_1stream_1_1details_1_1iterator_1_1StreamIterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="445,71,636,112"/>
+</map>
