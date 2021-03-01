@@ -16,8 +16,8 @@ namespace scl{
 			 * @return the function pointer statically casted
 			 */
 			template <class From, class Ret, class... Args>
-			inline constexpr fn_type<Ret, Args...> fn_cast(From f){
-				return static_cast<fn_type<Ret, Args...>>(f);
+			inline constexpr fn_types::fn_type<Ret, Args...> fn_cast(From f){
+				return static_cast<fn_types::fn_type < Ret, Args...>>(f);
 			}
 
 			/**
@@ -30,8 +30,8 @@ namespace scl{
 			 * @return the member function pointer statically casted
 			 */
 			template <class From, class Class, class Ret, class... Args>
-			inline constexpr memfn_type<Class, Ret, Args...> fn_cast(From f){
-				return static_cast<memfn_type<Class, Ret, Args...>>(f);
+			inline constexpr fn_types::mem_fn_type<Class, Ret, Args...> fn_cast(From f){
+				return static_cast<fn_types::mem_fn_type < Class, Ret, Args...>>(f);
 			}
 		}
 	}

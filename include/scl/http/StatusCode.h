@@ -375,7 +375,7 @@ namespace scl{
 			std::string operator()(const scl::http::StatusCode& status){
 				return STATUS + std::to_string(status.status())
 				+ SEP + status.name()
-				+ CF + std::to_string(status.version()) + SPECS;
+				+ CF + scl::utils::toString(status.version()) + SPECS;
 			}
 		};
 

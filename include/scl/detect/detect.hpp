@@ -9,3 +9,4 @@ namespace scl{
 }
 
 #include <scl/detect/platform/platform.hpp>
+#include <scl/detect/version/version.hpp>

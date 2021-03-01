@@ -11,10 +11,13 @@
 	return stmt;\
 }
 
+#define SCL_NODISCARD
+
 #ifdef SCL_CPP20
 	#define SCL_CPP17
 #endif
 
 #ifdef SCL_CPP17
 	#define SCL_CPP14
+	#define SCL_NODISCARD [[nodiscard]]
 #endif

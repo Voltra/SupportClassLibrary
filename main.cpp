@@ -2,6 +2,7 @@
 #include <string>
 #include <memory>
 #include <algorithm>
+#include <utility>
 #include <vector>
 #include "main.h"
 #include <thread>
@@ -49,10 +50,14 @@ struct Person{
 	Person& operator=(Person&&) = default;
 
 
-	explicit Person(const std::string& name) : name{name}{
+	explicit Person(std::string name) : name{std::move(name)}{
 	}
 
 	std::string getName() const{ return this->name; }
+
+	bool operator<(const Person& rhs) const{
+	    return this->name < rhs.name;
+	}
 };
 
 void testsStreamObj(){
@@ -98,8 +103,9 @@ void testChannel(){
 	}).join();
 }
 
-int main(){ //TODO: Fix characters corruption?
+int main(){
 	testChannel();
+//	testsStreamObj();
 
 	return 0;
 }

@@ -23,8 +23,7 @@ namespace scl{
 				 * @tparam T being the reason's type
 				 * @param reason being the error message
 				 */
-				template <class T>
-				Exception(T&& reason) : _reason{std::forward<T>(reason)} {
+				Exception(const char* reason) : _reason{reason} {
 				}
 
 				/**

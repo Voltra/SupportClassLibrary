@@ -9,3 +9,4 @@ namespace scl{
 }
 
 #include <scl/http/StatusCode.h>
+#include <scl/http/Version.h>

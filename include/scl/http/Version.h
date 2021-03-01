@@ -84,7 +84,7 @@ namespace scl{
 				}
 
 			public:
-				friend class scl::utils::ToString<Version>;
+				friend struct scl::utils::ToString<Version>;
 
 #define VERSION(name) static const Version name
 				VERSION(V1_0);

@@ -10,7 +10,7 @@ namespace scl{
 		/**
 		 * Base class for exceptions that could never be checked at compile-time
 		 */
-		class RuntimeException : public Throwable, public std::runtime_error{
+		class RuntimeException : public Throwable{
 			protected:
 				/**
 				 * @var _reason
@@ -24,8 +24,7 @@ namespace scl{
 				 * @tparam T being the reason's type
 				 * @param reason being the error message
 				 */
-				template <class T>
-				RuntimeException(T&& reason) : _reason{std::forward<T>(reason)}, runtime_error{std::forward<T>(reason)} {
+				RuntimeException(const char* reason) : _reason{reason} {
 				}
 
 				/**

@@ -13,7 +13,7 @@ namespace scl {
 					 * Class that allows packing to a std::set
 					 * @tparam T being the stream value type
 					 * @tparam Compare being the type of comparator used to insert elements
-					 * @tparam Allocator being the type of the allocator used for std::vector
+					 * @tparam Allocator being the type of the allocator used for std::set
 					 */
 					template <class T, class Compare = std::less<T>, class Allocator = std::allocator<T>>
 					class SetPacker : public scl::stream::details::iterator::EndStreamIterator<std::set<T, Compare, Allocator>, T>{
@@ -111,8 +111,8 @@ namespace scl {
 			 * @return a vector containing the elements from the stream
 			 */
 			template <class T, class Compare, class Allocator>
-			typename pack::details::SetPacker<T>::result_type operator|(const Stream<T>& lhs, const pack::details::to_set_toolbox_alloc<Compare, Allocator>& _){
-				auto packer = pack::details::SetPacker<T>{lhs.it()};
+			typename pack::details::SetPacker<T, Compare, Allocator>::result_type operator|(const Stream<T>& lhs, const pack::details::to_set_toolbox_alloc<Compare, Allocator>& _){
+				auto packer = pack::details::SetPacker<T, Compare, Allocator>{lhs.it()};
 				return packer.process();
 			}
 		}

@@ -12,6 +12,12 @@ namespace scl{
 			 * Namespace for implementation details for TMP
 			 */
 			namespace details{}
+
+			/**
+			 * @namespace scl::tools::meta::fn_types
+			 * Namespace for function types aliases
+			 */
+			namespace fn_types{}
 		}
 	}
 }

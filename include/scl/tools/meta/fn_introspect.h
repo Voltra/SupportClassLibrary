@@ -87,7 +87,7 @@ namespace scl{
 
 			template <class R, class... Args>
 			std_fn_type<R(*)(Args...)> as_fn(R(*f)(Args...)){
-				return (std_fn_type<R(*)(Args...)>){f};
+				return std_fn_type<R(*)(Args...)>{f};
 			}
 
 			template <class Class, class R, class... Args>

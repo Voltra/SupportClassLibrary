@@ -13,7 +13,7 @@
 namespace scl{
 	namespace utils{
 		namespace details{
-			struct __any_base{
+			struct _any_base{
 				using type = void;
 
 				virtual void polymorphism() const = 0;
@@ -22,7 +22,7 @@ namespace scl{
 			};
 
 			template <class T>
-			class __any__impl final : public __any_base{
+			class _any_impl final : public _any_base{
 				protected:
 					T value;
 
@@ -34,13 +34,13 @@ namespace scl{
 					template <class = META::enable_if_t<
 							META::is_move_constructible<T>()
 					>>
-					__any__impl(T&& value) : value{std::move(value)} {
+					explicit _any_impl(T&& value) : value{std::move(value)} {
 					}
 
 					template <class = META::enable_if_t<
 							META::is_copy_constructible<T>()
 					>>
-					__any__impl(const T& value) : value{value} {
+					explicit _any_impl(const T& value) : value{value} {
 					}
 
 					template <class U>
@@ -63,7 +63,7 @@ namespace scl{
 				 * @var impl
 				 * A PIMPL
 				 */
-				std::unique_ptr<details::__any_base> impl;
+				std::unique_ptr<details::_any_base> impl;
 
 				/**
 				 * @var ti
@@ -78,7 +78,7 @@ namespace scl{
 				 * @param value being the value to construct from
 				 */
 				template <class T>
-				Any(T&& value) : impl{new details::__any__impl<META::decay_t<T>>(std::forward<T>(value))}, ti{&typeid(T)} {
+				Any(T&& value) : impl{new details::_any_impl<META::decay_t<T>>(std::forward<T>(value))}, ti{&typeid(T)} {
 				}
 
 				Any(Any&&) = default;
@@ -96,7 +96,7 @@ namespace scl{
 				 */
 				template <class T>
 				Any& operator=(T&& value){
-					this->impl.reset(new details::__any__impl<T>(std::forward<T>(value)));
+					this->impl.reset(new details::_any_impl<T>(std::forward<T>(value)));
 					this->ti = &typeid(T);
 					return *this;
 				}
@@ -121,7 +121,7 @@ namespace scl{
 				template <class U>
 				U as() const{
 					if(this->canCastTo<U>())
-						return dynamic_cast<details::__any__impl<U>*>(impl.get())->template as<U>();
+						return dynamic_cast<details::_any_impl<U>*>(impl.get())->template as<U>();
 
 					throw exceptions::InvalidAnyCast{"Tried to cast Any to an unsupported type"};
 				}

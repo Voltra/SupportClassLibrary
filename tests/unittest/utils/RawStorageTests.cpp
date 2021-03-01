@@ -5,11 +5,13 @@
 #include <mutex>
 #include <scl/tools/iostream/log/log.hpp>
 #include <scl/exceptions/UninitializedMemoryAccess.h>
+#include <scl/utils/Placeholder.h>
 #include <utility>
 
 using namespace scl::utils;
 using namespace scl::concepts;
 using namespace scl::exceptions;
+using namespace scl::utils::placeholder;
 
 auto out = scl::tools::iostream::log::prefixed::log("[S]  ");
 
@@ -103,7 +105,7 @@ TEST(RawStorageTests, AccessUninitializedThrows){
 
 	rs x;
 	ASSERT_THROW(x.get(), UninitializedMemoryAccess);
-	ASSERT_THROW(x->begin(), UninitializedMemoryAccess);
+	ASSERT_THROW(_ = x->begin(), UninitializedMemoryAccess);
 	ASSERT_THROW(*x, UninitializedMemoryAccess);
 }
 
