@@ -205,3 +205,8 @@ tags
 
 # End of https://www.gitignore.io/api/vim,c++,cmake,clion+all,jetbrains+all,visualstudiocode
 
+/build*
+/.vscode
+/cpm_modules
+.DS_Store
+
