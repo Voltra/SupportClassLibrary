@@ -1,8 +1,0 @@
-digraph "scl::concepts::details::__is_concept&lt; T, scl::tools::meta ::enable_if_t&lt; scl::tools::meta ::is_convertible&lt; T, bool &gt;() &amp;&amp;scl::tools::meta ::is_default_constructible&lt; T &gt;() &gt; &gt;"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node0 [label="scl::concepts::details\l::__is_concept\< T, scl\l::tools::meta ::enable\l_if_t\< scl::tools::meta\l ::is_convertible\< T, bool\l \>() &&scl::tools::meta ::is\l_default_constructible\< T \>() \> \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node1 -> Node0 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node1 [label="true_type",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-}

@@ -1,6 +1,0 @@
-<map id="scl::stream::terminators::pack::details::VectorPacker&lt; T, Allocator &gt;" name="scl::stream::terminators::pack::details::VectorPacker&lt; T, Allocator &gt;">
-<area shape="rect" id="node2" href="$d9/dea/classscl_1_1stream_1_1details_1_1iterator_1_1EndStreamIterator.html" title="scl::stream::details\l::iterator::EndStreamIterator\l\&lt; std::vector\&lt; T, Allocator \&gt;, T \&gt;" alt="" coords="820,5,1031,61"/>
-<area shape="rect" id="node3" href="$df/daa/classscl_1_1stream_1_1details_1_1iterator_1_1StreamIterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="5,11,196,53"/>
-<area shape="rect" id="node5" href="$d6/d16/classscl_1_1stream_1_1details_1_1iterator_1_1BaseStreamIterator.html" title="A class for iterators that start a stream chain. " alt="" coords="245,47,467,89"/>
-<area shape="rect" id="node4" href="$dc/dc0/classscl_1_1stream_1_1details_1_1iterator_1_1OpStreamIterator.html" title="scl::stream::details\l::iterator::OpStreamIterator\&lt; T \&gt;" alt="" coords="516,47,724,89"/>
-</map>

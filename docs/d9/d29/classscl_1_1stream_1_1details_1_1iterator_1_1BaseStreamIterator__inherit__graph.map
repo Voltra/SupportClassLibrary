@@ -1,9 +1,0 @@
-<map id="scl::stream::details::iterator::BaseStreamIterator&lt; T &gt;" name="scl::stream::details::iterator::BaseStreamIterator&lt; T &gt;">
-<area shape="rect" id="node3" href="$dc/dc0/classscl_1_1stream_1_1details_1_1iterator_1_1OpStreamIterator.html" title="OpStreamIterator\&lt; T \&gt;" alt="" coords="541,50,693,77"/>
-<area shape="rect" id="node6" href="$dd/d72/classscl_1_1stream_1_1creators_1_1details_1_1FromArrayIterator.html" title="Creator for std::array. " alt="" coords="513,101,721,143"/>
-<area shape="rect" id="node7" href="$d0/da2/classscl_1_1stream_1_1creators_1_1details_1_1RangeCreator.html" title="Creator for a numeric range. " alt="" coords="524,167,711,208"/>
-<area shape="rect" id="node8" href="$dc/dc0/classscl_1_1stream_1_1details_1_1iterator_1_1OpStreamIterator.html" title="Iterator powering an intermediate operation. " alt="" coords="513,232,721,273"/>
-<area shape="rect" id="node2" href="$df/daa/classscl_1_1stream_1_1details_1_1iterator_1_1StreamIterator.html" title="Abstract base class for stream iterators defining the required behavior. " alt="" coords="5,135,196,176"/>
-<area shape="rect" id="node4" href="$d0/dcd/classscl_1_1stream_1_1operators_1_1details_1_1FilterOperator.html" title="Filter operation. " alt="" coords="769,5,956,47"/>
-<area shape="rect" id="node5" href="$dc/d62/classscl_1_1stream_1_1operators_1_1details_1_1UniqueByOperator.html" title="Unique by operation. " alt="" coords="771,71,954,127"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="scl::async::Active" name="scl::async::Active">
-<area shape="rect" id="node2" href="$dc/ddb/classscl_1_1async_1_1Channel.html" title="scl::async::Channel\l\&lt; message_type \&gt;" alt="" coords="535,86,672,127"/>
-<area shape="rect" id="node4" href="$d6/d8b/classscl_1_1async_1_1details_1_1ChannelSender.html" title="scl::async::details\l::ChannelSender\&lt; Channel \&gt;" alt="" coords="237,86,427,127"/>
-<area shape="rect" id="node5" href="$d2/d9c/structscl_1_1async_1_1details_1_1channel__actor__traits.html" title="scl::async::details\l::channel_actor_traits\l\&lt; ChannelSender \&gt;" alt="" coords="5,75,152,131"/>
-<area shape="rect" id="node6" href="$d8/d6f/classscl_1_1async_1_1details_1_1ChannelReceiver.html" title="scl::async::details\l::ChannelReceiver\&lt; Channel \&gt;" alt="" coords="233,155,431,197"/>
-<area shape="rect" id="node7" href="$d2/d9c/structscl_1_1async_1_1details_1_1channel__actor__traits.html" title="scl::async::details\l::channel_actor_traits\l\&lt; ChannelReceiver \&gt;" alt="" coords="5,155,152,211"/>
-<area shape="rect" id="node8" title="STL class. " alt="" coords="561,152,645,179"/>
-</map>

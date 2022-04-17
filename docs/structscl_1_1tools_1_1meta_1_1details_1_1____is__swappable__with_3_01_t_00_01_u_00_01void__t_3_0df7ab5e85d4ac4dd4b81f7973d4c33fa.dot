@@ -1,8 +1,0 @@
-digraph "scl::tools::meta::details::__is_swappable_with&lt; T, U, void_t&lt; enable_if_t&lt; exists&lt; decltype(std::swap(std::declval&lt; T &amp; &gt;(), std::declval&lt; U &amp; &gt;()))&gt;() &amp;&amp;exists&lt; decltype(std::swap(std::declval&lt; U &amp; &gt;(), std::declval&lt; T &amp; &gt;()))&gt;() &gt; &gt; &gt;"
-{
-  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
-  node [fontname="Helvetica",fontsize="10",shape=record];
-  Node2 [label="scl::tools::meta::details\l::__is_swappable_with\<\l T, U, void_t\< enable_if\l_t\< exists\< decltype(std\l::swap(std::declval\< T & \>\l(), std::declval\< U & \>()))\l\>() &&exists\< decltype(std::\lswap(std::declval\< U & \>(), std\l::declval\< T & \>()))\>() \> \> \>",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
-  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
-  Node3 [label="true_type",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled"];
-}
