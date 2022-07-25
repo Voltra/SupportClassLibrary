@@ -236,7 +236,7 @@ namespace scl {
              */
             using transport_type = typename transport_traits::type;
 
-            friend sender_type;
+            friend emitter_type;
             friend receiver_type;
             friend details::channel_actor_traits<emitter_type>;
             friend details::channel_actor_traits<receiver_type>;
@@ -272,11 +272,11 @@ namespace scl {
             receiver_type receiver_;
 
             /**
-             * Implementation details to get a receiver and sender for this channel
+             * Implementation details to get a receiver and emitter for this channel
              * @return the transport payload
              */
             transport_type interface() {
-                return transport_traits::factory(this->sender(), this->receiver());
+                return transport_traits::factory(this->emitter(), this->receiver());
             }
 
         public:
@@ -388,19 +388,19 @@ namespace scl {
 
                 /**
                  * @typedef emitter_traits
-                 * The traits of the sender
+                 * The traits of the emitter
                  */
                 using emitter_traits = channel_actor_traits<ChannelEmitter>;
 
                 /**
                  * @typedef lock_type
-                 * The type of lock used in the sender
+                 * The type of lock used in the emitter
                  */
                 using lock_type = typename emitter_traits::lock_type;
 
                 /**
                  * @typedef guard_type
-                 * The type of guards used in the sender
+                 * The type of guards used in the emitter
                  */
                 using guard_type = typename emitter_traits::guard_type;
 
@@ -426,12 +426,12 @@ namespace scl {
                 channel_type* channel;
 
                 /**
-                 * The traits for the sender
+                 * The traits for the emitter
                  */
                 emitter_traits traits;
 
                 /**
-                 * Construct a sender from a (safe) pointer to its channel
+                 * Construct a emitter from a (safe) pointer to its channel
                  * @param chan being the channel to construct from
                  */
                 explicit ChannelEmitter(channel_type& chan) : channel{&chan}, traits{*this} {}
@@ -440,7 +440,7 @@ namespace scl {
                  * Implementation details to push data onto the channel
                  * @tparam Args being the type of the arguments for the constructor
                  * @param args being the arguments for the constructor
-                 * @return a reference to this ChannelSender
+                 * @return a reference to this ChannelEmitter
                  */
                 template <class... Args> ChannelEmitter& doPush(Args&&... args) {
                     SCL_MAYBE_UNUSED_ATTR guard_type _{this->traits};
@@ -459,7 +459,7 @@ namespace scl {
                  * Forward a value into the queue
                  * @tparam U being the type of data to forward
                  * @param value being the value to forward
-                 * @return a reference to this ChannelSender
+                 * @return a reference to this ChannelEmitter
                  */
                 template <class U> ChannelEmitter& push(U&& value) {
                     return this->doPush(std::forward<U>(value));
@@ -469,35 +469,35 @@ namespace scl {
                  * Construct and push in-place the value
                  * @tparam Args being the types of arguments for the constructor
                  * @param args being the arguments for the constructor
-                 * @return a reference to this ChannelSender
+                 * @return a reference to this ChannelEmitter
                  */
                 template <class... Args> ChannelEmitter& pushEmplace(Args&&... args) {
                     return this->doPush(std::forward<Args&&>(args)...);
                 }
 
                 /**
-                 * Alias for ChannelSender::push
+                 * Alias for ChannelEmitter::push
                  */
                 template <class U> ChannelEmitter& queue(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
 
                 /**
-                 * Alias for ChannelSender::push
+                 * Alias for ChannelEmitter::push
                  */
                 template <class U> ChannelEmitter& enqueue(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
 
                 /**
-                 * Alias for ChannelSender::push
+                 * Alias for ChannelEmitter::push
                  */
                 template <class U> ChannelEmitter& emit(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
 
                 /**
-                 * Alias for ChannelSender::push
+                 * Alias for ChannelEmitter::push
                  */
                 template <class U> ChannelEmitter& operator<<(U&& value) {
                     return this->push(std::forward<U>(value));
@@ -650,14 +650,14 @@ namespace scl {
 
 namespace std {
     /**
-     * Get either the sender or the receiver from the channel
-     * @tparam I being the index in the tuple (sender, receiver)
+     * Get either the emitter or the receiver from the channel
+     * @tparam I being the index in the tuple (emitter, receiver)
      * @tparam T being the type of values used in the channel
      * @tparam Lock being the type of locks for the channel
      * @tparam Guard being the type of guards for the channel
      * @tparam Container being the type of containers for the queue of the channel
      * @param channel being the channel to extract data from
-     * @return the sender or the receiver
+     * @return the emitter or the receiver
      */
     template <size_t I, class T, class Lock, class Guard, class Container>
     auto get(scl::async::Channel<T, Lock, Guard, Container>& channel) ->
