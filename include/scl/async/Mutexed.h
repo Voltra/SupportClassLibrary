@@ -7,7 +7,7 @@
 
 namespace scl {
     namespace async {
-        template <class T, class Lock = std::mutex, class Guard = std::lock_guard<std::mutex>>
+        template <class T, class Lock = std::mutex, class Guard = std::lock_guard<Lock>>
         class Mutexed {
         public:
             using lock_type = Lock;

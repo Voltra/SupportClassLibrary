@@ -11,3 +11,4 @@ namespace scl {
 #include "./with_traits.h"
 #include "./with.h"
 #include "./Mutexed.h"
+#include "./Channel.h"
