@@ -15,5 +15,5 @@ namespace scl {
             with_traits<Resource> traits;
             return traits(resource, std::forward<F>(f));
         }
-    }
-}
+    }  // namespace async
+}  // namespace scl

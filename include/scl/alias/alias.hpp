@@ -10,3 +10,4 @@ namespace scl {
 
 #include "./stl.h"
 #include "./literals.h"
+#include "./functions.h"

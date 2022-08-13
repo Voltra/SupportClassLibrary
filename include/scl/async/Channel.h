@@ -11,19 +11,23 @@
 
 namespace scl {
     namespace async {
-        template <class T, class Lock, class Guard, class Container> class Channel;
+        template <class T, class Lock, class Guard, class Container>
+        class Channel;
 
         namespace details {
-            template <class> class ChannelEmitter;
+            template <class>
+            class ChannelEmitter;
 
-            template <class> class ChannelReceiver;
+            template <class>
+            class ChannelReceiver;
 
             /**
              * Traits for the implementation of the transport of information in a
              * scl::async::Channel
              * @tparam Chan being the channel type
              */
-            template <class Chan> struct channel_transport_traits {
+            template <class Chan>
+            struct channel_transport_traits {
                 /**
                  * @typedef channel_type
                  * The type of the channel
@@ -53,7 +57,8 @@ namespace scl {
                 }
             };
 
-            template <class Actor> struct channel_actor_traits {
+            template <class Actor>
+            struct channel_actor_traits {
                 /**
                  * @typedef actor_type
                  * The type of the actor
@@ -139,7 +144,8 @@ namespace scl {
                  *
                  * @warning locks, will need to unlock afterward
                  */
-                template <class Pred> void waitUntil(Pred&& pred) {
+                template <class Pred>
+                void waitUntil(Pred&& pred) {
                     this->lock();
                     this->actor->channel->condition.wait(this->lock_, std::forward<Pred>(pred));
                 }
@@ -295,7 +301,7 @@ namespace scl {
              * @return the size of the queue
              */
             size_type size() const {
-                SCL_MAYBE_UNUSED_ATTR guard_type _{lock};
+                SCL_MAYBE_UNUSED guard_type _{lock};
                 return this->queue.size();
             }
 
@@ -328,7 +334,8 @@ namespace scl {
              * @param value being the value to forward
              * @return a reference to this Channel's ChannelEmitter
              */
-            template <class U> emitter_type& operator<<(U&& value) {
+            template <class U>
+            emitter_type& operator<<(U&& value) {
                 return this->emitter() << std::forward<U>(value);
             }
 
@@ -338,7 +345,8 @@ namespace scl {
              * @param value being where to store the data
              * @return a reference to this Channel's ChannelReceiver
              */
-            template <class U> receiver_type& operator>>(U& value) {
+            template <class U>
+            receiver_type& operator>>(U& value) {
                 return this->receiver() >> value;
             }
         };
@@ -378,7 +386,8 @@ namespace scl {
              * Class used to send data to a Channel
              * @tparam Chan being the channel type
              */
-            template <class Chan> class ChannelEmitter {
+            template <class Chan>
+            class ChannelEmitter {
             public:
                 /**
                  * @typedef channel_type
@@ -442,8 +451,9 @@ namespace scl {
                  * @param args being the arguments for the constructor
                  * @return a reference to this ChannelEmitter
                  */
-                template <class... Args> ChannelEmitter& doPush(Args&&... args) {
-                    SCL_MAYBE_UNUSED_ATTR guard_type _{this->traits};
+                template <class... Args>
+                ChannelEmitter& doPush(Args&&... args) {
+                    SCL_MAYBE_UNUSED guard_type _{this->traits};
                     this->channel->queue.emplace(std::forward<Args>(args)...);
                     this->traits.notify();
                     return *this;
@@ -461,7 +471,8 @@ namespace scl {
                  * @param value being the value to forward
                  * @return a reference to this ChannelEmitter
                  */
-                template <class U> ChannelEmitter& push(U&& value) {
+                template <class U>
+                ChannelEmitter& push(U&& value) {
                     return this->doPush(std::forward<U>(value));
                 }
 
@@ -471,40 +482,46 @@ namespace scl {
                  * @param args being the arguments for the constructor
                  * @return a reference to this ChannelEmitter
                  */
-                template <class... Args> ChannelEmitter& pushEmplace(Args&&... args) {
+                template <class... Args>
+                ChannelEmitter& pushEmplace(Args&&... args) {
                     return this->doPush(std::forward<Args&&>(args)...);
                 }
 
                 /**
                  * Alias for ChannelEmitter::push
                  */
-                template <class U> ChannelEmitter& queue(U&& value) {
+                template <class U>
+                ChannelEmitter& queue(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
 
                 /**
                  * Alias for ChannelEmitter::push
                  */
-                template <class U> ChannelEmitter& enqueue(U&& value) {
+                template <class U>
+                ChannelEmitter& enqueue(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
 
                 /**
                  * Alias for ChannelEmitter::push
                  */
-                template <class U> ChannelEmitter& emit(U&& value) {
+                template <class U>
+                ChannelEmitter& emit(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
 
                 /**
                  * Alias for ChannelEmitter::push
                  */
-                template <class U> ChannelEmitter& operator<<(U&& value) {
+                template <class U>
+                ChannelEmitter& operator<<(U&& value) {
                     return this->push(std::forward<U>(value));
                 }
             };
 
-            template <class Chan> class ChannelReceiver {
+            template <class Chan>
+            class ChannelReceiver {
             public:
                 /**
                  * @typedef channel_type
@@ -639,7 +656,8 @@ namespace scl {
                  * @tparam U being the type to store the data in
                  * @return a reference to this ChannelReceiver
                  */
-                template <class U> ChannelReceiver& operator>>(U& value) {
+                template <class U>
+                ChannelReceiver& operator>>(U& value) {
                     value = std::move(this->receive());
                     return *this;
                 }

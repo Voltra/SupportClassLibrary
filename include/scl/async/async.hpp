@@ -6,9 +6,10 @@ namespace scl {
      * Base namespace for asynchronous APIs
      */
     namespace async {}
-}
+}  // namespace scl
 
-#include "./with_traits.h"
-#include "./with.h"
-#include "./Mutexed.h"
 #include "./Channel.h"
+#include "./Mutexed.h"
+#include "./with.h"
+#include "./with_traits.h"
+#include "./Active.h

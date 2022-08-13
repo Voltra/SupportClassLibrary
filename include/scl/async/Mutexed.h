@@ -1,7 +1,8 @@
 #pragma once
+#include <memory>
 #include <mutex>
 #include <utility>
-#include <memory>
+
 #include "../macros.h"
 #include "./with_traits.h"
 
@@ -35,8 +36,9 @@ namespace scl {
              * @return The result of the transaction
              */
             template <class F>
-            auto transaction(F&& f) -> decltype(std::forward<F>(f)(static_cast<value_type&>(value))) {
-                SCL_MAYBE_UNUSED_ATTR guard_type g{lock};
+            auto transaction(F&& f)
+                -> decltype(std::forward<F>(f)(static_cast<value_type&>(value))) {
+                SCL_MAYBE_UNUSED guard_type g{lock};
                 return std::forward<F>(f)(static_cast<value_type&>(value));
             }
         };
@@ -44,9 +46,8 @@ namespace scl {
         template <class T, class Lock = std::mutex, class Guard = std::lock_guard<std::mutex>>
         struct with_traits<Mutexed<T, Lock, Guard>> {
             template <class F>
-            auto operator()(Mutexed<T, Lock, Guard>& mutexed, F&& delegate) -> SCL_RETURN(
-                mutexed.template transaction(std::forward<F>(delegate))
-            )
+            auto operator()(Mutexed<T, Lock, Guard>& mutexed, F&& delegate)
+                -> SCL_RETURN(mutexed.template transaction(std::forward<F>(delegate)))
         };
-    }
-}
+    }  // namespace async
+}  // namespace scl

@@ -2,6 +2,7 @@
 #include <atomic>
 #include <functional>
 #include <thread>
+
 #include "./Channel.h"
 
 namespace scl {
@@ -62,6 +63,7 @@ namespace scl {
                       while (!done) {
                           auto message = receiver.receive();
                           message();
+                          std::this_thread::yield();
                       }
                   }} {}
 
