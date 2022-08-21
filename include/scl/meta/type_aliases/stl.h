@@ -96,6 +96,6 @@ namespace scl {
         using underlying_type_t = typename std::underlying_type<T>::type;
 
         template <std::size_t I, class Tuple>
-        using tuple_element_t = typename std::tuple_element<T>::type;
+        using tuple_element_t = typename std::tuple_element<I, Tuple>::type;
     }  // namespace meta
 }  // namespace scl

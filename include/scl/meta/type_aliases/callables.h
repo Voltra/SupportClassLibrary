@@ -10,8 +10,38 @@ namespace scl {
             /**
              * Traits for callable types
              */
-            template <class>
+            template <class FnType, class Sfinae = void>
             struct function_traits;
+
+            template <class, class Sfinae = void>
+            struct deduced_function_signature;
+
+            template <class Ret, class... Args>
+            struct deduced_function_signature<Ret(Args...)> {
+                using type = Ret(Args...);
+            };
+
+            template <class Ret, class... Args>
+            struct deduced_function_signature<Ret (*)(Args...)>
+                : deduced_function_signature<Ret(Args...)> {};
+
+            template <class Ret, class Class, class... Args>
+            struct deduced_function_signature<Ret (Class::*)(Args...)>
+                : deduced_function_signature<Ret(Args...)> {};
+
+            template <class Ret, class Class, class... Args>
+            struct deduced_function_signature<Ret (Class::*)(Args...) const>
+                : deduced_function_signature<Ret(Args...)> {};
+
+            template <class Ret, class Class>
+            struct deduced_function_signature<Ret Class::*>
+                : deduced_function_signature<Ret(void)> {};
+
+            template <class Callable>
+            struct deduced_function_signature<
+                Callable,
+                scl::meta::enable_if_t<scl::meta::exists<decltype(&Callable::operator())>()>>
+                : deduced_function_signature<decltype(&Callable::operator())> {};
         }  // namespace details
 
         template <class Callable>
@@ -22,6 +52,9 @@ namespace scl {
 
         template <class Callable, std::size_t I>
         using arg_t = typename function_traits<Callable>::template arg_t<I>;
+
+        template <class Callable>
+        using deduced_function_sig_t = typename details::deduced_function_signature<Callable>::type;
 
         namespace details {
             template <class Ret, class... Args>
@@ -40,13 +73,18 @@ namespace scl {
             struct function_traits<Ret (Class::*)(Args...)> : function_traits<Ret(Class, Args...)> {
             };
 
+            template <class Ret, class Class, class... Args>
+            struct function_traits<Ret (Class::*)(Args...) const> : function_traits<Ret(Class, Args...)> {
+            };
+
             template <class Ret, class Class>
             struct function_traits<Ret Class::*> : function_traits<Ret(Class)> {};
 
             template <class Callable>
-            struct function_traits<scl::meta::enable_if_t<
-                scl::meta::exists<decltype(&Callable::operator())>(), Callable>>
-                : function_traits<&Callable::operator()> {};
+            struct function_traits<
+                Callable,
+                scl::meta::enable_if_t<scl::meta::exists<decltype(&Callable::operator())>()>>
+                : function_traits<deduced_function_sig_t<Callable>> {};
         }  // namespace details
     }      // namespace meta
 }  // namespace scl

@@ -49,7 +49,7 @@ namespace scl {
              * @return a mutable reference to the constructed object
              *
              * @warning Uses placement new
-             * @warning Cleans the memory if there was data (calls the destrutor)
+             * @warning Cleans the memory if there was data (calls the destructor)
              */
             template <class... Args>
             T& constructor(Args&&... args) {

@@ -17,4 +17,4 @@
 #define SCL_NODISCARD
 #endif
 
-#define SCL_RETURN(EXPR) decltype((EXPR)) { return (EXPR); }
+#define SCL_RETURN(expr...) decltype(expr) { return expr; }

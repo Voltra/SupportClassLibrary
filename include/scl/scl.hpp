@@ -1,4 +1,6 @@
 #pragma once
+#include <array>
+#include <iostream>
 
 /**
  * Global namespace of the SCL
@@ -13,5 +15,6 @@ namespace scl {}
 #include "./exceptions/exceptions.hpp"
 #include "./detect/detect.hpp"
 #include "./utils/utils.hpp"
+#include "./stream/stream.hpp"
 
-#include "./prelude/prelude.hpp"
+#include "./prelude.h"

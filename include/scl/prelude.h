@@ -1,8 +1,9 @@
 #pragma once
-#include "../alias/alias.hpp"
-#include "../make/make.hpp"
-#include "../exceptions/exceptions.hpp"
-#include "../detect/detect.hpp"
+#include "./alias/alias.hpp"
+#include "./make/make.hpp"
+#include "./exceptions/exceptions.hpp"
+#include "./detect/detect.hpp"
+#include "./stream/stream.hpp"
 
 namespace scl {
     /**
@@ -19,5 +20,9 @@ namespace scl {
 
         using namespace scl::alias;
         using namespace scl::exceptions;
+        using namespace scl::stream;
+        using namespace scl::stream::creators;
+        using namespace scl::stream::operators;
+        using namespace scl::stream::terminators;
     }
 }  // namespace scl

@@ -42,10 +42,6 @@ namespace scl {
                 explicit SclOptionalEngine(OptionalNone) : SclOptionalEngine() {}
                 explicit SclOptionalEngine(T value) : payload{std::move(value)} {}
                 explicit SclOptionalEngine(T& ref) : payload{std::ref(ref)} {}
-                SclOptionalEngine(const StdOptionalEngine<T>& rhs) : payload{rhs.payload} {}
-                SclOptionalEngine(StdOptionalEngine<T>&& rhs) noexcept : payload{rhs.payload} {
-                    rhs.payload.destroy();
-                }
 
                 SclOptionalEngine& operator=(const SclOptionalEngine<T>& rhs) {
                     this->payload = rhs.payload;
@@ -58,7 +54,10 @@ namespace scl {
                     return *this;
                 }
 
-                SclOptionalEngine& operator=(OptionalNone) { this->payload.destroy(); }
+                SclOptionalEngine& operator=(OptionalNone) {
+                    this->payload.destroy();
+                    return *this;
+                }
 
                 SCL_NODISCARD bool hasValue() const { return this->payload.hasValue(); }
 
@@ -74,17 +73,19 @@ namespace scl {
                     return this->payload.get();
                 }
 
-#define SCL_TPL                                                                                \
-    template <class U, class = scl::meta::enable_if_t<                                         \
-                           !scl::meta::is_same<scl::meta::decay_t<U>, scl::meta::decay_t<T>>() \
-                           && !scl::meta::is_same<scl::meta::decay_t<U>, None>()               \
+#define SCL_TPL                                                                                   \
+    template <class U, class = scl::meta::enable_if_t<                                            \
+                           !scl::meta::is_same<scl::meta::decay_t<U>, scl::meta::decay_t<T>>()    \
+                           && !scl::meta::is_same<scl::meta::decay_t<U>, details::OptionalNone>() \
                            && !scl::meta::is_same<scl::meta::decay_t<U>, SclOptionalEngine>()>>
                 /**
                  * Implicit conversion universal ref constructor
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                SCL_TPL SclOptionalEngine(U&& value) { *this = std::forward<U&&>(value); }
+                SCL_TPL explicit SclOptionalEngine(U&& value) noexcept(std::forward<U&&>(value)) {
+                    *this = std::forward<U&&>(value);
+                }
 
                 /**
                  * Implicit conversion universal ref assignment
@@ -125,9 +126,13 @@ namespace scl {
 
                 StdOptionalEngine& operator=(StdOptionalEngine&& rhs) {
                     this->opt = exchange(rhs.opt, {});
+                    return *this;
                 }
 
-                StdOptionalEngine& operator=(OptionalNone) { this->opt.reset(); }
+                StdOptionalEngine& operator=(OptionalNone) {
+                    this->opt.reset();
+                    return *this;
+                }
 
                 SCL_NODISCARD bool hasValue() const { return opt.has_value(); }
 
@@ -188,7 +193,7 @@ namespace scl {
         template <class T, class OptionalEngine = details::DefaultOptionalEngine<T>>
         class Optional {
         public:
-            using engine_type = OptionalEngine;  // TODO: Make this dynamic later
+            using engine_type = OptionalEngine;
 
             using value_type = typename engine_type::value_type;
 
@@ -200,7 +205,6 @@ namespace scl {
             engine_type engine;
 
         public:
-
             /**
              * Construct an optional from a pointer
              * @param ptr being the pointer to construct from
@@ -243,14 +247,14 @@ namespace scl {
              * Creates a non empty optional with the given value (copy)
              * @param value being the value to assign from
              */
-            Optional(const value_type& value) : engine{value} {}
+            explicit Optional(value_type value) noexcept : engine{std::move(value)} {}
 
             /**
              * Assign a value to this optional
              * @param value being the value taken by the optional
              * @return a reference to this Optional
              */
-            Optional& operator=(const value_type& value) {
+            Optional& operator=(const value_type& value) noexcept {
                 this->engine = value;
                 return *this;
             }
@@ -259,14 +263,14 @@ namespace scl {
              * Copy constructor
              * @param o being the Optional to copy from
              */
-            Optional(const Optional& o) : engine{o.engine} {};
+            Optional(const Optional& o) noexcept : engine{o.engine} {};
 
             /**
              * Copy assignment operator
              * @param rhs being the Optional to assign from
              * @return a reference to this Optional<T>
              */
-            Optional& operator=(const Optional& rhs) {
+            Optional& operator=(const Optional& rhs) noexcept {
                 this->engine = rhs.engine;
                 return *this;
             };
@@ -296,7 +300,7 @@ namespace scl {
             /**
              * Instantiate an optional via an instance of None
              */
-            Optional(details::OptionalNone) : Optional() {}
+            Optional(details::OptionalNone) noexcept : Optional() {}
 
             /**
              * Assign from None
@@ -307,10 +311,10 @@ namespace scl {
                 return *this;
             }
 
-#define SCL_TPL                                                                                \
-    template <class U, class = scl::meta::enable_if_t<                                         \
-                           !scl::meta::is_same<scl::meta::decay_t<U>, scl::meta::decay_t<T>>() \
-                           && !scl::meta::is_same<scl::meta::decay_t<U>, None>()               \
+#define SCL_TPL                                                                                   \
+    template <class U, class = scl::meta::enable_if_t<                                            \
+                           !scl::meta::is_same<scl::meta::decay_t<U>, scl::meta::decay_t<T>>()    \
+                           && !scl::meta::is_same<scl::meta::decay_t<U>, details::OptionalNone>() \
                            && !scl::meta::is_same<scl::meta::decay_t<U>, Optional>()>>
 
             /**
@@ -318,7 +322,7 @@ namespace scl {
              * @tparam U being the type to implicitly convert from
              * @param value being the value to construct from
              */
-            TPL Optional(U&& value) : engine{std::forward<U&&>(value)} {}
+            SCL_TPL explicit Optional(U&& value) : engine{std::forward<U&&>(value)} {}
 
             /**
              * Implicit conversion universal ref assignment
@@ -326,7 +330,7 @@ namespace scl {
              * @param value being the value to assign from
              * @return a reference to this Optional
              */
-            TPL Optional& operator=(U&& value) {
+            SCL_TPL Optional& operator=(U&& value) {
                 this->engine = std::forward<U&&>(value);
                 return *this;
             }
@@ -385,19 +389,222 @@ namespace scl {
              * @return TRUE if there's a value, FALSE otherwise
              */
             SCL_NODISCARD operator bool() const { return this->hasValue(); }
+
+            /**
+             * Retrieves the value if there's one or return the default value provided
+             * @param defaultValue being the value to return if there's no values
+             * @return a const reference to the stored value
+             */
+            const value_type& orElse(const value_type& defaultValue) const {
+                return this->hasValue() ? this->get() : defaultValue;
+            }
+
+            /**
+             * Calls a function if the value is present
+             * @tparam F being the function's type
+             * @param f being the function to call
+             * @return a reference to this optional (for chaining purposes)
+             */
+            template <class F>
+            const Optional& doIfPresent(F&& f) const {
+                if (this->hasValue()) {
+                    std::forward<F>(f)(this->get());
+                }
+
+                return *this;
+            }
+
+            /**
+             * Calls a function if the value is present
+             * @tparam F being the function's type
+             * @param f being the function to call
+             * @return a reference to this optional (for chaining purposes)
+             */
+            template <class F>
+            Optional& doIfPresent(F&& f) {
+                if (this->hasValue()) {
+                    f(this->get());
+                }
+
+                return *this;
+            }
+
+            /**
+             * Alias for scl::utils::Optional::doIfPresent
+             */
+            template <class F>
+            const Optional& ifSome(F&& f) const {
+                return this->doIfPresent(std::forward<F>(f));
+            }
+
+            /**
+             * Alias for scl::utils::Optional::doIfPresent
+             */
+            template <class F>
+            Optional& ifSome(F&& f) {
+                return this->doIfPresent(std::forward<F>(f));
+            }
+
+            /**
+             * Calls a function if there is no value
+             * @tparam F being the function's type
+             * @param f being the function to call
+             * @return a reference to this optional (for chaining purposes)
+             */
+            template <class F>
+            const Optional& doIfEmpty(F&& f) const {
+                if (!this->hasValue()) std::forward<F>(f)();
+
+                return *this;
+            }
+
+            /**
+             * Calls a function if there is no value
+             * @tparam F being the function's type
+             * @param f being the function to call
+             * @return a reference to this optional (for chaining purposes)
+             */
+            template <class F>
+            Optional& doIfEmpty(F&& f) {
+                if (!this->hasValue()) std::forward<F>(f)();
+
+                return *this;
+            }
+
+            /**
+             * Alias for scl::utils::Optional::doIfEmpty
+             */
+            template <class F>
+            const Optional& ifNone(F&& f) const {
+                return this->doIfEmpty(std::forward<F>(f));
+            }
+
+            /**
+             * Alias for scl::utils::Optional::doIfEmpty
+             */
+            template <class F>
+            Optional& ifNone(F&& f) {
+                return this->doIfEmpty(std::forward<F>(f));
+            }
+
+            /**
+             * Tries to retrieve the value, throws the given exception if there's none
+             * @tparam E being the exception type
+             * @param e being the exception to throw if there's no value
+             * @return a const& to the value
+             */
+            template <class E>
+            const value_type& orThrow(const E& e) const {
+                if (this->hasValue()) return this->get();
+
+                throw e;
+            }
+
+            /**
+             * Tries to retrieve the value, throws the given exception if there's none
+             * @tparam E being the exception type
+             * @param e being the exception to throw if there's no value
+             * @return a ref to the value
+             */
+            template <class E>
+            value_type& orThrow(const E& e) {
+                if (this->hasValue()) return this->get();
+
+                throw e;
+            }
+
+            /**
+             * Maps this Optional<T> to an Optional<U> via the provided mapper function (T -> U)
+             * @tparam F being the type of the mapper function (auto deduction)
+             * @tparam U being the value type for the mapped optional (auto deduction from F)
+             * @param mapper being the mapper function to use to map values
+             * @return an Optional<U>
+             */
+            template <class F, class U = scl::meta::return_t<F>>
+            Optional<U> map(F&& mapper) const {
+                if (this->hasValue()) {
+                    const value_type& x = this->get();
+                    return mapper(x);
+                }
+
+                return none;
+            }
+
+            /**
+             * Alias for Optional::map
+             */
+            template <class F, class U = scl::meta::return_t<F>>
+            Optional<U> mapTo(F&& mapper) const {
+                return this->map<U>(mapper);
+            }
+
+            /**
+             * Filters the value according to the given predicate
+             * @tparam F being the type of predicate (auto deduction)
+             * @param predicate being the predicate used to determine whether or not it should keep
+             * the value
+             * @return a new optional that might not contain the original value
+             */
+            template <class F>
+            Optional<T> filter(F predicate) const {
+                if (this->hasValue()) {
+                    const value_type& x = this->get();
+                    return predicate(x) ? Optional<T>{x} : Optional<T>{};
+                }
+
+                return none;
+            }
+
+            /**
+             * Flat maps this optional to an optional of another type
+             * @tparam F being the type of the mapper function (auto deduction)
+             * @tparam U being the value type for the mapped optional (auto deduction from F)
+             * @param mapper being the mapper function
+             * @return the mapped optional
+             */
+            template <class F, class U = scl::meta::return_t<F>>
+            Optional<U> flatMap(F&& mapper) const {
+                return this->hasValue() ? mapper(this->get()) : none;
+            }
+
+            /**
+             * Alias for Optional::flatMap
+             */
+            template <class F, class U = scl::meta::return_t<F>>
+            Optional<U> flatMapTo(F&& mapper) const {
+                return this->flatMap<U>(std::forward<F>(mapper));
+            }
+
+            inline bool operator==(details::OptionalNone) const{ return !this->hasValue(); }
+            inline friend bool operator==(details::OptionalNone, const Optional& o){ return o == none; }
+
+            inline bool operator<(details::OptionalNone) const{ return false; }
+            inline friend bool operator<(details::OptionalNone, const Optional&){ return true; }
+
+            inline bool operator<=(details::OptionalNone) const{ return (*this) == none; }
+            inline friend bool operator<=(details::OptionalNone, const Optional&){ return true; }
+
+            inline bool operator>(details::OptionalNone) const{ return true; }
+            inline friend bool operator>(details::OptionalNone, const Optional&){ return false; }
+
+            inline bool operator>=(details::OptionalNone) const{ return true; }
+            inline friend bool operator>=(details::OptionalNone, const Optional& o){ return o <= none; }
+
+            inline bool operator!=(details::OptionalNone) const{ return !((*this) == none); }
+            inline friend bool operator!=(details::OptionalNone, const Optional& o){ return o != none; }
         };
     }  // namespace utils
 }  // namespace scl
 
 namespace std {
-    constexpr std::string to_string(const scl::utils::details::OptionalNone&) {
+    std::string to_string(const scl::utils::details::OptionalNone&) {
         return "[none ; scl::utils::details::OptionalNone]";
     }
 
-    template <class T, class OptionalEngine, class = scl::meta::void_enable_if_t<
-        scl::meta::exists<decltype(std::to_string(std::declval<const scl::utils::Optional<T, OptionalEngine>&>()))>()
-    >>
-    constexpr std::string to_string(const scl::utils::Optional<T, OptionalEngine>& optional) {
+    template <class T, class OptionalEngine,
+              class = scl::meta::void_enable_if_t<
+                  scl::meta::exists<decltype(std::to_string(std::declval<const T&>()))>()>>
+    std::string to_string(const scl::utils::Optional<T, OptionalEngine>& optional) {
         if (optional.hasValue()) {
             return to_string(*optional);
         } else {
