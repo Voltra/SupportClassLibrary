@@ -17,7 +17,7 @@ namespace scl {
                 /**
                  * Ensure that the payload has been generated before use
                  */
-                void ensureGenerated() const {
+                void ensureGenerated() {
                     if (!generated) {
                         this->alt = std::move(gen());
                         generated = true;
@@ -50,7 +50,7 @@ namespace scl {
                  * Retrieve the underlying sum type
                  * @return an Either containing a value on its left or an invalid tag on its right
                  */
-                alternative& value() const {
+                alternative& value() {
                     ensureGenerated();
                     return alt;
                 }
@@ -59,7 +59,7 @@ namespace scl {
                  * Determine whether or not the underlying sum type store an invalid tag
                  * @return TRUE if it does, FALSE otherwise
                  */
-                bool isInvalid() const {
+                bool isInvalid() {
                     ensureGenerated();
                     return !alt.hasValue();
                 }
@@ -68,14 +68,14 @@ namespace scl {
                  * Determine whether or not the underlying sum type stores a value
                  * @return TRUE if it does, FALSE otherwise
                  */
-                bool isValid() const { return !this->isInvalid(); }
+                bool isValid() { return !this->isInvalid(); }
 
                 /**
                  * Create a payload with a value set
                  * @param value being the value of the payload
                  * @return the instantiated payload
                  */
-                constexpr static StreamPayload withValue(T&& value) {
+                constexpr static StreamPayload withValue(T value) {
                     auto wrapper = scl::make::rvalueCapture(std::move(value), [](T value){
                         return alternative{std::move(value)};
                     });
@@ -102,13 +102,13 @@ namespace scl {
                  * @var alt
                  * The optional result (as a cache)
                  */
-                mutable alternative alt;
+                alternative alt;
 
                 /**
                  * @var generated
                  * Computation cache flag
                  */
-                mutable bool generated = false;
+                bool generated = false;
             };
         }  // namespace details
     }      // namespace stream

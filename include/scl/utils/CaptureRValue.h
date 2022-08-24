@@ -16,11 +16,11 @@ namespace scl {
             F func;
 
         public:
-            CaptureRValue(T&& val, F&& f) : value{std::move(val)}, func{std::move(f)} {
+            constexpr CaptureRValue(T&& val, F&& f) : value{std::move(val)}, func{std::move(f)} {
             }
 
             template <class... Args>
-            auto operator()(Args&&... args) -> SCL_RETURN(
+            constexpr auto operator()(Args&&... args) -> SCL_RETURN(
                 func(std::move(value), std::forward<Args>(args)...)
             )
         };
