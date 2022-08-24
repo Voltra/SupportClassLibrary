@@ -42,7 +42,8 @@ namespace scl {
                         : iterator_type{std::move(p)}, mapper{std::move(mapper)} {}
 
                     payload_type next() final {
-                        auto alt = this->parent()->next().value();
+                        auto next = this->parent().next();
+                        auto alt = next.value();
 
                         return alt.hasValue() ? payload_type::withValue(this->mapper(*alt))
                                               : payload_type::withoutValue();
@@ -91,7 +92,7 @@ namespace scl {
             details::map_toolbox<T, U> map(F&& mapper) {
                 using mapper_t = typename details::map_toolbox<T, U>::mapper_t;
 
-                return mapper_t{std::forward<F>(mapper)};
+                return {mapper_t{std::forward<F>(mapper)}};
             }
 
             /**

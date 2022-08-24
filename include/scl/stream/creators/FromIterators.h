@@ -21,11 +21,11 @@ namespace scl {
                  * @tparam It being the type of the iterators
                  */
                 template <class It>
-                class FromStlIterator final
-                    : public scl::stream::details::BaseStreamIterator<iterator_value_type<It>> {
+                class FromIterators final
+                    : public virtual scl::stream::details::BaseStreamIterator<iterator_value_type<It>> {
                 public:
                     using value_type = iterator_value_type<It>;
-                    using iterator_type = FromStlIterator;
+                    using iterator_type = FromIterators;
                     using payload_type = typename scl::stream::details::BaseStreamIterator<value_type>::payload_type;
 
                 protected:
@@ -36,7 +36,7 @@ namespace scl {
                      * @var end
                      * the iterator to the point after the last element
                      */
-                    It begin, end;
+                    It begin_, end_;
 
                 public:
                     /**
@@ -44,14 +44,14 @@ namespace scl {
                      * @param begin being the beginning of the range
                      * @param end being the end of the range
                      */
-                    FromStlIterator(It begin, It end) : begin{begin}, end{end} {}
+                    FromIterators(It begin, It end) : begin_{begin}, end_{end} {}
 
-                    bool hasNext() const final { return begin != end; }
+                    bool hasNext() const final { return begin_ != end_; }
 
                     payload_type next() final {
                         if (!this->hasNext()) return payload_type::withoutValue();
 
-                        value_type& value = *(begin++);
+                        value_type& value = *(begin_++);
                         return payload_type::withValue(std::move(value));
                     }
                 };
@@ -61,8 +61,8 @@ namespace scl {
                 scl::meta::is_iterator<It>()
             >>
             auto streamFrom(It begin, It end) -> SCL_RETURN(
-                Stream<typename details::FromStlIterator<It>::value_type, details::FromStlIterator<It>>{
-                    details::FromStlIterator<It>{begin, end}
+                Stream<typename details::FromIterators<It>::value_type, details::FromIterators<It>>{
+                    details::FromIterators<It>{begin, end}
                 }
             )
         }      // namespace creators

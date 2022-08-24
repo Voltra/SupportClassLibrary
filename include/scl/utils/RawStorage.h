@@ -1,4 +1,6 @@
 #pragma once
+#include <memory>
+#include <new>
 #include "../meta/meta.hpp"
 #include "./exchange.h"
 
@@ -25,19 +27,57 @@ namespace scl {
 
             T* ptr() { return reinterpret_cast<T*>(this->rawPtr()); }
 
+            /**
+             * Construct the variable in the storage
+             * @tparam Args being the types of arguments passed to the constructor
+             * @param args being the arguments passed to the constructor
+             * @return a mutable reference to the constructed object
+             *
+             * @warning Uses placement new
+             * @warning Cleans the memory if there was data (calls the destructor)
+             */
+            template <class... Args>
+            void initialize(Args&&... args) noexcept {
+                this->destructor();
+                new (this->rawPtr()) T{std::forward<Args>(args)...};
+                this->init = true;
+            }
+
         public:
             RawStorage() : storage{}, init{false} {}
 
-            RawStorage(RawStorage&& other) noexcept : RawStorage() {
+            RawStorage(RawStorage&& other) : RawStorage() {
                 this->destructor();
-                this->constructor(std::move(other.get()));
+                this->initialize(std::move(other.get()));
                 this->init = exchange(other.init, false);
             }
 
-            RawStorage& operator=(RawStorage&& other) noexcept {
+            RawStorage(const RawStorage& other) : RawStorage() {
                 this->destructor();
-                this->constructor(std::move(other.get()));
-                this->init = exchange(other.init, false);
+                this->initialize(std::ref(other.get()));
+                this->init = other.init;
+            }
+
+            RawStorage(T&& value) : RawStorage() {
+                this->reinit(std::move(value));
+            }
+
+            RawStorage& operator=(RawStorage&& other) {
+                this->destructor();
+
+                if (!other.init) {
+                    this->init = false;
+                } else {
+                    this->initialize(std::move(other.get()));
+                    this->init = exchange(other.init, false);
+                }
+
+                return *this;
+            }
+
+            RawStorage& operator=(T&& value) {
+                this->reinit(std::move(value));
+                return *this;
             }
 
             ~RawStorage() { this->destructor(); }
@@ -53,9 +93,7 @@ namespace scl {
              */
             template <class... Args>
             T& constructor(Args&&... args) {
-                this->destructor();
-                new (rawPtr()) T{std::forward<Args>(args)...};
-                this->init = true;
+                this->initialize(std::forward<Args>(args)...);
                 return this->get();
             }
 
@@ -63,7 +101,7 @@ namespace scl {
              * Call the destructor on the allocated object
              * @warning If non initialized, it is a no-op
              */
-            void destructor() {
+            void destructor() noexcept {
                 if (this->init) {
                     this->ptr()->~T();
                     this->init = false;
@@ -81,15 +119,21 @@ namespace scl {
             /**
              * Alias for RawStorage::destructor
              */
-            void destroy() { this->destructor(); }
+            void destroy() noexcept { this->destructor(); }
 
             /**
              * Alias for RawStorage::destroy
              * @return a reference to this RawStorage
              */
-            RawStorage& reset() {
+            RawStorage& reset() noexcept {
                 this->destroy();
                 return *this;
+            }
+
+            template <class... Args>
+            void reinit(Args&&... args) {
+                this->destroy();
+                this->constructor(std::forward<Args>(args)...);
             }
 
             /**
@@ -97,7 +141,7 @@ namespace scl {
              * @return a mutable reference to the underlying data
              * @throws scl::exceptions::UninitializedMemoryAccess
              */
-            T& get() {
+            T& get() & {
                 if (!this->init) throw scl::exceptions::UninitializedMemoryAccess{};
 
                 return *ptr();
@@ -108,24 +152,10 @@ namespace scl {
              * @return a mutable reference to the underlying data
              * @throws scl::exceptions::UninitializedMemoryAccess
              */
-            T& operator*() { return this->get(); }
-
-            /**
-             * Get a pointer to the underlying data
-             * @return a mutable pointer to the underlying data
-             * @throws scl::exceptions::UninitializedMemoryAccess
-             */
-            T* operator->() { return &(this->get()); }
-
-            /**
-             * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the
-             * storage)
-             * @return an immutable reference to the underlying value
-             */
-            const T& get() const {
+            T&& get() && {
                 if (!this->init) throw scl::exceptions::UninitializedMemoryAccess{};
 
-                return *reinterpret_cast<const T*>(&this->storage);
+                return std::move(*ptr());
             }
 
             /**
@@ -133,7 +163,39 @@ namespace scl {
              * storage)
              * @return an immutable reference to the underlying value
              */
-            const T& operator*() const { return this->get(); }
+            const T& get() const& {
+                if (!this->init) throw scl::exceptions::UninitializedMemoryAccess{};
+
+                return *reinterpret_cast<const T*>(&this->storage);
+            }
+
+            /**
+             * Access the underlying data
+             * @return a mutable reference to the underlying data
+             * @throws scl::exceptions::UninitializedMemoryAccess
+             */
+            T& operator*() & { return this->get(); }
+
+            /**
+             * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the
+             * storage)
+             * @return an immutable reference to the underlying value
+             */
+            const T& operator*() const& { return this->get(); }
+
+            /**
+             * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the
+             * storage)
+             * @return an immutable reference to the underlying value
+             */
+            T&& operator*() && { return this->get(); }
+
+            /**
+             * Get a pointer to the underlying data
+             * @return a mutable pointer to the underlying data
+             * @throws scl::exceptions::UninitializedMemoryAccess
+             */
+            T* operator->() { return &(this->get()); }
 
             /**
              * Get a pointer to the value from a constant RawStorage (e.g. w/ a constant class that

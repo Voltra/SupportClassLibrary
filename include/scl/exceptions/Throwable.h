@@ -25,6 +25,6 @@ namespace scl {
 
 namespace std {
     std::string to_string(const scl::exceptions::Throwable& throwable) {
-        return std::string{t.type()} + " : " + t.reason();
+        return std::string{throwable.type()} + " : " + throwable.reason();
     }
 }

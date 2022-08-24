@@ -1,7 +1,7 @@
 #pragma once
+#include "../../meta/meta.hpp"
 #include "../Stream.h"
 #include "../details/EndStreamIterator.h"
-#include "../../meta/meta.hpp"
 
 namespace scl {
     namespace stream {
@@ -15,9 +15,11 @@ namespace scl {
                  * @tparam T being the value type
                  */
                 template <class T, class ParentIterator>
-                class ForEachTerminator : public scl::stream::details::EndStreamIterator<void, T, ParentIterator> {
+                class ForEachTerminator
+                    : public scl::stream::details::EndStreamIterator<void, T, ParentIterator> {
                 public:
-                    using iterator_type = scl::stream::details::EndStreamIterator<void, T, ParentIterator>;
+                    using iterator_type
+                        = scl::stream::details::EndStreamIterator<void, T, ParentIterator>;
                     using value_type = typename iterator_type::value_type;
                     using payload_type = typename iterator_type::payload_type;
                     using result_type = typename iterator_type::result_type;
@@ -28,25 +30,29 @@ namespace scl {
                      * @typedef consumer_type
                      * The type of functions to call on each element
                      */
-                    using consumer_type = scl::stream::terminators::details::consumer_type<value_type>;
+                    using consumer_type
+                        = scl::stream::terminators::details::consumer_type<value_type>;
 
                     /**
                      * Construct a terminator from its parent and a consumer
                      * @param p being the parent iterator
                      * @param c being the consumer function
                      */
-                    ForEachTerminator(parent_type p, consumer_type c)
-                        : iterator_type{std::move(p)}, consumer{std::move(c)} {}
+                    ForEachTerminator(parent_iterator_type p, consumer_type c)
+                        : iterator_type(std::move(p)), consumer{std::move(c)} {}
 
-                    void process() {
+                    void process() final {
                         while (this->hasNext()) {
-                            auto&& v = this->next();
-                            if (v.isValid()) v.value().ifSome(consumer);
+                            auto v = this->next();
+                            if (v.isValid()) {
+                                auto opt = v.value();
+                                opt.ifSome(consumer);
+                            }
                         }
-                        /*for(auto payload : *this) {
-                                if(payload.isValid())
-                                        payload.value().doIfPresent(consumer);
-                        }*/
+
+//                        for (auto&& payload : *this) {
+//                            if (payload.isValid()) payload.value().ifSome(consumer);
+//                        }
                     };
 
                 protected:
@@ -85,8 +91,7 @@ namespace scl {
              * @param callback being the callback
              * @return a toolbox tag for pipe operator
              */
-            template <class F,
-                      class T = scl::meta::remove_cv_ref_t<scl::meta::arg_t<F, 0>>>
+            template <class F, class T = scl::meta::remove_cv_ref_t<scl::meta::arg_t<F, 0>>>
             details::for_each_toolbox<T> forEach(F&& callback) {
                 return {std::forward<F>(callback)};
             }
@@ -111,7 +116,8 @@ namespace scl {
              */
             template <class T, class It>
             void operator|(Stream<T, It>&& lhs, details::for_each_toolbox<T>&& rhs) {
-                details::ForEachTerminator<T, It> forEachTerminator{std::move(lhs.it()), std::move(rhs.callback)};
+                details::ForEachTerminator<T, It> forEachTerminator{std::move(lhs.it()),
+                                                                    std::move(rhs.callback)};
 
                 forEachTerminator.process();
             }

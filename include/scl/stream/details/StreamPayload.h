@@ -2,6 +2,7 @@
 #include <functional>
 #include <utility>
 #include "../../utils/Optional.h"
+#include "../../make/rvalue.h"
 
 namespace scl {
     namespace stream {
@@ -18,7 +19,7 @@ namespace scl {
                  */
                 void ensureGenerated() const {
                     if (!generated) {
-                        this->alt = gen();
+                        this->alt = std::move(gen());
                         generated = true;
                     }
                 }
@@ -43,13 +44,13 @@ namespace scl {
                  * Construct a payload with its producer function
                  * @param prod being the producer function to use
                  */
-                explicit StreamIteratorPayload(producer prod) : gen{prod}, alt{} {}
+                explicit StreamPayload(producer prod) : gen{prod}, alt{} {}
 
                 /**
                  * Retrieve the underlying sum type
                  * @return an Either containing a value on its left or an invalid tag on its right
                  */
-                alternative& value() {
+                alternative& value() const {
                     ensureGenerated();
                     return alt;
                 }
@@ -58,7 +59,7 @@ namespace scl {
                  * Determine whether or not the underlying sum type store an invalid tag
                  * @return TRUE if it does, FALSE otherwise
                  */
-                bool isInvalid() {
+                bool isInvalid() const {
                     ensureGenerated();
                     return !alt.hasValue();
                 }
@@ -67,7 +68,7 @@ namespace scl {
                  * Determine whether or not the underlying sum type stores a value
                  * @return TRUE if it does, FALSE otherwise
                  */
-                bool isValid() { return !this->isInvalid(); }
+                bool isValid() const { return !this->isInvalid(); }
 
                 /**
                  * Create a payload with a value set
@@ -75,7 +76,11 @@ namespace scl {
                  * @return the instantiated payload
                  */
                 constexpr static StreamPayload withValue(T&& value) {
-                    return StreamPayload{[&] { return alternative{std::move(value)}; }};
+                    auto wrapper = scl::make::rvalueCapture(std::move(value), [](T value){
+                        return alternative{std::move(value)};
+                    });
+
+                    return StreamPayload{std::move(wrapper)}; // How to move the alt in (instead of copying)
                 }
 
                 /**
@@ -97,13 +102,13 @@ namespace scl {
                  * @var alt
                  * The optional result (as a cache)
                  */
-                alternative alt;
+                mutable alternative alt;
 
                 /**
                  * @var generated
                  * Computation cache flag
                  */
-                bool generated = false;
+                mutable bool generated = false;
             };
         }  // namespace details
     }      // namespace stream

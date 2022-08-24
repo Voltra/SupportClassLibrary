@@ -42,6 +42,8 @@ namespace scl {
                 explicit SclOptionalEngine(OptionalNone) : SclOptionalEngine() {}
                 explicit SclOptionalEngine(T value) : payload{std::move(value)} {}
                 explicit SclOptionalEngine(T& ref) : payload{std::ref(ref)} {}
+                SclOptionalEngine(SclOptionalEngine&& rhs) : payload{std::move(rhs.payload)} {}
+                SclOptionalEngine(const SclOptionalEngine& rhs) : payload{rhs.payload} {}
 
                 SclOptionalEngine& operator=(const SclOptionalEngine<T>& rhs) {
                     this->payload = rhs.payload;
@@ -61,16 +63,22 @@ namespace scl {
 
                 SCL_NODISCARD bool hasValue() const { return this->payload.hasValue(); }
 
-                SCL_NODISCARD value_type& get() {
+                SCL_NODISCARD value_type& get() & {
                     if (!this->hasValue()) throw exceptions::EmptyOptionalAccess{};
 
                     return this->payload.get();
                 }
 
-                SCL_NODISCARD const value_type& get() const {
+                SCL_NODISCARD const value_type& get() const& {
                     if (!this->hasValue()) throw exceptions::EmptyOptionalAccess{};
 
                     return this->payload.get();
+                }
+
+                SCL_NODISCARD value_type&& get() && {
+                    if (!this->hasValue()) throw exceptions::EmptyOptionalAccess{};
+
+                    return std::move(this->payload.get());
                 }
 
 #define SCL_TPL                                                                                   \
@@ -124,7 +132,7 @@ namespace scl {
                     return *this;
                 }
 
-                StdOptionalEngine& operator=(StdOptionalEngine&& rhs) {
+                StdOptionalEngine& operator=(StdOptionalEngine&& rhs) noexcept {
                     this->opt = exchange(rhs.opt, {});
                     return *this;
                 }
@@ -389,6 +397,30 @@ namespace scl {
              * @return TRUE if there's a value, FALSE otherwise
              */
             SCL_NODISCARD operator bool() const { return this->hasValue(); }
+
+            /**
+             * Alias for scl::utils::Optional::get
+             * @return A const reference to the optional's value
+             */
+            SCL_NODISCARD const value_type& operator*() const& {
+                return this->get();
+            }
+
+            /**
+             * Alias for scl::utils::Optional::get
+             * @return A const reference to the optional's value
+             */
+            SCL_NODISCARD value_type& operator*() & {
+                return this->get();
+            }
+
+            /**
+             * Alias for scl::utils::Optional::get
+             * @return A const reference to the optional's value
+             */
+            SCL_NODISCARD value_type&& operator*() && {
+                return this->get();
+            }
 
             /**
              * Retrieves the value if there's one or return the default value provided

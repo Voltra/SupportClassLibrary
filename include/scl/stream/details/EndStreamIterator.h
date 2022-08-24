@@ -53,7 +53,7 @@ namespace scl {
                  * Construct from a parent iterator
                  * @param p being this iterator's parent
                  */
-                explicit EndStreamIterator(parent_type p) : parent_{std::move(p)} {}
+                explicit EndStreamIterator(parent_iterator_type p) : parent_{std::move(p)} {}
 
                 EndStreamIterator(const EndStreamIterator&) = delete;
                 EndStreamIterator& operator=(const EndStreamIterator&) = delete;
@@ -90,7 +90,7 @@ namespace scl {
                  * @var parent_
                  * @brief This iterator's parent
                  */
-                parent_type parent_;
+                parent_iterator_type parent_;
             };
         }  // namespace details
     }      // namespace stream

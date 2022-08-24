@@ -6,7 +6,11 @@ namespace scl {
      * Utility classes (and rare functions)
      */
     namespace utils {}
-}
+}  // namespace scl
 
-#include "./invoke.h"
+#include "./CaptureRValue.h"
+#include "./Optional.h"
+#include "./RValueForwarder.h"
 #include "./RawStorage.h"
+#include "./exchange.h"
+#include "./invoke.h"

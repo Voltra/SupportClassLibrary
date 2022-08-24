@@ -1,5 +1,5 @@
 #pragma once
-#include "./void_t.h"
+#include "../type_aliases/void_t.h"
 
 namespace scl {
     namespace meta {

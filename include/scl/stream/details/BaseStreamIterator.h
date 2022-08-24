@@ -15,6 +15,8 @@ namespace scl {
                  * Type alias for the iterator type
                  */
                 using iterator_type = StreamIterator<T>;
+
+                using parent_type = T;
             };
         }  // namespace details
     }      // namespace stream

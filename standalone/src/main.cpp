@@ -2,7 +2,6 @@
 #include <iostream>
 #include <scl/prelude.h>
 #include <string>
-#include <unordered_map>
 
 using namespace scl::prelude;
 

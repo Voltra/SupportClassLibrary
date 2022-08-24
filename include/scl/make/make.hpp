@@ -13,3 +13,4 @@ namespace scl {
 #include "./shared.h"
 #include "./unique.h"
 #include "./atomic.h"
+#include "./rvalue.h"

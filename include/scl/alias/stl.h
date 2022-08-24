@@ -43,7 +43,7 @@ namespace scl {
          * A sorted set of unique values
          * @tparam Value being the type of values stored (used for sorting)
          */
-        template <class Value, class Comparator = std::less<Key>,
+        template <class Value, class Comparator = std::less<Value>,
                   class Allocator = std::allocator<Value>>
         using SortedSet = std::set<Value, Comparator, Allocator>;
 
