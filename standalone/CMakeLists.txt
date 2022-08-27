@@ -21,3 +21,5 @@ add_executable(${PROJECT_NAME} ${sources})
 set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 11 OUTPUT_NAME "SupportClassLibrary")
 
 target_link_libraries(${PROJECT_NAME} SupportClassLibrary::SupportClassLibrary)
+
+SET(CMAKE_BUILD_TYPE Debug)

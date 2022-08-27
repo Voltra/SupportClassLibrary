@@ -15,7 +15,7 @@ namespace scl {
                  * @tparam T being the value type
                  */
                 template <class T, class ParentIterator>
-                class ForEachTerminator
+                class ForEachTerminator final
                     : public scl::stream::details::EndStreamIterator<void, T, ParentIterator> {
                 public:
                     using iterator_type
@@ -42,17 +42,12 @@ namespace scl {
                         : iterator_type(std::move(p)), consumer{std::move(c)} {}
 
                     void process() final {
-                        while (this->hasNext()) {
-                            auto v = this->next();
-                            if (v.isValid()) {
-                                auto opt = v.value();
+                        for (auto payload : *this) {
+                            if (payload.isValid()) {
+                                auto&& opt = payload.value();
                                 opt.ifSome(consumer);
                             }
                         }
-
-//                        for (auto&& payload : *this) {
-//                            if (payload.isValid()) payload.value().ifSome(consumer);
-//                        }
                     };
 
                 protected:
@@ -68,7 +63,7 @@ namespace scl {
                  * @tparam T being the value type
                  */
                 template <class T>
-                struct for_each_toolbox {
+                struct for_each_terminator_payload {
                     /**
                      * @typedef callback_t
                      * The function type of a callback
@@ -92,7 +87,7 @@ namespace scl {
              * @return a toolbox tag for pipe operator
              */
             template <class F, class T = scl::meta::remove_cv_ref_t<scl::meta::arg_t<F, 0>>>
-            details::for_each_toolbox<T> forEach(F&& callback) {
+            details::for_each_terminator_payload<T> forEach(F&& callback) {
                 return {std::forward<F>(callback)};
             }
 
@@ -103,8 +98,8 @@ namespace scl {
              * @return a toolbox tag for pipe operator
              */
             template <class T>
-            details::for_each_toolbox<T> forEach_(
-                typename details::for_each_toolbox<T>::callback_t&& cb) {
+            details::for_each_terminator_payload<T> forEach_(
+                typename details::for_each_terminator_payload<T>::callback_t&& cb) {
                 return {std::move(cb)};
             }
 
@@ -115,7 +110,7 @@ namespace scl {
              * @return The mapped stream
              */
             template <class T, class It>
-            void operator|(Stream<T, It>&& lhs, details::for_each_toolbox<T>&& rhs) {
+            void operator|(Stream<T, It>&& lhs, details::for_each_terminator_payload<T>&& rhs) {
                 details::ForEachTerminator<T, It> forEachTerminator{std::move(lhs.it()),
                                                                     std::move(rhs.callback)};
 

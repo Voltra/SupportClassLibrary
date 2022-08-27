@@ -10,3 +10,4 @@ namespace scl {
 
 #include "./type_aliases/type_aliases.hpp"
 #include "./type_queries/type_queries.hpp"
+#include "./base/base.hpp"

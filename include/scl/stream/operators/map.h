@@ -43,7 +43,7 @@ namespace scl {
 
                     payload_type next() final {
                         auto next = this->parent().next();
-                        auto alt = next.value();
+                        auto&& alt = next.value();
 
                         return alt.hasValue() ? payload_type::withValue(this->mapper(*alt))
                                               : payload_type::withoutValue();
@@ -63,7 +63,7 @@ namespace scl {
                  * @tparam U being the type to map to
                  */
                 template <class T, class U>
-                struct map_toolbox {
+                struct map_operator_payload {
                     /**
                      * @typedef mapper_t
                      * The mapper function type
@@ -89,8 +89,8 @@ namespace scl {
              */
             template <class F, class T = scl::meta::decay_t<scl::meta::arg_t<F, 0>>,
                       class U = scl::meta::decay_t<scl::meta::return_t<F>>>
-            details::map_toolbox<T, U> map(F&& mapper) {
-                using mapper_t = typename details::map_toolbox<T, U>::mapper_t;
+            details::map_operator_payload<T, U> map(F&& mapper) {
+                using mapper_t = typename details::map_operator_payload<T, U>::mapper_t;
 
                 return {mapper_t{std::forward<F>(mapper)}};
             }
@@ -103,7 +103,7 @@ namespace scl {
              * @return the toolbox tag for pipe operators
              */
             template <class T, class U = T>
-            details::map_toolbox<T, U> map_(typename details::map_toolbox<T, U>::mapper_t mapper) {
+            details::map_operator_payload<T, U> map_(typename details::map_operator_payload<T, U>::mapper_t mapper) {
                 return {mapper};
             }
 
@@ -114,7 +114,7 @@ namespace scl {
              * @return The mapped stream
              */
             template <class T, class U, class It>
-            auto operator|(Stream<T, It>&& lhs, details::map_toolbox<T, U>&& rhs)
+            auto operator|(Stream<T, It>&& lhs, details::map_operator_payload<T, U>&& rhs)
                 -> SCL_RETURN(Stream<U, details::MapOperator<T, U, It>>{
                     details::MapOperator<T, U, It>{std::move(lhs.it()), rhs.mapper}})
         }  // namespace operators

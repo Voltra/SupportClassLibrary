@@ -19,7 +19,7 @@ namespace scl {
                  */
                 void ensureGenerated() {
                     if (!generated) {
-                        this->alt = std::move(gen());
+                        this->alt = gen();
                         generated = true;
                     }
                 }
@@ -45,6 +45,13 @@ namespace scl {
                  * @param prod being the producer function to use
                  */
                 explicit StreamPayload(producer prod) : gen{prod}, alt{} {}
+
+                StreamPayload(StreamPayload&& rhs) noexcept = default;
+
+                StreamPayload& operator=(StreamPayload&&) noexcept = default;
+
+//                StreamPayload(const StreamPayload&) = default;
+//                StreamPayload& operator=(const StreamPayload&) = default;
 
                 /**
                  * Retrieve the underlying sum type

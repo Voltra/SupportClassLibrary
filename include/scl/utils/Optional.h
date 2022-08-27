@@ -28,9 +28,40 @@ namespace scl {
                 constexpr bool operator>=(OptionalNone) const { return true; }
             };
 
+            template <class T, class Derived>
+            struct OptionalEngineCopyBase : public scl::meta::crtp_base<Derived> {
+                OptionalEngineCopyBase() noexcept = default;
+
+                explicit OptionalEngineCopyBase(const OptionalEngineCopyBase& rhs) noexcept(scl::meta::is_nothrow_copyable<T>()) {
+                    this->self_().payload = rhs.self_().payload;
+                }
+
+                OptionalEngineCopyBase& operator=(const OptionalEngineCopyBase& rhs) noexcept(scl::meta::is_nothrow_copyable<T>()) {
+                    this->self_().payload = rhs.self_().payload;
+                    return *this;
+                }
+
+                explicit OptionalEngineCopyBase(const T& ref) noexcept(scl::meta::is_nothrow_copyable<T>()) {
+                    this->self_().payload = ref;
+                }
+            };
+
+            /*template <class T, class Derived>
+            using optional_copy_base = scl::meta::conditional_t<
+                scl::meta::is_copyable<T>(),
+                OptionalEngineCopyBase<T, Derived>,
+                scl::meta::non_copyable_base
+            >;*/
+
+            template <class T, class Derived>
+            using optional_copy_base = scl::meta::copy_base<T>;
+
             template <class T>
-            struct SclOptionalEngine {
+            struct SclOptionalEngine : public optional_copy_base<T, SclOptionalEngine<T>> {
                 using value_type = scl::meta::remove_cv_ref_t<T>;
+
+                using optional_copy_base<T, SclOptionalEngine<T>>::optional_copy_base;
+                using optional_copy_base<T, SclOptionalEngine<T>>::operator=;
 
                 /**
                  * @var payload
@@ -40,21 +71,7 @@ namespace scl {
 
                 SclOptionalEngine() : payload{} {}
                 explicit SclOptionalEngine(OptionalNone) : SclOptionalEngine() {}
-                explicit SclOptionalEngine(T value) : payload{std::move(value)} {}
-                explicit SclOptionalEngine(T& ref) : payload{std::ref(ref)} {}
-                SclOptionalEngine(SclOptionalEngine&& rhs) : payload{std::move(rhs.payload)} {}
-                SclOptionalEngine(const SclOptionalEngine& rhs) : payload{rhs.payload} {}
-
-                SclOptionalEngine& operator=(const SclOptionalEngine<T>& rhs) {
-                    this->payload = rhs.payload;
-                    return *this;
-                }
-
-                SclOptionalEngine& operator=(SclOptionalEngine<T>&& rhs) noexcept {
-                    this->payload = std::move(rhs.payload);
-                    rhs.payload.destroy();
-                    return *this;
-                }
+                explicit SclOptionalEngine(T&& value) : payload{std::move(value)} {}
 
                 SclOptionalEngine& operator=(OptionalNone) {
                     this->payload.destroy();
@@ -110,54 +127,57 @@ namespace scl {
 
 #ifdef SCL_CPP17
             template <class T>
-            struct StdOptionalEngine {
+            struct StdOptionalEngine : public optional_copy_base<T, StdOptionalEngine<T>> {
                 using value_type = scl::meta::remove_cv_ref_t<T>;
 
-                std::optional<T> opt;
+                using optional_copy_base<T, StdOptionalEngine<T>>::optional_copy_base;
 
-                StdOptionalEngine() : opt{} {}
+                std::optional<T> payload;
+
+                StdOptionalEngine() : payload{} {}
 
                 StdOptionalEngine(OptionalNone) : StdOptionalEngine() {}
 
-                explicit StdOptionalEngine(T value) : opt{std::move(value)} {}
+                explicit StdOptionalEngine(T&& value) : payload{std::move(value)} {}
 
-                explicit StdOptionalEngine(T& ref) : opt{std::ref(ref)} {}
+                explicit StdOptionalEngine(const T& ref) : payload{ref} {}
 
-                StdOptionalEngine(const StdOptionalEngine& rhs) : opt{rhs.opt} {}
-
-                StdOptionalEngine(StdOptionalEngine&& rhs) noexcept : opt{exchange(rhs.opt, {})} {}
-
-                StdOptionalEngine& operator=(const StdOptionalEngine& rhs) {
-                    this->opt = rhs.opt;
-                    return *this;
-                }
+                StdOptionalEngine(StdOptionalEngine&& rhs) noexcept : payload{exchange(rhs.payload, {})} {}
 
                 StdOptionalEngine& operator=(StdOptionalEngine&& rhs) noexcept {
-                    this->opt = exchange(rhs.opt, {});
+                    this->payload = exchange(rhs.payload, {});
                     return *this;
                 }
 
                 StdOptionalEngine& operator=(OptionalNone) {
-                    this->opt.reset();
+                    this->payload.reset();
                     return *this;
                 }
 
-                SCL_NODISCARD bool hasValue() const { return opt.has_value(); }
+                SCL_NODISCARD bool hasValue() const { return payload.has_value(); }
 
-                SCL_NODISCARD value_type& get() {
+                SCL_NODISCARD value_type& get() & {
                     if (!this->hasValue()) {
                         throw scl::exceptions::EmptyOptionalAccess{};
                     }
 
-                    return this->opt.value();
+                    return this->payload.value();
                 }
 
-                SCL_NODISCARD const value_type& get() const {
+                SCL_NODISCARD const value_type& get() const& {
                     if (!this->hasValue()) {
                         throw scl::exceptions::EmptyOptionalAccess{};
                     }
 
-                    return this->opt.value();
+                    return this->payload.value();
+                }
+
+                SCL_NODISCARD value_type&& get() && {
+                    if (!this->hasValue()) {
+                        throw scl::exceptions::EmptyOptionalAccess{};
+                    }
+
+                    return std::move(this->payload.value());
                 }
 
     #define SCL_TPL                                                                       \
@@ -171,7 +191,7 @@ namespace scl {
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                TPL StdOptionalEngine(U&& value) { *this = std::forward<U&&>(value); }
+                TPL explicit StdOptionalEngine(U&& value) { *this = std::forward<U&&>(value); }
 
                 /**
                  * Implicit conversion universal ref assignment
@@ -199,18 +219,16 @@ namespace scl {
         constexpr details::OptionalNone none{};
 
         template <class T, class OptionalEngine = details::DefaultOptionalEngine<T>>
-        class Optional {
+        class Optional : public OptionalEngine {
         public:
             using engine_type = OptionalEngine;
 
             using value_type = typename engine_type::value_type;
 
-        protected:
-            /**
-             * @var engine
-             * The implementation details
-             */
-            engine_type engine;
+            using engine_type::engine_type;
+            using engine_type::operator=;
+            using engine_type::hasValue;
+            using engine_type::get;
 
         public:
             /**
@@ -246,123 +264,7 @@ namespace scl {
                 return ret;
             }
 
-            /**
-             * Default construct (no value)
-             */
-            Optional() : engine{} {}
-
-            /**
-             * Creates a non empty optional with the given value (copy)
-             * @param value being the value to assign from
-             */
-            explicit Optional(value_type value) noexcept : engine{std::move(value)} {}
-
-            /**
-             * Assign a value to this optional
-             * @param value being the value taken by the optional
-             * @return a reference to this Optional
-             */
-            Optional& operator=(const value_type& value) noexcept {
-                this->engine = value;
-                return *this;
-            }
-
-            /**
-             * Copy constructor
-             * @param o being the Optional to copy from
-             */
-            Optional(const Optional& o) noexcept : engine{o.engine} {};
-
-            /**
-             * Copy assignment operator
-             * @param rhs being the Optional to assign from
-             * @return a reference to this Optional<T>
-             */
-            Optional& operator=(const Optional& rhs) noexcept {
-                this->engine = rhs.engine;
-                return *this;
-            };
-
-            /**
-             * Move constructor
-             * @param rhs being the Optional to construct from
-             *
-             * @warning moved-from Optional are in empty state
-             * (i.e. equivalent to one constructed from none)
-             */
-            Optional(Optional&& rhs) noexcept : engine{std::move(rhs.engine)} {};
-
-            /**
-             * Move assignment operator
-             * @param rhs being the Optional to assign from
-             * @return a reference to this Optional<T>
-             *
-             * @warning moved-from Optional are in empty state
-             * (i.e. equivalent to one constructed from none)
-             */
-            Optional& operator=(Optional&& rhs) noexcept {
-                this->engine = std::move(rhs.engine);
-                return *this;
-            };
-
-            /**
-             * Instantiate an optional via an instance of None
-             */
-            Optional(details::OptionalNone) noexcept : Optional() {}
-
-            /**
-             * Assign from None
-             * @return a reference to this Optional
-             */
-            Optional& operator=(details::OptionalNone) {
-                this->engine.reset();
-                return *this;
-            }
-
-#define SCL_TPL                                                                                   \
-    template <class U, class = scl::meta::enable_if_t<                                            \
-                           !scl::meta::is_same<scl::meta::decay_t<U>, scl::meta::decay_t<T>>()    \
-                           && !scl::meta::is_same<scl::meta::decay_t<U>, details::OptionalNone>() \
-                           && !scl::meta::is_same<scl::meta::decay_t<U>, Optional>()>>
-
-            /**
-             * Implicit conversion universal ref constructor
-             * @tparam U being the type to implicitly convert from
-             * @param value being the value to construct from
-             */
-            SCL_TPL explicit Optional(U&& value) : engine{std::forward<U&&>(value)} {}
-
-            /**
-             * Implicit conversion universal ref assignment
-             * @tparam U being the type to implicitly convert from
-             * @param value being the value to assign from
-             * @return a reference to this Optional
-             */
-            SCL_TPL Optional& operator=(U&& value) {
-                this->engine = std::forward<U&&>(value);
-                return *this;
-            }
-#undef SCL_TPL
-
-            /**
-             * Determines whether or not this Optional<T> is empty
-             * @return TRUE if there's a value, FALSE otherwise
-             */
-            SCL_NODISCARD bool hasValue() const { return this->engine.hasValue(); }
-
-            /**
-             * Retrieves the value stored in this Optional<T>
-             * @return a ref to the value stored
-             * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-             */
-            SCL_NODISCARD value_type& get() { return this->engine.get(); }
-
-            /**
-             * Retrieves the value stored in this Optional<T>
-             * @return a const& to the value stored
-             * @throws scl::exceptions::EmptyOptionalAccess if there's no value
-             */
-            SCL_NODISCARD const value_type& get() const { return this->engine.get(); }
+            Optional(details::OptionalNone) : Optional() {}
 
             /**
              * A semantic alias for Optional<T>::get

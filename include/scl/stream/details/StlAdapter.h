@@ -75,10 +75,11 @@ namespace scl {
                  * @param streamIterator being the stream iterator to construct from (nullptr for end iterator)
                  */
                 explicit StlAdapter(iterator_type* streamIterator = nullptr)
-                    : StlAdapter(streamIterator, payload_type::withoutValue()) {}
+                    : StlAdapter(streamIterator, payload_type::withoutValue()) {
+                }
 
                 /**
-                 * Construt an adapter from an iterator and a specific payload
+                 * Construct an adapter from an iterator and a specific payload
                  * @param streamIterator being the stream iterator to construct from (nullptr for end iterator)
                  * @param payload being the initial payload
                  */
@@ -93,12 +94,11 @@ namespace scl {
                  * @return a reference to this adapter
                  */
                 StlAdapter& operator++() {
-                    if (it) {
-                        if (it->hasNext()) {
-                            payload = it->next();
-                        } else
-                            payload = payload_type::withoutValue();
+                    if (it == nullptr) {
+                        return *this;
                     }
+
+                    payload = it->hasNext() ? std::move(it->next()) : payload_type::withoutValue();
 
                     return *this;
                 }
@@ -121,11 +121,8 @@ namespace scl {
                  * @warning adapters are considered equal only if they both have
                  * no value (i.e. they are both the end iterator)
                  */
-                bool operator==(const StlAdapter& rhs) const {
-                    auto&& lhs = *this;
-
-                    /*if(lhs.it != rhs.it)
-                            return false;*/
+                bool operator==(StlAdapter& rhs) {
+                    auto& lhs = *this;
 
                     return lhs.payload.isInvalid() && rhs.payload.isInvalid();
                 }
@@ -137,8 +134,8 @@ namespace scl {
                  *
                  * @see scl::stream::details::StlAdapter::operator==
                  */
-                bool operator!=(const StlAdapter& rhs) const {
-                    auto&& lhs = *this;
+                bool operator!=(StlAdapter& rhs) {
+                    auto& lhs = *this;
                     return !(lhs == rhs);
                 }
 
@@ -146,7 +143,9 @@ namespace scl {
                  * Dereference operator
                  * @return the current payload
                  */
-                payload_type operator*() const { return payload; }
+                payload_type&& operator*() {
+                    return std::move(payload);
+                }
             };
         }  // namespace details
     }      // namespace stream
