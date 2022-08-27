@@ -380,6 +380,22 @@ namespace scl {
             }
 
             /**
+             * Alias for scl::utils::Optional::doIfPresent
+             */
+            template <class F>
+            Optional& peek(F&& callback) {
+                return this->doIfPresent(std::forward<F>(callback));
+            }
+
+            /**
+             * Alias for scl::utils::Optional::doIfPresent
+             */
+            template <class F>
+            const Optional& peek(F&& callback) const {
+                return this->doIfPresent(std::forward<F>(callback));
+            }
+
+            /**
              * Calls a function if there is no value
              * @tparam F being the function's type
              * @param f being the function to call
@@ -469,7 +485,7 @@ namespace scl {
              */
             template <class F, class U = scl::meta::return_t<F>>
             Optional<U> mapTo(F&& mapper) const {
-                return this->map<U>(mapper);
+                return this->map<F, U>(mapper);
             }
 
             /**
@@ -480,9 +496,26 @@ namespace scl {
              * @return a new optional that might not contain the original value
              */
             template <class F>
-            Optional<T> filter(F predicate) const {
+            Optional<T> filter(F predicate) const& {
                 if (this->hasValue()) {
                     const value_type& x = this->get();
+                    return predicate(x) ? Optional<T>{x} : Optional<T>{};
+                }
+
+                return none;
+            }
+
+            /**
+             * Filters the value according to the given predicate
+             * @tparam F being the type of predicate (auto deduction)
+             * @param predicate being the predicate used to determine whether or not it should keep
+             * the value
+             * @return a new optional that might not contain the original value
+             */
+            template <class F>
+            Optional<T> filter(F predicate) && {
+                if (this->hasValue()) {
+                    value_type&& x = this->get();
                     return predicate(x) ? Optional<T>{x} : Optional<T>{};
                 }
 
@@ -496,7 +529,7 @@ namespace scl {
              * @param mapper being the mapper function
              * @return the mapped optional
              */
-            template <class F, class U = scl::meta::return_t<F>>
+            template <class F, class U = typename scl::meta::return_t<F>::value_type>
             Optional<U> flatMap(F&& mapper) const {
                 return this->hasValue() ? mapper(this->get()) : none;
             }
@@ -504,9 +537,9 @@ namespace scl {
             /**
              * Alias for Optional::flatMap
              */
-            template <class F, class U = scl::meta::return_t<F>>
+            template <class F, class U = typename scl::meta::return_t<F>::value_type>
             Optional<U> flatMapTo(F&& mapper) const {
-                return this->flatMap<U>(std::forward<F>(mapper));
+                return this->flatMap<F, U>(std::forward<F>(mapper));
             }
 
             inline bool operator==(details::OptionalNone) const{ return !this->hasValue(); }

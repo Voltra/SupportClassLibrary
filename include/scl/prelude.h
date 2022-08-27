@@ -24,5 +24,8 @@ namespace scl {
         using namespace scl::stream::creators;
         using namespace scl::stream::operators;
         using namespace scl::stream::terminators;
+
+        using scl::utils::Optional;
+        using scl::utils::none;
     }
 }  // namespace scl
