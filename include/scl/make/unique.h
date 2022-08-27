@@ -5,10 +5,10 @@
 
 namespace scl {
     namespace make {
-        template <class T, class... Args>
-        std::unique_ptr<T> unique(Args&&... args) {
-            return std::unique_ptr<T>{
-                newPtr<T>(std::forward<Args>(args)...)
+        template <class Base, class Derived = Base, class... Args>
+        std::unique_ptr<Base> unique(Args&&... args) {
+            return std::unique_ptr<Base>{
+                newPtr<Derived>(std::forward<Args>(args)...)
             };
         }
     }
