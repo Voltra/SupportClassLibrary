@@ -3,6 +3,7 @@
 #include "./make/make.hpp"
 #include "./exceptions/exceptions.hpp"
 #include "./detect/detect.hpp"
+#include "./utils/utils.hpp"
 #include "./stream/stream.hpp"
 
 namespace scl {
@@ -25,6 +26,8 @@ namespace scl {
         using namespace scl::stream::operators;
         using namespace scl::stream::terminators;
 
+        using scl::utils::exchange;
+        using scl::utils::invoke;
         using scl::utils::Optional;
         using scl::utils::none;
     }
