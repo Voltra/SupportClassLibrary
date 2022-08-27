@@ -14,3 +14,4 @@ namespace scl {
 #include "./RawStorage.h"
 #include "./exchange.h"
 #include "./invoke.h"
+#include "./Either.h"
