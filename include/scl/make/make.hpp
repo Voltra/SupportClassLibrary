@@ -8,9 +8,11 @@ namespace scl {
     namespace make {}
 }  // namespace scl
 
+#include "./atomic.h"
+#include "./either.h"
 #include "./instance.h"
 #include "./newPtr.h"
+#include "./optional.h"
+#include "./rvalue.h"
 #include "./shared.h"
 #include "./unique.h"
-#include "./atomic.h"
-#include "./rvalue.h"

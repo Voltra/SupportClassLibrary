@@ -58,7 +58,8 @@ namespace scl {
                 EndStreamIterator(const EndStreamIterator&) = delete;
                 EndStreamIterator& operator=(const EndStreamIterator&) = delete;
 
-                EndStreamIterator(EndStreamIterator&& rhs) noexcept : parent_{std::move(rhs.parent_)} {}
+                EndStreamIterator(EndStreamIterator&& rhs) noexcept
+                    : parent_{std::move(rhs.parent_)} {}
 
                 EndStreamIterator& operator=(EndStreamIterator&& rhs) noexcept {
                     this->parent_ = std::move(rhs.parent_);

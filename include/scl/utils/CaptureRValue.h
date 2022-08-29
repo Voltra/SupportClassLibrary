@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+
 #include "../macros.h"
 
 namespace scl {
@@ -16,13 +17,11 @@ namespace scl {
             F func;
 
         public:
-            constexpr CaptureRValue(T&& val, F&& f) : value{std::move(val)}, func{std::move(f)} {
-            }
+            constexpr CaptureRValue(T&& val, F&& f) : value{std::move(val)}, func{std::move(f)} {}
 
             template <class... Args>
-            constexpr auto operator()(Args&&... args) -> SCL_RETURN(
-                func(std::move(value), std::forward<Args>(args)...)
-            )
+            constexpr auto operator()(Args&&... args)
+                -> SCL_RETURN(func(std::move(value), std::forward<Args>(args)...))
         };
-    }
-}
+    }  // namespace utils
+}  // namespace scl

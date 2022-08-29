@@ -39,7 +39,9 @@ namespace scl {
              * A string describing the name of the exception class
              * @return the fully qualified name of this class
              */
-            scl::meta::real_const_t<char*> type() const noexcept override { return "scl::exceptions::Exception"; }
+            scl::meta::real_const_t<char*> type() const noexcept override {
+                return "scl::exceptions::Exception";
+            }
         };
     }  // namespace exceptions
 }  // namespace scl

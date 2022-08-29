@@ -32,16 +32,19 @@ namespace scl {
             struct OptionalEngineCopyBase : public scl::meta::crtp_base<Derived> {
                 OptionalEngineCopyBase() noexcept = default;
 
-                explicit OptionalEngineCopyBase(const OptionalEngineCopyBase& rhs) noexcept(scl::meta::is_nothrow_copyable<T>()) {
+                explicit OptionalEngineCopyBase(const OptionalEngineCopyBase& rhs) noexcept(
+                    scl::meta::is_nothrow_copyable<T>()) {
                     this->self_().payload = rhs.self_().payload;
                 }
 
-                OptionalEngineCopyBase& operator=(const OptionalEngineCopyBase& rhs) noexcept(scl::meta::is_nothrow_copyable<T>()) {
+                OptionalEngineCopyBase& operator=(const OptionalEngineCopyBase& rhs) noexcept(
+                    scl::meta::is_nothrow_copyable<T>()) {
                     this->self_().payload = rhs.self_().payload;
                     return *this;
                 }
 
-                explicit OptionalEngineCopyBase(const T& ref) noexcept(scl::meta::is_nothrow_copyable<T>()) {
+                explicit OptionalEngineCopyBase(const T& ref) noexcept(
+                    scl::meta::is_nothrow_copyable<T>()) {
                     this->self_().payload = ref;
                 }
             };
@@ -71,7 +74,7 @@ namespace scl {
 
                 SclOptionalEngine() : payload{} {}
                 explicit SclOptionalEngine(OptionalNone) : SclOptionalEngine() {}
-                explicit SclOptionalEngine(T&& value) : payload{std::move(value)} {}
+                explicit SclOptionalEngine(T value) : payload{std::move(value)} {}
 
                 SclOptionalEngine& operator=(OptionalNone) {
                     this->payload.destroy();
@@ -108,8 +111,8 @@ namespace scl {
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                SCL_TPL explicit SclOptionalEngine(U&& value) noexcept(std::forward<U&&>(value)) {
-                    *this = std::forward<U&&>(value);
+                SCL_TPL explicit SclOptionalEngine(U&& value) noexcept(std::forward<U>(value)) {
+                    *this = std::forward<U>(value);
                 }
 
                 /**
@@ -118,8 +121,8 @@ namespace scl {
                  * @param value being the value to assign from
                  * @return a reference to this Optional
                  */
-                SCL_TPL SclOptionalEngine& operator=(U&& value) {
-                    this->payload.construct(std::forward<U&&>(value));
+                SCL_TPL SclOptionalEngine& operator=(U&& value) noexcept(scl::meta::is_nothrow_constructible<T, U>()) {
+                    this->payload.construct(std::forward<U>(value));
                     return *this;
                 }
 #undef SCL_TPL
@@ -142,7 +145,8 @@ namespace scl {
 
                 explicit StdOptionalEngine(const T& ref) : payload{ref} {}
 
-                StdOptionalEngine(StdOptionalEngine&& rhs) noexcept : payload{exchange(rhs.payload, {})} {}
+                StdOptionalEngine(StdOptionalEngine&& rhs) noexcept
+                    : payload{exchange(rhs.payload, {})} {}
 
                 StdOptionalEngine& operator=(StdOptionalEngine&& rhs) noexcept {
                     this->payload = exchange(rhs.payload, {});
@@ -225,10 +229,16 @@ namespace scl {
 
             using value_type = typename engine_type::value_type;
 
-            using engine_type::engine_type;
-            using engine_type::operator=;
-            using engine_type::hasValue;
-            using engine_type::get;
+            using OptionalEngine::OptionalEngine;
+            using OptionalEngine::operator=;
+            using OptionalEngine::get;
+            using OptionalEngine::hasValue;
+
+        protected:
+            template <class... Args>
+            explicit Optional(SCL_INPLACE_T, Args&&... args) : Optional() {
+                OptionalEngine::payload.construct(std::forward<Args>(args)...);
+            }
 
         public:
             /**
@@ -250,8 +260,7 @@ namespace scl {
              */
             template <class... Args>
             constexpr static Optional inplace(Args&&... args) {
-                Optional ret = value_type{std::forward<Args>(args)...};
-                return ret;
+                return Optional{SCL_INPLACE, std::forward<Args>(args)...};
             }
 
             /**
@@ -304,25 +313,19 @@ namespace scl {
              * Alias for scl::utils::Optional::get
              * @return A const reference to the optional's value
              */
-            SCL_NODISCARD const value_type& operator*() const& {
-                return this->get();
-            }
+            SCL_NODISCARD const value_type& operator*() const& { return this->get(); }
 
             /**
              * Alias for scl::utils::Optional::get
              * @return A const reference to the optional's value
              */
-            SCL_NODISCARD value_type& operator*() & {
-                return this->get();
-            }
+            SCL_NODISCARD value_type& operator*() & { return this->get(); }
 
             /**
              * Alias for scl::utils::Optional::get
              * @return A const reference to the optional's value
              */
-            SCL_NODISCARD value_type&& operator*() && {
-                return this->get();
-            }
+            SCL_NODISCARD value_type&& operator*() && { return this->get(); }
 
             /**
              * Retrieves the value if there's one or return the default value provided
@@ -542,23 +545,29 @@ namespace scl {
                 return this->flatMap<F, U>(std::forward<F>(mapper));
             }
 
-            inline bool operator==(details::OptionalNone) const{ return !this->hasValue(); }
-            inline friend bool operator==(details::OptionalNone, const Optional& o){ return o == none; }
+            inline bool operator==(details::OptionalNone) const { return !this->hasValue(); }
+            inline friend bool operator==(details::OptionalNone, const Optional& o) {
+                return o == none;
+            }
 
-            inline bool operator<(details::OptionalNone) const{ return false; }
-            inline friend bool operator<(details::OptionalNone, const Optional&){ return true; }
+            inline bool operator<(details::OptionalNone) const { return false; }
+            inline friend bool operator<(details::OptionalNone, const Optional&) { return true; }
 
-            inline bool operator<=(details::OptionalNone) const{ return (*this) == none; }
-            inline friend bool operator<=(details::OptionalNone, const Optional&){ return true; }
+            inline bool operator<=(details::OptionalNone) const { return (*this) == none; }
+            inline friend bool operator<=(details::OptionalNone, const Optional&) { return true; }
 
-            inline bool operator>(details::OptionalNone) const{ return true; }
-            inline friend bool operator>(details::OptionalNone, const Optional&){ return false; }
+            inline bool operator>(details::OptionalNone) const { return true; }
+            inline friend bool operator>(details::OptionalNone, const Optional&) { return false; }
 
-            inline bool operator>=(details::OptionalNone) const{ return true; }
-            inline friend bool operator>=(details::OptionalNone, const Optional& o){ return o <= none; }
+            inline bool operator>=(details::OptionalNone) const { return true; }
+            inline friend bool operator>=(details::OptionalNone, const Optional& o) {
+                return o <= none;
+            }
 
-            inline bool operator!=(details::OptionalNone) const{ return !((*this) == none); }
-            inline friend bool operator!=(details::OptionalNone, const Optional& o){ return o != none; }
+            inline bool operator!=(details::OptionalNone) const { return !((*this) == none); }
+            inline friend bool operator!=(details::OptionalNone, const Optional& o) {
+                return o != none;
+            }
         };
     }  // namespace utils
 }  // namespace scl

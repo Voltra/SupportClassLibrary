@@ -72,15 +72,16 @@ namespace scl {
             public:
                 /**
                  * Construct an adapter from an iterator
-                 * @param streamIterator being the stream iterator to construct from (nullptr for end iterator)
+                 * @param streamIterator being the stream iterator to construct from (nullptr for
+                 * end iterator)
                  */
                 explicit StlAdapter(iterator_type* streamIterator = nullptr)
-                    : StlAdapter(streamIterator, payload_type::withoutValue()) {
-                }
+                    : StlAdapter(streamIterator, payload_type::withoutValue()) {}
 
                 /**
                  * Construct an adapter from an iterator and a specific payload
-                 * @param streamIterator being the stream iterator to construct from (nullptr for end iterator)
+                 * @param streamIterator being the stream iterator to construct from (nullptr for
+                 * end iterator)
                  * @param payload being the initial payload
                  */
                 StlAdapter(iterator_type* streamIterator, payload_type payload)
@@ -143,9 +144,7 @@ namespace scl {
                  * Dereference operator
                  * @return the current payload
                  */
-                payload_type&& operator*() {
-                    return std::move(payload);
-                }
+                payload_type&& operator*() { return std::move(payload); }
             };
         }  // namespace details
     }      // namespace stream

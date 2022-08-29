@@ -1,6 +1,6 @@
 #pragma once
-#include <utility>
 #include <memory>
+#include <utility>
 
 namespace scl {
     namespace make {
@@ -8,5 +8,5 @@ namespace scl {
         std::shared_ptr<T> shared(Args&&... args) {
             return std::make_shared<T>(std::forward<Args>(args)...);
         }
-    }
-}
+    }  // namespace make
+}  // namespace scl

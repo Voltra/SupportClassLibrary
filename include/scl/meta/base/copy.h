@@ -13,10 +13,7 @@ namespace scl {
         };
 
         template <class T>
-        using copy_base = scl::meta::conditional_t<
-            scl::meta::is_copyable<T>(),
-            copyable_base,
-            non_copyable_base
-        >;
-    }
-}
+        using copy_base = scl::meta::conditional_t<scl::meta::is_copyable<T>(), copyable_base,
+                                                   non_copyable_base>;
+    }  // namespace meta
+}  // namespace scl

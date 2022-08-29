@@ -14,5 +14,5 @@ namespace scl {
         T* newPtr(Args&&... args) {
             return new T{std::forward<Args>(args)...};
         }
-    }
-}
+    }  // namespace make
+}  // namespace scl

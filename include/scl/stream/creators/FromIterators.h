@@ -1,9 +1,9 @@
 #pragma once
+#include "../../macros.h"
 #include "../../meta/type_aliases/stl.h"
 #include "../../meta/type_queries/is_iterator.h"
-#include "../../macros.h"
-#include "../details/BaseStreamIterator.h"
 #include "../Stream.h"
+#include "../details/BaseStreamIterator.h"
 
 namespace scl {
     namespace stream {
@@ -21,12 +21,13 @@ namespace scl {
                  * @tparam It being the type of the iterators
                  */
                 template <class It>
-                class FromIterators final
-                    : public virtual scl::stream::details::BaseStreamIterator<iterator_value_type<It>> {
+                class FromIterators final : public virtual scl::stream::details::BaseStreamIterator<
+                                                iterator_value_type<It>> {
                 public:
                     using value_type = iterator_value_type<It>;
                     using iterator_type = FromIterators;
-                    using payload_type = typename scl::stream::details::BaseStreamIterator<value_type>::payload_type;
+                    using payload_type =
+                        typename scl::stream::details::BaseStreamIterator<value_type>::payload_type;
 
                 protected:
                     /**
@@ -57,14 +58,10 @@ namespace scl {
                 };
             }  // namespace details
 
-            template <class It, class = scl::meta::enable_if_t<
-                scl::meta::is_iterator<It>()
-            >>
+            template <class It, class = scl::meta::enable_if_t<scl::meta::is_iterator<It>()>>
             auto streamFrom(It begin, It end) -> SCL_RETURN(
                 Stream<typename details::FromIterators<It>::value_type, details::FromIterators<It>>{
-                    details::FromIterators<It>{begin, end}
-                }
-            )
-        }      // namespace creators
-    }          // namespace stream
+                    details::FromIterators<It>{begin, end}})
+        }  // namespace creators
+    }      // namespace stream
 }  // namespace scl

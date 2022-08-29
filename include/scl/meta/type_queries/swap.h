@@ -10,7 +10,8 @@
 namespace scl {
     namespace meta {
         namespace details {
-            template <class T, class U, class = void> struct swappable_with : std::false_type {};
+            template <class T, class U, class = void>
+            struct swappable_with : std::false_type {};
 
 #define SCL_t std::declval<T&>()
 #define SCL_u std::declval<U&>()
@@ -25,12 +26,14 @@ namespace scl {
 #undef SCL_t
         }  // namespace details
 
-        template <class T, class U> inline constexpr bool is_swappable_with() {
+        template <class T, class U>
+        inline constexpr bool is_swappable_with() {
             return details::swappable_with<T, U>::value;
         }
 
         namespace details {
-            template <class T, class = void> struct swappable : std::false_type {};
+            template <class T, class = void>
+            struct swappable : std::false_type {};
 
             template <class T>
             struct swappable<T, scl::meta::void_enable_if_t<
@@ -38,7 +41,8 @@ namespace scl {
                                     && is_swappable_with<T&, T&>()>> : std::true_type {};
         }  // namespace details
 
-        template <class T> inline constexpr bool is_swappable() {
+        template <class T>
+        inline constexpr bool is_swappable() {
             return details::swappable<T>::value;
         }
     }  // namespace meta

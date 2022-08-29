@@ -1,10 +1,10 @@
 #pragma once
 #include "./alias/alias.hpp"
-#include "./make/make.hpp"
-#include "./exceptions/exceptions.hpp"
 #include "./detect/detect.hpp"
-#include "./utils/utils.hpp"
+#include "./exceptions/exceptions.hpp"
+#include "./make/make.hpp"
 #include "./stream/stream.hpp"
+#include "./utils/utils.hpp"
 
 namespace scl {
     /**
@@ -28,7 +28,8 @@ namespace scl {
 
         using scl::utils::exchange;
         using scl::utils::invoke;
-        using scl::utils::Optional;
         using scl::utils::none;
-    }
+        using scl::utils::Optional;
+        using scl::utils::StringView;
+    }  // namespace prelude
 }  // namespace scl

@@ -1,7 +1,8 @@
 #pragma once
 #include <utility>
-#include "../../meta/meta.hpp"
+
 #include "../../macros.h"
+#include "../../meta/meta.hpp"
 #include "../Stream.h"
 #include "./FromIterators.h"
 
@@ -15,12 +16,10 @@ namespace scl {
              * @param container being the container to construct from
              * @return a stream that uses the container as data source
              */
-            template <class C, class It = typename C::iterator, class = scl::meta::enable_if_t<
-                scl::meta::is_iterator<It>()
-            >>
-            auto streamFrom(C& container) -> SCL_RETURN(
-                streamFrom<It>(std::begin(container), std::end(container))
-            )
+            template <class C, class It = typename C::iterator,
+                      class = scl::meta::enable_if_t<scl::meta::is_iterator<It>()>>
+            auto streamFrom(C& container)
+                -> SCL_RETURN(streamFrom<It>(std::begin(container), std::end(container)))
         }  // namespace creators
     }      // namespace stream
 }  // namespace scl

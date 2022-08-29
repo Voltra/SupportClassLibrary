@@ -3,8 +3,8 @@
 namespace scl {
     namespace stream {
         namespace creators {}
-    }
-}
+    }  // namespace stream
+}  // namespace scl
 
-#include "./FromIterators.h"
 #include "./FromContainer.h"
+#include "./FromIterators.h"

@@ -74,8 +74,8 @@ namespace scl {
             };
 
             template <class Ret, class Class, class... Args>
-            struct function_traits<Ret (Class::*)(Args...) const> : function_traits<Ret(Class, Args...)> {
-            };
+            struct function_traits<Ret (Class::*)(Args...) const>
+                : function_traits<Ret(Class, Args...)> {};
 
             template <class Ret, class Class>
             struct function_traits<Ret Class::*> : function_traits<Ret(Class)> {};

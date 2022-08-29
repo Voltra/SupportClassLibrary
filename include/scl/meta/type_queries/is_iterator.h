@@ -21,5 +21,5 @@ namespace scl {
         static constexpr bool is_iterator() {
             return details::is_iterator<T>::value;
         }
-    }      // namespace meta
+    }  // namespace meta
 }  // namespace scl

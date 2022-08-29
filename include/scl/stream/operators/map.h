@@ -16,7 +16,8 @@ namespace scl {
                  * @tparam U being the type to map to
                  */
                 template <class T, class U, class ParentIterator>
-                class MapOperator final : public scl::stream::details::OpStreamIterator<U, ParentIterator> {
+                class MapOperator final
+                    : public scl::stream::details::OpStreamIterator<U, ParentIterator> {
                 public:
                     using iterator_type = scl::stream::details::OpStreamIterator<U, ParentIterator>;
                     using value_type = typename iterator_type::value_type;
@@ -31,7 +32,9 @@ namespace scl {
                      * @typedef mapper_type
                      * Function type that maps the parent value type to the current value type
                      */
-                    using mapper_type = scl::stream::operators::details::mapper_type<parent_value_type, value_type>;
+                    using mapper_type
+                        = scl::stream::operators::details::mapper_type<parent_value_type,
+                                                                       value_type>;
 
                     /**
                      * Construct the operator from the parent iterator and a mapper function
@@ -103,7 +106,8 @@ namespace scl {
              * @return the toolbox tag for pipe operators
              */
             template <class T, class U = T>
-            details::map_operator_payload<T, U> map_(typename details::map_operator_payload<T, U>::mapper_t mapper) {
+            details::map_operator_payload<T, U> map_(
+                typename details::map_operator_payload<T, U>::mapper_t mapper) {
                 return {mapper};
             }
 

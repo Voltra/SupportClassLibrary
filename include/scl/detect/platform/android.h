@@ -10,10 +10,10 @@
     #define SCL_PLATFORM_ANDROID false
 #endif
 
-namespace scl{
-    namespace detect{
-        namespace platform{
+namespace scl {
+    namespace detect {
+        namespace platform {
             constexpr bool android = SCL_PLATFORM_ANDROID;
         }
-    }
-}
+    }  // namespace detect
+}  // namespace scl

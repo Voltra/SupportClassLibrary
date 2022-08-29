@@ -1,7 +1,6 @@
 #pragma once
 #include "../meta/meta.hpp"
 
-
 namespace scl {
     namespace stream {
         /**
@@ -17,7 +16,7 @@ namespace scl {
              * @typedef iterator_type
              * The type of iterator used by this stream
              */
-            using iterator_type = StreamIteratorType; //details::BaseStreamIterator<T>;
+            using iterator_type = StreamIteratorType;  // details::BaseStreamIterator<T>;
 
             /**
              * @typedefe value_type
@@ -33,7 +32,7 @@ namespace scl {
 
             Stream(const Stream&) = delete;
             Stream& operator=(const Stream&) = delete;
-            
+
             Stream(Stream&&) noexcept = default;
             Stream& operator=(Stream&&) noexcept = default;
 

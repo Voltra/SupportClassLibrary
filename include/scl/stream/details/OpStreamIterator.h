@@ -1,5 +1,6 @@
 #pragma once
 #include <utility>
+
 #include "../../utils/exchange.h"
 #include "./BaseStreamIterator.h"
 
@@ -37,7 +38,8 @@ namespace scl {
                 OpStreamIterator(const OpStreamIterator&) = delete;
                 OpStreamIterator& operator=(const OpStreamIterator&) = delete;
 
-                OpStreamIterator(OpStreamIterator&& rhs) noexcept : parent_{std::move(rhs.parent_)} {}
+                OpStreamIterator(OpStreamIterator&& rhs) noexcept
+                    : parent_{std::move(rhs.parent_)} {}
 
                 OpStreamIterator& operator=(OpStreamIterator&& rhs) noexcept {
                     this->parent_ = std::move(rhs.parent_);

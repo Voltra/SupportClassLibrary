@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+
 #include "../meta/meta.hpp"
 
 namespace scl {
@@ -27,4 +28,4 @@ namespace std {
     std::string to_string(const scl::exceptions::Throwable& throwable) {
         return std::string{throwable.type()} + " : " + throwable.reason();
     }
-}
+}  // namespace std

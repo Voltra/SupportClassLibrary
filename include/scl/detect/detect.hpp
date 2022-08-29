@@ -8,5 +8,5 @@ namespace scl {
     namespace detect {}
 }  // namespace scl
 
-#include "./version.h"
 #include "./platform/platform.hpp"
+#include "./version.h"

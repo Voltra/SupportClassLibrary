@@ -8,19 +8,18 @@
 namespace scl {
     namespace utils {
         namespace details {
-            template <class T, class Derived>
-            struct TriviallyDestructible {
+            struct TriviallyDestructibleRawStorage {
                 /**
                  * Call the destructor on the allocated object
                  * @warning If non initialized, it is a no-op
                  */
                 void destructor() noexcept {}
 
-                ~TriviallyDestructible() noexcept = default;
+                ~TriviallyDestructibleRawStorage() noexcept = default;
             };
 
             template <class T, class Derived>
-            struct Destructible : public scl::meta::crtp_base<Derived> {
+            struct DestructibleRawStorage : public scl::meta::crtp_base<Derived> {
                 /**
                  * Call the destructor on the allocated object
                  * @warning If non initialized, it is a no-op
@@ -34,22 +33,22 @@ namespace scl {
                     }
                 }
 
-                ~Destructible() noexcept(scl::meta::is_nothrow_destructible<T>()) {
+                ~DestructibleRawStorage() noexcept(scl::meta::is_nothrow_destructible<T>()) {
                     this->self_()->destructor();
                 }
             };
 
             template <class T, class Derived>
-            using destructor_impl
+            using raw_storage_destructor_impl
                 = scl::meta::conditional_t<scl::meta::is_trivially_destructible<T>(),
-                                           TriviallyDestructible<T, Derived>,
-                                           Destructible<T, Derived>>;
+                                           TriviallyDestructibleRawStorage,
+                                           DestructibleRawStorage<T, Derived>>;
 
             template <class T, class Derived>
-            struct Copyable : public scl::meta::copyable_base {
-                Copyable() = default;
+            struct CopyableRawStorage : public scl::meta::copyable_base {
+                CopyableRawStorage() = default;
 
-                Copyable(const Copyable& other) noexcept(
+                CopyableRawStorage(const CopyableRawStorage& other) noexcept(
                     scl::meta::is_nothrow_copy_constructible<T>()) {
                     auto* self = static_cast<Derived*>(this);
                     auto& rhs = static_cast<const Derived&>(other);
@@ -59,7 +58,7 @@ namespace scl {
                     self->init = rhs.init;
                 }
 
-                Copyable& operator=(const Copyable& other) noexcept(
+                CopyableRawStorage& operator=(const CopyableRawStorage& other) noexcept(
                     scl::meta::is_nothrow_copyable<T>()) {
                     auto* self = static_cast<Derived*>(this);
                     auto& rhs = static_cast<const Derived&>(other);
@@ -73,22 +72,22 @@ namespace scl {
             };
 
             template <class T, class Derived>
-            using copy_impl
-                = scl::meta::conditional_t<scl::meta::is_copyable<T>(), Copyable<T, Derived>,
-                                           scl::meta::non_copyable_base>;
+            using raw_storage_copy_impl = scl::meta::conditional_t<scl::meta::is_copyable<T>(),
+                                                                   CopyableRawStorage<T, Derived>,
+                                                                   scl::meta::non_copyable_base>;
 
             template <class T, class Derived>
-            class RawStorageImpl : public destructor_impl<T, Derived>,
-                                   public details::copy_impl<T, Derived> {
+            class RawStorageImpl : public raw_storage_destructor_impl<T, Derived>,
+                                   public details::raw_storage_copy_impl<T, Derived> {
             public:
                 using base_type = RawStorageImpl;
                 using value_type = scl::meta::remove_cv_ref_t<scl::meta::decay_t<T>>;
 
-                friend details::Copyable<T, Derived>;
+                friend details::CopyableRawStorage<T, Derived>;
 
-                using destructor_impl<T, Derived>::destructor_impl;
-                using copy_impl<T, Derived>::copy_impl;
-                using copy_impl<T, Derived>::operator=;
+                using raw_storage_destructor_impl<T, Derived>::raw_storage_destructor_impl;
+                using raw_storage_copy_impl<T, Derived>::raw_storage_copy_impl;
+                using raw_storage_copy_impl<T, Derived>::operator=;
 
             protected:
                 using storage_type

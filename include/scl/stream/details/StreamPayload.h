@@ -1,8 +1,9 @@
 #pragma once
 #include <functional>
 #include <utility>
-#include "../../utils/Optional.h"
+
 #include "../../make/rvalue.h"
+#include "../../utils/Optional.h"
 
 namespace scl {
     namespace stream {
@@ -50,8 +51,8 @@ namespace scl {
 
                 StreamPayload& operator=(StreamPayload&&) noexcept = default;
 
-//                StreamPayload(const StreamPayload&) = default;
-//                StreamPayload& operator=(const StreamPayload&) = default;
+                //                StreamPayload(const StreamPayload&) = default;
+                //                StreamPayload& operator=(const StreamPayload&) = default;
 
                 /**
                  * Retrieve the underlying sum type
@@ -83,11 +84,11 @@ namespace scl {
                  * @return the instantiated payload
                  */
                 constexpr static StreamPayload withValue(T value) {
-                    auto wrapper = scl::make::rvalueCapture(std::move(value), [](T value){
-                        return alternative{std::move(value)};
-                    });
+                    auto wrapper = scl::make::rvalueCapture(
+                        std::move(value), [](T value) { return alternative{std::move(value)}; });
 
-                    return StreamPayload{std::move(wrapper)}; // How to move the alt in (instead of copying)
+                    return StreamPayload{
+                        std::move(wrapper)};  // How to move the alt in (instead of copying)
                 }
 
                 /**

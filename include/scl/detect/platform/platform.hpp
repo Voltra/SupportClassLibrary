@@ -10,9 +10,9 @@ namespace scl {
     }  // namespace detect
 }  // namespace scl
 
-#include "./windows.h"
 #include "./android.h"
 #include "./apple.h"
 #include "./linux.h"
-#include "./unix.h"
 #include "./posix.h"
+#include "./unix.h"
+#include "./windows.h"

@@ -45,9 +45,7 @@ namespace scl {
                  * Retrieve a stl-like iterator for this stream iterator
                  * @return an iterator for the current state of this stream iterator
                  */
-                virtual StlAdapter<T> begin() {
-                    return StlAdapter<T>{this};
-                }
+                virtual StlAdapter<T> begin() { return StlAdapter<T>{this}; }
 
                 /**
                  * Retrieve a stl-like iterator for the end of this stream iterator
