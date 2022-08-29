@@ -55,30 +55,34 @@ namespace scl {
         public:
             /**
              * @return A wrapper around the standard input
-             * @note Auto-closing the file is disabled, so you can make multiple instances via this method if needed
+             * @note Auto-closing the file is disabled, so you can make multiple instances via this
+             * method if needed
              */
             static SCL_CONSTEXPR17 RawFile cstdin() noexcept { return RawFile{stdin, false}; }
 
             /**
              * @return A wrapper around the standard output
-             * @note Auto-closing the file is disabled, so you can make multiple instances via this method if needed
+             * @note Auto-closing the file is disabled, so you can make multiple instances via this
+             * method if needed
              */
             static SCL_CONSTEXPR17 RawFile cstdout() noexcept { return RawFile{stdout, false}; }
 
             /**
              * @return A wrapper around the standard error output
-             * @note Auto-closing the file is disabled, so you can make multiple instances via this method if needed
+             * @note Auto-closing the file is disabled, so you can make multiple instances via this
+             * method if needed
              */
             static SCL_CONSTEXPR17 RawFile cstderr() noexcept { return RawFile{stderr, false}; }
 
-            static scl::utils::Optional<RawFile> tmp() noexcept {
+            template <class Engine = scl::utils::details::DefaultOptionalEngine<RawFile>>
+            static scl::utils::Optional<RawFile, Engine> tmp() noexcept {
                 auto* fd = std::tmpfile();
 
                 if (fd == nullptr) {
                     return {};
                 }
 
-                return scl::utils::Optional<RawFile>::inplace(fd, true);
+                return RawFile{fd, true};
             }
 
             RawFile(scl::meta::real_const_t<char*> path, FileMode mode)
@@ -159,9 +163,11 @@ namespace scl {
              * Read a single character
              * @return an empty optional on error or EOF, the character read otherwise
              */
-            scl::utils::Optional<int> getc() & noexcept {
+            template <class Engine = scl::utils::details::DefaultOptionalEngine<int>>
+            scl::utils::Optional<int, Engine> getc() & noexcept {
                 auto ret = std::fgetc(fd);
-                return ret == EOF ? scl::utils::none : scl::utils::Optional<int>::inplace(ret);
+                return ret == EOF ? scl::utils::none
+                                  : scl::utils::Optional<int, Engine>::inplace(ret);
             }
 
             /**
@@ -191,12 +197,11 @@ namespace scl {
              * @param str being the string to write
              * @return TRUE if @p str was successfully written, FALSE otherwise
              */
-            bool puts(const char* str) & noexcept {
-                return std::fputs(str, fd) != EOF;
-            }
+            bool puts(const char* str) & noexcept { return std::fputs(str, fd) != EOF; }
 
             /**
-             * Pushes @p ch into the input stream associated with the file (so that next character reads will pick it up)
+             * Pushes @p ch into the input stream associated with the file (so that next character
+             * reads will pick it up)
              * @param ch being the character to write
              * @return TRUE if @p ch was successfully written, FALSE otherwise
              */
@@ -206,9 +211,11 @@ namespace scl {
              * Read a single, wide character
              * @return an empty optional on error or EOF, the character read otherwise
              */
-            scl::utils::Optional<std::wint_t> getwc() & noexcept {
+            template <class Engine = scl::utils::details::DefaultOptionalEngine<std::wint_t>>
+            scl::utils::Optional<std::wint_t, Engine> getwc() & noexcept {
                 auto ret = std::fgetwc(fd);
-                return ret == WEOF ? scl::utils::none : scl::utils::Optional<std::wint_t>::inplace(ret);
+                return ret == WEOF ? scl::utils::none
+                                   : scl::utils::Optional<std::wint_t, Engine>::inplace(ret);
             }
 
             /**
@@ -238,12 +245,11 @@ namespace scl {
              * @param str being the string to write
              * @return TRUE if @p str was successfully written, FALSE otherwise
              */
-            bool putws(const wchar_t* str) & noexcept {
-                return std::fputws(str, fd) != WEOF;
-            }
+            bool putws(const wchar_t* str) & noexcept { return std::fputws(str, fd) != WEOF; }
 
             /**
-             * Pushes @p ch into the input stream associated with the file (so that next character reads will pick it up)
+             * Pushes @p ch into the input stream associated with the file (so that next character
+             * reads will pick it up)
              * @param ch being the wide character to write
              * @return TRUE if @p ch was successfully written, FALSE otherwise
              */
@@ -251,7 +257,8 @@ namespace scl {
 
             /**
              * Get the current file position indicator
-             * @return the position within the file (in bytes if open in binary mode, otherwise its meaning is unspecified and can only be used as input to scl::fs::RawFile::seek)
+             * @return the position within the file (in bytes if open in binary mode, otherwise its
+             * meaning is unspecified and can only be used as input to scl::fs::RawFile::seek)
              * @post return >= 0
              */
             long tell() const& noexcept { return std::ftell(fd); }
@@ -260,10 +267,11 @@ namespace scl {
              * Get the current file position indicator and multi-byte parsing state, if any
              * @return the position state (only meaningful as input of scl::fs::RawFile::setpos)
              */
-            scl::utils::Optional<std::fpos_t> getpos() const& noexcept {
+            template <class Engine = scl::utils::details::DefaultOptionalEngine<std::fpos_t>>
+            scl::utils::Optional<std::fpos_t, Engine> getpos() const& noexcept {
                 std::fpos_t pos;
                 auto ret = std::fgetpos(fd, &pos);
-                return ret == 0 ? scl::utils::Optional<std::fpos_t>{std::move(pos)}
+                return ret == 0 ? scl::utils::Optional<std::fpos_t, Engine>{std::move(pos)}
                                 : scl::utils::none;
             }
 
@@ -289,10 +297,11 @@ namespace scl {
              * @param pos being the position state obtained via scl::fs::RawFile::getpos
              * @return TRUE if successful, FALSE otherwise
              */
-            scl::utils::Optional<bool> setpos2(const scl::utils::Optional<std::fpos_t>& opt) & noexcept {
-                return opt.map([=](const std::fpos_t& pos) -> bool{
-                    return this->setpos(pos);
-                });
+            template <class Engine = scl::utils::details::DefaultOptionalEngine<std::fpos_t>,
+                      class EngineRet = scl::utils::details::DefaultOptionalEngine<bool>>
+            scl::utils::Optional<bool, EngineRet> setposOpt(
+                const scl::utils::Optional<std::fpos_t>& opt) & noexcept {
+                return opt.map([=](const std::fpos_t& pos) -> bool { return this->setpos(pos); });
             }
 
             /**

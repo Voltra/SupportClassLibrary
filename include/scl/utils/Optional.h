@@ -241,7 +241,7 @@ namespace scl {
 
         protected:
             template <class... Args>
-            explicit Optional(SCL_INPLACE_T, Args&&... args) : Optional() {
+            Optional(SCL_INPLACE_T, Args&&... args) : Optional() {
                 OptionalEngine::payload.construct(std::forward<Args>(args)...);
             }
 
