@@ -43,7 +43,7 @@ namespace scl {
             }
         };
 
-        template <class T, class Lock = std::mutex, class Guard = std::lock_guard<std::mutex>>
+        template <class T, class Lock, class Guard>
         struct with_traits<Mutexed<T, Lock, Guard>> {
             template <class F>
             auto operator()(Mutexed<T, Lock, Guard>& mutexed, F&& delegate)

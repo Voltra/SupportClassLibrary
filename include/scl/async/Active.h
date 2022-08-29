@@ -83,7 +83,7 @@ namespace scl {
             void execute(message_type msg) {
                 if (done) return;
 
-                this->mq.sender().send(msg);
+                this->mq.emitter().emit(std::move(msg));
             }
         };
     }  // namespace async

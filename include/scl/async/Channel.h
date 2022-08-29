@@ -8,6 +8,7 @@
 #include <utility>
 
 #include "../macros.h"
+#include "../utils/utils.hpp"
 
 namespace scl {
     namespace async {
@@ -247,7 +248,7 @@ namespace scl {
             friend details::channel_actor_traits<emitter_type>;
             friend details::channel_actor_traits<receiver_type>;
 
-            template <size_t I, class U, class L, template <class> class G, class C>
+            template <size_t I, class U, class L, class G, class C>
             friend auto std::get(Channel<U, L, G, C>& chan) ->
                 typename std::tuple_element<I, typename Channel<U, L, G, C>::transport_type>::type;
 
@@ -453,7 +454,8 @@ namespace scl {
                  */
                 template <class... Args>
                 ChannelEmitter& doPush(Args&&... args) {
-                    SCL_MAYBE_UNUSED guard_type _{this->traits};
+                    this->traits.lock();
+//                    SCL_MAYBE_UNUSED guard_type _{this->traits};
                     this->channel->queue.emplace(std::forward<Args>(args)...);
                     this->traits.notify();
                     return *this;

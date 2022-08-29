@@ -14,7 +14,7 @@
     #include <optional>
 #endif
 
-//TODO: more rvalue-qualified methods?
+// TODO: more rvalue-qualified methods?
 
 namespace scl {
     namespace utils {
@@ -114,8 +114,7 @@ namespace scl {
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                SCL_TPL explicit SclOptionalEngine(U&& value) noexcept(
-                    scl::meta::is_nothrow_constructible<T, U>()) {
+                SCL_TPL explicit SclOptionalEngine(U&& value) {
                     *this = std::forward<U>(value);
                 }
 
@@ -125,8 +124,7 @@ namespace scl {
                  * @param value being the value to assign from
                  * @return a reference to this Optional
                  */
-                SCL_TPL SclOptionalEngine& operator=(U&& value) noexcept(
-                    scl::meta::is_nothrow_constructible<T, U>()) {
+                SCL_TPL SclOptionalEngine& operator=(U&& value) {
                     this->payload.construct(std::forward<U>(value));
                     return *this;
                 }
@@ -264,7 +262,7 @@ namespace scl {
              * @return an initialized optional
              */
             template <class... Args>
-            constexpr static Optional inplace(Args&&... args) noexcept(scl::meta::is_nothrow_constructible<T, Args...>()) {
+            constexpr static Optional inplace(Args&&... args) {
                 return Optional{SCL_INPLACE, std::forward<Args>(args)...};
             }
 
@@ -482,7 +480,8 @@ namespace scl {
             Optional<U> map(F&& mapper) const {
                 if (this->hasValue()) {
                     const value_type& x = this->get();
-                    return invoke(mapper, x);
+                    auto&& ret = invoke(mapper, x);
+                    return Optional<U>{std::forward<U>(ret)};
                 }
 
                 return none;
@@ -504,10 +503,10 @@ namespace scl {
              * @return a new optional that might not contain the original value
              */
             template <class F>
-            Optional<T> filter(F predicate) const& {
+            const Optional<T>& filter(F predicate) const& {
                 if (this->hasValue()) {
                     const value_type& x = this->get();
-                    return invoke(predicate, x) ? Optional<T>{x} : Optional<T>{};
+                    return invoke(predicate, x) ? *this : Optional<T>{};
                 }
 
                 return none;
@@ -523,8 +522,8 @@ namespace scl {
             template <class F>
             Optional<T> filter(F predicate) && {
                 if (this->hasValue()) {
-                    value_type&& x = this->get();
-                    return invoke(predicate, scl::meta::as_const(x)) ? Optional<T>{x} : none;
+                    T&& x = this->get();
+                    return invoke(predicate, scl::meta::as_const(x)) ? Optional<T>{std::forward<T>(x)} : none;
                 }
 
                 return none;

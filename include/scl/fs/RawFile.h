@@ -37,6 +37,8 @@ namespace scl {
             using size_type = std::size_t;
 
             friend scl::utils::Optional<RawFile>;
+            friend scl::utils::RawStorage<RawFile>;
+            friend scl::utils::details::RawStorageImpl<RawFile, scl::utils::RawStorage<RawFile>>;
 
         protected:
             file_type fd;
@@ -157,9 +159,9 @@ namespace scl {
              * Read a single character
              * @return an empty optional on error or EOF, the character read otherwise
              */
-            scl::utils::Optional<char> getc() & noexcept {
+            scl::utils::Optional<int> getc() & noexcept {
                 auto ret = std::fgetc(fd);
-                return ret == EOF ? scl::utils::none : scl::utils::Optional<char>::inplace(ret);
+                return ret == EOF ? scl::utils::none : scl::utils::Optional<int>::inplace(ret);
             }
 
             /**
@@ -204,9 +206,9 @@ namespace scl {
              * Read a single, wide character
              * @return an empty optional on error or EOF, the character read otherwise
              */
-            scl::utils::Optional<wchar_t> getwc() & noexcept {
+            scl::utils::Optional<std::wint_t> getwc() & noexcept {
                 auto ret = std::fgetwc(fd);
-                return ret == WEOF ? scl::utils::none : scl::utils::Optional<wchar_t>::inplace(ret);
+                return ret == WEOF ? scl::utils::none : scl::utils::Optional<std::wint_t>::inplace(ret);
             }
 
             /**
@@ -287,8 +289,8 @@ namespace scl {
              * @param pos being the position state obtained via scl::fs::RawFile::getpos
              * @return TRUE if successful, FALSE otherwise
              */
-            scl::utils::Optional<bool> setpos(const scl::utils::Optional<std::fpos_t>& opt) & noexcept {
-                return opt.map([&](const std::fpos_t& pos){
+            scl::utils::Optional<bool> setpos2(const scl::utils::Optional<std::fpos_t>& opt) & noexcept {
+                return opt.map([=](const std::fpos_t& pos) -> bool{
                     return this->setpos(pos);
                 });
             }
