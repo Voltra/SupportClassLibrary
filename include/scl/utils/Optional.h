@@ -8,6 +8,7 @@
 #include "../meta/meta.hpp"
 #include "./RawStorage.h"
 #include "./exchange.h"
+#include "./swap.h"
 #include "./invoke.h"
 
 #ifdef SCL_CPP17
@@ -52,18 +53,15 @@ namespace scl {
                 }
             };
 
-            /*template <class T, class Derived>
-            using optional_copy_base = scl::meta::conditional_t<
-                scl::meta::is_copyable<T>(),
-                OptionalEngineCopyBase<T, Derived>,
-                scl::meta::non_copyable_base
-            >;*/
-
             template <class T, class Derived>
-            using optional_copy_base = scl::meta::copy_base<T>;
+            using optional_copy_base = scl::meta::conditional_t<scl::meta::is_copyable<T>(),
+                                                                OptionalEngineCopyBase<T, Derived>,
+                                                                scl::meta::non_copyable_base>;
 
             template <class T>
             struct SclOptionalEngine : public optional_copy_base<T, SclOptionalEngine<T>> {
+                friend optional_copy_base<T, SclOptionalEngine<T>>;
+
                 using value_type = scl::meta::remove_cv_ref_t<T>;
 
                 using optional_copy_base<T, SclOptionalEngine<T>>::optional_copy_base;
@@ -78,6 +76,16 @@ namespace scl {
                 SclOptionalEngine() : payload{} {}
                 explicit SclOptionalEngine(OptionalNone) : SclOptionalEngine() {}
                 explicit SclOptionalEngine(T value) : payload{std::move(value)} {}
+
+                SclOptionalEngine(SclOptionalEngine&& rhs) noexcept(
+                    scl::meta::is_nothrow_movable<T>()) : payload{std::move(rhs.payload)} {
+                }
+
+                SclOptionalEngine& operator=(SclOptionalEngine&& rhs) noexcept(
+                    scl::meta::is_nothrow_movable<T>()) {
+                    swap(this->payload, rhs.payload);
+                    return *this;
+                }
 
                 SclOptionalEngine& operator=(OptionalNone) {
                     this->payload.destroy();
@@ -114,9 +122,7 @@ namespace scl {
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                SCL_TPL explicit SclOptionalEngine(U&& value) {
-                    *this = std::forward<U>(value);
-                }
+                SCL_TPL explicit SclOptionalEngine(U&& value) { *this = std::forward<U>(value); }
 
                 /**
                  * Implicit conversion universal ref assignment
@@ -133,10 +139,14 @@ namespace scl {
 
 #ifdef SCL_CPP17
             template <class T>
-            struct StdOptionalEngine : public optional_copy_base<T, StdOptionalEngine<T>> {
+            struct StdOptionalEngine : public optional_copy_base<T, StdOptionalEngine<T>>,
+                                       public OptionalEngineMoveBase<T, SclOptionalEngine<T>> {
                 using value_type = scl::meta::remove_cv_ref_t<T>;
 
                 using optional_copy_base<T, StdOptionalEngine<T>>::optional_copy_base;
+                using OptionalEngineMoveBase<T, StdOptionalEngine<T>>::OptionalEngineMoveBase;
+                using optional_copy_base<T, StdOptionalEngine<T>>::operator=;
+                using OptionalEngineMoveBase<T, StdOptionalEngine<T>>::operator=;
 
                 std::optional<T> payload;
 
@@ -145,14 +155,6 @@ namespace scl {
                 StdOptionalEngine(OptionalNone) : StdOptionalEngine() {}
 
                 explicit StdOptionalEngine(T value) : payload{std::move(value)} {}
-
-                StdOptionalEngine(StdOptionalEngine&& rhs) noexcept
-                    : payload{exchange(rhs.payload, {})} {}
-
-                StdOptionalEngine& operator=(StdOptionalEngine&& rhs) noexcept {
-                    this->payload = exchange(rhs.payload, {});
-                    return *this;
-                }
 
                 StdOptionalEngine& operator=(OptionalNone) {
                     this->payload.reset();
@@ -209,7 +211,7 @@ namespace scl {
                  */
                 TPL StdOptionalEngine& operator=(U&& value) noexcept(
                     scl::meta::is_nothrow_constructible<T, U>()) {
-                    this->opt = std::forward<U&&>(value);
+                    this->payload = std::forward<U&&>(value);
                     return *this;
                 }
     #undef SCL_TPL
@@ -251,9 +253,9 @@ namespace scl {
              * @param ptr being the pointer to construct from
              * @return an empty optional if ptr is null, an initialized pointer otherwise
              */
-            constexpr static Optional fromPointer(const T* ptr) { return !ptr ? none : *ptr; }
+            static Optional fromPointer(const T* ptr) { return !ptr ? none : *ptr; }
 
-            constexpr static Optional fromPointer(std::nullptr_t) { return none; }
+            static Optional fromPointer(std::nullptr_t) { return none; }
 
             /**
              * Construct an optional inplace
@@ -262,7 +264,7 @@ namespace scl {
              * @return an initialized optional
              */
             template <class... Args>
-            constexpr static Optional inplace(Args&&... args) {
+            static Optional inplace(Args&&... args) {
                 return Optional{SCL_INPLACE, std::forward<Args>(args)...};
             }
 
@@ -523,7 +525,9 @@ namespace scl {
             Optional<T> filter(F predicate) && {
                 if (this->hasValue()) {
                     T&& x = this->get();
-                    return invoke(predicate, scl::meta::as_const(x)) ? Optional<T>{std::forward<T>(x)} : none;
+                    return invoke(predicate, scl::meta::as_const(x))
+                               ? Optional<T>{std::forward<T>(x)}
+                               : none;
                 }
 
                 return none;

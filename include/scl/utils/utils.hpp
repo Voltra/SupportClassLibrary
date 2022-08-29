@@ -16,3 +16,4 @@ namespace scl {
 #include "./StringView.h"
 #include "./exchange.h"
 #include "./invoke.h"
+#include "./swap.h"

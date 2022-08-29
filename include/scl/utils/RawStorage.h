@@ -48,6 +48,7 @@ namespace scl {
             template <class T, class Derived>
             struct CopyableRawStorage : public scl::meta::copyable_base {
                 CopyableRawStorage() = default;
+                CopyableRawStorage(CopyableRawStorage&&) = default;
 
                 CopyableRawStorage(const CopyableRawStorage& other) noexcept(
                     scl::meta::is_nothrow_copy_constructible<T>()) {
@@ -58,6 +59,7 @@ namespace scl {
                     self->initialize(scl::meta::as_const(rhs.get()));
                     self->init = rhs.init;
                 }
+                CopyableRawStorage& operator=(CopyableRawStorage&&) = default;
 
                 CopyableRawStorage& operator=(const CopyableRawStorage& other) noexcept(
                     scl::meta::is_nothrow_copyable<T>()) {
@@ -72,6 +74,8 @@ namespace scl {
                 }
             };
 
+            static_assert(scl::meta::is_copyable<int>(), "Whoops int not copyable");
+
             template <class T, class Derived>
             using raw_storage_copy_impl = scl::meta::conditional_t<scl::meta::is_copyable<T>(),
                                                                    CopyableRawStorage<T, Derived>,
@@ -81,8 +85,8 @@ namespace scl {
             class RawStorageImpl : public raw_storage_destructor_impl<T, Derived>,
                                    public raw_storage_copy_impl<T, Derived> {
             public:
-                friend CopyableRawStorage<T, Derived>;
-                friend DestructibleRawStorage<T, Derived>;
+                friend raw_storage_destructor_impl<T, Derived>;
+                friend raw_storage_copy_impl<T, Derived>;
 
                 using base_type = RawStorageImpl;
                 using value_type = scl::meta::remove_cv_ref_t<scl::meta::decay_t<T>>;
@@ -105,9 +109,9 @@ namespace scl {
                  * @var init
                  * Determines whether the object has been constructed
                  */
-                bool init;
+                bool init = false;
 
-                constexpr storage_type* rawPtr() { return &storage; }
+                storage_type* rawPtr() { return &storage; }
 
                 T* ptr() { return reinterpret_cast<T*>(this->rawPtr()); }
 
@@ -121,7 +125,7 @@ namespace scl {
                  * @warning Cleans the memory if there was data (calls the destructor)
                  */
                 template <class... Args>
-                constexpr void initialize(Args&&... args) noexcept(
+                void initialize(Args&&... args) noexcept(
                     scl::meta::is_nothrow_destructible<T>()
                     && scl::meta::is_nothrow_constructible<T, Args...>()) {
                     this->destructor();
@@ -130,34 +134,34 @@ namespace scl {
                 }
 
             public:
-                constexpr RawStorageImpl() noexcept : storage{}, init{false} {}
+                RawStorageImpl() noexcept : storage{}, init{false} {}
 
-                constexpr RawStorageImpl(RawStorageImpl&& other) : RawStorageImpl() {
-                    if (other.init) {
+                RawStorageImpl(RawStorageImpl&& rhs) : RawStorageImpl() {
+                    if (rhs.init) {
                         this->destructor();
-                        this->initialize(std::move(other.get()));
-                        this->init = exchange(other.init, false);
+                        this->initialize(std::move(rhs.get()));
+                        this->init = exchange(rhs.init, false);
                     }
                 }
 
-                constexpr explicit RawStorageImpl(T&& value) : RawStorageImpl() {
-                    this->reinit(std::move(value));
-                }
-
-                constexpr RawStorageImpl& operator=(RawStorageImpl&& other) {
+                RawStorageImpl& operator=(RawStorageImpl&& rhs) {
                     this->destructor();
 
-                    if (!other.init) {
+                    if (!rhs.init) {
                         this->init = false;
                     } else {
-                        this->initialize(std::move(other.get()));
-                        this->init = exchange(other.init, false);
+                        this->initialize(std::move(rhs.get()));
+                        this->init = exchange(rhs.init, false);
                     }
 
                     return *this;
                 }
 
-                constexpr RawStorageImpl& operator=(T&& value) {
+                explicit RawStorageImpl(T&& value) : RawStorageImpl() {
+                    this->reinit(std::move(value));
+                }
+
+                RawStorageImpl& operator=(T&& value) {
                     this->reinit(std::move(value));
                     return *this;
                 }
@@ -172,7 +176,7 @@ namespace scl {
                  * @warning Cleans the memory if there was data (calls the destructor)
                  */
                 template <class... Args>
-                constexpr T& constructor(Args&&... args) {
+                T& constructor(Args&&... args) {
                     this->initialize(std::forward<Args>(args)...);
                     return this->get();
                 }
@@ -181,14 +185,14 @@ namespace scl {
                  * Alias for RawStorage::constructor
                  */
                 template <class... Args>
-                constexpr T& construct(Args&&... args) {
+                T& construct(Args&&... args) {
                     return this->constructor(std::forward<Args&&>(args)...);
                 }
 
                 /**
                  * Alias for RawStorage::destructor
                  */
-                constexpr void destroy() noexcept(scl::meta::is_nothrow_destructible<T>()) {
+                void destroy() noexcept(scl::meta::is_nothrow_destructible<T>()) {
                     this->destructor();
                 }
 
@@ -196,13 +200,13 @@ namespace scl {
                  * Alias for RawStorage::destroy
                  * @return a reference to this RawStorage
                  */
-                constexpr RawStorageImpl& reset() {
+                RawStorageImpl& reset() {
                     this->destroy();
                     return *this;
                 }
 
                 template <class... Args>
-                constexpr void reinit(Args&&... args) {
+                void reinit(Args&&... args) {
                     this->destroy();
                     this->constructor(std::forward<Args>(args)...);
                 }
@@ -212,7 +216,7 @@ namespace scl {
                  * @return a mutable reference to the underlying data
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr T& get() & {
+                T& get() & {
                     if (!this->init) throw scl::exceptions::UninitializedMemoryAccess{};
 
                     return *this->ptr();
@@ -223,7 +227,7 @@ namespace scl {
                  * @return a mutable reference to the underlying data
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr T&& get() && {
+                T&& get() && {
                     if (!this->init) throw scl::exceptions::UninitializedMemoryAccess{};
 
                     return std::move(*this->ptr());
@@ -235,7 +239,7 @@ namespace scl {
                  * @return an immutable reference to the underlying value
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr const T& get() const& {
+                const T& get() const& {
                     if (!this->init) throw scl::exceptions::UninitializedMemoryAccess{};
 
                     return *reinterpret_cast<const T*>(&this->storage);
@@ -246,7 +250,7 @@ namespace scl {
                  * @return a mutable reference to the underlying data
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr T& operator*() & { return this->get(); }
+                T& operator*() & { return this->get(); }
 
                 /**
                  * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the
@@ -254,7 +258,7 @@ namespace scl {
                  * @return an immutable reference to the underlying value
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr const T& operator*() const& { return this->get(); }
+                const T& operator*() const& { return this->get(); }
 
                 /**
                  * Get the value from a constant RawStorage (e.g. w/ a constant class that uses the
@@ -262,14 +266,14 @@ namespace scl {
                  * @return an immutable reference to the underlying value
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr T&& operator*() && { return this->get(); }
+                T&& operator*() && { return this->get(); }
 
                 /**
                  * Get a pointer to the underlying data
                  * @return a mutable pointer to the underlying data
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr T* operator->() { return &(this->get()); }
+                T* operator->() { return &(this->get()); }
 
                 /**
                  * Get a pointer to the value from a constant RawStorage (e.g. w/ a constant class
@@ -277,19 +281,19 @@ namespace scl {
                  * @return an immutable pointer to the underlying value
                  * @throws scl::exceptions::UninitializedMemoryAccess
                  */
-                constexpr scl::meta::real_const_t<T*> operator->() const { return &(this->get()); }
+                scl::meta::real_const_t<T*> operator->() const { return &(this->get()); }
 
                 /**
                  * Determine whether or not the storage holds a value
                  * @return TRUE if it does, FALSE otherwise
                  */
-                constexpr bool hasValue() const { return this->init; }
+                bool hasValue() const { return this->init; }
 
                 /**
                  * Implicit conversion to bool
                  * @return TRUE if the storage holds a value, FALSE otherwise
                  */
-                constexpr operator bool() const { return this->hasValue(); }
+                operator bool() const { return this->hasValue(); }
             };
         }  // namespace details
 
