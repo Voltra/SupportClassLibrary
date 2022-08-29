@@ -1,6 +1,7 @@
 #pragma once
 #include <iterator>
 #include <type_traits>
+#include <exception>
 
 namespace scl {
     namespace utils {
@@ -92,6 +93,10 @@ namespace scl {
                 }
 
                 SCL_NODISCARD inline const_reference at(size_type index) const {
+                    if(index < 0) {
+                        throw std::out_of_range("Index < 0 in scl::utils::BasicStringView");
+                    }
+
                     if(index >= length_) {
                         throw std::out_of_range("Index past the end in scl::utils::BasicStringView");
                     }
@@ -109,9 +114,63 @@ namespace scl {
 
                 SCL_NODISCARD inline const_pointer data() const noexcept { return start; }
             };
+
+            template <class Char, class Traits = std::char_traits<Char>>
+            class NullTerminatedBasicStringPtr {
+            public:
+                using string_view = BasicStringView<Char, Traits>;
+                using const_pointer = typename string_view::const_pointer;
+                using const_reference = typename string_view::const_reference;
+                using size_type = typename string_view::size_type;
+
+                constexpr NullTerminatedBasicStringPtr(string_view sv) : ptr{sv.data()}, begin_{sv.begin()}, end_{sv.end()} {}
+
+                constexpr NullTerminatedBasicStringPtr() = delete;
+                constexpr NullTerminatedBasicStringPtr(const NullTerminatedBasicStringPtr&) noexcept = default;
+                constexpr NullTerminatedBasicStringPtr(NullTerminatedBasicStringPtr&&) noexcept = default;
+                constexpr NullTerminatedBasicStringPtr& operator=(const NullTerminatedBasicStringPtr&) noexcept = default;
+                constexpr NullTerminatedBasicStringPtr& operator=(NullTerminatedBasicStringPtr&&) noexcept = default;
+
+                constexpr const_reference operator*() noexcept {
+                    return ptr == end_ ? '\0' : *ptr;
+                }
+
+                constexpr NullTerminatedBasicStringPtr& operator++() noexcept {
+                    if (ptr != end_) {
+                        ++ptr;
+                    }
+
+                    return *this;
+                }
+
+                constexpr NullTerminatedBasicStringPtr operator++(int) noexcept {
+                    auto self = *this;
+                    ++(*this);
+                    return self;
+                }
+
+                constexpr NullTerminatedBasicStringPtr& operator--() noexcept {
+                    if (ptr != begin_) {
+                        --ptr;
+                    }
+
+                    return *this;
+                }
+
+                constexpr NullTerminatedBasicStringPtr operator--(int) noexcept {
+                    auto self = *this;
+                    --(*this);
+                    return self;
+                }
+
+            protected:
+                const_pointer ptr, begin_, end_;
+            };
         }  // namespace details
 
         using StringView = details::BasicStringView<char>;
         using WStringView = details::BasicStringView<wchar_t>;
+        using NTStringViewPtr = details::NullTerminatedBasicStringPtr<char>;
+        using NTWStringViewPtr = details::NullTerminatedBasicStringPtr<wchar_t>;
     }  // namespace utils
 }  // namespace scl

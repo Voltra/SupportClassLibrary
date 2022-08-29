@@ -1,4 +1,5 @@
 #pragma once
+#include "./StreamIterator.h"
 
 namespace scl {
     namespace stream {

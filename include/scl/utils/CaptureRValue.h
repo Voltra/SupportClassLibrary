@@ -2,6 +2,7 @@
 #include <utility>
 
 #include "../macros.h"
+#include "./invoke.h"
 
 namespace scl {
     namespace utils {
@@ -21,7 +22,7 @@ namespace scl {
 
             template <class... Args>
             constexpr auto operator()(Args&&... args)
-                -> SCL_RETURN(func(std::move(value), std::forward<Args>(args)...))
+                -> SCL_RETURN(invoke(func, std::move(value), std::forward<Args>(args)...))
         };
     }  // namespace utils
 }  // namespace scl

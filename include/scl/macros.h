@@ -26,7 +26,7 @@
     #define SCL_CONSTEXPR17
 
 struct scl_inplace_t {};
-inline constexpr scl_inplace_t scl_inplace;
+constexpr scl_inplace_t scl_inplace;
 
     #define SCL_INPLACE_T scl_inplace_t
     #define SCL_INPLACE scl_inplace

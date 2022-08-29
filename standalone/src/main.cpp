@@ -1,6 +1,6 @@
 #include <array>
 #include <iostream>
-#include <scl/prelude.h>
+#include <scl/scl.hpp>
 #include <string>
 
 using namespace scl::prelude;

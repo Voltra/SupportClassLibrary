@@ -8,10 +8,13 @@
 #include "../meta/meta.hpp"
 #include "./RawStorage.h"
 #include "./exchange.h"
+#include "./invoke.h"
 
 #ifdef SCL_CPP17
     #include <optional>
 #endif
+
+//TODO: more rvalue-qualified methods?
 
 namespace scl {
     namespace utils {
@@ -111,7 +114,8 @@ namespace scl {
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                SCL_TPL explicit SclOptionalEngine(U&& value) noexcept(std::forward<U>(value)) {
+                SCL_TPL explicit SclOptionalEngine(U&& value) noexcept(
+                    scl::meta::is_nothrow_constructible<T, U>()) {
                     *this = std::forward<U>(value);
                 }
 
@@ -121,7 +125,8 @@ namespace scl {
                  * @param value being the value to assign from
                  * @return a reference to this Optional
                  */
-                SCL_TPL SclOptionalEngine& operator=(U&& value) noexcept(scl::meta::is_nothrow_constructible<T, U>()) {
+                SCL_TPL SclOptionalEngine& operator=(U&& value) noexcept(
+                    scl::meta::is_nothrow_constructible<T, U>()) {
                     this->payload.construct(std::forward<U>(value));
                     return *this;
                 }
@@ -141,9 +146,7 @@ namespace scl {
 
                 StdOptionalEngine(OptionalNone) : StdOptionalEngine() {}
 
-                explicit StdOptionalEngine(T&& value) : payload{std::move(value)} {}
-
-                explicit StdOptionalEngine(const T& ref) : payload{ref} {}
+                explicit StdOptionalEngine(T value) : payload{std::move(value)} {}
 
                 StdOptionalEngine(StdOptionalEngine&& rhs) noexcept
                     : payload{exchange(rhs.payload, {})} {}
@@ -195,7 +198,10 @@ namespace scl {
                  * @tparam U being the type to implicitly convert from
                  * @param value being the value to construct from
                  */
-                TPL explicit StdOptionalEngine(U&& value) { *this = std::forward<U&&>(value); }
+                TPL explicit StdOptionalEngine(U&& value) noexcept(
+                    scl::meta::is_nothrow_constructible<T, U>()) {
+                    *this = std::forward<U&&>(value);
+                }
 
                 /**
                  * Implicit conversion universal ref assignment
@@ -203,7 +209,8 @@ namespace scl {
                  * @param value being the value to assign from
                  * @return a reference to this Optional
                  */
-                TPL StdOptionalEngine& operator=(U&& value) {
+                TPL StdOptionalEngine& operator=(U&& value) noexcept(
+                    scl::meta::is_nothrow_constructible<T, U>()) {
                     this->opt = std::forward<U&&>(value);
                     return *this;
                 }
@@ -246,9 +253,7 @@ namespace scl {
              * @param ptr being the pointer to construct from
              * @return an empty optional if ptr is null, an initialized pointer otherwise
              */
-            constexpr static Optional fromPointer(const T* ptr) {
-                return !ptr ? Optional{none} : Optional{*ptr};
-            }
+            constexpr static Optional fromPointer(const T* ptr) { return !ptr ? none : *ptr; }
 
             constexpr static Optional fromPointer(std::nullptr_t) { return none; }
 
@@ -259,7 +264,7 @@ namespace scl {
              * @return an initialized optional
              */
             template <class... Args>
-            constexpr static Optional inplace(Args&&... args) {
+            constexpr static Optional inplace(Args&&... args) noexcept(scl::meta::is_nothrow_constructible<T, Args...>()) {
                 return Optional{SCL_INPLACE, std::forward<Args>(args)...};
             }
 
@@ -345,7 +350,7 @@ namespace scl {
             template <class F>
             const Optional& doIfPresent(F&& f) const {
                 if (this->hasValue()) {
-                    std::forward<F>(f)(this->get());
+                    invoke(std::forward<F>(f), this->get());
                 }
 
                 return *this;
@@ -360,7 +365,7 @@ namespace scl {
             template <class F>
             Optional& doIfPresent(F&& f) {
                 if (this->hasValue()) {
-                    f(this->get());
+                    invoke(std::forward<F>(f), this->get());
                 }
 
                 return *this;
@@ -477,7 +482,7 @@ namespace scl {
             Optional<U> map(F&& mapper) const {
                 if (this->hasValue()) {
                     const value_type& x = this->get();
-                    return mapper(x);
+                    return invoke(mapper, x);
                 }
 
                 return none;
@@ -502,7 +507,7 @@ namespace scl {
             Optional<T> filter(F predicate) const& {
                 if (this->hasValue()) {
                     const value_type& x = this->get();
-                    return predicate(x) ? Optional<T>{x} : Optional<T>{};
+                    return invoke(predicate, x) ? Optional<T>{x} : Optional<T>{};
                 }
 
                 return none;
@@ -519,7 +524,7 @@ namespace scl {
             Optional<T> filter(F predicate) && {
                 if (this->hasValue()) {
                     value_type&& x = this->get();
-                    return predicate(x) ? Optional<T>{x} : Optional<T>{};
+                    return invoke(predicate, scl::meta::as_const(x)) ? Optional<T>{x} : none;
                 }
 
                 return none;
@@ -534,7 +539,7 @@ namespace scl {
              */
             template <class F, class U = typename scl::meta::return_t<F>::value_type>
             Optional<U> flatMap(F&& mapper) const {
-                return this->hasValue() ? mapper(this->get()) : none;
+                return this->hasValue() ? invoke(mapper, this->get()) : none;
             }
 
             /**
