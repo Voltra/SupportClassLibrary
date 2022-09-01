@@ -39,14 +39,14 @@ namespace scl {
             struct OptionalEngineCopyBase : public scl::meta::crtp_base<Derived> {
                     OptionalEngineCopyBase() noexcept = default;
 
-                    explicit OptionalEngineCopyBase(const OptionalEngineCopyBase& rhs) noexcept(
+                    explicit OptionalEngineCopyBase(const Derived& rhs) noexcept(
                         scl::meta::is_nothrow_copyable<T>()) {
-                        this->self_().payload = rhs.self_().payload;
+                        this->self_().payload = rhs.payload;
                     }
 
-                    OptionalEngineCopyBase& operator=(const OptionalEngineCopyBase& rhs) noexcept(
+                    OptionalEngineCopyBase& operator=(const Derived& rhs) noexcept(
                         scl::meta::is_nothrow_copyable<T>()) {
-                        this->self_().payload = rhs.self_().payload;
+                        this->self_().payload = rhs.payload;
                         return *this;
                     }
 

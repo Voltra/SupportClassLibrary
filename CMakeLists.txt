@@ -58,12 +58,12 @@ target_include_directories(
                          $<INSTALL_INTERFACE:include/${PROJECT_NAME}-${PROJECT_VERSION}>
 )
 
-target_precompile_headers(${PROJECT_NAME}
-      INTERFACE
-        <utility>
-        include/scl/prelude.h
-        include/scl/meta/meta.hpp
-)
+#target_precompile_headers(${PROJECT_NAME}
+#      INTERFACE
+#        <utility>
+#        include/scl/prelude.h
+#        include/scl/meta/meta.hpp
+#)
 
 # ---- Create an installable target ----
 # this allows users to install and find the library via `find_package()`.

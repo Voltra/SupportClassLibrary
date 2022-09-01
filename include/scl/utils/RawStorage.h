@@ -2,10 +2,13 @@
 #include <memory>
 #include <new>
 
-#include "./exchange.h"
+#include "../alias/byte.h"
 #include "../meta/base/base.hpp"
+#include "../meta/type_aliases/as_const.h"
 #include "../meta/type_queries/copyable.h"
 #include "../meta/type_queries/movable.h"
+#include "./AlignedStorage.h"
+#include "./exchange.h"
 
 namespace scl {
     namespace utils {
@@ -50,7 +53,7 @@ namespace scl {
             struct CopyableRawStorage : scl::meta::copyable_base {
                     CopyableRawStorage() = default;
 
-                    CopyableRawStorage(const Derived& other) noexcept(
+                    CopyableRawStorage(const CopyableRawStorage& other) noexcept(
                         scl::meta::is_nothrow_copy_constructible<T>()) {
                         auto* self = static_cast<Derived*>(this);
                         auto& rhs = static_cast<const Derived&>(other);
@@ -60,7 +63,7 @@ namespace scl {
                         self->init = rhs.init;
                     }
 
-                    CopyableRawStorage& operator=(const Derived& other) noexcept(
+                    CopyableRawStorage& operator=(const CopyableRawStorage& other) noexcept(
                         scl::meta::is_nothrow_copyable<T>()) {
                         auto* self = static_cast<Derived*>(this);
                         auto& rhs = static_cast<const Derived&>(other);
@@ -93,8 +96,7 @@ namespace scl {
                     using raw_storage_copy_impl<T, Derived>::operator=;
 
                 protected:
-                    using storage_type
-                        = scl::meta::aligned_storage_t<sizeof(value_type), alignof(value_type)>;
+                    using storage_type = scl::utils::AlignedStorage<value_type>;
 
                     /**
                      * @var storage
@@ -108,9 +110,9 @@ namespace scl {
                      */
                     bool init = false;
 
-                    storage_type* rawPtr() { return &storage; }
+                    void* rawPtr() { return storage; }
 
-                    T* ptr() { return reinterpret_cast<T*>(this->rawPtr()); }
+                    T* ptr() { return static_cast<T*>(this->rawPtr()); }
 
                     /**
                      * Construct the variable in the storage

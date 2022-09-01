@@ -17,3 +17,4 @@ namespace scl {
 #include "./exchange.h"
 #include "./invoke.h"
 #include "./swap.h"
+#include "./AlignedStorage.h"
