@@ -8,6 +8,7 @@ namespace scl {
     namespace utils {}
 }  // namespace scl
 
+#include "./AlignedStorage.h"
 #include "./CaptureRValue.h"
 #include "./Either.h"
 #include "./Optional.h"
@@ -17,4 +18,3 @@ namespace scl {
 #include "./exchange.h"
 #include "./invoke.h"
 #include "./swap.h"
-#include "./AlignedStorage.h"

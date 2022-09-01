@@ -1,8 +1,9 @@
 ---
   BasedOnStyle: Google
+  Language: Cpp
   AccessModifierOffset: 0
   IndentAccessModifiers: true
-  PPIndentWidth: -1
+  PPIndentWidth: 4
   ReferenceAlignment: Left
   PointerAlignment: Left
   QualifierAlignment: Custom
@@ -26,4 +27,18 @@
   NamespaceIndentation: All
   BreakBeforeBinaryOperators: All
   BreakBeforeTernaryOperators: true
+  AlignOperands: AlignAfterOperator
+  BreakBeforeConceptDeclarations: true
+  IndentRequires: false
+  LambdaBodyIndentation: Signature
+  UseCRLF: false
+  UseTab: ForContinuationAndIndentation
+  AttributeMacros:
+      - SCL_MAYBE_UNUSED
+      - SCL_NODISCARD
+  AllowShortBlocksOnASingleLine: Empty
+  AllowShortEnumsOnASingleLine: false
+  AllowShortFunctionsOnASingleLine: Empty
+  AllowShortLambdasOnASingleLine: Empty
+  AllowShortLoopsOnASingleLine: false
 ...

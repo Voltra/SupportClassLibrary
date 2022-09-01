@@ -2,7 +2,7 @@
 
 namespace scl {
     namespace stream {
-        namespace terminators {}
+	namespace terminators {}
     }  // namespace stream
 }  // namespace scl
 

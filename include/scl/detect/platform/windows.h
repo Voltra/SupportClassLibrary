@@ -32,24 +32,24 @@
 
 namespace scl {
     namespace detect {
-        namespace platform {
-            /**
-             * @var scl::detect::platform::win64
-             * Checks whether or not the platform is a 64bit Windows
-             */
-            constexpr bool win64 = SCL_PLATFORM_WIN64;
+	namespace platform {
+	    /**
+	     * @var scl::detect::platform::win64
+	     * Checks whether or not the platform is a 64bit Windows
+	     */
+	    constexpr bool win64 = SCL_PLATFORM_WIN64;
 
-            /**
-             * @var scl::detect::platform::win32
-             * Checks whether or not the platform is a 32bit Windows
-             */
-            constexpr bool win32 = SCL_PLATFORM_WIN32;
+	    /**
+	     * @var scl::detect::platform::win32
+	     * Checks whether or not the platform is a 32bit Windows
+	     */
+	    constexpr bool win32 = SCL_PLATFORM_WIN32;
 
-            /**
-             * @var scl::detect::platform::windows
-             * Checks whether or not the platform is windows
-             */
-            constexpr bool windows = SCL_PLATFORM_WINDOWS;
-        }  // namespace platform
+	    /**
+	     * @var scl::detect::platform::windows
+	     * Checks whether or not the platform is windows
+	     */
+	    constexpr bool windows = SCL_PLATFORM_WINDOWS;
+	}  // namespace platform
     }      // namespace detect
 }  // namespace scl

@@ -12,8 +12,8 @@
 
 namespace scl {
     namespace detect {
-        namespace platform {
-            constexpr bool android = SCL_PLATFORM_ANDROID;
-        }
+	namespace platform {
+	    constexpr bool android = SCL_PLATFORM_ANDROID;
+	}
     }  // namespace detect
 }  // namespace scl

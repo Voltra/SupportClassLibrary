@@ -13,9 +13,9 @@
      * Macro that detects whether or not the platform is an emulator for IOS
      */
     #if defined(TARGET_IPHONE_SIMULATOR) && TARGET_IPHONE_SIMULATOR
-        #define SCL_PLATFORM_IOS_SIMULATOR true
+	#define SCL_PLATFORM_IOS_SIMULATOR true
     #else
-        #define SCL_PLATFORM_IOS_SIMULATOR false
+	#define SCL_PLATFORM_IOS_SIMULATOR false
     #endif
 
     /**
@@ -23,9 +23,9 @@
      * Macro that detects whether or not the platform is IOS (and not an emulator)
      */
     #if defined(TARGET_OS_IPHONE) && TARGET_OS_IPHONE
-        #define SCL_PLATFORM_IOS (!SCL_PLATFORM_IOS_SIMULATOR)
+	#define SCL_PLATFORM_IOS (!SCL_PLATFORM_IOS_SIMULATOR)
     #else
-        #define SCL_PLATFORM_IOS false
+	#define SCL_PLATFORM_IOS false
     #endif
 
     /**
@@ -33,9 +33,9 @@
      * Macro that detects whether or not the platform is OSX (and not IOS)
      */
     #if defined(TARGET_OS_MAC) && TARGET_OS_MAC
-        #define SCL_PLATFORM_OSX (!SCL_PLATFORM_IOS)
+	#define SCL_PLATFORM_OSX (!SCL_PLATFORM_IOS)
     #else
-        #define SCL_PLATFORM_OSX false
+	#define SCL_PLATFORM_OSX false
     #endif
 #else
     #define SCL_PLATFORM_APPLE false
@@ -58,14 +58,14 @@
 
 namespace scl {
     namespace detect {
-        namespace platform {
-            constexpr bool iosSimulator = SCL_PLATFORM_IOS_SIMULATOR;
-            constexpr bool ios = SCL_PLATFORM_IOS;
-            constexpr bool osx = SCL_PLATFORM_OSX;
+	namespace platform {
+	    constexpr bool iosSimulator = SCL_PLATFORM_IOS_SIMULATOR;
+	    constexpr bool ios = SCL_PLATFORM_IOS;
+	    constexpr bool osx = SCL_PLATFORM_OSX;
 
-            constexpr bool apple = SCL_PLATFORM_APPLE;
-            constexpr bool mac = SCL_PLATFORM_MAC;
-            constexpr bool iphone = SCL_PLATFORM_IPHONE;
-        }  // namespace platform
+	    constexpr bool apple = SCL_PLATFORM_APPLE;
+	    constexpr bool mac = SCL_PLATFORM_MAC;
+	    constexpr bool iphone = SCL_PLATFORM_IPHONE;
+	}  // namespace platform
     }      // namespace detect
 }  // namespace scl

@@ -3,7 +3,7 @@
 
 namespace scl {
     namespace utils {
-        template <class T, std::size_t Alignment = alignof(T)>
-        using AlignedStorage = scl::alias::byte[sizeof(T)];
+	template <class T, std::size_t Alignment = alignof(T)>
+	using AlignedStorage = scl::alias::byte[sizeof(T)];
     }
-}
+}  // namespace scl

@@ -7,10 +7,10 @@
 
 namespace scl {
     namespace utils {
-        template <class T, class U>
-        scl::meta::enable_if_t<scl::meta::is_swappable_with<T, U>(), void> swap(T& lhs, U& rhs) {
-            lhs = exchange(rhs, std::move(lhs));
-            return;
-        }
+	template <class T, class U>
+	scl::meta::enable_if_t<scl::meta::is_swappable_with<T, U>(), void> swap(T& lhs, U& rhs) {
+	    lhs = exchange(rhs, std::move(lhs));
+	    return;
+	}
     }  // namespace utils
 }  // namespace scl

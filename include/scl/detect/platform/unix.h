@@ -12,12 +12,12 @@
 
 namespace scl {
     namespace detect {
-        namespace platform {
-            /**
-             * @var scl::detect::platform::unix
-             * Checks whether or not the platform is a Unix platform
-             */
-            constexpr bool unix = SCL_PLATFORM_UNIX;
-        }  // namespace platform
+	namespace platform {
+	    /**
+	     * @var scl::detect::platform::unix
+	     * Checks whether or not the platform is a Unix platform
+	     */
+	    constexpr bool unix = SCL_PLATFORM_UNIX;
+	}  // namespace platform
     }      // namespace detect
 }  // namespace scl

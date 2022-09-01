@@ -2,7 +2,7 @@
 
 namespace scl {
     namespace stream {
-        namespace operators {}
+	namespace operators {}
     }  // namespace stream
 }  // namespace scl
 

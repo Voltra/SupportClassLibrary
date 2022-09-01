@@ -15,13 +15,13 @@
 
 namespace scl {
     namespace detect {
-        namespace platform {
-            /**
-             * @var scl::detect::platform::linux
-             * Checks whether or not the platform is a Linux platform (that is neither android or
-             * apple)
-             */
-            constexpr bool linux = SCL_PLATFORM_LINUX;
-        }  // namespace platform
+	namespace platform {
+	    /**
+	     * @var scl::detect::platform::linux
+	     * Checks whether or not the platform is a Linux platform (that is neither android or
+	     * apple)
+	     */
+	    constexpr bool linux = SCL_PLATFORM_LINUX;
+	}  // namespace platform
     }      // namespace detect
 }  // namespace scl

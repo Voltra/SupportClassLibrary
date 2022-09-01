@@ -2,10 +2,10 @@
 
 namespace scl {
     namespace stream {
-        /**
-         * Implementation details of the Stream API
-         */
-        namespace details {}
+	/**
+	 * Implementation details of the Stream API
+	 */
+	namespace details {}
     }  // namespace stream
 }  // namespace scl
 
