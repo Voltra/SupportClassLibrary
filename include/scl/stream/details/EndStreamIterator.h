@@ -47,7 +47,9 @@ namespace scl {
 		     * Getter for the parent iterator
 		     * @return a reference to the parent iterator
 		     */
-		    parent_type& parent() const { return this->parent_; }
+		    parent_type& parent() const {
+			return this->parent_;
+		    }
 
 		    /**
 		     * Construct from a parent iterator
@@ -69,22 +71,30 @@ namespace scl {
 		    /**
 		     * @see scl::stream::details::iterator::StreamIterator::hasNext
 		     */
-		    bool hasNext() const override { return this->parent_.hasNext(); }
+		    bool hasNext() const override {
+			return this->parent_.hasNext();
+		    }
 
 		    /**
 		     * @see scl::stream::details::iterator::StreamIterator::next
 		     */
-		    payload_type next() override { return this->parent_.next(); }
+		    payload_type next() override {
+			return this->parent_.next();
+		    }
 
 		    /**
 		     * @see scl::stream::details::iterator::StreamIterator::begin
 		     */
-		    StlAdapter<T> begin() override { return this->parent_.begin(); }
+		    StlAdapter<T> begin() override {
+			return this->parent_.begin();
+		    }
 
 		    /**
 		     * @see scl::stream::details::iterator::StreamIterator::end
 		     */
-		    StlAdapter<T> end() override { return this->parent_.end(); }
+		    StlAdapter<T> end() override {
+			return this->parent_.end();
+		    }
 
 		protected:
 		    /**

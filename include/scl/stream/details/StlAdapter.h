@@ -146,7 +146,9 @@ namespace scl {
 		     * Dereference operator
 		     * @return the current payload
 		     */
-		    payload_type&& operator*() { return std::move(payload); }
+		    payload_type&& operator*() {
+			return std::move(payload);
+		    }
 	    };
 	}  // namespace details
     }      // namespace stream

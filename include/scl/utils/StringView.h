@@ -128,7 +128,9 @@ namespace scl {
 			return operator[](size() - 1);
 		    }
 
-		    SCL_NODISCARD inline const_pointer data() const noexcept { return start; }
+		    SCL_NODISCARD inline const_pointer data() const noexcept {
+			return start;
+		    }
 	    };
 
 	    template <class Char, class Traits = std::char_traits<Char>>

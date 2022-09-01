@@ -58,21 +58,27 @@ namespace scl {
 		 * @note Auto-closing the file is disabled, so you can make multiple instances via
 		 * this method if needed
 		 */
-		static SCL_CONSTEXPR17 RawFile cstdin() noexcept { return RawFile{stdin, false}; }
+		static SCL_CONSTEXPR17 RawFile cstdin() noexcept {
+		    return RawFile{stdin, false};
+		}
 
 		/**
 		 * @return A wrapper around the standard output
 		 * @note Auto-closing the file is disabled, so you can make multiple instances via
 		 * this method if needed
 		 */
-		static SCL_CONSTEXPR17 RawFile cstdout() noexcept { return RawFile{stdout, false}; }
+		static SCL_CONSTEXPR17 RawFile cstdout() noexcept {
+		    return RawFile{stdout, false};
+		}
 
 		/**
 		 * @return A wrapper around the standard error output
 		 * @note Auto-closing the file is disabled, so you can make multiple instances via
 		 * this method if needed
 		 */
-		static SCL_CONSTEXPR17 RawFile cstderr() noexcept { return RawFile{stderr, false}; }
+		static SCL_CONSTEXPR17 RawFile cstderr() noexcept {
+		    return RawFile{stderr, false};
+		}
 
 		template <class Engine = scl::utils::details::DefaultOptionalEngine<RawFile>>
 		static scl::utils::Optional<RawFile, Engine> tmp() noexcept {
@@ -109,7 +115,9 @@ namespace scl {
 		 * @see https://en.cppreference.com/w/cpp/io/c/fflush
 		 * @return TRUE if the flush was successful, FALSE otherwise
 		 */
-		bool flush() & noexcept { return std::fflush(fd) == 0; }
+		bool flush() & noexcept {
+		    return std::fflush(fd) == 0;
+		}
 
 		/**
 		 * Reads up to @p count characters
@@ -207,7 +215,9 @@ namespace scl {
 		 * @param ch being the character to write
 		 * @return TRUE if @p ch was successfully written, FALSE otherwise
 		 */
-		bool putc(int ch) & noexcept { return std::fputc(ch, fd) != EOF; }
+		bool putc(int ch) & noexcept {
+		    return std::fputc(ch, fd) != EOF;
+		}
 
 		/**
 		 * Write a NULL TERMINATED string
@@ -215,7 +225,9 @@ namespace scl {
 		 * @param str being the string to write
 		 * @return TRUE if @p str was successfully written, FALSE otherwise
 		 */
-		bool puts(const char* str) & noexcept { return std::fputs(str, fd) != EOF; }
+		bool puts(const char* str) & noexcept {
+		    return std::fputs(str, fd) != EOF;
+		}
 
 		/**
 		 * Pushes @p ch into the input stream associated with the file (so that next
@@ -223,7 +235,9 @@ namespace scl {
 		 * @param ch being the character to write
 		 * @return TRUE if @p ch was successfully written, FALSE otherwise
 		 */
-		bool ungetc(int ch) & noexcept { return std::ungetc(ch, fd) != EOF; }
+		bool ungetc(int ch) & noexcept {
+		    return std::ungetc(ch, fd) != EOF;
+		}
 
 		/**
 		 * Read a single, wide character
@@ -255,7 +269,9 @@ namespace scl {
 		 * @param ch being the character to write
 		 * @return TRUE if @p ch was successfully written, FALSE otherwise
 		 */
-		bool putwc(std::wint_t ch) & noexcept { return std::fputwc(ch, fd) != WEOF; }
+		bool putwc(std::wint_t ch) & noexcept {
+		    return std::fputwc(ch, fd) != WEOF;
+		}
 
 		/**
 		 * Write a NULL TERMINATED wide string
@@ -263,7 +279,9 @@ namespace scl {
 		 * @param str being the string to write
 		 * @return TRUE if @p str was successfully written, FALSE otherwise
 		 */
-		bool putws(const wchar_t* str) & noexcept { return std::fputws(str, fd) != WEOF; }
+		bool putws(const wchar_t* str) & noexcept {
+		    return std::fputws(str, fd) != WEOF;
+		}
 
 		/**
 		 * Pushes @p ch into the input stream associated with the file (so that next
@@ -271,7 +289,9 @@ namespace scl {
 		 * @param ch being the wide character to write
 		 * @return TRUE if @p ch was successfully written, FALSE otherwise
 		 */
-		bool ungetwc(std::wint_t ch) & noexcept { return std::ungetwc(ch, fd) != WEOF; }
+		bool ungetwc(std::wint_t ch) & noexcept {
+		    return std::ungetwc(ch, fd) != WEOF;
+		}
 
 		/**
 		 * Get the current file position indicator
@@ -280,7 +300,9 @@ namespace scl {
 		 * scl::fs::RawFile::seek)
 		 * @post return >= 0
 		 */
-		long tell() const& noexcept { return std::ftell(fd); }
+		long tell() const& noexcept {
+		    return std::ftell(fd);
+		}
 
 		/**
 		 * Get the current file position indicator and multi-byte parsing state, if any
@@ -322,33 +344,46 @@ namespace scl {
 			  class EngineRet = scl::utils::details::DefaultOptionalEngine<bool>>
 		scl::utils::Optional<bool, EngineRet> setposOpt(
 		    const scl::utils::Optional<std::fpos_t>& opt) & noexcept {
-		    return opt.map(
-			[=](const std::fpos_t& pos) -> bool { return this->setpos(pos); });
+		    return opt.map([=](const std::fpos_t& pos) -> bool {
+			return this->setpos(pos);
+		    });
 		}
 
 		/**
 		 * Move the current file position indicator to the beginning of the file
 		 */
-		void rewind() & noexcept { std::rewind(fd); }
+		void rewind() & noexcept {
+		    std::rewind(fd);
+		}
 
 		/**
 		 * Reset the error and EOF flags
 		 */
-		void clearerr() & noexcept { std::clearerr(fd); }
+		void clearerr() & noexcept {
+		    std::clearerr(fd);
+		}
 
 		/**
 		 * Whether the file reached EOF
 		 */
-		bool eof() const& noexcept { return std::feof(fd); }
+		bool eof() const& noexcept {
+		    return std::feof(fd);
+		}
 
 		/**
 		 * Whether there was an error in the last operation
 		 */
-		bool error() const& noexcept { return std::ferror(fd); }
+		bool error() const& noexcept {
+		    return std::ferror(fd);
+		}
 
-		bool ok() const& noexcept { return !(eof() || error()); }
+		bool ok() const& noexcept {
+		    return !(eof() || error());
+		}
 
-		~RawFile() noexcept { close(); }
+		~RawFile() noexcept {
+		    close();
+		}
 	};
     }  // namespace fs
 }  // namespace scl

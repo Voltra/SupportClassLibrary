@@ -71,7 +71,9 @@ namespace scl {
 		 * Destroy an active object (finishing the queue)
 		 */
 		~Active() {
-		    this->execute([=] { done = true; });
+		    this->execute([=] {
+			done = true;
+		    });
 
 		    this->thread.join();
 		}

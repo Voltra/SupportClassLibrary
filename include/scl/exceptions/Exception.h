@@ -30,13 +30,17 @@ namespace scl {
 		 * Retrieve the reason
 		 * @return the reason as a const char* const
 		 */
-		scl::meta::real_const_t<char*> reason() const override { return this->reason_; }
+		scl::meta::real_const_t<char*> reason() const override {
+		    return this->reason_;
+		}
 
 		/**
 		 * Override that uses the user defined reason
 		 * @return the reason
 		 */
-		const char* what() const noexcept override { return this->reason(); }
+		const char* what() const noexcept override {
+		    return this->reason();
+		}
 
 		/**
 		 * A string describing the name of the exception class

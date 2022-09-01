@@ -47,7 +47,9 @@ namespace scl {
 			 */
 			FromIterators(It begin, It end) : begin_{begin}, end_{end} {}
 
-			bool hasNext() const final { return begin_ != end_; }
+			bool hasNext() const final {
+			    return begin_ != end_;
+			}
 
 			payload_type next() final {
 			    if (!this->hasNext())

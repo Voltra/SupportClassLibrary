@@ -40,7 +40,9 @@ namespace scl {
 		 * Get a reference to the underlying iterator
 		 * @return the underlying iterator
 		 */
-		iterator_type& it() { return this->iterator; }
+		iterator_type& it() {
+		    return this->iterator;
+		}
 
 	    protected:
 		/**

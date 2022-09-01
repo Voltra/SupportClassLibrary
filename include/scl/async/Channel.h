@@ -116,17 +116,23 @@ namespace scl {
 		    /**
 		     * Lock the channel
 		     */
-		    void lock() { this->lock_.lock(); }
+		    void lock() {
+			this->lock_.lock();
+		    }
 
 		    /**
 		     * Unlock the channel
 		     */
-		    void unlock() { this->lock_.unlock(); }
+		    void unlock() {
+			this->lock_.unlock();
+		    }
 
 		    /**
 		     * Notify the channel
 		     */
-		    void notify() { this->actor->channel->condition.notify_one(); }
+		    void notify() {
+			this->actor->channel->condition.notify_one();
+		    }
 
 		    /**
 		     * Wait for the channel
@@ -310,25 +316,33 @@ namespace scl {
 		/**
 		 * Alias for Channel::size
 		 */
-		size_type length() const { return this->size(); }
+		size_type length() const {
+		    return this->size();
+		}
 
 		/**
 		 * Determine whether or not the channel is currently empty
 		 * @return TRUE if it is, FALSE otherwise
 		 */
-		bool isEmpty() const { return this->size() <= 0; }
+		bool isEmpty() const {
+		    return this->size() <= 0;
+		}
 
 		/**
 		 * Get a receiver for this channel
 		 * @return the receiver
 		 */
-		receiver_type& receiver() { return this->receiver_; }
+		receiver_type& receiver() {
+		    return this->receiver_;
+		}
 
 		/**
 		 * Get an emitter for this channel
 		 * @return the emitter
 		 */
-		emitter_type& emitter() { return this->emitter_; }
+		emitter_type& emitter() {
+		    return this->emitter_;
+		}
 
 		/**
 		 * Forward a value into the channel
@@ -600,7 +614,9 @@ namespace scl {
 		     * @return the first remaining value
 		     */
 		    value_type pop() {
-			this->traits.waitUntil([&] { return !this->channel->queue.empty(); });
+			this->traits.waitUntil([&] {
+			    return !this->channel->queue.empty();
+			});
 
 			auto value = this->channel->queue.front();  // get front
 			this->channel->queue.pop();                 // remove from queue
@@ -617,8 +633,9 @@ namespace scl {
 		     */
 		    template <class Rep, class Period>
 		    optional_type tryPop(const std::chrono::duration<Rep, Period>& duration) {
-			bool isEmpty = this->traits.waitFor(
-			    duration, [&] { return !this->channel->queue.empty(); });
+			bool isEmpty = this->traits.waitFor(duration, [&] {
+			    return !this->channel->queue.empty();
+			});
 
 			if (isEmpty)
 			    return optional_type{};
@@ -632,12 +649,16 @@ namespace scl {
 		    /**
 		     * Alias for ChannelReceiver::receive
 		     */
-		    value_type dequeue() { return this->pop(); }
+		    value_type dequeue() {
+			return this->pop();
+		    }
 
 		    /**
 		     * Alias for ChannelReceiver::receive
 		     */
-		    value_type receive() { return this->pop(); }
+		    value_type receive() {
+			return this->pop();
+		    }
 
 		    /**
 		     * Alias for ChannelReceiver::tryPop

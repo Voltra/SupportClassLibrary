@@ -117,14 +117,24 @@ namespace scl {
 		     */
 		    bool init = false;
 
-		    void* rawPtr() { return storage; }
-		    const void* rawPtr() const { return storage; }
+		    void* rawPtr() {
+			return storage;
+		    }
+		    const void* rawPtr() const {
+			return storage;
+		    }
 
-		    T* ptr() & { return static_cast<T*>(this->rawPtr()); }
+		    T* ptr() & {
+			return static_cast<T*>(this->rawPtr());
+		    }
 
-		    T* ptr() && { return static_cast<T*>(this->rawPtr()); }
+		    T* ptr() && {
+			return static_cast<T*>(this->rawPtr());
+		    }
 
-		    const T* ptr() const& { return static_cast<const T*>(this->rawPtr()); }
+		    const T* ptr() const& {
+			return static_cast<const T*>(this->rawPtr());
+		    }
 
 		    /**
 		     * Construct the variable in the storage
@@ -227,11 +237,17 @@ namespace scl {
 			this->initialize(std::forward<Args>(args)...);
 		    }
 
-		    T& unsafeGet() & noexcept { return *this->ptr(); }
+		    T& unsafeGet() & noexcept {
+			return *this->ptr();
+		    }
 
-		    T&& unsafeGet() && noexcept { return std::move(*this->ptr()); }
+		    T&& unsafeGet() && noexcept {
+			return std::move(*this->ptr());
+		    }
 
-		    const T& unsafeGet() const& noexcept { return *this->ptr(); }
+		    const T& unsafeGet() const& noexcept {
+			return *this->ptr();
+		    }
 
 		    /**
 		     * Access the underlying data
@@ -281,7 +297,9 @@ namespace scl {
 		     * @return a mutable reference to the underlying data
 		     * @throws scl::exceptions::UninitializedMemoryAccess
 		     */
-		    T& operator*() & noexcept(SCL_NO_EXCEPTIONS) { return this->get(); }
+		    T& operator*() & noexcept(SCL_NO_EXCEPTIONS) {
+			return this->get();
+		    }
 
 		    /**
 		     * Get the value from a constant RawStorage (e.g. w/ a constant class that uses
@@ -289,7 +307,9 @@ namespace scl {
 		     * @return an immutable reference to the underlying value
 		     * @throws scl::exceptions::UninitializedMemoryAccess
 		     */
-		    const T& operator*() const& noexcept(SCL_NO_EXCEPTIONS) { return this->get(); }
+		    const T& operator*() const& noexcept(SCL_NO_EXCEPTIONS) {
+			return this->get();
+		    }
 
 		    /**
 		     * Get the value from a constant RawStorage (e.g. w/ a constant class that uses
@@ -297,14 +317,18 @@ namespace scl {
 		     * @return an immutable reference to the underlying value
 		     * @throws scl::exceptions::UninitializedMemoryAccess
 		     */
-		    T&& operator*() && noexcept(SCL_NO_EXCEPTIONS) { return this->get(); }
+		    T&& operator*() && noexcept(SCL_NO_EXCEPTIONS) {
+			return this->get();
+		    }
 
 		    /**
 		     * Get a pointer to the underlying data
 		     * @return a mutable pointer to the underlying data
 		     * @throws scl::exceptions::UninitializedMemoryAccess
 		     */
-		    T* operator->() noexcept(SCL_NO_EXCEPTIONS) { return &(this->get()); }
+		    T* operator->() noexcept(SCL_NO_EXCEPTIONS) {
+			return &(this->get());
+		    }
 
 		    /**
 		     * Get a pointer to the value from a constant RawStorage (e.g. w/ a constant
@@ -320,13 +344,17 @@ namespace scl {
 		     * Determine whether or not the storage holds a value
 		     * @return TRUE if it does, FALSE otherwise
 		     */
-		    bool hasValue() const noexcept { return this->init; }
+		    bool hasValue() const noexcept {
+			return this->init;
+		    }
 
 		    /**
 		     * Implicit conversion to bool
 		     * @return TRUE if the storage holds a value, FALSE otherwise
 		     */
-		    operator bool() const noexcept { return this->hasValue(); }
+		    operator bool() const noexcept {
+			return this->hasValue();
+		    }
 	    };
 	}  // namespace details
 

@@ -77,12 +77,20 @@ namespace scl {
 	    return lhs = lhs >> rhs;
 	}
 
-	constexpr byte& operator|=(byte& lhs, byte rhs) noexcept { return lhs = lhs | rhs; }
-	constexpr byte& operator&=(byte& lhs, byte rhs) noexcept { return lhs = lhs & rhs; }
-	constexpr byte& operator^=(byte& lhs, byte rhs) noexcept { return lhs = lhs ^ rhs; }
+	constexpr byte& operator|=(byte& lhs, byte rhs) noexcept {
+	    return lhs = lhs | rhs;
+	}
+	constexpr byte& operator&=(byte& lhs, byte rhs) noexcept {
+	    return lhs = lhs & rhs;
+	}
+	constexpr byte& operator^=(byte& lhs, byte rhs) noexcept {
+	    return lhs = lhs ^ rhs;
+	}
 #endif
 
-	constexpr byte* ptr_as_bytes(void* ptr) { return static_cast<byte*>(ptr); }
+	constexpr byte* ptr_as_bytes(void* ptr) {
+	    return static_cast<byte*>(ptr);
+	}
 
 	template <typename Integral>
 	constexpr std::array<byte, sizeof(Integral)> to_bytes(const Integral& value) {

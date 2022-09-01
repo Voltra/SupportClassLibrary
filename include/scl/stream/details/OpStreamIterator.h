@@ -27,7 +27,9 @@ namespace scl {
 		     * Getter for the parent iterator
 		     * @return a reference to the parent iterator
 		     */
-		    parent_type& parent() { return this->parent_; };
+		    parent_type& parent() {
+			return this->parent_;
+		    };
 
 		    /**
 		     * Construct from a parent iterator
@@ -49,7 +51,9 @@ namespace scl {
 		    /**
 		     * @see scl::stream::details::iterator::StreamIterator::hasNext
 		     */
-		    bool hasNext() const override { return this->parent_.hasNext(); }
+		    bool hasNext() const override {
+			return this->parent_.hasNext();
+		    }
 
 		protected:
 		    /**

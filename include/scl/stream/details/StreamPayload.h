@@ -77,7 +77,9 @@ namespace scl {
 		     * Determine whether or not the underlying sum type stores a value
 		     * @return TRUE if it does, FALSE otherwise
 		     */
-		    bool isValid() { return !this->isInvalid(); }
+		    bool isValid() {
+			return !this->isInvalid();
+		    }
 
 		    /**
 		     * Create a payload with a value set
@@ -97,7 +99,9 @@ namespace scl {
 		     * @return the instantiated payload
 		     */
 		    static constexpr StreamPayload withoutValue() {
-			return StreamPayload{[] { return scl::utils::none; }};
+			return StreamPayload{[] {
+			    return scl::utils::none;
+			}};
 		    }
 
 		protected:

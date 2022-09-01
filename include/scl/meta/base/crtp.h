@@ -12,11 +12,17 @@ namespace scl {
 		    return static_cast<const Derived*>(this);
 		}
 
-		inline constexpr Derived& self_() & noexcept { return *selfPtr_(); }
+		inline constexpr Derived& self_() & noexcept {
+		    return *selfPtr_();
+		}
 
-		inline constexpr Derived&& self_() && noexcept { return *selfPtr_(); }
+		inline constexpr Derived&& self_() && noexcept {
+		    return *selfPtr_();
+		}
 
-		inline constexpr const Derived& self_() const& noexcept { return *selfPtr_(); }
+		inline constexpr const Derived& self_() const& noexcept {
+		    return *selfPtr_();
+		}
 	};
     }  // namespace meta
 }  // namespace scl

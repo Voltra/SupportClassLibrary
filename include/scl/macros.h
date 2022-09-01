@@ -39,4 +39,6 @@ constexpr scl_inplace_t scl_inplace;
 #endif
 
 #define SCL_RETURN(expr...) \
-    decltype(expr) { return expr; }
+    decltype(expr) {        \
+	return expr;        \
+    }

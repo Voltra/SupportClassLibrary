@@ -32,12 +32,24 @@ namespace scl {
 	     * An empty class serving as the type of an empty Optional<T>
 	     */
 	    struct OptionalNone final {
-		    constexpr bool operator==(OptionalNone) const { return true; }
-		    constexpr bool operator!=(OptionalNone) const { return false; }
-		    constexpr bool operator<(OptionalNone) const { return false; }
-		    constexpr bool operator<=(OptionalNone) const { return true; }
-		    constexpr bool operator>(OptionalNone) const { return false; }
-		    constexpr bool operator>=(OptionalNone) const { return true; }
+		    constexpr bool operator==(OptionalNone) const {
+			return true;
+		    }
+		    constexpr bool operator!=(OptionalNone) const {
+			return false;
+		    }
+		    constexpr bool operator<(OptionalNone) const {
+			return false;
+		    }
+		    constexpr bool operator<=(OptionalNone) const {
+			return true;
+		    }
+		    constexpr bool operator>(OptionalNone) const {
+			return false;
+		    }
+		    constexpr bool operator>=(OptionalNone) const {
+			return true;
+		    }
 	    };
 
 	    template <class T, class Derived>
@@ -100,7 +112,9 @@ namespace scl {
 			return *this;
 		    }
 
-		    SCL_NODISCARD bool hasValue() const { return this->payload.hasValue(); }
+		    SCL_NODISCARD bool hasValue() const {
+			return this->payload.hasValue();
+		    }
 
 		    SCL_NODISCARD value_type& get() & noexcept(SCL_NO_EXCEPTIONS) {
 #if !SCL_NO_EXCEPTIONS
@@ -180,7 +194,9 @@ namespace scl {
 			return *this;
 		    }
 
-		    SCL_NODISCARD bool hasValue() const { return payload.has_value(); }
+		    SCL_NODISCARD bool hasValue() const {
+			return payload.has_value();
+		    }
 
 		    SCL_NODISCARD value_type& get() & noexcept(SCL_NO_EXCEPTIONS) {
     #if !SCL_NO_EXCEPTIONS
@@ -278,11 +294,17 @@ namespace scl {
 		 * @param ptr being the pointer to construct from
 		 * @return an empty optional if ptr is null, an initialized pointer otherwise
 		 */
-		static Optional fromPointer(const T* ptr) { return !ptr ? none : *ptr; }
+		static Optional fromPointer(const T* ptr) {
+		    return !ptr ? none : *ptr;
+		}
 
-		static Optional fromPointer(std::nullptr_t) { return none; }
+		static Optional fromPointer(std::nullptr_t) {
+		    return none;
+		}
 
-		static Optional ownFromPointer(T* ptr) { return !ptr ? none : std::move(*ptr); }
+		static Optional ownFromPointer(T* ptr) {
+		    return !ptr ? none : std::move(*ptr);
+		}
 
 		/**
 		 * Construct an optional inplace
@@ -312,52 +334,68 @@ namespace scl {
 		 * @return a const& to the stored value
 		 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 		 */
-		SCL_NODISCARD const value_type& value() const { return this->get(); }
+		SCL_NODISCARD const value_type& value() const {
+		    return this->get();
+		}
 
 		/**
 		 * A semantic alias for Optional<T>::get
 		 * @return a ref to the stored value
 		 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 		 */
-		SCL_NODISCARD value_type& value() { return this->get(); }
+		SCL_NODISCARD value_type& value() {
+		    return this->get();
+		}
 
 		/**
 		 * Get an immutable pointer to the contained value
 		 * @return a realConst(T*) to the value
 		 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 		 */
-		scl::meta::real_const_t<value_type*> ptr() const { return &(this->get()); }
+		scl::meta::real_const_t<value_type*> ptr() const {
+		    return &(this->get());
+		}
 
 		/**
 		 * Get a pointer to the contained value
 		 * @return a pointer to the value
 		 * @throws scl::exceptions::EmptyOptionalAccess if there's no value
 		 */
-		value_type* ptr() { return &(this->get()); }
+		value_type* ptr() {
+		    return &(this->get());
+		}
 
 		/**
 		 * Automatic bool conversion
 		 * @return TRUE if there's a value, FALSE otherwise
 		 */
-		SCL_NODISCARD operator bool() const { return this->hasValue(); }
+		SCL_NODISCARD operator bool() const {
+		    return this->hasValue();
+		}
 
 		/**
 		 * Alias for scl::utils::Optional::get
 		 * @return A const reference to the optional's value
 		 */
-		SCL_NODISCARD const value_type& operator*() const& { return this->get(); }
+		SCL_NODISCARD const value_type& operator*() const& {
+		    return this->get();
+		}
 
 		/**
 		 * Alias for scl::utils::Optional::get
 		 * @return A const reference to the optional's value
 		 */
-		SCL_NODISCARD value_type& operator*() & { return this->get(); }
+		SCL_NODISCARD value_type& operator*() & {
+		    return this->get();
+		}
 
 		/**
 		 * Alias for scl::utils::Optional::get
 		 * @return A const reference to the optional's value
 		 */
-		SCL_NODISCARD value_type&& operator*() && { return this->get(); }
+		SCL_NODISCARD value_type&& operator*() && {
+		    return this->get();
+		}
 
 		/**
 		 * Retrieves the value if there's one or return the default value provided
@@ -586,32 +624,44 @@ namespace scl {
 		    return this->flatMap<F, U>(std::forward<F>(mapper));
 		}
 
-		inline bool operator==(details::OptionalNone) const { return !this->hasValue(); }
+		inline bool operator==(details::OptionalNone) const {
+		    return !this->hasValue();
+		}
 		inline friend bool operator==(details::OptionalNone, const Optional& o) {
 		    return o == none;
 		}
 
-		inline bool operator<(details::OptionalNone) const { return false; }
+		inline bool operator<(details::OptionalNone) const {
+		    return false;
+		}
 		inline friend bool operator<(details::OptionalNone, const Optional&) {
 		    return true;
 		}
 
-		inline bool operator<=(details::OptionalNone) const { return (*this) == none; }
+		inline bool operator<=(details::OptionalNone) const {
+		    return (*this) == none;
+		}
 		inline friend bool operator<=(details::OptionalNone, const Optional&) {
 		    return true;
 		}
 
-		inline bool operator>(details::OptionalNone) const { return true; }
+		inline bool operator>(details::OptionalNone) const {
+		    return true;
+		}
 		inline friend bool operator>(details::OptionalNone, const Optional&) {
 		    return false;
 		}
 
-		inline bool operator>=(details::OptionalNone) const { return true; }
+		inline bool operator>=(details::OptionalNone) const {
+		    return true;
+		}
 		inline friend bool operator>=(details::OptionalNone, const Optional& o) {
 		    return o <= none;
 		}
 
-		inline bool operator!=(details::OptionalNone) const { return !((*this) == none); }
+		inline bool operator!=(details::OptionalNone) const {
+		    return !((*this) == none);
+		}
 		inline friend bool operator!=(details::OptionalNone, const Optional& o) {
 		    return o != none;
 		}

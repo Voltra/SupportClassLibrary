@@ -496,11 +496,12 @@ namespace scl {
 			  class Rhs = scl::meta::return_t<RightMapper>>
 		Either<Lhs, Rhs> map(LeftMapper&& leftMapper, RightMapper&& rightMapper) && {
 		    if (this->isLeft()) {
-			return Either<Lhs, Rhs>::Left(
-			    invoke(std::forward<LeftMapper>(leftMapper), std::move(this->unsafeGetLeft())));
+			return Either<Lhs, Rhs>::Left(invoke(std::forward<LeftMapper>(leftMapper),
+							     std::move(this->unsafeGetLeft())));
 		    } else if (this->isRight()) {
 			return Either<Lhs, Rhs>::Right(
-			    invoke(std::forward<RightMapper>(rightMapper), std::move(this->unsafeGetRight())));
+			    invoke(std::forward<RightMapper>(rightMapper),
+				   std::move(this->unsafeGetRight())));
 		    } else {
 			return Either<Lhs, Rhs>::valuelessInstance();
 		    }
@@ -522,7 +523,8 @@ namespace scl {
 			  class Lhs = typename scl::meta::return_t<LeftMapper>::left_type>
 		Either<Lhs, right_type> flatMapLeft(LeftMapper&& leftMapper) && {
 		    if (this->isLeft()) {
-			return invoke(std::forward<LeftMapper>(leftMapper), std::move(unsafeGetLeft()));
+			return invoke(std::forward<LeftMapper>(leftMapper),
+				      std::move(unsafeGetLeft()));
 		    } else if (this->isRight()) {
 			return Either<Lhs, right_type>::Right(std::move(unsafeGetRight()));
 		    } else {
@@ -546,7 +548,8 @@ namespace scl {
 			  class Rhs = typename scl::meta::return_t<RightMapper>::right_type>
 		Either<left_type, Rhs> flatMapRight(RightMapper&& rightMapper) && {
 		    if (this->isRight()) {
-			return invoke(std::forward<RightMapper>(rightMapper), std::move(unsafeGetRight()));
+			return invoke(std::forward<RightMapper>(rightMapper),
+				      std::move(unsafeGetRight()));
 		    } else if (this->isLeft()) {
 			return Either<left_type, Rhs>::Left(std::move(unsafeGetLeft()));
 		    } else {
@@ -573,9 +576,11 @@ namespace scl {
 			  class Rhs = typename scl::meta::return_t<RightMapper>::right_type>
 		Either<Lhs, Rhs> flatMap(LeftMapper&& leftMapper, RightMapper&& rightMapper) && {
 		    if (this->isRight()) {
-			return invoke(std::forward<RightMapper>(rightMapper), std::move(unsafeGetRight()));
+			return invoke(std::forward<RightMapper>(rightMapper),
+				      std::move(unsafeGetRight()));
 		    } else if (this->isLeft()) {
-			return invoke(std::forward<LeftMapper>(leftMapper), std::move(unsafeGetLeft()));
+			return invoke(std::forward<LeftMapper>(leftMapper),
+				      std::move(unsafeGetLeft()));
 		    } else {
 			return Either<Lhs, Rhs>::valuelessInstance();
 		    }

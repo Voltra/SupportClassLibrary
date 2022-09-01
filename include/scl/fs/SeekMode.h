@@ -3,7 +3,11 @@
 
 namespace scl {
     namespace fs {
-	enum class SeekMode { SET, CURRENT, END };
+	enum class SeekMode {
+	    SET,
+	    CURRENT,
+	    END
+	};
 
 	inline constexpr int seekModeCode(SeekMode seekMode) {
 	    switch (seekMode) {
