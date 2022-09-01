@@ -13,16 +13,17 @@ namespace scl {
          */
         template <class T, class F>
         class CaptureRValue {
-        private:
-            T value;
-            F func;
+            private:
+                T value;
+                F func;
 
-        public:
-            constexpr CaptureRValue(T&& val, F&& f) : value{std::move(val)}, func{std::move(f)} {}
+            public:
+                constexpr CaptureRValue(T&& val, F&& f)
+                    : value{std::move(val)}, func{std::move(f)} {}
 
-            template <class... Args>
-            constexpr auto operator()(Args&&... args)
-                -> SCL_RETURN(invoke(func, std::move(value), std::forward<Args>(args)...))
+                template <class... Args>
+                constexpr auto operator()(Args&&... args)
+                    -> SCL_RETURN(invoke(func, std::move(value), std::forward<Args>(args)...))
         };
     }  // namespace utils
 }  // namespace scl

@@ -23,38 +23,39 @@ namespace scl {
                 template <class It>
                 class FromIterators final : public virtual scl::stream::details::BaseStreamIterator<
                                                 iterator_value_type<It>> {
-                public:
-                    using value_type = iterator_value_type<It>;
-                    using iterator_type = FromIterators;
-                    using payload_type =
-                        typename scl::stream::details::BaseStreamIterator<value_type>::payload_type;
+                    public:
+                        using value_type = iterator_value_type<It>;
+                        using iterator_type = FromIterators;
+                        using payload_type = typename scl::stream::details::BaseStreamIterator<
+                            value_type>::payload_type;
 
-                protected:
-                    /**
-                     * @var begin
-                     * the iterator to the first element
-                     *
-                     * @var end
-                     * the iterator to the point after the last element
-                     */
-                    It begin_, end_;
+                    protected:
+                        /**
+                         * @var begin
+                         * the iterator to the first element
+                         *
+                         * @var end
+                         * the iterator to the point after the last element
+                         */
+                        It begin_, end_;
 
-                public:
-                    /**
-                     * Construct the iterator from STL-like iterators
-                     * @param begin being the beginning of the range
-                     * @param end being the end of the range
-                     */
-                    FromIterators(It begin, It end) : begin_{begin}, end_{end} {}
+                    public:
+                        /**
+                         * Construct the iterator from STL-like iterators
+                         * @param begin being the beginning of the range
+                         * @param end being the end of the range
+                         */
+                        FromIterators(It begin, It end) : begin_{begin}, end_{end} {}
 
-                    bool hasNext() const final { return begin_ != end_; }
+                        bool hasNext() const final { return begin_ != end_; }
 
-                    payload_type next() final {
-                        if (!this->hasNext()) return payload_type::withoutValue();
+                        payload_type next() final {
+                            if (!this->hasNext())
+                                return payload_type::withoutValue();
 
-                        value_type& value = *(begin_++);
-                        return payload_type::withValue(std::move(value));
-                    }
+                            value_type& value = *(begin_++);
+                            return payload_type::withValue(std::move(value));
+                        }
                 };
             }  // namespace details
 

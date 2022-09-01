@@ -12,30 +12,30 @@ namespace scl {
          */
         template <class T>
         class RValueForwarder {
-        private:
-            T value;
-            bool wasMoved = false;
+            private:
+                T value;
+                bool wasMoved = false;
 
-        public:
-            RValueForwarder() = delete;
+            public:
+                RValueForwarder() = delete;
 
-            explicit constexpr RValueForwarder(T&& val) : value{std::move(val)} {}
+                explicit constexpr RValueForwarder(T&& val) : value{std::move(val)} {}
 
-            constexpr RValueForwarder(RValueForwarder& rhs)
-                : value{std::move(rhs.value)}, wasMoved{true} {
-                assert(!rhs.wasMoved);
-            }
+                constexpr RValueForwarder(RValueForwarder& rhs)
+                    : value{std::move(rhs.value)}, wasMoved{true} {
+                    assert(!rhs.wasMoved);
+                }
 
-            constexpr RValueForwarder(RValueForwarder&& rhs)
-                : value{std::move(rhs.value)}, wasMoved{exchange(rhs.wasMoved, true)} {}
+                constexpr RValueForwarder(RValueForwarder&& rhs)
+                    : value{std::move(rhs.value)}, wasMoved{exchange(rhs.wasMoved, true)} {}
 
-            RValueForwarder& operator=(RValueForwarder&) = delete;
-            RValueForwarder& operator=(RValueForwarder&&) = delete;
+                RValueForwarder& operator=(RValueForwarder&) = delete;
+                RValueForwarder& operator=(RValueForwarder&&) = delete;
 
-            constexpr T&& move() {
-                wasMoved = true;
-                return std::move(value);
-            }
+                constexpr T&& move() {
+                    wasMoved = true;
+                    return std::move(value);
+                }
         };
     }  // namespace utils
 }  // namespace scl

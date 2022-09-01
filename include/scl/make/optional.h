@@ -6,7 +6,7 @@
 namespace scl {
     namespace make {
         template <class T, class... Args>
-        constexpr inline scl::utils::Optional<T> optional(Args&&... args) {
+        inline constexpr scl::utils::Optional<T> optional(Args&&... args) {
             return scl::utils::Optional<T>::inplace(std::forward<Args>(args)...);
         }
     }  // namespace make

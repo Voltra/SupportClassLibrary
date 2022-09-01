@@ -7,13 +7,13 @@ namespace scl {
         namespace details {
             template <typename T, typename = void>
             struct is_iterator {
-                static constexpr bool value = false;
+                    static constexpr bool value = false;
             };
 
             template <typename T>
             struct is_iterator<T, scl::meta::enable_if_t<!scl::meta::is_same<
                                       typename std::iterator_traits<T>::value_type, void>()>> {
-                static constexpr bool value = true;
+                    static constexpr bool value = true;
             };
         }  // namespace details
 

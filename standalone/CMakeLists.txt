@@ -22,4 +22,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES CXX_STANDARD 11 OUTPUT_NAME "Su
 
 target_link_libraries(${PROJECT_NAME} SupportClassLibrary::SupportClassLibrary)
 
+#target_precompile_headers(${PROJECT_NAME} REUSE_FROM SupportClassLibrary::SupportClassLibrary)
+
 SET(CMAKE_BUILD_TYPE Debug)

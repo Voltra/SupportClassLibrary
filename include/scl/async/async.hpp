@@ -8,8 +8,8 @@ namespace scl {
     namespace async {}
 }  // namespace scl
 
+#include "./Active.h"
 #include "./Channel.h"
 #include "./Mutexed.h"
 #include "./with.h"
 #include "./with_traits.h"
-#include "./Active.h"

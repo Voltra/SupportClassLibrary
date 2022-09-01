@@ -1,5 +1,5 @@
 #pragma once
-#include "../meta/meta.hpp"
+#include "../meta/type_aliases/real_const.h"
 #include "./RuntimeException.h"
 
 namespace scl {
@@ -8,14 +8,14 @@ namespace scl {
          * Exception class used when trying to access uninitialized memory
          */
         struct UninitializedMemoryAccess : public RuntimeException {
-            using RuntimeException::RuntimeException;
+                using RuntimeException::RuntimeException;
 
-            UninitializedMemoryAccess()
-                : UninitializedMemoryAccess("Trying to access uninitialized memory") {}
+                UninitializedMemoryAccess()
+                    : UninitializedMemoryAccess("Trying to access uninitialized memory") {}
 
-            scl::meta::real_const_t<char*> type() const noexcept override {
-                return "scl::exceptions::UninitializedMemoryAccess";
-            }
+                scl::meta::real_const_t<char*> type() const noexcept override {
+                    return "scl::exceptions::UninitializedMemoryAccess";
+                }
         };
     }  // namespace exceptions
 }  // namespace scl

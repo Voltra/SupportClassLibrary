@@ -10,14 +10,14 @@ namespace scl {
              */
             template <class T>
             class BaseStreamIterator : public virtual StreamIterator<T> {
-            public:
-                /**
-                 * @typedef iterator_type
-                 * Type alias for the iterator type
-                 */
-                using iterator_type = StreamIterator<T>;
+                public:
+                    /**
+                     * @typedef iterator_type
+                     * Type alias for the iterator type
+                     */
+                    using iterator_type = StreamIterator<T>;
 
-                using parent_type = T;
+                    using parent_type = T;
             };
         }  // namespace details
     }      // namespace stream

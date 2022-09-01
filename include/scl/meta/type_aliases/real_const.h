@@ -9,7 +9,7 @@ namespace scl {
              */
             template <class T>
             struct real_const {
-                using type = const decay_t<remove_cv_ref_t<T>>;
+                    using type = const decay_t<remove_cv_ref_t<T>>;
             };
 
             /**
@@ -18,7 +18,7 @@ namespace scl {
              */
             template <class T>
             struct real_const<T*> {
-                using type = const T* const;
+                    using type = const T* const;
             };
         }  // namespace details
 

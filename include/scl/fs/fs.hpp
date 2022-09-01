@@ -9,5 +9,5 @@ namespace scl {
 }  // namespace scl
 
 #include "./FileMode.h"
-#include "./SeekMode.h"
 #include "./RawFile.h"
+#include "./SeekMode.h"

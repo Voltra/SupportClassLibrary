@@ -2,7 +2,8 @@
 #include <utility>
 
 #include "../../macros.h"
-#include "../../meta/meta.hpp"
+#include "../../meta/type_aliases/stl.h"
+#include "../../meta/type_queries/is_iterator.h"
 #include "../Stream.h"
 #include "./FromIterators.h"
 

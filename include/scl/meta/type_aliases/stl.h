@@ -76,7 +76,7 @@ namespace scl {
              */
             template <class T>
             struct NoOp {
-                using type = T;
+                    using type = T;
             };
         }  // namespace details
 

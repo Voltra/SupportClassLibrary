@@ -11,15 +11,14 @@ namespace scl {
              */
             template <class T, class... Ts>
             struct largest_type {
-                using type =
-                    typename scl::meta::conditional_t<sizeof(T)
-                                                          == std::max({sizeof(T), sizeof(Ts)...}),
-                                                      T, typename largest_type<Ts...>::type>;
+                    using type = typename scl::meta::conditional_t<
+                        sizeof(T) == std::max({sizeof(T), sizeof(Ts)...}), T,
+                        typename largest_type<Ts...>::type>;
             };
 
             template <class T>
             struct largest_type<T> {
-                using type = T;
+                    using type = T;
             };
         }  // namespace details
 

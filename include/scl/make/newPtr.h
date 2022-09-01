@@ -5,14 +5,15 @@ namespace scl {
     namespace make {
         /**
          * Make a pointer using `new`
-         * @tparam T
+         * @tparam Base
+         * @tparam Derived
          * @tparam Args
          * @param args
          * @return
          */
-        template <class T, class... Args>
-        T* newPtr(Args&&... args) {
-            return new T{std::forward<Args>(args)...};
+        template <class Base, class Derived = Base, class... Args>
+        Base* newPtr(Args&&... args) {
+            return new Derived{std::forward<Args>(args)...};
         }
     }  // namespace make
 }  // namespace scl

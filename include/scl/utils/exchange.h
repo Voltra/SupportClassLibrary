@@ -1,5 +1,5 @@
 #pragma once
-#include "../meta/meta.hpp"
+#include "../meta/type_queries/stl.h"
 
 namespace scl {
     namespace utils {

@@ -1,5 +1,6 @@
 #pragma once
-#include "../../meta/meta.hpp"
+#include "../../meta/type_aliases/callables.h"
+#include "../../meta/type_aliases/stl.h"
 #include "../Stream.h"
 #include "../details/EndStreamIterator.h"
 
@@ -17,45 +18,45 @@ namespace scl {
                 template <class T, class ParentIterator>
                 class ForEachTerminator final
                     : public scl::stream::details::EndStreamIterator<void, T, ParentIterator> {
-                public:
-                    using iterator_type
-                        = scl::stream::details::EndStreamIterator<void, T, ParentIterator>;
-                    using value_type = typename iterator_type::value_type;
-                    using payload_type = typename iterator_type::payload_type;
-                    using result_type = typename iterator_type::result_type;
-                    using parent_iterator_type = typename iterator_type::parent_iterator_type;
-                    using parent_type = typename iterator_type::parent_type;
+                    public:
+                        using iterator_type
+                            = scl::stream::details::EndStreamIterator<void, T, ParentIterator>;
+                        using value_type = typename iterator_type::value_type;
+                        using payload_type = typename iterator_type::payload_type;
+                        using result_type = typename iterator_type::result_type;
+                        using parent_iterator_type = typename iterator_type::parent_iterator_type;
+                        using parent_type = typename iterator_type::parent_type;
 
-                    /**
-                     * @typedef consumer_type
-                     * The type of functions to call on each element
-                     */
-                    using consumer_type
-                        = scl::stream::terminators::details::consumer_type<value_type>;
+                        /**
+                         * @typedef consumer_type
+                         * The type of functions to call on each element
+                         */
+                        using consumer_type
+                            = scl::stream::terminators::details::consumer_type<value_type>;
 
-                    /**
-                     * Construct a terminator from its parent and a consumer
-                     * @param p being the parent iterator
-                     * @param c being the consumer function
-                     */
-                    ForEachTerminator(parent_iterator_type p, consumer_type c)
-                        : iterator_type(std::move(p)), consumer{std::move(c)} {}
+                        /**
+                         * Construct a terminator from its parent and a consumer
+                         * @param p being the parent iterator
+                         * @param c being the consumer function
+                         */
+                        ForEachTerminator(parent_iterator_type p, consumer_type c)
+                            : iterator_type(std::move(p)), consumer{std::move(c)} {}
 
-                    void process() final {
-                        for (auto payload : *this) {
-                            if (payload.isValid()) {
-                                auto&& opt = payload.value();
-                                opt.ifSome(consumer);
+                        void process() final {
+                            for (auto payload : *this) {
+                                if (payload.isValid()) {
+                                    auto&& opt = payload.value();
+                                    opt.ifSome(consumer);
+                                }
                             }
-                        }
-                    };
+                        };
 
-                protected:
-                    /**
-                     * @var consumer
-                     * the function to call on each element
-                     */
-                    consumer_type consumer;
+                    protected:
+                        /**
+                         * @var consumer
+                         * the function to call on each element
+                         */
+                        consumer_type consumer;
                 };
 
                 /**
@@ -64,17 +65,17 @@ namespace scl {
                  */
                 template <class T>
                 struct for_each_terminator_payload {
-                    /**
-                     * @typedef callback_t
-                     * The function type of a callback
-                     */
-                    using callback_t = consumer_type<T>;
+                        /**
+                         * @typedef callback_t
+                         * The function type of a callback
+                         */
+                        using callback_t = consumer_type<T>;
 
-                    /**
-                     * @var callback
-                     * the callback
-                     */
-                    callback_t callback;
+                        /**
+                         * @var callback
+                         * the callback
+                         */
+                        callback_t callback;
                 };
             }  // namespace details
 

@@ -16,3 +16,4 @@ namespace scl {
 #include "./rvalue.h"
 #include "./shared.h"
 #include "./unique.h"
+#include "./mutexed.h"

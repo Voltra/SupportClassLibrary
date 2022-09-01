@@ -12,19 +12,19 @@ namespace scl {
 
             template <class T>
             struct as_const {
-                using type = const T&;
+                    using type = const T&;
             };
 
             template <class T>
             struct as_const<T*> {
-                using type = const T*;
+                    using type = const T*;
             };
 
             template <class T>
             struct as_const<T&&> {
-                using type = const T&;
+                    using type = const T&;
             };
-        }
+        }  // namespace details
 
         template <class T>
         using as_const_t = typename details::as_const<T>::type;
@@ -32,5 +32,5 @@ namespace scl {
         template <class T>
         constexpr auto as_const(T&& value)
             -> SCL_RETURN(static_cast<as_const_t<T>>(std::forward<T>(value)))
-    }
+    }  // namespace meta
 }  // namespace scl

@@ -18,7 +18,7 @@ namespace scl {
 
             template <class Ret, class... Args>
             struct deduced_function_signature<Ret(Args...)> {
-                using type = Ret(Args...);
+                    using type = Ret(Args...);
             };
 
             template <class Ret, class... Args>
@@ -59,11 +59,11 @@ namespace scl {
         namespace details {
             template <class Ret, class... Args>
             struct function_traits<Ret(Args...)> {
-                using return_type = Ret;
-                using args_type = std::tuple<Args...>;
+                    using return_type = Ret;
+                    using args_type = std::tuple<Args...>;
 
-                template <std::size_t I>
-                using arg_t = scl::meta::tuple_element_t<I, args_type>;
+                    template <std::size_t I>
+                    using arg_t = scl::meta::tuple_element_t<I, args_type>;
             };
 
             template <class Ret, class... Args>
