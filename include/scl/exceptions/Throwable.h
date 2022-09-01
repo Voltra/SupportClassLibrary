@@ -1,7 +1,10 @@
 #pragma once
-#include <string>
+#include "../macros.h"
 
-#include "../meta/type_aliases/real_const.h"
+#if !SCL_NO_EXCEPTIONS
+    #include <string>
+
+    #include "../meta/type_aliases/real_const.h"
 
 namespace scl {
     namespace exceptions {
@@ -31,3 +34,4 @@ namespace std {
         return std::string{throwable.type()} + " : " + throwable.reason();
     }
 }  // namespace std
+#endif

@@ -3,6 +3,7 @@
 #include <new>
 
 #include "../alias/byte.h"
+#include "../exceptions/UninitializedMemoryAccess.h"
 #include "../meta/base/base.hpp"
 #include "../meta/type_aliases/as_const.h"
 #include "../meta/type_queries/copyable.h"
@@ -111,8 +112,13 @@ namespace scl {
                     bool init = false;
 
                     void* rawPtr() { return storage; }
+                    const void* rawPtr() const { return storage; }
 
-                    T* ptr() { return static_cast<T*>(this->rawPtr()); }
+                    T* ptr() & { return static_cast<T*>(this->rawPtr()); }
+
+                    T* ptr() && { return static_cast<T*>(this->rawPtr()); }
+
+                    const T* ptr() const& { return static_cast<const T*>(this->rawPtr()); }
 
                     /**
                      * Construct the variable in the storage
@@ -135,32 +141,33 @@ namespace scl {
                 public:
                     RawStorageImpl() noexcept : storage{}, init{false} {}
 
-                    RawStorageImpl(RawStorageImpl&& rhs) : RawStorageImpl() {
+                    RawStorageImpl(RawStorageImpl&& rhs) noexcept(
+                        scl::meta::is_nothrow_movable<T>())
+                        : RawStorageImpl() {
                         if (rhs.init) {
-                            this->destructor();
-                            this->initialize(std::move(rhs.get()));
-                            this->init = exchange(rhs.init, false);
+                            this->initialize(std::move(rhs.unsafeGet()));
+                            rhs.init = false;
                         }
                     }
 
-                    RawStorageImpl& operator=(RawStorageImpl&& rhs) {
-                        this->destructor();
-
+                    RawStorageImpl& operator=(RawStorageImpl&& rhs) noexcept(
+                        scl::meta::is_nothrow_movable<T>()) {
                         if (!rhs.init) {
+                            this->destructor();
                             this->init = false;
                         } else {
-                            this->initialize(std::move(rhs.get()));
-                            this->init = exchange(rhs.init, false);
+                            this->initialize(std::move(rhs.unsafeGet()));
+                            rhs.init = false;
                         }
 
                         return *this;
                     }
 
-                    explicit RawStorageImpl(T&& value) : RawStorageImpl() {
+                    explicit RawStorageImpl(T&& value) noexcept : RawStorageImpl() {
                         this->reinit(std::move(value));
                     }
 
-                    RawStorageImpl& operator=(T&& value) {
+                    RawStorageImpl& operator=(T&& value) noexcept {
                         this->reinit(std::move(value));
                         return *this;
                     }
@@ -175,9 +182,11 @@ namespace scl {
                      * @warning Cleans the memory if there was data (calls the destructor)
                      */
                     template <class... Args>
-                    T& constructor(Args&&... args) {
+                    T& constructor(Args&&... args) noexcept(
+                        scl::meta::is_nothrow_destructible<T>()
+                        && scl::meta::is_nothrow_constructible<T, Args...>()) {
                         this->initialize(std::forward<Args>(args)...);
-                        return this->get();
+                        return this->unsafeGet();
                     }
 
                     /**
@@ -199,15 +208,37 @@ namespace scl {
                      * Alias for RawStorage::destroy
                      * @return a reference to this RawStorage
                      */
-                    RawStorageImpl& reset() {
+                    RawStorageImpl& reset() noexcept(scl::meta::is_nothrow_destructible<T>()) {
                         this->destroy();
                         return *this;
                     }
 
                     template <class... Args>
-                    void reinit(Args&&... args) {
+                    void reinit(Args&&... args) noexcept(
+                        scl::meta::is_nothrow_destructible<T>()
+                        && scl::meta::is_nothrow_constructible<T, Args...>()) {
                         this->destroy();
-                        this->constructor(std::forward<Args>(args)...);
+                        this->initialize(std::forward<Args>(args)...);
+                    }
+
+                    T& unsafeGet() & noexcept { return *this->ptr(); }
+
+                    T&& unsafeGet() && noexcept { return std::move(*this->ptr()); }
+
+                    const T& unsafeGet() const& noexcept { return *this->ptr(); }
+
+                    /**
+                     * Access the underlying data
+                     * @return a mutable reference to the underlying data
+                     * @throws scl::exceptions::UninitializedMemoryAccess
+                     */
+                    T& get() & noexcept(SCL_NO_EXCEPTIONS) {
+#if !SCL_NO_EXCEPTIONS
+                        if (!this->init)
+                            throw scl::exceptions::UninitializedMemoryAccess{};
+#endif
+
+                        return unsafeGet();
                     }
 
                     /**
@@ -215,23 +246,13 @@ namespace scl {
                      * @return a mutable reference to the underlying data
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    T& get() & {
+                    T&& get() && noexcept(SCL_NO_EXCEPTIONS) {
+#if !SCL_NO_EXCEPTIONS
                         if (!this->init)
                             throw scl::exceptions::UninitializedMemoryAccess{};
+#endif
 
-                        return *this->ptr();
-                    }
-
-                    /**
-                     * Access the underlying data
-                     * @return a mutable reference to the underlying data
-                     * @throws scl::exceptions::UninitializedMemoryAccess
-                     */
-                    T&& get() && {
-                        if (!this->init)
-                            throw scl::exceptions::UninitializedMemoryAccess{};
-
-                        return std::move(*this->ptr());
+                        return unsafeGet();
                     }
 
                     /**
@@ -240,11 +261,13 @@ namespace scl {
                      * @return an immutable reference to the underlying value
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    const T& get() const& {
+                    const T& get() const& noexcept(SCL_NO_EXCEPTIONS) {
+#if !SCL_NO_EXCEPTIONS
                         if (!this->init)
                             throw scl::exceptions::UninitializedMemoryAccess{};
+#endif
 
-                        return *reinterpret_cast<const T*>(&this->storage);
+                        return unsafeGet();
                     }
 
                     /**
@@ -252,7 +275,7 @@ namespace scl {
                      * @return a mutable reference to the underlying data
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    T& operator*() & { return this->get(); }
+                    T& operator*() & noexcept(SCL_NO_EXCEPTIONS) { return this->get(); }
 
                     /**
                      * Get the value from a constant RawStorage (e.g. w/ a constant class that uses
@@ -260,7 +283,7 @@ namespace scl {
                      * @return an immutable reference to the underlying value
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    const T& operator*() const& { return this->get(); }
+                    const T& operator*() const& noexcept(SCL_NO_EXCEPTIONS) { return this->get(); }
 
                     /**
                      * Get the value from a constant RawStorage (e.g. w/ a constant class that uses
@@ -268,14 +291,14 @@ namespace scl {
                      * @return an immutable reference to the underlying value
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    T&& operator*() && { return this->get(); }
+                    T&& operator*() && noexcept(SCL_NO_EXCEPTIONS) { return this->get(); }
 
                     /**
                      * Get a pointer to the underlying data
                      * @return a mutable pointer to the underlying data
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    T* operator->() { return &(this->get()); }
+                    T* operator->() noexcept(SCL_NO_EXCEPTIONS) { return &(this->get()); }
 
                     /**
                      * Get a pointer to the value from a constant RawStorage (e.g. w/ a constant
@@ -283,19 +306,21 @@ namespace scl {
                      * @return an immutable pointer to the underlying value
                      * @throws scl::exceptions::UninitializedMemoryAccess
                      */
-                    scl::meta::real_const_t<T*> operator->() const { return &(this->get()); }
+                    scl::meta::real_const_t<T*> operator->() const noexcept(SCL_NO_EXCEPTIONS) {
+                        return &(this->get());
+                    }
 
                     /**
                      * Determine whether or not the storage holds a value
                      * @return TRUE if it does, FALSE otherwise
                      */
-                    bool hasValue() const { return this->init; }
+                    bool hasValue() const noexcept { return this->init; }
 
                     /**
                      * Implicit conversion to bool
                      * @return TRUE if the storage holds a value, FALSE otherwise
                      */
-                    operator bool() const { return this->hasValue(); }
+                    operator bool() const noexcept { return this->hasValue(); }
             };
         }  // namespace details
 

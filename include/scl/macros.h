@@ -8,6 +8,12 @@
     #define SCL_CPP17
 #endif
 
+#ifdef NO_EXCEPTIONS
+    #define SCL_NO_EXCEPTIONS true
+#else
+    #define SCL_NO_EXCEPTIONS false
+#endif
+
 #ifdef SCL_CPP14
     #define SCL_CONSTEXPR14 constexpr
 #else

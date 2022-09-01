@@ -1,6 +1,9 @@
 #pragma once
-#include "../meta/type_aliases/real_const.h"
-#include "./Exception.h"
+#include "../macros.h"
+
+#if !SCL_NO_EXCEPTIONS
+    #include "../meta/type_aliases/real_const.h"
+    #include "./Exception.h"
 
 namespace scl {
     namespace exceptions {
@@ -19,3 +22,4 @@ namespace scl {
         };
     }  // namespace exceptions
 }  // namespace scl
+#endif

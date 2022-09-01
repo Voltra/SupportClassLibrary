@@ -1,6 +1,9 @@
 #pragma once
-#include "../meta/type_aliases/real_const.h"
-#include "./Throwable.h"
+#include "../macros.h"
+
+#if !SCL_NO_EXCEPTIONS
+    #include "../meta/type_aliases/real_const.h"
+    #include "./Throwable.h"
 
 namespace scl {
     namespace exceptions {
@@ -18,7 +21,7 @@ namespace scl {
                  * @tparam T being the reason's type
                  * @param reason being the error message
                  */
-                RuntimeException(const char* reason) : reason_{reason} {}
+                explicit RuntimeException(const char* reason) : reason_{reason} {}
 
                 /**
                  * Retrieve the reason
@@ -42,3 +45,4 @@ namespace scl {
         };
     }  // namespace exceptions
 }  // namespace scl
+#endif
